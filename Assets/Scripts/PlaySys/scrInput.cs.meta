@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: bc34c72e1fe425047b4056da863fb21e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - judgeobj: {fileID: 3488134940094539480, guid: 003a3b0912a64694388ac06640e2239e,
+      type: 3}
+  - lineEf: {fileID: 8895381063520361727, guid: 0e6b27c24bb4d2d4a8e710869470a7e1,
+      type: 3}
+  - hitef: {fileID: 6872376403151359687, guid: 80c246296b8399e4abd92b2b03eb5d2c, type: 3}
+  - lnhitef: {instanceID: 0}
+  - DEF: {instanceID: 0}
+  - PRESS: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
