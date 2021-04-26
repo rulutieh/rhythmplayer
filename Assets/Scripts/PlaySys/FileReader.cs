@@ -96,7 +96,7 @@ public class FileReader : MonoBehaviour
         string filePath = NowPlaying.FILE;
         offset = NowPlaying.OFFSET;
         aud.clip = NowPlaying.AUD;
-        player.LoadSound(NowPlaying.MUSICFILE);
+        //player.LoadSound(NowPlaying.MUSICFILE);
         ReadFile(filePath); //파일 읽기 시작
 
         NoteList = new Notes[NowPlaying.NOTECOUNTS + NowPlaying.LONGNOTECOUNTS];
@@ -131,11 +131,19 @@ public class FileReader : MonoBehaviour
             p += Time.deltaTime * 1000f;
             Playback = p;
             PlaybackChanged = GetNoteTime(Playback); // reamtime에 변속 계산 < 계산량 증가
-            //PlaybackChanged += Time.deltaTime * 1000f * TimeList[0].BPM / bpm; < 오차가 너무큼
 
             if (noteEnd) //게임 종료 시
             {
-                if (!aud.isPlaying && !resultload)
+                int __t;
+                if (NoteList[NoteList.Length - 1].ISLN)
+                {
+                    __t = NoteList[NoteList.Length - 1].LNLENGTH + 4000;
+                }
+                else
+                {
+                    __t = NoteList[NoteList.Length - 1].TIME + 4000;
+                }
+                if (__t < Playback && !resultload)
                 {
                     resultload = true;
                     StartCoroutine(ShowResult());

@@ -66,7 +66,6 @@ public class scrNote : MonoBehaviour
     {
         transform.position = new Vector2(transform.position.x, (float)
             (FileReader.judgeoffset + (_TIME - FileReader.PlaybackChanged) * FileReader.multiply));
-        if (transform.position.y < -20f) transform.position = new Vector2(transform.position.x, -20f);
     }
 
     public void SetInfo(int c, int t, bool ln, float length, float nt)

@@ -23,6 +23,7 @@ public class RoomChanger : MonoBehaviour
             {
                 StartCoroutine(LoadScene("SelectMusic"));
                 GetComponent<MusicHandler>().StopMP3();
+                GetComponent<MusicHandler>().ReleaseMP3();
             }
         }
     }

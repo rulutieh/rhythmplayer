@@ -182,8 +182,7 @@ public class FileSelecter : MonoBehaviour
         _charter = Loader.list[scrSetting.decide].getCharter(scrSetting.diffselection);
         NowPlaying.isBGA = Loader.list[scrSetting.decide].hasvideo;
         LoadNoteFiles();
-        NowPlaying.MUSICFILE = Loader.list[scrSetting.decide].getAudio();
-        //player.LoadSound(NowPlaying.MUSICFILE);
+        NowPlaying.MUSICFILE = Loader.list[scrSetting.decide].getAudio();       
         NowPlaying.OFFSET = _localoffset;
         NowPlaying.LEVEL = _diff;
         NowPlaying.BGFILE = _bgpath;
@@ -191,8 +190,11 @@ public class FileSelecter : MonoBehaviour
         NowPlaying.TITLE = _name;
         NowPlaying.ARTIST = _artist;
         StopCoroutine(FileLoad(Loader.list[scrSetting.decide].getAudio()));
-        aud.Stop();
+        player.ReleaseMP3();
         StartCoroutine(FileLoad(Loader.list[scrSetting.decide].getAudio()));
+
+
+        player.LoadSound(NowPlaying.MUSICFILE);
 
         var obj = GameObject.Find("AlbumUI");
         if (obj)
@@ -222,6 +224,8 @@ public class FileSelecter : MonoBehaviour
     }
     IEnumerator FileLoad(string filepath)
     {
+        //length측정
+
         www = new WWW(filepath);
         yield return www; //로드
         audClip = www.GetAudioClip();  
@@ -229,8 +233,11 @@ public class FileSelecter : MonoBehaviour
             yield return www;
         aud.clip = audClip;
         NowPlaying.AUD = aud.clip;
-        NowPlaying.AUD.LoadAudioData();
-        aud.Play();
+
+        //fmod
+
+        yield return new WaitForSeconds(0.43f);
+        player.PlayMP3();
     }
     void goTitle()
     {
@@ -322,10 +329,8 @@ public class FileSelecter : MonoBehaviour
                 {
                     sfxaud.clip = sfxs[1]; sfxaud.Play();
                     StopCoroutine(FileLoad(Loader.list[scrSetting.decide].getAudio()));
-                    aud.Stop();
+                    player.StopMP3();
                     RoomChanger.roomchanger.goRoom("PlayMusic");
-                    if (aud.isPlaying)
-                        aud.Stop();
                     gameObject.SetActive(false);
                 }
             }
