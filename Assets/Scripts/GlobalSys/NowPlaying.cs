@@ -13,10 +13,11 @@ public class NowPlaying : MonoBehaviour
     public static bool isBGA;
     public int nt, ln;
     float f;
+    MusicHandler player;
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
     }
 
     // Update is called once per frame
@@ -25,8 +26,7 @@ public class NowPlaying : MonoBehaviour
         nt = NOTECOUNTS;
         ln = LONGNOTECOUNTS;
         string s;
-        if (AUD)
-            f = Mathf.Round(AUD.length);
+        f = player.GetLength() / 1000f;
         s = $" {Mathf.FloorToInt(f / 60f)} : ";
         s += (f % 60f).ToString("00");
         LENGTH = s;

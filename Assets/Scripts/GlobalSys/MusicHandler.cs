@@ -8,6 +8,7 @@ public class MusicHandler : MonoBehaviour
     FMOD.ChannelGroup channelGroup = new FMOD.ChannelGroup();
     FMOD.Channel[] channel = new FMOD.Channel[8];
     FMOD.Sound snd;
+    FMOD.RESULT isLoadDone;
     bool isplaying;
 
     FMOD.Studio.EVENT_CALLBACK dialogueCallback;
@@ -27,7 +28,8 @@ public class MusicHandler : MonoBehaviour
     public void LoadSound(string fpath)
     {
         snd = new FMOD.Sound();
-        FMODUnity.RuntimeManager.CoreSystem.createSound(fpath, FMOD.MODE.CREATESAMPLE, out snd);
+        isLoadDone = FMODUnity.RuntimeManager.CoreSystem.createSound(fpath, FMOD.MODE.CREATESAMPLE, out snd);
+
     }
     public void PlayMP3()
     {
@@ -45,6 +47,20 @@ public class MusicHandler : MonoBehaviour
     public void ReleaseMP3()
     {
         snd.release();
+    }
+    public uint GetLength()
+    {
+        uint f;
+        snd.getLength(out f, FMOD.TIMEUNIT.MS);
+        return f;
+    }
+    public FMOD.OPENSTATE isLoaded()
+    {
+        FMOD.OPENSTATE state;
+        bool disk, starving;
+        uint percent;
+        snd.getOpenState(out state, out percent, out starving, out disk);
+        return state;
     }
     void OnApplicationQuit()
     {

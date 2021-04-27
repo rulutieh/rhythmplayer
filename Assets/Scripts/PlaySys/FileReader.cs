@@ -170,7 +170,7 @@ public class FileReader : MonoBehaviour
         StartCoroutine(mBarSystem());
         PlaybackChanged = Playback = -2000f;
         p = Playback;
-        Invoke("AudioStart", offset + 1.874f + scrSetting.GlobalOffset);
+        Invoke("AudioStart", offset + 1.9f + scrSetting.GlobalOffset);
 
         isLoaded = true;
 

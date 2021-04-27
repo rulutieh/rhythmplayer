@@ -87,7 +87,9 @@ public class FileSelecter : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return)) songDecide();
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
             goTitle();
+        }
 
         if (Input.GetKeyDown(KeyCode.F6))
         {
@@ -189,12 +191,15 @@ public class FileSelecter : MonoBehaviour
         NowPlaying.BGAFILE = _bgapath;
         NowPlaying.TITLE = _name;
         NowPlaying.ARTIST = _artist;
-        StopCoroutine(FileLoad(Loader.list[scrSetting.decide].getAudio()));
-        player.ReleaseMP3();
-        StartCoroutine(FileLoad(Loader.list[scrSetting.decide].getAudio()));
-
+        StopCoroutine(CheckLoadedAndPlay());
+        if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
+            player.ReleaseMP3();
 
         player.LoadSound(NowPlaying.MUSICFILE);
+        StartCoroutine(CheckLoadedAndPlay());
+
+
+        
 
         var obj = GameObject.Find("AlbumUI");
         if (obj)
@@ -222,25 +227,16 @@ public class FileSelecter : MonoBehaviour
         SortMusic();
         Setting.SaveSelection();
     }
-    IEnumerator FileLoad(string filepath)
+    IEnumerator CheckLoadedAndPlay()
     {
-        //length측정
-
-        www = new WWW(filepath);
-        yield return www; //로드
-        audClip = www.GetAudioClip();  
-        if (audClip.loadState != AudioDataLoadState.Loaded)
-            yield return www;
-        aud.clip = audClip;
-        NowPlaying.AUD = aud.clip;
-
-        //fmod
-
-        yield return new WaitForSeconds(0.43f);
+        while (player.isLoaded() != FMOD.OPENSTATE.READY)
+            yield return null;
         player.PlayMP3();
     }
     void goTitle()
     {
+        if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
+            player.ReleaseMP3();
         SceneManager.LoadScene("Title", LoadSceneMode.Single);
         Destroy(gameObject);
     }
@@ -328,7 +324,7 @@ public class FileSelecter : MonoBehaviour
                 else if (isplayingpreview && !isThreading) //이미 곡 고르고 프리뷰 플레이시
                 {
                     sfxaud.clip = sfxs[1]; sfxaud.Play();
-                    StopCoroutine(FileLoad(Loader.list[scrSetting.decide].getAudio()));
+                    StopCoroutine(CheckLoadedAndPlay());
                     player.StopMP3();
                     RoomChanger.roomchanger.goRoom("PlayMusic");
                     gameObject.SetActive(false);
