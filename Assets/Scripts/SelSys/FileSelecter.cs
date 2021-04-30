@@ -141,8 +141,7 @@ public class FileSelecter : MonoBehaviour
         _diff = Loader.list[scrSetting.decide].getDiff(scrSetting.diffselection);
         _charter = Loader.list[scrSetting.decide].getCharter(scrSetting.diffselection);
         LoadNoteFiles();
-        sfxaud.clip = sfxs[4];
-        sfxaud.Play();
+        player.PlaySFX(6);
     }
     void LoadObjects()
     {
@@ -214,14 +213,14 @@ public class FileSelecter : MonoBehaviour
     }
     public void SetSuffle()
     {
-        sfxaud.clip = sfxs[3]; sfxaud.Play();
+        player.PlaySFX(0);
         scrSetting.modselection++; if (scrSetting.modselection > 2) scrSetting.modselection = 0;
         SortMod();
         Setting.SaveSelection();
     }
     public void SetSort()
     {
-        sfxaud.clip = sfxs[3]; sfxaud.Play();
+        player.PlaySFX(0);
         scrSetting.sortselection++;
         isdecidechanged = true;
         SortMusic();
@@ -305,7 +304,7 @@ public class FileSelecter : MonoBehaviour
 
     public void SongScroll()
     {
-        isdecidechanged = true; sfxaud.clip = sfxs[0]; sfxaud.Play();
+        isdecidechanged = true; player.PlaySFX(2);
     }
     public void songDecide()
     {
@@ -316,18 +315,18 @@ public class FileSelecter : MonoBehaviour
                 {
                     Setting.SaveSelection();
                     isdecidedelay = true;
-                    sfxaud.clip = sfxs[2]; sfxaud.Play();
+                    player.PlaySFX(0);
                     SongPreview();
                     isdecidechanged = false;
                     
                 }
                 else if (isplayingpreview && !isThreading) //이미 곡 고르고 프리뷰 플레이시
                 {
-                    sfxaud.clip = sfxs[1]; sfxaud.Play();
+                    player.PlaySFX(4);
                     StopCoroutine(CheckLoadedAndPlay());
                     player.StopMP3();
                     RoomChanger.roomchanger.goRoom("PlayMusic");
-                    gameObject.SetActive(false);
+
                 }
             }
         }

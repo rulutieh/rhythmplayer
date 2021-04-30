@@ -131,7 +131,7 @@ namespace FMODUnity
                 ClearCache();
                 if (wasValid)
                 {
-                    UnityEngine.Debug.LogError(string.Format("FMOD Studio: Directory {0} doesn't contain any banks. Build the banks in Studio or check the path in the settings.", defaultBankFolder));
+                    //UnityEngine.Debug.LogError(string.Format("FMOD Studio: Directory {0} doesn't contain any banks. Build the banks in Studio or check the path in the settings.", defaultBankFolder));
                 }
                 return;
             }
@@ -808,7 +808,7 @@ namespace FMODUnity
                 EditorUtils.ValidateSource(out isValid, out validateMessage);
                 if (!isValid)
                 {
-                    Debug.LogError("FMOD Studio: " + validateMessage);
+                    //Debug.LogError("FMOD Studio: " + validateMessage);
                 }
                 firstUpdate = false;
                 lastCheckTime = Time.realtimeSinceStartup;

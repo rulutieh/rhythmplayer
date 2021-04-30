@@ -12,17 +12,17 @@ public class scrResult : MonoBehaviour
     public GameObject Rank;
     public GameObject[] elements;
     public AudioClip[] sfxs;
-    AudioSource aud;
     Transform[] allChildren;
     Vector2 gutterStartSize;
     Vector2 gutterEndSize;
+    MusicHandler player;
     bool played;
     Image rend;
     public TextMeshProUGUI tmptitle, tmpscore, tmpcool, tmpgreat, tmpgood, tmpmiss, tmpbad, tmpcombo, tmpresult, tmplevel;
     // Start is called before the first frame update
     void Start()
     {
-        aud = GetComponent<AudioSource>();
+        player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
         rend = Rank.GetComponent<Image>();
         gutterStartSize = new Vector2(gutter.rectTransform.sizeDelta.x, 0);
         gutterEndSize = gutter.rectTransform.sizeDelta;
@@ -67,12 +67,12 @@ public class scrResult : MonoBehaviour
             if (FileReader.isFailed)
             {
                 tmpresult.text = "Failed";
-                aud.clip = sfxs[0]; aud.Play();
+                player.PlaySFX(8);
             }
             else
             {
                 tmpresult.text = "Cleared";
-                aud.clip = sfxs[1]; aud.Play();
+                player.PlaySFX(7);
             }
             played = true;
         }

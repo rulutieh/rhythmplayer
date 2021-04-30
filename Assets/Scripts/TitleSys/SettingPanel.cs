@@ -12,6 +12,7 @@ public class SettingPanel : MonoBehaviour
     public Toggle video, bpm, fullscreen;
     public Dropdown ddres, ddframe;
     public TextMeshProUGUI offset;
+    MusicHandler player;
     scrSetting st;
     GameObject w;
     AudioSource aud;
@@ -20,6 +21,7 @@ public class SettingPanel : MonoBehaviour
     public void Awake()
     {
         w = GameObject.FindWithTag("world");
+        player = w.GetComponent<MusicHandler>();
         st = w.GetComponent<scrSetting>();
         aud = w.GetComponent<AudioSource>();
         bpm.isOn = scrSetting.isFixedScroll;
@@ -93,9 +95,7 @@ public class SettingPanel : MonoBehaviour
     }
     public void ClickSound(int index)
     {
-        aud.clip = clips[index];
-        aud.Play();
-
+        player.PlaySFX(index);
     }
     public void SetGlobalOffset(float o)
     {

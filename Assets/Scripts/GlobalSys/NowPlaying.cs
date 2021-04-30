@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NowPlaying : MonoBehaviour
 {
+
     public static string MUSICFILE , FILE, BGFILE, BGAFILE, TITLE, ARTIST;
     public static string LEVEL, LENGTH;
     public static float OFFSET;

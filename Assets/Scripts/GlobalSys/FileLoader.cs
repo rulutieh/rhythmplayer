@@ -105,17 +105,17 @@ public class FileLoader : MonoBehaviour
     public void StartLoad() //파일 로드 시작
     {
         int idx = 0;
-        string root = Application.streamingAssetsPath;
+        string root = Path.Combine(Application.streamingAssetsPath, "Songs");
         string[] subdirectoryEntries = Directory.GetDirectories(root);
         //폴더수만큼구조체배열할당
 
         foreach (string subdirectory in subdirectoryEntries)
         {
-            LoadSubDirs(subdirectory, idx);
+            LoadSubDirs(root, subdirectory, idx);
             idx++;
         }
     }
-    void LoadSubDirs(string dir, int idx) //폴더별 파일 로드
+    void LoadSubDirs(string path, string dir, int idx) //폴더별 파일 로드
     {
         string AUDIOFILE, BACKGROUND, VIDEOFILE = "";
         bool hasvideo = false;
@@ -127,22 +127,22 @@ public class FileLoader : MonoBehaviour
         string[] _id = new string[Files.Length];     //채보별해쉬
         for (int i = 0; i < Files.Length; i++) //여러 난이도일 경우 여러번 반복
         {
-            TXTFILE[i] = Path.Combine(Application.streamingAssetsPath, dir, Files[i].Name); //경로합치기
+            TXTFILE[i] = Path.Combine(path, dir, Files[i].Name); //경로합치기
         }
         //채보파일 불러오기        
         FileInfo[] Musics;
         Musics = d.GetFiles("*.mp3"); //음악파일 불러오기
         if (Musics.Length == 0) Musics = d.GetFiles("*.ogg");
-        AUDIOFILE = Path.Combine(Application.streamingAssetsPath, dir, Musics[0].Name);
+        AUDIOFILE = Path.Combine(path, dir, Musics[0].Name);
         FileInfo[] bgs;
         bgs = d.GetFiles("*.jpg");    //배경 불러오기
         if (bgs.Length == 0) bgs = d.GetFiles("*.png");
-        BACKGROUND = Path.Combine(Application.streamingAssetsPath, dir, bgs[0].Name);
+        BACKGROUND = Path.Combine(path, dir, bgs[0].Name);
         FileInfo[] bga;
         bga = d.GetFiles("*.mpg"); // 동영상 불러오기
         if (bga.Length == 0) bga = d.GetFiles("*.mp4");
         if (bga.Length == 0) bga = d.GetFiles("*.flv");
-        if (bga.Length != 0) { VIDEOFILE = Path.Combine(Application.streamingAssetsPath, dir, bga[0].Name); hasvideo = true; }
+        if (bga.Length != 0) { VIDEOFILE = Path.Combine(path, dir, bga[0].Name); hasvideo = true; }
         //제목,작곡가,난이도,오프셋파싱
         string _title = "", _artist = "", _tags = "";
         float _offset = 0f;
@@ -178,7 +178,8 @@ public class FileLoader : MonoBehaviour
     {
         list.Sort(delegate (Song A, Song B)
         {
-            return String.Compare(A.artist, B.artist);
+            var comparer = StringComparer.Create(new CultureInfo("ja-JP"), true);
+            return comparer.Compare(A.artist, B.artist);
         });
     }
     public void SortName()
@@ -202,11 +203,9 @@ public class FileLoader : MonoBehaviour
     }
     IEnumerator loadComplete()
     {
-#if UNITY_EDITOR
+
         yield return null;
-#else
-        yield return new WaitForSeconds(1.6f);
-#endif
+
         SceneManager.LoadScene("Title", LoadSceneMode.Single);
     }
 }
