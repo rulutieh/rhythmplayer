@@ -9,10 +9,9 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-/[Aa]ssets/StreamingAssets/Songs/**
-!/[Aa]ssets/StreamingAssets/Songs/Say A Vengeance/
-/[Aa]ssets/StreamingAssets/Songs/**/*.meta
-/[Aa]ssets/StreamingAssets/Songs/*.meta
+/[Aa]ssets/StreamingAssets/Songs/
+
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
@@ -60,3 +59,6 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+!/.gitignore
+!/[Aa]ssets/StreamingAssets/Songs/Say A Vengeance
