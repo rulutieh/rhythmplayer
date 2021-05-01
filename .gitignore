@@ -12,6 +12,7 @@
 /[Aa]ssets/StreamingAssets/Songs/**
 !/[Aa]ssets/StreamingAssets/Songs/Say A Vengeance/
 /[Aa]ssets/StreamingAssets/Songs/**/*.meta
+/[Aa]ssets/StreamingAssets/Songs/*.meta
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
