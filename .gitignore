@@ -59,6 +59,3 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-
-!/.gitignore
-!/[Aa]ssets/StreamingAssets/Songs/Say A Vengeance/
