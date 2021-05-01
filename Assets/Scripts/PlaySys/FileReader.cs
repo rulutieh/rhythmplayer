@@ -25,7 +25,7 @@ public class FileReader : MonoBehaviour
     int[] keys = { 0, 1, 2, 3, 4, 5, 6 };
     public GameObject NoteObj, endln, result, gameover, judgeobj, barobj;
     bool isLoaded = false, svEnd, noteEnd, resultload;
-    scrRank RankSys;
+    RankSystem RankSys;
     MusicHandler player;
     AudioSource aud;
     GameObject w;
@@ -80,7 +80,7 @@ public class FileReader : MonoBehaviour
     {
         //랭킹 등록 시스템
         w = GameObject.FindWithTag("world");
-        RankSys = w.GetComponent<scrRank>();
+        RankSys = w.GetComponent<RankSystem>();
         player = w.GetComponent<MusicHandler>();
         preLoad = 3000;
         aud.volume = scrSetting.Volume;
@@ -145,6 +145,8 @@ public class FileReader : MonoBehaviour
                 }
                 if (__t < Playback && !resultload)
                 {
+                    //결과창 로드
+                    RankSys.SaveScore(NowPlaying.HASH, scrSetting.playername, Mathf.RoundToInt(Score), 0);
                     resultload = true;
                     StartCoroutine(ShowResult());
                 }

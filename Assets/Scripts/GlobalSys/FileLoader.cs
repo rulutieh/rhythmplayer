@@ -9,6 +9,14 @@ using System.Globalization;
 
 public class FileLoader : MonoBehaviour
 {
+    public class Chart
+    {
+        public string hash, charter, path, diffs;
+        public Chart(string hash, string charter, string path, string diffs)
+        {
+            this.hash = hash; this.charter = charter; this.path = path; this.diffs = diffs;
+        }
+    }
     public class Song
     {
 
@@ -17,27 +25,36 @@ public class FileLoader : MonoBehaviour
         public string tags;
         public bool hasvideo;
         public float localoffset;
-        public string[] diff;
-        string[] txtpath;
-        string[] charter;
         string audiopath;
         string bgpath;
         string bgapath;
-        string[] id;
+        List<Chart> charts = new List<Chart>();
         public Song(string name, string artist, ref string[] diffs, float offset, ref string[] id, ref string[] charter, ref string[] txtpath, string audiopath, string bgpath, string bgapath, bool hasvideo, string tags)
         {
-            this.id = id;
+
+            for (int i = 0; i < id.Length; i++)
+            {
+                charts.Add(new Chart(id[i], charter[i], txtpath[i], diffs[i]));
+            }
             this.name = name;
             this.artist = artist;
-            this.diff = diffs;
             localoffset = offset;
-            this.txtpath = txtpath;
-            this.charter = charter;
             this.audiopath = audiopath;
             this.bgpath = bgpath;
             this.bgapath = bgapath;
             this.hasvideo = hasvideo;
             this.tags = tags;
+
+            SortDiff();
+
+        }
+        void SortDiff()
+        {
+            charts.Sort(delegate (Chart A, Chart B)
+            {
+                if (int.Parse(A.diffs) > int.Parse(B.diffs)) return 1;
+                else return -1;
+            });
         }
         public string getAudio()
         {
@@ -45,7 +62,7 @@ public class FileLoader : MonoBehaviour
         }
         public string getTxt(int idx)
         {
-            return txtpath[idx];
+            return charts[idx].path;
         }
         public string getBGA()
         {
@@ -57,23 +74,23 @@ public class FileLoader : MonoBehaviour
         }
         public string getDiff(int idx)
         {
-            return diff[idx];
+            return charts[idx].diffs;
         }
         public string getCharter(int idx)
         {
-            return charter[idx];
+            return charts[idx].charter;
         }
         public string getID(int idx)
         {
-            return id[idx];
+            return charts[idx].hash;
         }
         public string maxDiff()
         {
-            return diff[diff.Length - 1];
+            return charts[charts.Count - 1].diffs;
         }
         public int diffCount()
         {
-            return diff.Length;
+            return charts.Count;
         }
     }
     public List<Song> list = new List<Song>();
@@ -204,7 +221,7 @@ public class FileLoader : MonoBehaviour
     IEnumerator loadComplete()
     {
 
-        yield return null;
+        yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene("Title", LoadSceneMode.Single);
     }

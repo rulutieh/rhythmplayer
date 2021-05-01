@@ -96,6 +96,11 @@ public class MusicHandler : MonoBehaviour
     }
     void OnApplicationQuit()
     {
+        snd.release();
+        for (int i = 0; i < sfx.Length; i++)
+        {
+            sfx[i].release();
+        }
 #if !UNITY_EDITOR
         FMODUnity.RuntimeManager.CoreSystem.release();
 #endif

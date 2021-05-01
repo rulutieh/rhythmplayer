@@ -17,7 +17,7 @@ public class FileSelecter : MonoBehaviour
     scrSetting Setting;
     bool isplayingpreview = false, isdecidechanged = false, isdecidedelay = false;
     //로드된 변수값들
-    public string _name, _artist, _txtpath, _bgpath, _diff, _bgapath, _charter;
+    public string _name, _artist, _txtpath, _bgpath, _diff, _bgapath, _charter, _hash;
     public float _localoffset, minBPM, maxBPM, medianBPM;
     int _diffcount;
     SpriteRenderer rend;
@@ -167,6 +167,7 @@ public class FileSelecter : MonoBehaviour
     {
         _txtpath = Loader.list[scrSetting.decide].getTxt(scrSetting.diffselection);
         NowPlaying.FILE = _txtpath;
+        NowPlaying.HASH = Loader.list[scrSetting.decide].getID(scrSetting.diffselection);
         Debug.Log(_txtpath);
         countNotes(_txtpath);
     }

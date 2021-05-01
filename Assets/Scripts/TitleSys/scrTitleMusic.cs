@@ -18,21 +18,7 @@ public class scrTitleMusic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        aud.volume = scrSetting.Volume;
-        if (!aud.isPlaying && !loading)
-        {
-            StartCoroutine(LoadMusic(files.listorigin[Mathf.FloorToInt(Random.Range(0, files.listorigin.Count - 1))].getAudio()));
-        }
+
     }
-    IEnumerator LoadMusic(string filepath)
-    {
-        loading = true;
-        WWW www = new WWW(filepath);
-        yield return www; //로드
-        audClip = www.GetAudioClip();
-        aud.clip = audClip;
-        NowPlaying.AUD = aud.clip;
-        aud.Play();
-        loading = false;
-    }
+
 }
