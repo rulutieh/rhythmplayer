@@ -61,4 +61,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 !/.gitignore
-!/[Aa]ssets/StreamingAssets/Songs/Say A Vengeance
+!/[Aa]ssets/StreamingAssets/Songs/Say A Vengeance/
