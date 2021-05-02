@@ -30,7 +30,7 @@ public class scrJudge : MonoBehaviour
     {
         transform.position = new Vector2(0, -0.86f);
         alph = 1;
-        c = NowPlaying.NOTECOUNTS + (NowPlaying.LONGNOTECOUNTS * 2);
+        FileReader.TOTAL++;
         switch (j)
         {
             case 0:
@@ -38,23 +38,23 @@ public class scrJudge : MonoBehaviour
                 rend.sprite = spr[0];
                 FileReader.COOL++;
                 FileReader.HP += scrSetting.hprecover;
-                FileReader.Score += 1000000f / c;
+
                 break;
             case 1:
                 rend.sprite = spr[1];
                 FileReader.GREAT++;
                 FileReader.HP += scrSetting.hprecover2; 
-                FileReader.Score += 600000f / c;
+
                 break;
             case 2:
                 rend.sprite = spr[2];
                 FileReader.GOOD++;
-                FileReader.Score += 300000f / c;
+
                 break;
             case 3:
                 rend.sprite = spr[3];
                 FileReader.BAD++;
-                FileReader.Score += 100000f / c;
+
                 FileReader.HP -= scrSetting.baddamage;
                 break;
             case 4:

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class scrAlbumArt : MonoBehaviour
+public class scrAlbumArt : MonoBehaviour, IPointerClickHandler
 {
+    public GameObject panel;
     Image rend;
     public Image bg;
     Color c;
@@ -26,6 +28,13 @@ public class scrAlbumArt : MonoBehaviour
         }
 
     }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        panel.GetComponent<RankPanel>().onoff();
+    }
+
+
     public void LoadAlbumArt()
     {
         StartCoroutine(LoadImage());

@@ -23,7 +23,7 @@ public class scrSetting : MonoBehaviour
 
     public static float scrollSpeed = 2.4f, stageXPOS = 0, stageYPOS, ColWidth = 0.85f, GlobalOffset = 0f;
     public static int decide, diffselection, sortselection, modselection;
-    public static string sortsearch = "", playername = "";
+    public static string sortsearch = "", playername = "Tewi Inaba";
 
 
     public Sprite[] SquareNotes;

@@ -48,6 +48,7 @@ public class scrButton : MonoBehaviour
     }
     public void setInfo(int idx, string title, string artist, string level)
     {
+        tmpa.alpha = 1f;
         tmpa.text = artist;
         tmp.text = title;
         tmpl.text = "Level : " +level;

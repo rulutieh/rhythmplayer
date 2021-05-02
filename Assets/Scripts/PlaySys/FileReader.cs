@@ -16,7 +16,7 @@ public class FileReader : MonoBehaviour
     public static int noteIDX, barIDX, timeIDX, preLoad, combo = 0, maxcombo;
     public static bool isFailed, isPlaying, isVideoLoaded;
     public static float PlaybackChanged, Playback;
-    public static float bpm = 0, startbpm = 0, nextbpm = 0;
+    public static float bpm = 0, startbpm = 0, acc = 100f;
     public static double multiply;
     float p, _TIME, barTIME;
     int noteidx = 0;
@@ -27,7 +27,6 @@ public class FileReader : MonoBehaviour
     bool isLoaded = false, svEnd, noteEnd, resultload;
     RankSystem RankSys;
     MusicHandler player;
-    AudioSource aud;
     GameObject w;
     NowPlaying select;
     [Serializable]
@@ -65,7 +64,7 @@ public class FileReader : MonoBehaviour
     List<int> barlist = new List<int>();
 
     int TimingCount, NoteCount;
-    public static int NoteCountLongnote, COOL, GREAT, GOOD, MISS, BAD;
+    public static int NoteCountLongnote, COOL, GREAT, GOOD, MISS, BAD, TOTAL;
     // Start is called before the first frame update
     void Awake()
     {
@@ -74,7 +73,6 @@ public class FileReader : MonoBehaviour
         barIDX = 0;
         noteIDX = 0;
         timeIDX = 0;
-        aud = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -83,10 +81,9 @@ public class FileReader : MonoBehaviour
         RankSys = w.GetComponent<RankSystem>();
         player = w.GetComponent<MusicHandler>();
         preLoad = 3000;
-        aud.volume = scrSetting.Volume;
 
         isFailed = isPlaying = false;
-        NoteCountLongnote = COOL = GREAT = GOOD = MISS = BAD = 0; //판정 초기화
+        NoteCountLongnote = COOL = GREAT = GOOD = MISS = BAD = TOTAL = 0; //판정 초기화
         Score = 0; 
         HP = 1f;
         combo = maxcombo = 0;
@@ -95,7 +92,6 @@ public class FileReader : MonoBehaviour
 
         string filePath = NowPlaying.FILE;
         offset = NowPlaying.OFFSET;
-        aud.clip = NowPlaying.AUD;
         //player.LoadSound(NowPlaying.MUSICFILE);
         ReadFile(filePath); //파일 읽기 시작
 
@@ -146,13 +142,25 @@ public class FileReader : MonoBehaviour
                 if (__t < Playback && !resultload)
                 {
                     //결과창 로드
-                    RankSys.SaveScore(NowPlaying.HASH, scrSetting.playername, Mathf.RoundToInt(Score), 0);
+                    if (!isFailed)
+                    RankSys.SaveScore(
+                        NowPlaying.HASH, 
+                        scrSetting.playername, 
+                        Mathf.RoundToInt(Score), 
+                        (BAD == 0 && MISS == 0) ? 1 : 0 ,
+                        maxcombo,
+                        DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")
+                        );
                     resultload = true;
                     StartCoroutine(ShowResult());
                 }
             }
+            float c = NowPlaying.NOTECOUNTS + (NowPlaying.LONGNOTECOUNTS * 2);
+            float sum = (COOL / c) + ((GREAT * 2) / (3 * c)) + (GOOD / (3 * c));
+            Score = 1000000f * sum;
+            if (TOTAL != 0)
+                acc = 100f * (sum / (TOTAL / c));
 
-            //if (aud.isPlaying) isPlaying = true;
         }
     }
     void AudioStart() //오프셋 Invoke로 실행

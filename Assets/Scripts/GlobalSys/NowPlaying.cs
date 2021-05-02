@@ -13,7 +13,7 @@ public class NowPlaying : MonoBehaviour
     public static AudioClip AUD;
     public static bool isBGA;
     public int nt, ln;
-    float f;
+    public static float LengthMS;
     MusicHandler player;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,8 @@ public class NowPlaying : MonoBehaviour
         nt = NOTECOUNTS;
         ln = LONGNOTECOUNTS;
         string s;
-        f = player.GetLength() / 1000f;
+        LengthMS = player.GetLength();
+        float f = LengthMS / 1000f;
         s = $" {Mathf.FloorToInt(f / 60f)} : ";
         s += (f % 60f).ToString("00");
         LENGTH = s;

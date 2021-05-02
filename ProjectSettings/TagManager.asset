@@ -13,6 +13,8 @@ TagManager:
   - world
   - TitleSys
   - FileSys
+  - ranks
+  - player
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - HpBar
   - 
   - 
   - 
@@ -49,4 +51,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: HpBAR
+    uniqueID: 925631251
     locked: 0

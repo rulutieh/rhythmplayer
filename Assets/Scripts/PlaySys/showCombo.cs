@@ -19,6 +19,7 @@ public class showCombo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (FileReader.combo > 2)
         {
             if (alpha < 1f) alpha += Time.deltaTime;

@@ -28,7 +28,12 @@ public class scrResult : MonoBehaviour
         gutterEndSize = gutter.rectTransform.sizeDelta;
         gutter.rectTransform.sizeDelta = new Vector2(0, 0);
 
-        
+        var gameObjects = GameObject.FindGameObjectsWithTag("player");
+
+        for (var i = 0; i < gameObjects.Length; i++)
+        {
+            gameObjects[i].GetComponent<playerAlpha>().onResult();
+        }
 
         Tween.Size(gutter.rectTransform, gutterStartSize, gutterEndSize, .5f, 0, Tween.EaseInOutStrong, Tween.LoopType.None, null, () => showChilds());
     }

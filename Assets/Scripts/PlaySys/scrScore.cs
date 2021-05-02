@@ -6,6 +6,7 @@ using TMPro;
 public class scrScore : MonoBehaviour
 {
     TextMeshProUGUI tmp;
+    public TextMeshProUGUI acc;
     int score, oldscore;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,9 @@ public class scrScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float a = FileReader.acc;
+        a = Mathf.Floor(a * 100) / 100f;
+        acc.text = $"{a}%";
         score = (int)Mathf.Round(FileReader.Score);
         if (score != oldscore)
         {

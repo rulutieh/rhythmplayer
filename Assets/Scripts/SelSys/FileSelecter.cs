@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 public class FileSelecter : MonoBehaviour
 {
 
-    public GameObject bt, sfx, searchsys;
+    public GameObject bt, sfx, searchsys, rankpanel;
     MusicHandler player;
     public WWW www, picture;
     FileLoader Loader;
@@ -100,20 +100,19 @@ public class FileSelecter : MonoBehaviour
             SetSort();
 
         }//정렬
-        if (scrSetting.scrollSpeed < 4f) //스크롤 업
-            if (Input.GetKeyDown(KeyCode.F4))
-            {
-                scrSetting.scrollSpeed += 0.1f;
-                Setting.SaveSelection();
-            }
-        if (scrSetting.scrollSpeed > 1f) //스크롤 다운
-            if (Input.GetKeyDown(KeyCode.F3))
-            {
-                scrSetting.scrollSpeed -= 0.1f;
-                Setting.SaveSelection();
-            }
 
-
+            if (scrSetting.scrollSpeed < 4f) //스크롤 업
+                if (Input.GetKeyDown(KeyCode.F4))
+                {
+                    scrSetting.scrollSpeed += 0.1f;
+                    Setting.SaveSelection();
+                }
+            if (scrSetting.scrollSpeed > 1f) //스크롤 다운
+                if (Input.GetKeyDown(KeyCode.F3))
+                {
+                    scrSetting.scrollSpeed -= 0.1f;
+                    Setting.SaveSelection();
+                }
         if (!isdecidedelay && !isThreading)
         {
             int c = Loader.list.Count, d = _diffcount;
@@ -122,8 +121,11 @@ public class FileSelecter : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.DownArrow)) { scrSetting.decide++; SongScroll(); }
             //마우스휠
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            if (scroll > 0) { scrSetting.decide--; SongScroll(); }
-            if (scroll < 0) { scrSetting.decide++; SongScroll(); }
+            if (!rankpanel.GetComponent<RankPanel>().isOver)
+            {
+                if (scroll > 0) { scrSetting.decide--; SongScroll(); }
+                if (scroll < 0) { scrSetting.decide++; SongScroll(); }
+            }
             if (scrSetting.decide < 0) scrSetting.decide = 0;
             if (scrSetting.decide > c - 1) scrSetting.decide = c - 1;
             if (!isdecidechanged)
@@ -168,6 +170,7 @@ public class FileSelecter : MonoBehaviour
         _txtpath = Loader.list[scrSetting.decide].getTxt(scrSetting.diffselection);
         NowPlaying.FILE = _txtpath;
         NowPlaying.HASH = Loader.list[scrSetting.decide].getID(scrSetting.diffselection);
+        rankpanel.GetComponent<RankPanel>().LoadRanks(NowPlaying.HASH);
         Debug.Log(_txtpath);
         countNotes(_txtpath);
     }
