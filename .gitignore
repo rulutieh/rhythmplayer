@@ -9,11 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-/[Aa]ssets/StreamingAssets/Songs/**/*.mp3
-/[Aa]ssets/StreamingAssets/Songs/**/*.ogg
-/[Aa]ssets/StreamingAssets/Songs/**/*.flv
-/[Aa]ssets/StreamingAssets/Songs/**/*.avi
-/[Aa]ssets/StreamingAssets/Songs/**/*.mp4
+/[Aa]ssets/StreamingAssets/Songs/*
+!/[Aa]ssets/StreamingAssets/Songs/Snow White Echo/
 
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
