@@ -67,6 +67,7 @@ public class scrJudge : MonoBehaviour
                 //miss ln
                 rend.sprite = spr[4];
                 FileReader.MISS += 2;
+                FileReader.TOTAL++;
                 FileReader.HP -= scrSetting.missdamage * 2f;
                 break;
         }

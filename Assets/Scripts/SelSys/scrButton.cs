@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class scrButton : MonoBehaviour
+public class scrButton : MonoBehaviour, IPointerClickHandler
 {
     FileSelecter select;
     TextMeshProUGUI tmp, tmpa, tmpl;
@@ -53,6 +54,19 @@ public class scrButton : MonoBehaviour
         tmp.text = title;
         tmpl.text = "Level : " +level;
         this.idx = idx;
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (scrSetting.decide == idx)
+        {
+            select.songDecide();
+        }
+        else
+        {
+            scrSetting.decide = idx;
+            select.SongScroll();
+        }
+
     }
     public void selection()
     {

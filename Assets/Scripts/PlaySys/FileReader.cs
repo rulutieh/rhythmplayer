@@ -13,22 +13,23 @@ public class FileReader : MonoBehaviour
 
     public float offset, loadprogress;
     public static float judgeoffset = -3.15f, HP = 1f, Score;
-    public static int noteIDX, barIDX, timeIDX, preLoad, combo = 0, maxcombo;
+    public static int  combo = 0, maxcombo;
     public static bool isFailed, isPlaying, isVideoLoaded;
     public static float PlaybackChanged, Playback;
     public static float bpm = 0, startbpm = 0, acc = 100f;
     public static double multiply;
-    float p, _TIME, barTIME;
-    int noteidx = 0;
-    int timingidx = 0;
+    float p, _TIME, _QTIME, barTIME;
+    int noteIDX, qnoteIDX, barIDX, timeIDX, preLoad, noteidx = 0, timingidx = 0;
     public int progress = 0;
     int[] keys = { 0, 1, 2, 3, 4, 5, 6 };
-    public GameObject NoteObj, endln, result, gameover, judgeobj, barobj;
-    bool isLoaded = false, svEnd, noteEnd, resultload;
+    public GameObject NoteObj, endln, result, gameover, initsetting, judgeobj, barobj;
+    bool isLoaded = false, svEnd, noteEnd, resultload, playfieldon;
     RankSystem RankSys;
+    //fmod
     MusicHandler player;
     GameObject w;
     NowPlaying select;
+    //타이밍
     [Serializable]
     struct Timings
     {
@@ -40,12 +41,13 @@ public class FileReader : MonoBehaviour
             this.BPM = BPM;
         }
     }
+    //노트
     [Serializable]
-    struct Notes
+    class Notes
     {
         public int COLUMN;
         public int TIME;
-        public bool ISLN;
+        public bool ISLN, pressed;
         public int LNLENGTH;
         public Notes(int COLUMN, int TIME, bool ISLN, int LNLENGTH)
         {
@@ -53,15 +55,22 @@ public class FileReader : MonoBehaviour
             this.TIME = TIME;
             this.ISLN = ISLN;
             this.LNLENGTH = LNLENGTH;
+            pressed = false;
         }
 
     }
+    //노트 리스트
     [SerializeField]
     Notes[] NoteList;
+    //타이밍 리스트
     [SerializeField]
     Timings[] TimeList;
+    //마디선 리스트
     [SerializeField]
     List<int> barlist = new List<int>();
+    //퍈정범위 내 노트 리스트
+    [SerializeField]
+    List<Notes>[] curnote = new List<Notes>[7];
 
     int TimingCount, NoteCount;
     public static int NoteCountLongnote, COOL, GREAT, GOOD, MISS, BAD, TOTAL;
@@ -73,15 +82,26 @@ public class FileReader : MonoBehaviour
         barIDX = 0;
         noteIDX = 0;
         timeIDX = 0;
+        qnoteIDX = 0;
+
+
+        if (scrSetting.Random) //노트 랜덤배치
+            Random(keys);
+        for (int i = 0; i < keys.Length; i++) 
+        {
+            curnote[i] = new List<Notes>();
+            if (scrSetting.Mirror) keys[i] = 6 - i;//노트 미러배치
+        }
     }
     void Start()
     {
+        
         //랭킹 등록 시스템
         w = GameObject.FindWithTag("world");
         RankSys = w.GetComponent<RankSystem>();
         player = w.GetComponent<MusicHandler>();
-        preLoad = 3000;
-
+        preLoad = 2500;
+        playfieldon = true;
         isFailed = isPlaying = false;
         NoteCountLongnote = COOL = GREAT = GOOD = MISS = BAD = TOTAL = 0; //판정 초기화
         Score = 0; 
@@ -92,17 +112,11 @@ public class FileReader : MonoBehaviour
 
         string filePath = NowPlaying.FILE;
         offset = NowPlaying.OFFSET;
-        //player.LoadSound(NowPlaying.MUSICFILE);
         ReadFile(filePath); //파일 읽기 시작
 
         NoteList = new Notes[NowPlaying.NOTECOUNTS + NowPlaying.LONGNOTECOUNTS];
         TimeList = new Timings[NowPlaying.TIMINGCOUNTS];
 
-        if (scrSetting.Random) //노트 랜덤배치
-            Random(keys);
-        if (scrSetting.Mirror)
-            for (int i = 0; i < keys.Length; i++) //노트 미러배치
-                keys[i] = 6 - i;
     }
     // Update is called once per frame
     void Update()
@@ -139,6 +153,17 @@ public class FileReader : MonoBehaviour
                 {
                     __t = NoteList[NoteList.Length - 1].TIME + 4000;
                 }
+                if (__t < Playback - 3700f && playfieldon)
+                {
+                    playfieldon = false;
+                    var gameObjects = GameObject.FindGameObjectsWithTag("player");
+                    for (var i = 0; i < gameObjects.Length; i++)
+                    {
+                        gameObjects[i].GetComponent<ColumnSetting>().onResult();
+                    }
+                    
+                }
+
                 if (__t < Playback && !resultload)
                 {
                     //결과창 로드
@@ -153,10 +178,11 @@ public class FileReader : MonoBehaviour
                         );
                     resultload = true;
                     StartCoroutine(ShowResult());
+                    w.GetComponent<scrSetting>().SaveSettings();
                 }
             }
             float c = NowPlaying.NOTECOUNTS + (NowPlaying.LONGNOTECOUNTS * 2);
-            float sum = (COOL / c) + ((GREAT * 2) / (3 * c)) + (GOOD / (3 * c));
+            float sum = (COOL / c) + ((GREAT * 2) / (3 * c)) + (GOOD / (3 * c)) + ((BAD / (6 * c)));
             Score = 1000000f * sum;
             if (TOTAL != 0)
                 acc = 100f * (sum / (TOTAL / c));
@@ -174,6 +200,9 @@ public class FileReader : MonoBehaviour
         GetBarTime();
         yield return new WaitUntil(() => isVideoLoaded);
         Debug.Log("Load Time : " + Time.timeSinceLevelLoad);
+        yield return new WaitForSeconds(1.2f);        
+        yield return new WaitUntil(() => !Input.GetKey(KeyCode.LeftControl));
+
         startbpm = bpm = (float)TimeList[0].BPM; //1비트당 소모되는 ms
         StartCoroutine(BpmChange());
         StartCoroutine(NoteSystem());
@@ -181,8 +210,10 @@ public class FileReader : MonoBehaviour
         PlaybackChanged = Playback = -2000f;
         p = Playback;
         Invoke("AudioStart", offset + 1.9f + scrSetting.GlobalOffset);
-
         isLoaded = true;
+
+        yield return new WaitForSeconds(1f);
+        initsetting.GetComponent<playerinit>().hideChilds(); //스테이지 설정 끄기
 
     }
     void GetBarTime()
@@ -226,8 +257,7 @@ public class FileReader : MonoBehaviour
     }
     void CreateNote(int idx, double t) // 노트 생성 메소드
     {
-        int cc = (int)Mathf.Round((NoteList[idx].COLUMN - 36) / 73f);
-        cc = keys[cc]; //배치옵션
+        int cc = NoteList[idx].COLUMN;
         var note = Instantiate(NoteObj, new Vector2(transform.position.x, 1000f), Quaternion.identity);
         note.gameObject.GetComponent<scrNote>().SetInfo(cc, NoteList[idx].TIME, NoteList[idx].ISLN, NoteList[idx].LNLENGTH, _TIME);
         if (NoteList[idx].ISLN)
@@ -270,6 +300,7 @@ public class FileReader : MonoBehaviour
         } //7라인 검사후 없으면 break;
         StartCoroutine(NoteSystem());
     }
+
     IEnumerator mBarSystem()
     {
         float t = GetNoteTime(barlist[barIDX]);
@@ -297,7 +328,6 @@ public class FileReader : MonoBehaviour
 
     } //롱노트끝을 생성
     //async
-
     async void ReadFile(string filePath) //배열에 노트 구조체 추가 (쓰레딩)
     {
         FileInfo fileInfo = new FileInfo(filePath);
@@ -350,7 +380,9 @@ public class FileReader : MonoBehaviour
                                 isln = true;
                                 lnlength = int.Parse(arr[5]);
                             }
-                            NoteList[noteidx] = new Notes(int.Parse(arr[0]), int.Parse(arr[2]), isln, lnlength);
+                            int col = (int)Mathf.Round((int.Parse(arr[0]) - 36) / 73f);
+                            col = keys[col];
+                            NoteList[noteidx] = new Notes(col, int.Parse(arr[2]), isln, lnlength);
                             noteidx++;
                         }
                     }
@@ -383,6 +415,9 @@ public class FileReader : MonoBehaviour
             array[random2] = tmp;
         }
     }
+
+
+    //판정관련
     public void SetJudge(int a)
     {
         combo = 0;
@@ -392,4 +427,5 @@ public class FileReader : MonoBehaviour
         else
             judgeobj.GetComponent<scrJudge>().setInfo(4);
     }
+
 }

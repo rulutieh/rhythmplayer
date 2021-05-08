@@ -16,7 +16,7 @@ public class RankSystem : MonoBehaviour
     [Serializable]
     class SongDB
     {
-        public string key;
+        public string key; //hashtable
 
         public List<ScoreData> scores = new List<ScoreData>();
 

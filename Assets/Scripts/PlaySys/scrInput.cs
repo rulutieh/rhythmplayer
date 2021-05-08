@@ -14,11 +14,18 @@ public class scrInput : MonoBehaviour
     public int idx;
     float LNENDTime;
     SpriteRenderer rend;
+
+    FileReader reader;
+    
     // Start is called before the first frame update
     // Update is called once per frame
     private void Start()
     {
+        
         rend = GetComponent<SpriteRenderer>();
+        transform.localScale = new Vector2(0.63f * scrSetting.ColWidth / 0.85f, 0.6f);
+        reader = GameObject.FindWithTag("NoteSys").GetComponent<FileReader>();
+
     }
     void Update()
     {
@@ -117,8 +124,15 @@ public class scrInput : MonoBehaviour
     {
         if (effect)
         {
-            ef = Instantiate(lineEf); //라인이펙트
-            ef.GetComponent<scrLineEf>().setCol(idx);
+            if (!ef)
+            {
+                ef = Instantiate(lineEf); //라인이펙트
+                ef.GetComponent<scrLineEf>().setCol(idx);
+            }
+            else
+            {
+                ef.GetComponent<scrLineEf>().setActive();
+            }
         }
 
         isLNPRESSED = false;
@@ -133,6 +147,7 @@ public class scrInput : MonoBehaviour
         }
         else
         {
+            #region if use raycast
             RaycastHit2D hitup, hitdown;
             hitup = Physics2D.Raycast(transform.position, Vector2.up); //위로 레이
             hitdown = Physics2D.Raycast(transform.position, Vector2.down); //아래로 레이
@@ -147,7 +162,7 @@ public class scrInput : MonoBehaviour
             }
             else errorDown = 9999f;
 
-            if (errorUp <= 178.4f || errorDown <= 178.4f) 
+            if (errorUp <= 174.4f || errorDown <= 174.4f)
             {
                 if (errorUp < errorDown)
                 {
@@ -163,7 +178,7 @@ public class scrInput : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(hitef, transform.position, Quaternion.identity);
+                        createhitef();
                         Destroy(hitup.collider.gameObject);
                     }
                 }
@@ -180,14 +195,19 @@ public class scrInput : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(hitef, transform.position, Quaternion.identity);
+                        createhitef();
                         Destroy(hitdown.collider.gameObject);
                     }
                 }
                 cacJudge(error);
-                
+
             }
+            #endregion
         }
+    }
+    void createhitef()
+    {
+        Instantiate(hitef, transform.position, Quaternion.identity);
     }
     void KeyRelease()
     {
@@ -220,7 +240,7 @@ public class scrInput : MonoBehaviour
             getJudge(2);
             if (isLNPRESSED) hit.collider.GetComponent<scrNote>().setPressed();
         }
-        else if (error < 160f)
+        else if (error < 147f)
         {
             FileReader.combo = 0;
             getJudge(3);

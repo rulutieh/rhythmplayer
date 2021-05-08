@@ -11,13 +11,16 @@ public class scrNoteEnd : MonoBehaviour
 
     private void LateUpdate()
     {
-        //transform.Translate(Vector2.down * scrReadFile.defaultvec * scrReadFile.multiply * scrSelect.scrollSpeed * Time.smoothDeltaTime);
+        
+        
         transform.position = new Vector2(transform.position.x, (float)(FileReader.judgeoffset + (_TIME - FileReader.PlaybackChanged) * FileReader.multiply));
     }
 
     public void setInfo(int c, float t, GameObject obj, float nt) //콜룸, 타임, 시작노트
     {
+        
         rend = GetComponent<SpriteRenderer>();
+        transform.localScale = new Vector2(transform.localScale.x * scrSetting.ColWidth / 0.85f, transform.localScale.y);
         if (c == 1 || c == 5) { rend.sprite = dk;} if (c == 3) { rend.sprite = sp; }
         TIME = t; _TIME = nt;
         if (obj)

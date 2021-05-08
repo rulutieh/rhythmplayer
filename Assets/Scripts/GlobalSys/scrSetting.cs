@@ -3,19 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Text;
-
+using Newtonsoft.Json;
 
 public enum KeyAction { _0, _1, _2, _3, _4, _5, _6, KEYCOUNT };
 
 public enum Resolution { _1366_768, _1400_900, _1600_900, _1600_1024, _1920_1080};
+
+
+class PlayerIDPW
+{
+    public string id, pw;
+}
+
+class PlayerOnlineStatus
+{
+    public string nickname;
+    public int uid;
+}
+
 
 [System.Serializable]
 public static class KeySetting { public static Dictionary<KeyAction, KeyCode> keys = new Dictionary<KeyAction, KeyCode>(); }
 
 public class scrSetting : MonoBehaviour
 {
+
+
     KeyCode[] defaultKeys = new KeyCode[] { KeyCode.S, KeyCode.D, KeyCode.F, KeyCode.Space, KeyCode.J, KeyCode.K, KeyCode.L };
     KeyCode[] newKeys = new KeyCode[] { KeyCode.S, KeyCode.D, KeyCode.F, KeyCode.Space, KeyCode.J, KeyCode.K, KeyCode.L };
+
+
+   
 
     public static Dictionary<string, Sprite> spriteMap;
 
@@ -23,7 +41,7 @@ public class scrSetting : MonoBehaviour
 
     public static float scrollSpeed = 2.4f, stageXPOS = 0, stageYPOS, ColWidth = 0.85f, GlobalOffset = 0f;
     public static int decide, diffselection, sortselection, modselection;
-    public static string sortsearch = "", playername = "Tewi Inaba";
+    public static string sortsearch = "", playername = "";
 
 
     public Sprite[] SquareNotes;
@@ -75,6 +93,7 @@ public class scrSetting : MonoBehaviour
         res = (int)Resolution._1920_1080;
         LoadSettings();
         LoadSelection();
+        LoadLocalPlayerAccount();
 
         hprecover = 0.003f; //퍼펙트 회복량
 
@@ -150,6 +169,9 @@ public class scrSetting : MonoBehaviour
         PlayerPrefs.SetInt("FPS", fps);
         PlayerPrefs.SetFloat("VOL", Volume);
         PlayerPrefs.SetFloat("GOFFSET", GlobalOffset);
+        PlayerPrefs.SetFloat("CW", ColWidth);
+        PlayerPrefs.SetFloat("XX", stageXPOS);
+        PlayerPrefs.SetFloat("YY", stageYPOS);
     }
     public void LoadSettings()
     {
@@ -161,6 +183,9 @@ public class scrSetting : MonoBehaviour
             fps = PlayerPrefs.GetInt("FPS");
             Volume = PlayerPrefs.GetFloat("VOL");
             GlobalOffset = PlayerPrefs.GetFloat("GOFFSET", 0);
+            ColWidth = PlayerPrefs.GetFloat("CW", 0.85f);
+            stageXPOS = PlayerPrefs.GetFloat("XX", 0);
+            stageYPOS = PlayerPrefs.GetFloat("YY", 0);
         }
 
         SwitchResolution();
@@ -230,7 +255,29 @@ public class scrSetting : MonoBehaviour
 
     }
 
+    public void SaveLocalPlayerAccount(string id, string pw)
+    {
+        PlayerIDPW p = new PlayerIDPW();
+        p.id = id; p.pw = pw;
 
+        string json = JsonConvert.SerializeObject(p, Formatting.Indented);
+        json = RankSystem.AESEncrypt128(json);
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, "playerinfo.json"), json);
+    }
+
+    public void LoadLocalPlayerAccount()
+    {
+        string json = "";
+        playername = "Guest";
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "playerinfo.json")))
+        {
+            json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "playerinfo.json"));
+            json = RankSystem.AESDecrypt128(json);
+            PlayerIDPW pid = JsonConvert.DeserializeObject<PlayerIDPW>(json);
+            playername = pid.id;
+            //pw
+        }
+    }
 
 
 

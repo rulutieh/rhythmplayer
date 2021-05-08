@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 public class FileSelecter : MonoBehaviour
 {
 
-    public GameObject bt, sfx, searchsys, rankpanel;
+    public GameObject bt, sfx, searchsys, rankpanel, scrollmod;
     MusicHandler player;
     public WWW www, picture;
     FileLoader Loader;
     scrSetting Setting;
-    bool isplayingpreview = false, isdecidechanged = false, isdecidedelay = false;
     //로드된 변수값들
     public string _name, _artist, _txtpath, _bgpath, _diff, _bgapath, _charter, _hash;
     public float _localoffset, minBPM, maxBPM, medianBPM;
     int _diffcount;
+    string lastselect = "";
     SpriteRenderer rend;
     AudioSource aud, sfxaud;
     public AudioClip audClip;
@@ -56,9 +56,7 @@ public class FileSelecter : MonoBehaviour
         Loader = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
         Setting = GameObject.FindWithTag("world").GetComponent<scrSetting>();
         player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
-        int c = Loader.list.Count;
-        if (scrSetting.decide < 0) scrSetting.decide = 0;
-        if (scrSetting.decide > c - 1) scrSetting.decide = c - 1;
+
     }
     void Start()
     {
@@ -78,13 +76,17 @@ public class FileSelecter : MonoBehaviour
         {
             SortMusic();    //정렬적용
         }
-        isplayingpreview = false;
-        SongPreview();
+
+        int c = Loader.list.Count;
+        if (scrSetting.decide < 0) scrSetting.decide = 0;
+        if (scrSetting.decide > c - 1) scrSetting.decide = c - 1;
+
+        LoadFileInfo();
     }
     // Update is called once per frame
     void Update()
     {
-
+        int d = _diffcount - 1;
         if (Input.GetKeyDown(KeyCode.Return)) songDecide();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -113,28 +115,27 @@ public class FileSelecter : MonoBehaviour
                     scrSetting.scrollSpeed -= 0.1f;
                     Setting.SaveSelection();
                 }
-        if (!isdecidedelay && !isThreading)
+        if (!isThreading)
         {
-            int c = Loader.list.Count, d = _diffcount;
+            
             //키보드 컨트롤
             if (Input.GetKeyDown(KeyCode.UpArrow)) { scrSetting.decide--; SongScroll(); }
             if (Input.GetKeyDown(KeyCode.DownArrow)) { scrSetting.decide++; SongScroll(); }
             //마우스휠
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            if (!rankpanel.GetComponent<RankPanel>().isOver)
+            if (!rankpanel.GetComponent<RankPanel>().isOver && !scrollmod.GetComponent<ModButton>().isOver)
             {
-                if (scroll > 0) { scrSetting.decide--; SongScroll(); }
-                if (scroll < 0) { scrSetting.decide++; SongScroll(); }
+                if (scroll > 0.001f) { scrSetting.decide--; SongScroll(); }
+                if (scroll < -0.001f) { scrSetting.decide++; SongScroll(); }
             }
-            if (scrSetting.decide < 0) scrSetting.decide = 0;
-            if (scrSetting.decide > c - 1) scrSetting.decide = c - 1;
-            if (!isdecidechanged)
-            {
-                if (scrSetting.diffselection > 0)
-                    if (Input.GetKeyDown(KeyCode.LeftArrow)) { scrSetting.diffselection--; getDiffinfo(); }
-                if (scrSetting.diffselection < d - 1)
-                    if (Input.GetKeyDown(KeyCode.RightArrow)) { scrSetting.diffselection++; getDiffinfo(); }
-            }
+            if (scrSetting.decide <= Loader.list.Count - 1)
+                if (Loader.list[scrSetting.decide].getID(0) == lastselect)
+                {
+                    if (scrSetting.diffselection > 0)
+                        if (Input.GetKeyDown(KeyCode.LeftArrow)) { scrSetting.diffselection--; getDiffinfo(); }
+                    if (scrSetting.diffselection < d)
+                        if (Input.GetKeyDown(KeyCode.RightArrow)) { scrSetting.diffselection++; getDiffinfo(); }
+                }
         }
 
     }
@@ -176,16 +177,20 @@ public class FileSelecter : MonoBehaviour
     }
     void LoadFileInfo()
     {
-        _name = Loader.list[scrSetting.decide].name;
-        _artist = Loader.list[scrSetting.decide].artist;
         _diffcount = Loader.list[scrSetting.decide].diffCount();
         scrSetting.diffselection = _diffcount - 1;
+
+        _name = Loader.list[scrSetting.decide].name;
+        _artist = Loader.list[scrSetting.decide].artist;
         _diff = Loader.list[scrSetting.decide].getDiff(scrSetting.diffselection);
         _localoffset = Loader.list[scrSetting.decide].localoffset;
         _bgpath = Loader.list[scrSetting.decide].getBG();
         _bgapath = Loader.list[scrSetting.decide].getBGA();
         _charter = Loader.list[scrSetting.decide].getCharter(scrSetting.diffselection);
         NowPlaying.isBGA = Loader.list[scrSetting.decide].hasvideo;
+
+
+
         LoadNoteFiles();
         NowPlaying.MUSICFILE = Loader.list[scrSetting.decide].getAudio();       
         NowPlaying.OFFSET = _localoffset;
@@ -194,11 +199,18 @@ public class FileSelecter : MonoBehaviour
         NowPlaying.BGAFILE = _bgapath;
         NowPlaying.TITLE = _name;
         NowPlaying.ARTIST = _artist;
+        //fmod 사운드 릴리즈
         StopCoroutine(CheckLoadedAndPlay());
         if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
             player.ReleaseMP3();
 
+
+
         player.LoadSound(NowPlaying.MUSICFILE);
+
+        //선택변경 감지를 위한 마지막 선택곡 저장
+        lastselect = Loader.list[scrSetting.decide].getID(0);
+        //fmod 사운드 로딩
         StartCoroutine(CheckLoadedAndPlay());
 
 
@@ -207,13 +219,6 @@ public class FileSelecter : MonoBehaviour
         var obj = GameObject.Find("AlbumUI");
         if (obj)
             obj.GetComponent<scrAlbumArt>().LoadAlbumArt();
-    }
-    void SongPreview()
-    {
-        isplayingpreview = false;
-        LoadFileInfo();
-        isplayingpreview = true;
-        isdecidedelay = false;
     }
     public void SetSuffle()
     {
@@ -226,7 +231,6 @@ public class FileSelecter : MonoBehaviour
     {
         player.PlaySFX(0);
         scrSetting.sortselection++;
-        isdecidechanged = true;
         SortMusic();
         Setting.SaveSelection();
     }
@@ -300,7 +304,6 @@ public class FileSelecter : MonoBehaviour
                 Loader.listorigin[i].tags.ToUpper().Contains(text)
                 ) Loader.list.Add(Loader.listorigin[i]);
         }
-        isdecidechanged = true;
         SortMusic();
         DestroyBTs();
         LoadObjects();
@@ -308,23 +311,28 @@ public class FileSelecter : MonoBehaviour
 
     public void SongScroll()
     {
-        isdecidechanged = true; player.PlaySFX(2);
+        player.PlaySFX(2);
+        //outofrange 방지
+        int c = Loader.list.Count;
+        if (scrSetting.decide < 0) scrSetting.decide = 0;
+        if (scrSetting.decide > c - 1) scrSetting.decide = c - 1;
+        //곡 변경시 난이도 배열범위 초과 방지
+        //_diffcount = Loader.list[scrSetting.decide].diffCount();
+        //scrSetting.diffselection = _diffcount - 1;
     }
     public void songDecide()
     {
         if (scrSetting.decide < Loader.list.Count && Loader.list.Count != 0)
         {
             {
-                if (isdecidechanged) //곡 변경후 선택 시
+                if (Loader.list[scrSetting.decide].getID(0) != lastselect) //곡 변경후 선택 시 (md5 해쉬 비교) 중복로드 방지
                 {
+                    _diffcount = 0;
                     Setting.SaveSelection();
-                    isdecidedelay = true;
                     player.PlaySFX(0);
-                    SongPreview();
-                    isdecidechanged = false;
-                    
+                    LoadFileInfo();
                 }
-                else if (isplayingpreview && !isThreading) //이미 곡 고르고 프리뷰 플레이시
+                else if (!isThreading) //이미 곡 고르고 프리뷰 플레이시
                 {
                     player.PlaySFX(4);
                     StopCoroutine(CheckLoadedAndPlay());
@@ -444,7 +452,7 @@ public class FileSelecter : MonoBehaviour
         }
 
         for (int i = 0; i < medianlist.Count; i++)
-            if (medianlist[i].bpm <= 30f) medianlist.RemoveAt(i); //bpm 0일시 작동불가
+            if (medianlist[i].bpm <= 30f) medianlist.RemoveAt(i); //너무 적은 수치일시 적용방지
 
         medianlist.Sort(delegate (MedianCac A, MedianCac B)
         {

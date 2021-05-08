@@ -8,22 +8,28 @@ public class SettingPanel : MonoBehaviour
 {
 
     bool init;
-    public Slider slvolume, sltrans;
+    public Slider slvolume, slcolumn;
     public Toggle video, bpm, fullscreen;
     public Dropdown ddres, ddframe;
     public TextMeshProUGUI offset;
+    //login
+    public InputField ID;
+    public InputField PW;
+
+    public GameObject Loginpanel, Logoutpanel;
+
+    public TextMeshProUGUI loginas;
+
     MusicHandler player;
     scrSetting st;
     GameObject w;
-    AudioSource aud;
-    public AudioClip[] clips;
 
     public void Awake()
-    {
+    {    
         w = GameObject.FindWithTag("world");
         player = w.GetComponent<MusicHandler>();
         st = w.GetComponent<scrSetting>();
-        aud = w.GetComponent<AudioSource>();
+        slcolumn.value = scrSetting.ColWidth;
         bpm.isOn = scrSetting.isFixedScroll;
         video.isOn = scrSetting.isPlayVideo;
         fullscreen.isOn = scrSetting.isFullScreen;
@@ -35,6 +41,7 @@ public class SettingPanel : MonoBehaviour
                 st.SaveSettings();
             }
         );
+
         video.onValueChanged.AddListener(
             (bool bOn) =>
             {
@@ -47,7 +54,6 @@ public class SettingPanel : MonoBehaviour
             (bool bOn) =>
             {
                 bool val = bOn;
-                scrSetting.isFixedScroll = val;
                 Screen.fullScreen = val;
                 st.SaveSettings();
             }
@@ -59,6 +65,13 @@ public class SettingPanel : MonoBehaviour
                 st.SaveSettings();
             }
         );
+        slcolumn.onValueChanged.AddListener(
+            (float cw) =>
+            {
+                scrSetting.ColWidth = cw;
+                st.SaveSettings();
+            }
+        );
     }
     private void Start()
     {
@@ -67,6 +80,7 @@ public class SettingPanel : MonoBehaviour
             ddres.value = st.res;
             ddframe.value = st.fps;
             slvolume.value = scrSetting.Volume;
+            
             init = true;
         }
     }
@@ -74,6 +88,29 @@ public class SettingPanel : MonoBehaviour
     {
         float f = Mathf.Round(scrSetting.GlobalOffset * 100f) / 100f;
         offset.text = f.ToString();
+
+        if (scrSetting.playername == "Guest")
+        {
+            Loginpanel.SetActive(true);
+            Logoutpanel.SetActive(false);
+        }
+        else
+        {
+            Loginpanel.SetActive(false);
+            Logoutpanel.SetActive(true);
+        }
+        loginas.text = "Login as : " + scrSetting.playername;
+    }
+    public void setLogout()
+    {
+        scrSetting.playername = "Guest";
+    }
+    public void setLogin()
+    {
+        if (ID.text == "Guest" || ID.text == "" || PW.text == "") return;
+        st.SaveLocalPlayerAccount(ID.text, PW.text);
+        st.LoadLocalPlayerAccount();
+        
     }
     public void SetResolution(int val)
     {
@@ -93,6 +130,7 @@ public class SettingPanel : MonoBehaviour
             st.SwitchFrameRate();
         }
     }
+
     public void ClickSound(int index)
     {
         player.PlaySFX(index);

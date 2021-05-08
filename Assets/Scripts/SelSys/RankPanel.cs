@@ -40,7 +40,7 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (scroll < 0) { ypos+= 4f; }
         }
         if (ypos < 0) ypos = 0;
-        if (ypos > counts * 25.5f) ypos = counts * 25.5f;
+        if (ypos > counts * 31.5f) ypos = counts * 31.5f;
         if (!isOn) isOver = false;
     }
 

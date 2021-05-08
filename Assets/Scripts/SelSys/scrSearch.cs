@@ -25,6 +25,7 @@ public class scrSearch : MonoBehaviour
         string inputext = tmp.text;
         if (string.Compare(inputext, oldtext) != 0)
         {
+            scrSetting.decide = 0;
             text = inputext.ToUpper();
             oldtext = tmp.text;
             scrSetting.sortsearch = text;

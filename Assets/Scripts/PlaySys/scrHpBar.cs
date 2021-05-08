@@ -14,6 +14,6 @@ public class scrHpBar : MonoBehaviour
     void Update()
     {
         if (FileReader.HP >= -0.1f)
-            transform.localPosition = new Vector2(transform.localPosition.x, 7.74f - 4.42f * (1f - FileReader.HP));
+            transform.localPosition = new Vector2(transform.localPosition.x, 2.8f + 4.42f * FileReader.HP);
     }
 }

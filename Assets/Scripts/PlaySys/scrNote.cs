@@ -34,7 +34,7 @@ public class scrNote : MonoBehaviour
                     float height = inst.transform.GetComponent<SpriteRenderer>().bounds.size.y;
                     float gap = 999f - transform.position.y;
                     rend2.sprite = tempspr;
-                    inst.transform.localScale = new Vector2(1f, gap / height);
+                    inst.transform.localScale = new Vector2(0.95f, gap / height);
                 }
             }
             else
@@ -45,7 +45,7 @@ public class scrNote : MonoBehaviour
                     inst.transform.position = transform.position;
                     float height = transform.GetComponent<SpriteRenderer>().bounds.size.y;
                     float gap = Mathf.Abs(lnend.transform.position.y - transform.position.y);
-                    inst.transform.localScale = new Vector2(1f, gap / height);
+                    inst.transform.localScale = new Vector2(0.95f, gap / height);
                 }
                 if (lnend.GetComponent<scrNoteEnd>().getTime() + 200 < FileReader.Playback )
                 {
@@ -64,13 +64,16 @@ public class scrNote : MonoBehaviour
 
     private void LateUpdate()
     {
+        
         transform.position = new Vector2(transform.position.x, (float)
             (FileReader.judgeoffset + (_TIME - FileReader.PlaybackChanged) * FileReader.multiply));
     }
 
     public void SetInfo(int c, int t, bool ln, float length, float nt)
     {
+        
         rend = GetComponent<SpriteRenderer>();
+        transform.localScale = new Vector2(transform.localScale.x * scrSetting.ColWidth / 0.85f, transform.localScale.y);
         //int cc = (int)Mathf.Round((c - 36) / 73f);
         COLUMN = c;
         switch (c)
@@ -94,6 +97,7 @@ public class scrNote : MonoBehaviour
         }
         TIME = t; ISLN = ln; LNLENGTH = length; _TIME = nt;
         transform.position = new Vector2((c - 3f) * scrSetting.ColWidth, transform.position.y);
+        
     }
     public void setLnEnd(GameObject lne)
     {
