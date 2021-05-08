@@ -18,12 +18,12 @@ public class FileReader : MonoBehaviour
     public static float PlaybackChanged, Playback;
     public static float bpm = 0, startbpm = 0, acc = 100f;
     public static double multiply;
-    float p, _TIME, _QTIME, barTIME;
-    int noteIDX, qnoteIDX, barIDX, timeIDX, preLoad, noteidx = 0, timingidx = 0;
+    float p, _TIME, _RTIME, barTIME;
+    int noteIDX, rnoteIDX, barIDX, timeIDX, preLoad, noteidx = 0, timingidx = 0;
     public int progress = 0;
     int[] keys = { 0, 1, 2, 3, 4, 5, 6 };
-    public GameObject NoteObj, endln, result, gameover, initsetting, judgeobj, barobj;
-    bool isLoaded = false, svEnd, noteEnd, resultload, playfieldon;
+    public GameObject NoteObj, ColObj, endln, result, gameover, initsetting, judgeobj, barobj;
+    bool isLoaded = false, svEnd, noteEnd, rnoteEnd, resultload, playfieldon;
     RankSystem RankSys;
     //fmod
     MusicHandler player;
@@ -79,10 +79,10 @@ public class FileReader : MonoBehaviour
     {
         
         Application.targetFrameRate = 500;
-        barIDX = 0;
-        noteIDX = 0;
-        timeIDX = 0;
-        qnoteIDX = 0;
+        barIDX = 0; //bar 풀링 idx
+        noteIDX = 0; //노트 풀링idx
+        timeIDX = 0; //타이밍 풀링 idx
+        rnoteIDX = 0; //노트콜리더 풀링idx
 
 
         if (scrSetting.Random) //노트 랜덤배치
@@ -99,8 +99,10 @@ public class FileReader : MonoBehaviour
         //랭킹 등록 시스템
         w = GameObject.FindWithTag("world");
         RankSys = w.GetComponent<RankSystem>();
-        player = w.GetComponent<MusicHandler>();
-        preLoad = 2500;
+        player = w.GetComponent<MusicHandler>(); //Fmod sound system
+
+        preLoad = (int)(1500f/scrSetting.scrollSpeed); //노트 풀링 오프셋
+       
         playfieldon = true;
         isFailed = isPlaying = false;
         NoteCountLongnote = COOL = GREAT = GOOD = MISS = BAD = TOTAL = 0; //판정 초기화
@@ -121,6 +123,7 @@ public class FileReader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         judgeoffset = -3.15f + scrSetting.stageYPOS;
 
         if (combo > maxcombo) maxcombo = combo; //최대 콤보 체크
@@ -206,6 +209,7 @@ public class FileReader : MonoBehaviour
         startbpm = bpm = (float)TimeList[0].BPM; //1비트당 소모되는 ms
         StartCoroutine(BpmChange());
         StartCoroutine(NoteSystem());
+        StartCoroutine(InputSystem());
         StartCoroutine(mBarSystem());
         PlaybackChanged = Playback = -2000f;
         p = Playback;
@@ -259,11 +263,17 @@ public class FileReader : MonoBehaviour
     {
         int cc = NoteList[idx].COLUMN;
         var note = Instantiate(NoteObj, new Vector2(transform.position.x, 1000f), Quaternion.identity);
-        note.gameObject.GetComponent<scrNote>().SetInfo(cc, NoteList[idx].TIME, NoteList[idx].ISLN, NoteList[idx].LNLENGTH, _TIME);
+        note.gameObject.GetComponent<NoteRenderer>().SetInfo(cc, NoteList[idx].TIME, NoteList[idx].ISLN, NoteList[idx].LNLENGTH, _TIME);
         if (NoteList[idx].ISLN)
         {
             StartCoroutine(CreateLongnoteEnd(NoteList[idx].LNLENGTH, cc, note)); //롱노트끝 생성 코루틴
         }
+    }
+    void CreateCollision(int idx, double t) // 노트 생성 메소드
+    {
+        int cc = NoteList[idx].COLUMN;
+        var note = Instantiate(ColObj, new Vector2(transform.position.x, 1000f), Quaternion.identity);
+        note.gameObject.GetComponent<ColNote>().SetInfo(cc, NoteList[idx].TIME, NoteList[idx].ISLN, NoteList[idx].LNLENGTH, _RTIME);
     }
     IEnumerator BpmChange()
     {
@@ -281,6 +291,7 @@ public class FileReader : MonoBehaviour
     }
     IEnumerator NoteSystem()
     {
+        //노트 렌더링 오브젝트 출력 (변속타임)
         _TIME = GetNoteTime(NoteList[noteIDX].TIME);
         float _TIME2 = NoteList[noteIDX].TIME;
         yield return new WaitUntil(() => _TIME <= PlaybackChanged + preLoad && !noteEnd );
@@ -300,7 +311,29 @@ public class FileReader : MonoBehaviour
         } //7라인 검사후 없으면 break;
         StartCoroutine(NoteSystem());
     }
+    IEnumerator InputSystem()
+    {
+        //노트 콜리젼 오브젝트 출력 (리얼타임)
+        //순간이동 노트의 경우에는 raycast가 무시되므로 고정 속도의 콜리더 사용
+        _RTIME = NoteList[rnoteIDX].TIME;
+        float _TIME2 = NoteList[rnoteIDX].TIME;
+        yield return new WaitUntil(() => _RTIME <= Playback + 200f && !rnoteEnd);
 
+        for (int i = 0; i < 7; i++)
+        {
+            CreateCollision(rnoteIDX, _RTIME); //노트생성
+            int temp = rnoteIDX;
+            if (rnoteIDX < NoteList.Length - 1)
+                rnoteIDX++;
+            else
+            {
+                rnoteEnd = true;
+                break;
+            }
+            if (NoteList[temp].TIME != NoteList[rnoteIDX].TIME) break;
+        } //7라인 검사후 없으면 break;
+        StartCoroutine(InputSystem());
+    }
     IEnumerator mBarSystem()
     {
         float t = GetNoteTime(barlist[barIDX]);
@@ -323,8 +356,8 @@ public class FileReader : MonoBehaviour
         float __TIME = GetNoteTime(LNTIME);
         yield return new WaitUntil(() => __TIME <= PlaybackChanged + preLoad);
         var lnend = Instantiate(endln, new Vector2(transform.position.x, 1000f), Quaternion.identity);
-        lnend.GetComponent<scrNoteEnd>().setInfo(cc, LNTIME, note, __TIME);
-        note.gameObject.GetComponent<scrNote>().setLnEnd(lnend);
+        lnend.GetComponent<NoteEnd>().setInfo(cc, LNTIME, note, __TIME);
+        note.gameObject.GetComponent<NoteRenderer>().setLnEnd(lnend);
 
     } //롱노트끝을 생성
     //async

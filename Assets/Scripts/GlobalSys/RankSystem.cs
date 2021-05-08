@@ -82,25 +82,13 @@ public class RankSystem : MonoBehaviour
         else
             return songs[id].scores.Count;
     }
-    public int GetScores(int idx)
+    public void GetInfo(int idx, out string pname, out int score, out int state ,out int maxcombo, out string date)
     {
-        return songs[id].scores[idx].score;
-    }
-    public string GetPlayerName(int idx)
-    {
-        return songs[id].scores[idx].playername;
-    }
-    public int GetState(int idx)
-    {
-        return songs[id].scores[idx].state;
-    }
-    public int GetCombo(int idx)
-    {
-        return songs[id].scores[idx].maxcombo;
-    }
-    public string GetDate(int idx)
-    {
-        return songs[id].scores[idx].date;
+        pname = songs[id].scores[idx].playername;
+        score = songs[id].scores[idx].score;
+        state = songs[id].scores[idx].state;
+        maxcombo = songs[id].scores[idx].maxcombo;
+        date = songs[id].scores[idx].date;
     }
     public void SaveScore(string key, string playername, int score, int state, int maxcombo, string date)
     {

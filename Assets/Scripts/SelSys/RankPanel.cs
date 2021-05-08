@@ -71,13 +71,16 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             isnull.SetActive(false);
             var r = Instantiate(o, transform.GetChild(0));
+            string pname, date;
+            int score, state, maxcombo;
+            sys.GetInfo(i, out pname, out score, out state, out maxcombo, out date);
             r.GetComponent<RankText>().SetText(
                 i,
-                sys.GetPlayerName(i),
-                sys.GetScores(i),
-                sys.GetState(i),
-                sys.GetCombo(i),
-                sys.GetDate(i),
+                pname,
+                score,
+                state,
+                maxcombo,
+                date,
                 this.gameObject
                 );
         }

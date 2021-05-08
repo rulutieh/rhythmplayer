@@ -29,7 +29,7 @@ public class scrInput : MonoBehaviour
     }
     void Update()
     {
-
+        Debug.DrawRay(transform.position, Vector3.up);
         switch (idx)
             {
                 case 0:
@@ -153,12 +153,14 @@ public class scrInput : MonoBehaviour
             hitdown = Physics2D.Raycast(transform.position, Vector2.down); //아래로 레이
             if (hitup.collider != null)
             { //위 체크
-                errorUp = Mathf.Abs(FileReader.Playback - hitup.collider.GetComponent<scrNote>().getTime()); //현재시간에서 노트의 시간값 빼서 오차가져오기
+                Debug.Log(hit);
+                errorUp = Mathf.Abs(FileReader.Playback - hitup.collider.GetComponent<ColNote>().getTime()); //현재시간에서 노트의 시간값 빼서 오차가져오기
             }
             else errorUp = 9999f;
             if (hitdown.collider != null)
             { //아래 체크
-                errorDown = Mathf.Abs(FileReader.Playback - hitdown.collider.GetComponent<scrNote>().getTime());
+                Debug.Log(hit);
+                errorDown = Mathf.Abs(FileReader.Playback - hitdown.collider.GetComponent<ColNote>().getTime());
             }
             else errorDown = 9999f;
 
@@ -167,14 +169,14 @@ public class scrInput : MonoBehaviour
                 if (errorUp < errorDown)
                 {
                     error = errorUp;
-                    notetiming = hitup.collider.gameObject.GetComponent<scrNote>().getTime(); //가까운 노트의 목표타이밍값 가져오기
+                    notetiming = hitup.collider.gameObject.GetComponent<ColNote>().getTime(); //가까운 노트의 목표타이밍값 가져오기
 
-                    if (hitup.collider.gameObject.GetComponent<scrNote>().isLN())
+                    if (hitup.collider.gameObject.GetComponent<ColNote>().isLN())
                     {
                         isLNPRESSED = true;
                         hit = hitup;
-                        hit.collider.GetComponent<scrNote>().pressed = true;
-                        LNENDTime = hit.collider.GetComponent<scrNote>().getLnLength();
+                        hit.collider.GetComponent<ColNote>().pressed = true;
+                        LNENDTime = hit.collider.GetComponent<ColNote>().getLnLength();
                     }
                     else
                     {
@@ -185,13 +187,13 @@ public class scrInput : MonoBehaviour
                 else
                 {
                     error = errorDown;
-                    notetiming = hitdown.collider.gameObject.GetComponent<scrNote>().getTime();
-                    if (hitdown.collider.gameObject.GetComponent<scrNote>().isLN())
+                    notetiming = hitdown.collider.gameObject.GetComponent<ColNote>().getTime();
+                    if (hitdown.collider.gameObject.GetComponent<ColNote>().isLN())
                     {
                         isLNPRESSED = true;
                         hit = hitdown;
-                        hit.collider.GetComponent<scrNote>().pressed = true;
-                        LNENDTime = hit.collider.GetComponent<scrNote>().getLnLength();
+                        hit.collider.GetComponent<ColNote>().pressed = true;
+                        LNENDTime = hit.collider.GetComponent<ColNote>().getLnLength();
                     }
                     else
                     {
@@ -216,7 +218,7 @@ public class scrInput : MonoBehaviour
         {
             KeyInput(true, false);
             if (hit.collider != null)
-                hit.collider.GetComponent<scrNote>().DestroyCollider();
+                hit.collider.GetComponent<ColNote>().DestroyCollider();
         }
     }
     void cacJudge(float error)
@@ -226,25 +228,25 @@ public class scrInput : MonoBehaviour
         {
             FileReader.combo++;
             getJudge(0);
-            if (isLNPRESSED) hit.collider.GetComponent<scrNote>().setPressed();
+            if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error < 100f)
+        else if (error < 80f)
         {
             FileReader.combo++;
             getJudge(1);
-            if (isLNPRESSED) hit.collider.GetComponent<scrNote>().setPressed();
+            if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error < 130f)
+        else if (error < 110f)
         {
             FileReader.combo++;
             getJudge(2);
-            if (isLNPRESSED) hit.collider.GetComponent<scrNote>().setPressed();
+            if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error < 147f)
+        else if (error < 135f)
         {
             FileReader.combo = 0;
             getJudge(3);
-            if (isLNPRESSED) hit.collider.GetComponent<scrNote>().setPressed();
+            if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
         else
         {

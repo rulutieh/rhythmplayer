@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scrNote : MonoBehaviour
+public class NoteRenderer : MonoBehaviour
 {
     public GameObject lnend, lntemp;
     GameObject inst;
@@ -10,15 +10,10 @@ public class scrNote : MonoBehaviour
     public bool pressed, lncreated, lnsetpressed;
     SpriteRenderer rend, rend2;
     Sprite tempspr;
-    public BoxCollider2D box;
     int COLUMN;
     int TIME;
     float LNLENGTH, _TIME;
     bool ISLN;
-    void Awake()
-    {
-        box = GetComponent<BoxCollider2D>();
-    }
     void Update()
     {
         if (ISLN)
@@ -39,7 +34,7 @@ public class scrNote : MonoBehaviour
             }
             else
             {
-                if (lnsetpressed) lnend.GetComponent<scrNoteEnd>().isPressed = true;
+                if (lnsetpressed) lnend.GetComponent<NoteEnd>().isPressed = true;
                 if (inst)
                 {
                     inst.transform.position = transform.position;
@@ -47,9 +42,8 @@ public class scrNote : MonoBehaviour
                     float gap = Mathf.Abs(lnend.transform.position.y - transform.position.y);
                     inst.transform.localScale = new Vector2(0.95f, gap / height);
                 }
-                if (lnend.GetComponent<scrNoteEnd>().getTime() + 200 < FileReader.Playback )
+                if (lnend.GetComponent<NoteEnd>().getTime() + 200 < FileReader.Playback )
                 {
-                    if (!pressed) GameObject.FindWithTag("NoteSys").GetComponent<FileReader>().SetJudge(1);
                     Destroy(lnend);
                     Destroy(gameObject);
                 }
@@ -57,7 +51,6 @@ public class scrNote : MonoBehaviour
         }
         else if (TIME + 178.4f < FileReader.Playback)
         {
-            GameObject.FindWithTag("NoteSys").GetComponent<FileReader>().SetJudge(0);
             Destroy(gameObject);
         }
     }
@@ -103,40 +96,5 @@ public class scrNote : MonoBehaviour
     {
         lnend = lne;
     }
-    public float getTime()
-    {
-        return TIME;
-    }
-    public bool isLN()
-    {
-        return ISLN;
-    }
-    public float getLnLength()
-    {
-        return LNLENGTH;
-    }
-    //public void DestroyNote()
-    //{
-    //    if (!ISLN)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //    else
-    //    {
-    //        if (box) box.enabled = false;
-    //        if (lnend.transform.position.y < -15f && !pressed)
-    //        {
-    //            Destroy(gameObject);
-    //            Destroy(lnend);
-    //        }
-    //    }
-    //}
-    public void DestroyCollider()
-    {
-        if (box) box.enabled = false;
-    }
-    public void setPressed()
-    {
-        lnsetpressed = true;
-    }
+
 }

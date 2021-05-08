@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scrNoteEnd : MonoBehaviour
+public class NoteEnd : MonoBehaviour
 {
     public bool isPressed;
     float TIME, _TIME;
