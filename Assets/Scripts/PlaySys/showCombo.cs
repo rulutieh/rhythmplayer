@@ -21,7 +21,7 @@ public class showCombo : MonoBehaviour
     void Update()
     {
 
-        if (FileReader.combo > 2)
+        if (ScoreManager.combo > 2)
         {
             if (alpha < 1f) alpha += Time.deltaTime;
         }
@@ -29,10 +29,10 @@ public class showCombo : MonoBehaviour
         {
             if (alpha > 0) alpha -= Time.deltaTime * 30f;
         }
-        if (oldcombo != FileReader.combo)
+        if (oldcombo != ScoreManager.combo)
         {
-            tmpCombo.text = FileReader.combo.ToString();
-            oldcombo = FileReader.combo;
+            tmpCombo.text = ScoreManager.combo.ToString();
+            oldcombo = ScoreManager.combo;
             scale = 1.35f * col;           
         }
         tmpCombo.color = new Color(255, 255, 255, alpha);

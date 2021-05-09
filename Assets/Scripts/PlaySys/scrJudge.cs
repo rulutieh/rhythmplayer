@@ -17,7 +17,7 @@ public class scrJudge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 target = new Vector2(transform.position.x, -0.71f);
+        Vector2 target = new Vector2(transform.position.x, -1.2f + scrSetting.stageYPOS);
         transform.position = Vector3.MoveTowards(transform.position, target, 4f * Time.deltaTime);
         Color tmp = rend.color;
         tmp.a = alph;
@@ -25,53 +25,54 @@ public class scrJudge : MonoBehaviour
         rend.color = tmp;
 
         if (alph <= 0.1f) gameObject.SetActive(false);
+
     }
     public void setInfo(int j)
     {
-        transform.position = new Vector2(0, -0.86f);
+        transform.position = new Vector2(0, -1f + scrSetting.stageYPOS);
         alph = 1;
-        FileReader.TOTAL++;
+        ScoreManager.TOTAL++;
         switch (j)
         {
             case 0:
                 //kool
                 rend.sprite = spr[0];
-                FileReader.COOL++;
-                FileReader.HP += scrSetting.hprecover;
+                ScoreManager.COOL++;
+                ScoreManager.HP += scrSetting.hprecover;
 
                 break;
             case 1:
                 rend.sprite = spr[1];
-                FileReader.GREAT++;
-                FileReader.HP += scrSetting.hprecover2; 
+                ScoreManager.GREAT++;
+                ScoreManager.HP += scrSetting.hprecover2; 
 
                 break;
             case 2:
                 rend.sprite = spr[2];
-                FileReader.GOOD++;
+                ScoreManager.GOOD++;
 
                 break;
             case 3:
                 rend.sprite = spr[3];
-                FileReader.BAD++;
+                ScoreManager.BAD++;
 
-                FileReader.HP -= scrSetting.baddamage;
+                ScoreManager.HP -= scrSetting.baddamage;
                 break;
             case 4:
                 //miss
                 rend.sprite = spr[4];
-                FileReader.MISS++;
-                FileReader.HP -= scrSetting.missdamage;
+                ScoreManager.MISS++;
+                ScoreManager.HP -= scrSetting.missdamage;
                 break;
             case 5:
                 //miss ln
                 rend.sprite = spr[4];
-                FileReader.MISS += 2;
-                FileReader.TOTAL++;
-                FileReader.HP -= scrSetting.missdamage * 2f;
+                ScoreManager.MISS += 2;
+                ScoreManager.TOTAL++;
+                ScoreManager.HP -= scrSetting.missdamage * 2f;
                 break;
         }
-        if (FileReader.HP > 1f) FileReader.HP = 1f;
+        if (ScoreManager.HP > 1f) ScoreManager.HP = 1f;
     }
     
 }

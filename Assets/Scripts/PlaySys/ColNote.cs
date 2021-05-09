@@ -5,7 +5,7 @@ using UnityEngine;
 public class ColNote : MonoBehaviour
 {
     public bool pressed, lncreated, lnsetpressed;
-    FileReader reader;
+    ScoreManager reader;
     public BoxCollider2D box;
     int COLUMN;
     int TIME;
@@ -13,7 +13,7 @@ public class ColNote : MonoBehaviour
     bool ISLN;
     void Awake()
     {
-        reader = GameObject.FindWithTag("NoteSys").GetComponent<FileReader>();
+        reader = GameObject.FindWithTag("NoteSys").GetComponent<ScoreManager>();
         box = GetComponent<BoxCollider2D>();
     }
     void Update()

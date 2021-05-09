@@ -38,7 +38,7 @@ public class scrResult : MonoBehaviour
         tmptitle.text = $"{NowPlaying.ARTIST} - {NowPlaying.TITLE}";
         tmplevel.text = NowPlaying.LEVEL;
         
-        tmpcombo.text = "Combo : " + FileReader.maxcombo.ToString();
+        tmpcombo.text = "Combo : " + ScoreManager.maxcombo.ToString();
     }
     void showChilds()
     {
@@ -49,21 +49,21 @@ public class scrResult : MonoBehaviour
     IEnumerator LoadScores()
     {
         yield return new WaitForSeconds(0.1f);
-        tmpcool.text = FileReader.COOL.ToString("0000");
+        tmpcool.text = ScoreManager.COOL.ToString("0000");
         yield return new WaitForSeconds(0.1f);
-        tmpgreat.text = FileReader.GREAT.ToString("0000");
+        tmpgreat.text = ScoreManager.GREAT.ToString("0000");
         yield return new WaitForSeconds(0.1f);
-        tmpgood.text = FileReader.GOOD.ToString("0000");
+        tmpgood.text = ScoreManager.GOOD.ToString("0000");
         yield return new WaitForSeconds(0.1f);
-        tmpbad.text = FileReader.BAD.ToString("0000");
+        tmpbad.text = ScoreManager.BAD.ToString("0000");
         yield return new WaitForSeconds(0.1f);
-        tmpmiss.text = FileReader.MISS.ToString("0000");
+        tmpmiss.text = ScoreManager.MISS.ToString("0000");
         yield return new WaitForSeconds(0.2f);
-        tmpscore.text = Mathf.Round(FileReader.Score).ToString("0000000");
+        tmpscore.text = Mathf.Round(ScoreManager.Score).ToString("0000000");
         yield return new WaitForSeconds(0.2f);
         if (!played)
         {
-            if (FileReader.isFailed)
+            if (ScoreManager.isFailed)
             {
                 tmpresult.text = "Failed";
                 player.PlaySFX(8);
@@ -76,13 +76,13 @@ public class scrResult : MonoBehaviour
             played = true;
         }
         yield return new WaitForSeconds(0.2f);
-        if (FileReader.maxcombo == FileReader.NoteCountLongnote) tmpcombo.text = "FULL COMBO";
-        if (Mathf.Round(FileReader.Score) == 1000000) tmpcombo.text = "PERFECT";
+        if (ScoreManager.maxcombo == FileReader.NoteCountLongnote) tmpcombo.text = "FULL COMBO";
+        if (Mathf.Round(ScoreManager.Score) == 1000000) tmpcombo.text = "PERFECT";
         yield return new WaitForSeconds(0.3f);
         Rank.SetActive(true);
-        if (FileReader.Score > 950000f)
+        if (ScoreManager.Score > 950000f)
         {
-            if (FileReader.MISS == 0 && FileReader.BAD == 0)
+            if (ScoreManager.MISS == 0 && ScoreManager.BAD == 0)
             {
                 rend.sprite = rankspr[0];
             }
@@ -91,15 +91,15 @@ public class scrResult : MonoBehaviour
                 rend.sprite = rankspr[1];
             }
         }
-        else if (FileReader.Score > 900000f)
+        else if (ScoreManager.Score > 900000f)
         {
             rend.sprite = rankspr[2];
         }
-        else if (FileReader.Score > 800000f)
+        else if (ScoreManager.Score > 800000f)
         {
             rend.sprite = rankspr[3];
         }
-        else if (FileReader.Score > 600000f)
+        else if (ScoreManager.Score > 600000f)
         {
             rend.sprite = rankspr[4];
         }

@@ -12,11 +12,10 @@ public class FileReader : MonoBehaviour
 
 
     public float offset, loadprogress;
-    public static float judgeoffset = -3.15f, HP = 1f, Score;
-    public static int  combo = 0, maxcombo;
+    public static float judgeoffset = -3.15f;
     public static bool isFailed, isPlaying, isVideoLoaded;
     public static float PlaybackChanged, Playback;
-    public static float bpm = 0, startbpm = 0, acc = 100f;
+    public static float bpm = 0, startbpm = 0;
     public static double multiply;
     float p, _TIME, _RTIME, barTIME;
     int noteIDX, rnoteIDX, barIDX, timeIDX, preLoad, noteidx = 0, timingidx = 0;
@@ -73,7 +72,7 @@ public class FileReader : MonoBehaviour
     List<Notes>[] curnote = new List<Notes>[7];
 
     int TimingCount, NoteCount;
-    public static int NoteCountLongnote, COOL, GREAT, GOOD, MISS, BAD, TOTAL;
+    public static int NoteCountLongnote;
     // Start is called before the first frame update
     void Awake()
     {
@@ -95,7 +94,7 @@ public class FileReader : MonoBehaviour
     }
     void Start()
     {
-        
+        Playback = 0;
         //랭킹 등록 시스템
         w = GameObject.FindWithTag("world");
         RankSys = w.GetComponent<RankSystem>();
@@ -105,10 +104,7 @@ public class FileReader : MonoBehaviour
        
         playfieldon = true;
         isFailed = isPlaying = false;
-        NoteCountLongnote = COOL = GREAT = GOOD = MISS = BAD = TOTAL = 0; //판정 초기화
-        Score = 0; 
-        HP = 1f;
-        combo = maxcombo = 0;
+        NoteCountLongnote = 0; 
 
         //고른 음악정보 가져오기
 
@@ -126,12 +122,8 @@ public class FileReader : MonoBehaviour
         
         judgeoffset = -3.15f + scrSetting.stageYPOS;
 
-        if (combo > maxcombo) maxcombo = combo; //최대 콤보 체크
-        if (HP <= 0) //게임오버
-        {
-            isFailed = true;
-            gameover.SetActive(true);
-        }
+
+
         //노트, 타이밍 생성
         if (isLoaded)
         {
@@ -174,9 +166,9 @@ public class FileReader : MonoBehaviour
                     RankSys.SaveScore(
                         NowPlaying.HASH, 
                         scrSetting.playername, 
-                        Mathf.RoundToInt(Score), 
-                        (BAD == 0 && MISS == 0) ? 1 : 0 ,
-                        maxcombo,
+                        Mathf.RoundToInt(ScoreManager.Score), 
+                        (ScoreManager.BAD == 0 && ScoreManager.MISS == 0) ? 1 : 0 ,
+                        ScoreManager.maxcombo,
                         DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")
                         );
                     resultload = true;
@@ -184,11 +176,7 @@ public class FileReader : MonoBehaviour
                     w.GetComponent<scrSetting>().SaveSettings();
                 }
             }
-            float c = NowPlaying.NOTECOUNTS + (NowPlaying.LONGNOTECOUNTS * 2);
-            float sum = (COOL / c) + ((GREAT * 2) / (3 * c)) + (GOOD / (3 * c)) + ((BAD / (6 * c)));
-            Score = 1000000f * sum;
-            if (TOTAL != 0)
-                acc = 100f * (sum / (TOTAL / c));
+
 
         }
     }
@@ -450,15 +438,6 @@ public class FileReader : MonoBehaviour
     }
 
 
-    //판정관련
-    public void SetJudge(int a)
-    {
-        combo = 0;
-        judgeobj.SetActive(true);
-        if (a == 1) //롱노트 아애 안눌럿을시
-            judgeobj.GetComponent<scrJudge>().setInfo(5);
-        else
-            judgeobj.GetComponent<scrJudge>().setInfo(4);
-    }
+
 
 }

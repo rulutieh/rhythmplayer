@@ -16,6 +16,7 @@ public class scrInput : MonoBehaviour
     SpriteRenderer rend;
 
     FileReader reader;
+    ScoreManager manager;
     
     // Start is called before the first frame update
     // Update is called once per frame
@@ -24,7 +25,9 @@ public class scrInput : MonoBehaviour
         
         rend = GetComponent<SpriteRenderer>();
         transform.localScale = new Vector2(0.63f * scrSetting.ColWidth / 0.85f, 0.6f);
-        reader = GameObject.FindWithTag("NoteSys").GetComponent<FileReader>();
+        var g = GameObject.FindWithTag("NoteSys");
+        reader = g.GetComponent<FileReader>();
+        manager = g.GetComponent<ScoreManager>();
 
     }
     void Update()
@@ -109,7 +112,7 @@ public class scrInput : MonoBehaviour
             float error = FileReader.Playback - LNENDTime;
             if (error > 270f)
             {
-                FileReader.combo = 0;
+                ScoreManager.combo = 0;
                 getJudge(4);
                 isLNPRESSED = false;
             }
@@ -139,14 +142,19 @@ public class scrInput : MonoBehaviour
         float errorUp;
         float errorDown;
         float error;
+
         float notetiming;
         if (LN)
         {
-            error = Mathf.Abs(FileReader.Playback - LNENDTime);
+            float e = FileReader.Playback - LNENDTime;
+            error = Mathf.Abs(e);
+            if (error < 180f)
+                manager.AddError(e);
             cacLNJudge(error);
         }
         else
         {
+            float eru = 0f, erd = 0f;
             #region if use raycast
             RaycastHit2D hitup, hitdown;
             hitup = Physics2D.Raycast(transform.position, Vector2.up); //위로 레이
@@ -154,13 +162,15 @@ public class scrInput : MonoBehaviour
             if (hitup.collider != null)
             { //위 체크
                 Debug.Log(hit);
-                errorUp = Mathf.Abs(FileReader.Playback - hitup.collider.GetComponent<ColNote>().getTime()); //현재시간에서 노트의 시간값 빼서 오차가져오기
+                eru = FileReader.Playback - hitup.collider.GetComponent<ColNote>().getTime();
+                errorUp = Mathf.Abs(eru); //현재시간에서 노트의 시간값 빼서 오차가져오기
             }
             else errorUp = 9999f;
             if (hitdown.collider != null)
             { //아래 체크
                 Debug.Log(hit);
-                errorDown = Mathf.Abs(FileReader.Playback - hitdown.collider.GetComponent<ColNote>().getTime());
+                erd = FileReader.Playback - hitdown.collider.GetComponent<ColNote>().getTime();
+                errorDown = Mathf.Abs(erd);
             }
             else errorDown = 9999f;
 
@@ -170,7 +180,7 @@ public class scrInput : MonoBehaviour
                 {
                     error = errorUp;
                     notetiming = hitup.collider.gameObject.GetComponent<ColNote>().getTime(); //가까운 노트의 목표타이밍값 가져오기
-
+                    manager.AddError(eru);
                     if (hitup.collider.gameObject.GetComponent<ColNote>().isLN())
                     {
                         isLNPRESSED = true;
@@ -188,6 +198,7 @@ public class scrInput : MonoBehaviour
                 {
                     error = errorDown;
                     notetiming = hitdown.collider.gameObject.GetComponent<ColNote>().getTime();
+                    manager.AddError(erd);
                     if (hitdown.collider.gameObject.GetComponent<ColNote>().isLN())
                     {
                         isLNPRESSED = true;
@@ -226,31 +237,31 @@ public class scrInput : MonoBehaviour
 
         if (error < 50f)
         {
-            FileReader.combo++;
+            ScoreManager.combo++;
             getJudge(0);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
         else if (error < 80f)
         {
-            FileReader.combo++;
+            ScoreManager.combo++;
             getJudge(1);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
         else if (error < 110f)
         {
-            FileReader.combo++;
+            ScoreManager.combo++;
             getJudge(2);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
         else if (error < 135f)
         {
-            FileReader.combo = 0;
+            ScoreManager.combo = 0;
             getJudge(3);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
         else
         {
-            FileReader.combo = 0;
+            ScoreManager.combo = 0;
             getJudge(4);
         }
     }
@@ -259,27 +270,27 @@ public class scrInput : MonoBehaviour
 
         if (error < 50f)
         {
-            FileReader.combo++;
+            ScoreManager.combo++;
             getJudge(0);
         }
         else if (error < 100f)
         {
-            FileReader.combo++;
+            ScoreManager.combo++;
             getJudge(1);
         }
         else if (error < 170f)
         {
-            FileReader.combo++;
+            ScoreManager.combo++;
             getJudge(2);
         }
         else if (error < 230f)
         {
-            FileReader.combo = 0;
+            ScoreManager.combo = 0;
             getJudge(3);
         }
         else
         {
-            FileReader.combo = 0;
+            ScoreManager.combo = 0;
             getJudge(4);
         }
     }
