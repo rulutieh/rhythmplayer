@@ -11,7 +11,8 @@
 /[Mm]emoryCaptures/
 /[Aa]ssets/StreamingAssets/Songs/*
 !/[Aa]ssets/StreamingAssets/Songs/Snow White Echo/
-
+!/[Aa]ssets/StreamingAssets/Songs/identity part ii/
+!/[Aa]ssets/StreamingAssets/Songs/Doppelganger/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
