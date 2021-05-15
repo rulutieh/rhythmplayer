@@ -15,7 +15,7 @@ public class scrUI : MonoBehaviour
 
     private void Awake()
     {
-
+        SettingPanel.isUIanimationFinished = false;
         gutterStartSize = new Vector2(gutter.rectTransform.sizeDelta.x, 0);
         gutterEndSize = gutter.rectTransform.sizeDelta;
         gutter.rectTransform.sizeDelta = new Vector2(0, 0);
@@ -23,6 +23,7 @@ public class scrUI : MonoBehaviour
     }
     public void Active()
     {
+        SettingPanel.isUIanimationFinished = false;
         transform.GetChild(0).gameObject.SetActive(true);
         Tween.Size(gutter.rectTransform, gutterStartSize, gutterEndSize, .5f, 0, Tween.EaseInOutStrong, Tween.LoopType.None, null, () => showChilds());
         
@@ -35,6 +36,7 @@ public class scrUI : MonoBehaviour
     }
     void showChilds()
     {
+        SettingPanel.isUIanimationFinished = true;
         foreach (Transform child in transform)
         {
             if (child.name != transform.name)

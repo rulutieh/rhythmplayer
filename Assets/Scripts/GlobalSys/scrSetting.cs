@@ -14,6 +14,10 @@ class PlayerIDPW
 {
     public string id, pw;
 }
+class PlayerAccount
+{
+    public string id, pw, name;
+}
 
 class PlayerOnlineStatus
 {
@@ -40,8 +44,8 @@ public class scrSetting : MonoBehaviour
     public static int[] judgems = { 0, 1, 2, 3 };
 
     public static float scrollSpeed = 2.4f, stageXPOS = 0, stageYPOS, ColWidth = 0.85f, GlobalOffset = 0f;
-    public static int decide, diffselection, sortselection, modselection;
-    public static string sortsearch = "", playername = "";
+    public static int decide, diffselection, sortselection, modselection, specialselection;
+    public static string sortsearch = "", playername = "Guest", email = "";
 
 
     public Sprite[] SquareNotes;
@@ -54,12 +58,17 @@ public class scrSetting : MonoBehaviour
     public static bool isFullScreen = false;
     public static bool Mirror = false;
     public static bool Random = false;
+    public static bool AutoPlay = false;
 
     public static float Volume = 1f;
 
     public int res, fps;
 
     static public float vol, tp, sync, hprecover, hprecover2, baddamage, missdamage;
+
+
+    //임시 로컬 회원가입
+    List<PlayerAccount> accList = new List<PlayerAccount>();
 
     // Start is called before the first frame update 
     void Awake()
@@ -93,6 +102,7 @@ public class scrSetting : MonoBehaviour
         res = (int)Resolution._1920_1080;
         LoadSettings();
         LoadSelection();
+        LoadPlayerAccounts();
         LoadLocalPlayerAccount();
 
         hprecover = 0.003f; //퍼펙트 회복량
@@ -105,7 +115,7 @@ public class scrSetting : MonoBehaviour
     }
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame 
@@ -254,6 +264,26 @@ public class scrSetting : MonoBehaviour
 
 
     }
+    public void SigninLocalPlayerAccount(string id, string pw, string nick)
+    {
+        PlayerAccount a = new PlayerAccount();
+        a.id = id; a.pw = pw; a.name = nick;
+        accList.Add(a); //회원가입 (임시로 json저장, mysql대체예정)
+        string json = JsonConvert.SerializeObject(accList, Formatting.Indented);
+        json = RankSystem.AESEncrypt128(json);
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, "accounts.json"), json);
+    }
+
+    public void LoadPlayerAccounts()
+    {
+        string json = "";
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "accounts.json")))
+        {
+            json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "accounts.json"));
+            json = RankSystem.AESDecrypt128(json);
+            accList = JsonConvert.DeserializeObject<List<PlayerAccount>>(json);
+        }
+    }
 
     public void SaveLocalPlayerAccount(string id, string pw)
     {
@@ -262,21 +292,28 @@ public class scrSetting : MonoBehaviour
 
         string json = JsonConvert.SerializeObject(p, Formatting.Indented);
         json = RankSystem.AESEncrypt128(json);
-        File.WriteAllText(Path.Combine(Application.persistentDataPath, "playerinfo.json"), json);
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, "player.json"), json);
     }
 
-    public void LoadLocalPlayerAccount()
+    public string LoadLocalPlayerAccount()
     {
         string json = "";
         playername = "Guest";
-        if (File.Exists(Path.Combine(Application.persistentDataPath, "playerinfo.json")))
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "player.json")))
         {
-            json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "playerinfo.json"));
+            json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "player.json"));
             json = RankSystem.AESDecrypt128(json);
             PlayerIDPW pid = JsonConvert.DeserializeObject<PlayerIDPW>(json);
-            playername = pid.id;
-            //pw
+            for (int i = 0; i < accList.Count; i++)
+            {
+                if (pid.id == accList[i].id && pid.pw == accList[i].pw)
+                {
+                    playername = accList[i].name;
+                    return "Login Success";
+                }
+            }
         }
+        return "Login Failed";
     }
 
 

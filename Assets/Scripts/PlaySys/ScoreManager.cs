@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
         isFailed = false;
         HP = 1f;
         COOL = GREAT = GOOD = MISS = BAD = TOTAL = 0;
-        acc = 100f;
+        acc = 1f;
         combo = maxcombo = 0;
         judgeerror = 0;
     }
@@ -27,9 +27,9 @@ public class ScoreManager : MonoBehaviour
     {
         float c = NowPlaying.NOTECOUNTS + (NowPlaying.LONGNOTECOUNTS * 2);
         float sum = (COOL / c) + ((GREAT * 2) / (3 * c)) + (GOOD / (3 * c)) + ((BAD / (6 * c)));
-        Score = 1000000f * sum;
+        Score = Mathf.Round(1000000f * sum);
         if (TOTAL != 0)
-            acc = 100f * (sum / (TOTAL / c));
+            acc = Mathf.Round(10000f * (sum / (TOTAL / c))) / 10000f;
 
 
         if (combo > maxcombo) maxcombo = combo; //최대 콤보 체크

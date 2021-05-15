@@ -19,7 +19,8 @@ public class FileSelecter : MonoBehaviour
     public string _name, _artist, _txtpath, _bgpath, _diff, _bgapath, _charter, _hash;
     public float _localoffset, minBPM, maxBPM, medianBPM;
     int _diffcount;
-    string lastselect = "";
+    bool prefer; //선호 난이도 선택 저장
+    string lastselect = "", lastselectdiff = ""; //마지막 곡 해시, 마지막 난이도별 해시
     SpriteRenderer rend;
     AudioSource aud, sfxaud;
     public AudioClip audClip;
@@ -56,7 +57,7 @@ public class FileSelecter : MonoBehaviour
         Loader = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
         Setting = GameObject.FindWithTag("world").GetComponent<scrSetting>();
         player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
-
+        prefer = false;
     }
     void Start()
     {
@@ -80,7 +81,7 @@ public class FileSelecter : MonoBehaviour
         int c = Loader.list.Count;
         if (scrSetting.decide < 0) scrSetting.decide = 0;
         if (scrSetting.decide > c - 1) scrSetting.decide = c - 1;
-
+        Loader.searchbyHash(NowPlaying.HASH);
         LoadFileInfo();
     }
     // Update is called once per frame
@@ -102,8 +103,12 @@ public class FileSelecter : MonoBehaviour
             SetSort();
 
         }//정렬
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            SetSpecial();
+        }//랜덤
 
-            if (scrSetting.scrollSpeed < 4f) //스크롤 업
+        if (scrSetting.scrollSpeed < 4f) //스크롤 업
                 if (Input.GetKeyDown(KeyCode.F4))
                 {
                     scrSetting.scrollSpeed += 0.1f;
@@ -132,9 +137,9 @@ public class FileSelecter : MonoBehaviour
                 if (Loader.list[scrSetting.decide].getID(0) == lastselect)
                 {
                     if (scrSetting.diffselection > 0)
-                        if (Input.GetKeyDown(KeyCode.LeftArrow)) { scrSetting.diffselection--; getDiffinfo(); }
+                        if (Input.GetKeyDown(KeyCode.LeftArrow)) { scrSetting.diffselection--; getDiffinfo(); prefer = false; }
                     if (scrSetting.diffselection < d)
-                        if (Input.GetKeyDown(KeyCode.RightArrow)) { scrSetting.diffselection++; getDiffinfo(); }
+                        if (Input.GetKeyDown(KeyCode.RightArrow)) { scrSetting.diffselection++; getDiffinfo(); prefer = true; }
                 }
         }
 
@@ -178,7 +183,13 @@ public class FileSelecter : MonoBehaviour
     void LoadFileInfo()
     {
         _diffcount = Loader.list[scrSetting.decide].diffCount();
-        scrSetting.diffselection = _diffcount - 1;
+        if (scrSetting.diffselection > _diffcount - 1)
+        {
+            if (prefer)
+                scrSetting.diffselection = _diffcount - 1;
+            else
+                scrSetting.diffselection = 0;
+        }
 
         _name = Loader.list[scrSetting.decide].name;
         _artist = Loader.list[scrSetting.decide].artist;
@@ -210,6 +221,7 @@ public class FileSelecter : MonoBehaviour
 
         //선택변경 감지를 위한 마지막 선택곡 저장
         lastselect = Loader.list[scrSetting.decide].getID(0);
+        lastselectdiff = Loader.list[scrSetting.decide].getID(scrSetting.diffselection);
         //fmod 사운드 로딩
         StartCoroutine(CheckLoadedAndPlay());
 
@@ -227,25 +239,18 @@ public class FileSelecter : MonoBehaviour
         SortMod();
         Setting.SaveSelection();
     }
+    public void SetSpecial()
+    {
+        player.PlaySFX(0);
+        scrSetting.specialselection++; if (scrSetting.specialselection > 1) scrSetting.specialselection = 0;
+        SortSpecial();
+    }
     public void SetSort()
     {
         player.PlaySFX(0);
         scrSetting.sortselection++;
         SortMusic();
         Setting.SaveSelection();
-    }
-    IEnumerator CheckLoadedAndPlay()
-    {
-        while (player.isLoaded() != FMOD.OPENSTATE.READY)
-            yield return null;
-        player.PlayMP3();
-    }
-    void goTitle()
-    {
-        if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
-            player.ReleaseMP3();
-        SceneManager.LoadScene("Title", LoadSceneMode.Single);
-        Destroy(gameObject);
     }
     void SortMod()
     {
@@ -262,6 +267,18 @@ public class FileSelecter : MonoBehaviour
             case 2:
                 scrSetting.Mirror = false;
                 scrSetting.Random = true;
+                break;
+        }
+    }
+    void SortSpecial()
+    {
+        switch (scrSetting.specialselection)
+        {
+            case 0:
+                scrSetting.AutoPlay = false;
+                break;
+            case 1:
+                scrSetting.AutoPlay = true;
                 break;
         }
     }
@@ -283,6 +300,20 @@ public class FileSelecter : MonoBehaviour
         DestroyBTs();
         LoadObjects();
     }
+    IEnumerator CheckLoadedAndPlay()
+    {
+        while (player.isLoaded() != FMOD.OPENSTATE.READY)
+            yield return null;
+        player.PlayMP3();
+    }
+    void goTitle()
+    {
+        if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
+            player.ReleaseMP3();
+        SceneManager.LoadScene("Title", LoadSceneMode.Single);
+        Destroy(gameObject);
+    }
+
     void DestroyBTs()
     {
         var gameObjects = GameObject.FindGameObjectsWithTag("SelBT");

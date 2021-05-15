@@ -76,8 +76,6 @@ public class FileReader : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
-        Application.targetFrameRate = 500;
         barIDX = 0; //bar 풀링 idx
         noteIDX = 0; //노트 풀링idx
         timeIDX = 0; //타이밍 풀링 idx
@@ -162,7 +160,7 @@ public class FileReader : MonoBehaviour
                 if (__t < Playback && !resultload)
                 {
                     //결과창 로드
-                    if (!isFailed)
+                    if (!ScoreManager.isFailed && !scrSetting.AutoPlay) //저장
                     RankSys.SaveScore(
                         NowPlaying.HASH, 
                         scrSetting.playername, 

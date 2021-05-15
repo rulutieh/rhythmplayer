@@ -17,11 +17,25 @@ public class scrUISystem : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            if (activeUI > 0) Disable();
+            if (activeUI == 3)
+            {
+                Disable2();
+            }
+        else
+            if (activeUI > 0)
+            {
+                Disable();
+            }
     }
     public void Enable()
     {
         activeUI++;
+        //UIs[activeUI].GetComponent<CanvasGroup>().interactable = true;
+        UIs[activeUI].GetComponent<scrUI>().Active();
+    }
+    public void Enable2()
+    {
+        activeUI+=2;
         //UIs[activeUI].GetComponent<CanvasGroup>().interactable = true;
         UIs[activeUI].GetComponent<scrUI>().Active();
     }
@@ -30,6 +44,12 @@ public class scrUISystem : MonoBehaviour
         //UIs[activeUI].GetComponent<CanvasGroup>().interactable = false;
         UIs[activeUI].GetComponent<scrUI>().inActive();
         activeUI--;
+    }
+    public void Disable2()
+    {
+        //UIs[activeUI].GetComponent<CanvasGroup>().interactable = false;
+        UIs[activeUI].GetComponent<scrUI>().inActive();
+        activeUI -= 2;
     }
     public void NextRoom()
     {

@@ -9,10 +9,12 @@ public class scrSearch : MonoBehaviour
     public GameObject inputfield;
     GameObject selsys;
     InputField tmp;
+    FileLoader Loader;
     public string oldtext = "", text = "";
     // Start is called before the first frame update
     void Start()
     {
+        Loader = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
         tmp = inputfield.GetComponent<InputField>();
         selsys = GameObject.FindWithTag("SelSys");
         tmp.text = scrSetting.sortsearch;
@@ -26,6 +28,7 @@ public class scrSearch : MonoBehaviour
         if (string.Compare(inputext, oldtext) != 0)
         {
             scrSetting.decide = 0;
+            Loader.searchbyHash(NowPlaying.HASH); //가장 최근 선택한 값 찾기 없으면 변경없음
             text = inputext.ToUpper();
             oldtext = tmp.text;
             scrSetting.sortsearch = text;

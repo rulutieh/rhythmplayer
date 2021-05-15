@@ -6,7 +6,7 @@ using TMPro;
 public class scrSetText : MonoBehaviour
 {
     FileSelecter Select;
-    public TextMeshProUGUI TMPTITLE, TMPARTIST, TMPBPM, TMPDIFF, TMPSPD, TMPMOD, TMPSORT, TMPCHART, TMPNOTE, TMPLN, TMPLENGTH, TMPFIXED;
+    public TextMeshProUGUI TMPTITLE, TMPARTIST, TMPBPM, TMPDIFF, TMPSPD, TMPMOD, TMPSORT, TMPCHART, TMPNOTE, TMPLN, TMPLENGTH, TMPFIXED, TMPSPC;
     
     // Start is called before the first frame update
     void Start()
@@ -25,9 +25,12 @@ public class scrSetText : MonoBehaviour
         if (scrSetting.Random) str = "RANDOM";
         if (scrSetting.Mirror) str = "MIRROR";
         TMPMOD.text = str;
-        TMPSORT.text = "NAME";
-        if (scrSetting.sortselection == 1) TMPSORT.text = "ARTIST";
-        if (scrSetting.sortselection == 2) TMPSORT.text = "LEVEL";
+        TMPSORT.text = "by NAME";
+        if (scrSetting.sortselection == 1) TMPSORT.text = "by ARTIST";
+        if (scrSetting.sortselection == 2) TMPSORT.text = "by LEVEL";
+        TMPSPC.text = "NONE";
+        if (scrSetting.AutoPlay) TMPSPC.text = "AUTOPLAY";
+
         TMPSPD.text = "Scroll Speed : " + Mathf.Round(scrSetting.scrollSpeed * 10f - 8f);
 
         TMPCHART.text = "Noter : " + Select._charter;

@@ -14,7 +14,7 @@ public class showCombo : MonoBehaviour
     void Start()
     {
         tmpCombo = gameObject.GetComponent<TextMeshPro>();
-        col = scrSetting.ColWidth / 0.85f;
+        col = scrSetting.ColWidth;
     }
 
     // Update is called once per frame
@@ -33,11 +33,11 @@ public class showCombo : MonoBehaviour
         {
             tmpCombo.text = ScoreManager.combo.ToString();
             oldcombo = ScoreManager.combo;
-            scale = 1.35f * col;           
+            scale = 1.4f * col;           
         }
         tmpCombo.color = new Color(255, 255, 255, alpha);
         tmp.color = new Color(255, 255, 255, alpha);
         transform.localScale = new Vector2(scale, scale);
-        if (scale > 1.1f * col) scale -= 5f * Time.deltaTime;
+        if (scale > 1.15f * col) scale -= 5f * Time.deltaTime;
     }
 }

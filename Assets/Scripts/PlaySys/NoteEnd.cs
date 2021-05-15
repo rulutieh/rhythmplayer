@@ -20,7 +20,7 @@ public class NoteEnd : MonoBehaviour
     {
         
         rend = GetComponent<SpriteRenderer>();
-        transform.localScale = new Vector2(transform.localScale.x * scrSetting.ColWidth / 0.85f, transform.localScale.y);
+        transform.localScale = new Vector2(transform.localScale.x * scrSetting.ColWidth, transform.localScale.y);
         if (c == 1 || c == 5) { rend.sprite = dk;} if (c == 3) { rend.sprite = sp; }
         TIME = t; _TIME = nt;
         if (obj)

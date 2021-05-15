@@ -12,7 +12,7 @@ public class scrLineEf : MonoBehaviour
     void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        transform.localScale = new Vector2(transform.localScale.x * scrSetting.ColWidth / 0.85f, transform.localScale.y);
+        transform.localScale = new Vector2(transform.localScale.x * scrSetting.ColWidth, transform.localScale.y);
     }
 
     // Update is called once per frame

@@ -17,14 +17,14 @@ public class scrInput : MonoBehaviour
 
     FileReader reader;
     ScoreManager manager;
-    
+
     // Start is called before the first frame update
     // Update is called once per frame
     private void Start()
     {
-        
+
         rend = GetComponent<SpriteRenderer>();
-        transform.localScale = new Vector2(0.63f * scrSetting.ColWidth / 0.85f, 0.6f);
+        transform.localScale = new Vector2(0.74f * scrSetting.ColWidth, 0.6f);
         var g = GameObject.FindWithTag("NoteSys");
         reader = g.GetComponent<FileReader>();
         manager = g.GetComponent<ScoreManager>();
@@ -33,79 +33,41 @@ public class scrInput : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(transform.position, Vector3.up);
-        switch (idx)
+
+
+        if (!scrSetting.AutoPlay)
+        {
+
+            if (Input.GetKey(KeySetting.keys[(KeyAction)idx]))
+                rend.sprite = PRESS;
+            else
+                rend.sprite = DEF;
+            if (Input.GetKeyDown(KeySetting.keys[(KeyAction)idx]))
+                KeyInput(isLNPRESSED, true);
+            if (Input.GetKeyUp(KeySetting.keys[(KeyAction)idx]))
+                KeyRelease();
+        }
+        else
+        {
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y - 1f);
+            RaycastHit2D auto = Physics2D.Raycast(pos, Vector2.up);
+            if (isLNPRESSED)
             {
-                case 0:
-                    if (Input.GetKey(KeySetting.keys[KeyAction._0]))
-                        rend.sprite = PRESS;
-                    else
-                        rend.sprite = DEF;
-                    if (Input.GetKeyDown(KeySetting.keys[KeyAction._0]))
-                        KeyInput(isLNPRESSED, true);
-                    if (Input.GetKeyUp(KeySetting.keys[KeyAction._0]))
-                        KeyRelease();
-                    break;
-                case 1:
-                    if (Input.GetKey(KeySetting.keys[KeyAction._1]))
-                        rend.sprite = PRESS;
-                    else
-                        rend.sprite = DEF;
-                    if (Input.GetKeyDown(KeySetting.keys[KeyAction._1]))
-                        KeyInput(isLNPRESSED, true);
-                    if (Input.GetKeyUp(KeySetting.keys[KeyAction._1]))
-                        KeyRelease();
-                    break;
-                case 2:
-                    if (Input.GetKey(KeySetting.keys[KeyAction._2]))
-                        rend.sprite = PRESS;
-                    else
-                        rend.sprite = DEF;
-                    if (Input.GetKeyDown(KeySetting.keys[KeyAction._2]))
-                        KeyInput(isLNPRESSED, true);
-                    if (Input.GetKeyUp(KeySetting.keys[KeyAction._2]))
-                        KeyRelease();
-                    break;
-                case 3:
-                    if (Input.GetKey(KeySetting.keys[KeyAction._3]))
-                        rend.sprite = PRESS;
-                    else
-                        rend.sprite = DEF;
-                    if (Input.GetKeyDown(KeySetting.keys[KeyAction._3]))
-                        KeyInput(isLNPRESSED, true);
-                    if (Input.GetKeyUp(KeySetting.keys[KeyAction._3]))
-                        KeyRelease();
-                    break;
-                case 4:
-                    if (Input.GetKey(KeySetting.keys[KeyAction._4]))
-                        rend.sprite = PRESS;
-                    else
-                        rend.sprite = DEF;
-                    if (Input.GetKeyDown(KeySetting.keys[KeyAction._4]))
-                        KeyInput(isLNPRESSED, true);
-                    if (Input.GetKeyUp(KeySetting.keys[KeyAction._4]))
-                        KeyRelease();
-                    break;
-                case 5:
-                    if (Input.GetKey(KeySetting.keys[KeyAction._5]))
-                        rend.sprite = PRESS;
-                    else
-                        rend.sprite = DEF;
-                    if (Input.GetKeyDown(KeySetting.keys[KeyAction._5]))
-                        KeyInput(isLNPRESSED, true);
-                    if (Input.GetKeyUp(KeySetting.keys[KeyAction._5]))
-                        KeyRelease();
-                    break;
-                case 6:
-                    if (Input.GetKey(KeySetting.keys[KeyAction._6]))
-                        rend.sprite = PRESS;
-                    else
-                        rend.sprite = DEF;
-                    if (Input.GetKeyDown(KeySetting.keys[KeyAction._6]))
-                        KeyInput(isLNPRESSED, true);
-                    if (Input.GetKeyUp(KeySetting.keys[KeyAction._6]))
-                        KeyRelease();
-                    break;
+                if (LNENDTime - FileReader.Playback < 1f)
+                    KeyRelease();
             }
+            else if (auto)
+            {
+                ColNote note = auto.collider.GetComponent<ColNote>();
+                if (note.getTime() - FileReader.Playback < 1f)
+                {
+                    KeyInput(isLNPRESSED, true);
+                    if (!note.isLN())
+                        KeyRelease();
+                }
+            }
+
+        }
 
         if (isLNPRESSED) //롱놋 안 땠을 시 미스처리
         {
@@ -117,10 +79,11 @@ public class scrInput : MonoBehaviour
                 isLNPRESSED = false;
             }
             lnhitef.gameObject.SetActive(true);
-        } else lnhitef.gameObject.SetActive(false);
+        }
+        else lnhitef.gameObject.SetActive(false);
 
         transform.position = new Vector2((idx - 3) * scrSetting.ColWidth, transform.position.y);
-        
+
 
     }
     void KeyInput(bool LN, bool effect)
@@ -161,14 +124,12 @@ public class scrInput : MonoBehaviour
             hitdown = Physics2D.Raycast(transform.position, Vector2.down); //아래로 레이
             if (hitup.collider != null)
             { //위 체크
-                Debug.Log(hit);
                 eru = FileReader.Playback - hitup.collider.GetComponent<ColNote>().getTime();
                 errorUp = Mathf.Abs(eru); //현재시간에서 노트의 시간값 빼서 오차가져오기
             }
             else errorUp = 9999f;
             if (hitdown.collider != null)
             { //아래 체크
-                Debug.Log(hit);
                 erd = FileReader.Playback - hitdown.collider.GetComponent<ColNote>().getTime();
                 errorDown = Mathf.Abs(erd);
             }

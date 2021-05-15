@@ -18,8 +18,7 @@ public class scrScore : MonoBehaviour
     void Update()
     {
         float a = ScoreManager.acc;
-        a = Mathf.Floor(a * 100) / 100f;
-        acc.text = $"{a}%";
+        acc.text = string.Format("{0:p}", a);
         score = (int)Mathf.Round(ScoreManager.Score);
         if (score != oldscore)
         {

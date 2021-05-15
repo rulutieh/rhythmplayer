@@ -37,6 +37,9 @@ public class ModButton : MonoBehaviour , IPointerClickHandler, IPointerEnterHand
             case 1:
                 select.SetSort();
                 break;
+            case 3:
+                select.SetSpecial();
+                break;
         }
     }
     // Update is called once per frame

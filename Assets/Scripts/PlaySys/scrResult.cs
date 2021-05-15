@@ -68,6 +68,11 @@ public class scrResult : MonoBehaviour
                 tmpresult.text = "Failed";
                 player.PlaySFX(8);
             }
+            else if (scrSetting.AutoPlay)
+            {
+                tmpresult.text = "AutoPlay";
+                player.PlaySFX(7);
+            }
             else
             {
                 tmpresult.text = "Cleared";

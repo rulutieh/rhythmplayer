@@ -17,6 +17,7 @@ public class RankText : MonoBehaviour
     public TextMeshProUGUI scoretxt;
     public TextMeshProUGUI combotxt;
     public TextMeshProUGUI datetxt;
+    public TextMeshProUGUI sunwitxt;
     // Start is called before the first frame update
     public void Awake()
     {
@@ -34,6 +35,7 @@ public class RankText : MonoBehaviour
         scoretxt.text = score.ToString("0000000");
         combotxt.text = $"max combo : {maxcombo}";
         datetxt.text = date;
+        sunwitxt.text = $"#{id + 1}";
         panel = p;
         rp = p.GetComponent<RankPanel>();
 

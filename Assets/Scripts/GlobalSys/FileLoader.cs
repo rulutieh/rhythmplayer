@@ -95,6 +95,8 @@ public class FileLoader : MonoBehaviour
     }
     public List<Song> list = new List<Song>();
     public List<Song> listorigin = new List<Song>();
+
+    string DefaultBGPath = Path.Combine(Application.streamingAssetsPath, "Default", "background.jpg");
     // Start is called before the first frame update
     private void Awake()
     {
@@ -138,6 +140,9 @@ public class FileLoader : MonoBehaviour
         bool hasvideo = false;
         DirectoryInfo d = new DirectoryInfo(dir);
         FileInfo[] Files = d.GetFiles("*.txt");
+
+        if (Files.Length == 0) return; //채보파일 없을시 무시
+
         string[] TXTFILE = new string[Files.Length]; //채보파일들
         string[] DIFFS = new string[Files.Length]; //채보별난이도들
         string[] CHARTERS = new string[Files.Length]; //채보별노터
@@ -150,11 +155,16 @@ public class FileLoader : MonoBehaviour
         FileInfo[] Musics;
         Musics = d.GetFiles("*.mp3"); //음악파일 불러오기
         if (Musics.Length == 0) Musics = d.GetFiles("*.ogg");
+        if (Musics.Length == 0) return; //잘못된 폴더는 무시
         AUDIOFILE = Path.Combine(path, dir, Musics[0].Name);
         FileInfo[] bgs;
         bgs = d.GetFiles("*.jpg");    //배경 불러오기
         if (bgs.Length == 0) bgs = d.GetFiles("*.png");
-        BACKGROUND = Path.Combine(path, dir, bgs[0].Name);
+        if (bgs.Length == 0)
+            BACKGROUND = DefaultBGPath;
+        else
+            BACKGROUND = Path.Combine(path, dir, bgs[0].Name);
+        //이미지 파일 없을시 default 로드
         FileInfo[] bga;
         bga = d.GetFiles("*.mpg"); // 동영상 불러오기
         if (bga.Length == 0) bga = d.GetFiles("*.mp4");
@@ -183,6 +193,7 @@ public class FileLoader : MonoBehaviour
         list.Add(s);
         listorigin.Add(s);
     }
+    #region SORT
     public void SortDiff()
     {
         list.Sort(delegate (Song A, Song B)
@@ -206,6 +217,20 @@ public class FileLoader : MonoBehaviour
             var comparer = StringComparer.Create(new CultureInfo("ja-JP"), true);
             return comparer.Compare(A.name, B.name);
         });
+    }
+    #endregion
+    public void searchbyHash(string hash)
+    {
+        // 해쉬값으로 곡 검색
+        for (int i = 0; i < list.Count; i++)
+        {
+            for(int j = 0; j < list[i].diffCount(); j++)
+                if (list[i].getID(j) == hash)
+                {
+                    scrSetting.decide = i;
+                    scrSetting.diffselection = j;
+                }
+        }
     }
     string CalculateMD5(string filename)
     {

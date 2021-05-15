@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class scrAlbumArt : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject panel;
+    public GameObject panel, fade;
+    RectTransform rect;
+    RankPanel p;
     Image rend;
     public Image bg;
+    Vector3 startpos, endpos;
     Color c;
     bool isloaded;
     // Start is called before the first frame update
@@ -16,6 +20,12 @@ public class scrAlbumArt : MonoBehaviour, IPointerClickHandler
     {
         rend = this.GetComponent<Image>();
         c = new Color(1, 1, 1, 1);
+        p = panel.GetComponent<RankPanel>();
+        rect = GetComponent<RectTransform>();
+        startpos = rect.transform.position;
+        endpos = Vector3.Lerp(fade.GetComponent<RectTransform>().position, startpos, 0.5f);
+
+        AnimatePanel();
     }
 
     // Update is called once per frame
@@ -27,13 +37,28 @@ public class scrAlbumArt : MonoBehaviour, IPointerClickHandler
             rend.color = c;
         }
 
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        panel.GetComponent<RankPanel>().onoff();
+        p.onoff();
+        AnimatePanel();
     }
 
+    public void AnimatePanel()
+    {
+        if (p.isOn)
+        {
+            rend.CrossFadeAlpha(0.9f, 0.3f, false);
+            rect.DOMove(endpos, 0.3f, false);
+        }
+        else
+        {
+            rend.CrossFadeAlpha(1f, 0.3f, false);
+            rect.DOMove(startpos, 0.3f, false);
+        }
+    }
 
     public void LoadAlbumArt()
     {

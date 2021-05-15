@@ -7,7 +7,7 @@ using DG.Tweening;
 public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public bool isOn = true;
-    public float ypos;
+    public float ypos, ypostemp;
     int counts;
     public GameObject o, isnull;
     RectTransform rect;
@@ -36,11 +36,14 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (isOver)
         {
-            if (scroll > 0) { ypos-= 4f; }
-            if (scroll < 0) { ypos+= 4f; }
+            if (scroll > 0) { ypostemp-= 20f; }
+            if (scroll < 0) { ypostemp+= 20f; }
         }
-        if (ypos < 0) ypos = 0;
-        if (ypos > counts * 31.5f) ypos = counts * 31.5f;
+        if (ypostemp < 0) ypostemp = 0;
+        if (ypostemp > counts * 31.5f) ypostemp = counts * 31.5f;
+
+        ypos = Mathf.Lerp(ypos, ypostemp, 0.2f);
+
         if (!isOn) isOver = false;
     }
 

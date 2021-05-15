@@ -6,7 +6,7 @@ using TMPro;
 public class JudgeText : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI error, acc;
+    private TextMeshProUGUI error, acc, auto;
     bool active;
     float ap = 0;
     string txt = "";
@@ -37,10 +37,17 @@ public class JudgeText : MonoBehaviour
             Color col = error.color;
             error.color = new Color(col.r, col.g, col.b, ap);
             acc.color = new Color(1, 1, 1, ap);
+            auto.color = acc.color;
             float a = ScoreManager.acc;
-            a = Mathf.Floor(a * 100) / 100f;
-            error.text = $"{txt}{j}";
-            acc.text = $"{a}%";
+            if (!scrSetting.AutoPlay)
+            {
+                error.text = $"{txt}{j}";
+                acc.text = string.Format("{0:p}", a);
+            }
+            else
+            {
+                auto.text = "AutoPlay";
+            }
         }
 
     }
