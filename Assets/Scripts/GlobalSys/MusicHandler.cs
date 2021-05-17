@@ -7,27 +7,36 @@ using System.IO;
 public class MusicHandler : MonoBehaviour
 {
     FMOD.ChannelGroup channelGroup = new FMOD.ChannelGroup();
-    FMOD.Channel[] channel = new FMOD.Channel[8];
+    FMOD.Channel[] channel = new FMOD.Channel[1000];
     FMOD.Sound snd;
     FMOD.Sound[] sfx = new FMOD.Sound[20];
-    FMOD.RESULT isLoadDone;
+    FMOD.RESULT isLoadDone = FMOD.RESULT.ERR_FILE_NOTFOUND;
     bool isplaying;
     uint length;
     FMOD.Studio.EVENT_CALLBACK dialogueCallback;
 
+    int samplechannelidx = 26;
+    List<FMOD.Sound> KeySoundList = new List<FMOD.Sound>();
+
+    private void Awake()
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         //SND
 
-        FMODUnity.RuntimeManager.CoreSystem.createChannelGroup("cg", out channelGroup); //채널그룹생성
-        for (int i = 0; i < 8; i++) //할당
+        
+        var e = FMODUnity.RuntimeManager.CoreSystem.getMasterChannelGroup(out channelGroup);
+        Debug.Log(e);
+        for (int i = 0; i < 1000; i++) //할당
         {
             channel[i] = new FMOD.Channel();
             channel[i].setChannelGroup(channelGroup);
+            Debug.Log(e);
         }
-        FMODUnity.RuntimeManager.CoreSystem.setDSPBufferSize(256, 4); //로우레이턴시 DSP
 
         //SFX
 
@@ -51,7 +60,12 @@ public class MusicHandler : MonoBehaviour
     {
         snd = new FMOD.Sound();
         isLoadDone = FMODUnity.RuntimeManager.CoreSystem.createSound(fpath, FMOD.MODE.CREATESAMPLE | FMOD.MODE.ACCURATETIME, out snd);
-        //fmodresult = 경로, 샘플생성 | accurate모드 플래그, 주소
+    }
+    public void LoadKeySound(string fpath)
+    {
+        var ks = new FMOD.Sound();
+        FMODUnity.RuntimeManager.CoreSystem.createSound(fpath, FMOD.MODE.CREATESAMPLE, out ks);
+        KeySoundList.Add(ks);
 
     }
     public void PlayMP3()
@@ -59,12 +73,30 @@ public class MusicHandler : MonoBehaviour
         FMODUnity.RuntimeManager.CoreSystem.playSound(snd, channelGroup, false, out channel[0]); //재생
         snd.getLength(out length, FMOD.TIMEUNIT.MS); // 곡 길이
         channelGroup.setVolume(scrSetting.Volume); //볼륨
-
+        FMODUnity.RuntimeManager.CoreSystem.getDSPBufferSize(out uint a, out int b);
+        Debug.Log(a);
     }
     public void PlaySFX(int idx)
     {
-        FMODUnity.RuntimeManager.CoreSystem.playSound(sfx[idx], channelGroup, false, out channel[7]);
+        FMODUnity.RuntimeManager.CoreSystem.playSound(sfx[idx], channelGroup, false, out channel[1]);
         channelGroup.setVolume(scrSetting.Volume);
+    }
+    public void PlaySample(int idx)
+    {
+        bool isplaying = true;
+        samplechannelidx = 2;
+        while (!isplaying)
+        {
+            channel[samplechannelidx].isPlaying(out isplaying);
+            samplechannelidx++;
+            if (samplechannelidx == 1000)
+            {
+                samplechannelidx = (int)Random.Range(2f, 1000f);
+                channel[samplechannelidx].stop();
+                isplaying = false;
+            }
+        }
+        FMODUnity.RuntimeManager.CoreSystem.playSound(KeySoundList[idx], channelGroup, false, out channel[samplechannelidx]); //재생
     }
     public void StopMP3()
     {
@@ -79,6 +111,15 @@ public class MusicHandler : MonoBehaviour
     {
         snd.release();
         //사운드 메모리 해제
+    }
+    public void ReleaseKeysound()
+    {
+        for (int i = 0; i < KeySoundList.Count; i++)
+        {
+            KeySoundList[i].release();
+        }
+
+        KeySoundList = new List<FMOD.Sound>();
     }
     public uint GetLength()
     {
@@ -97,6 +138,7 @@ public class MusicHandler : MonoBehaviour
     void OnApplicationQuit()
     {
         snd.release();
+        ReleaseKeysound();
         for (int i = 0; i < sfx.Length; i++)
         {
             sfx[i].release();

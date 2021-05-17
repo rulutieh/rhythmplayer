@@ -5,7 +5,7 @@ using UnityEngine;
 public class NowPlaying : MonoBehaviour
 {
 
-    public static string MUSICFILE, FILE, BGFILE, BGAFILE, TITLE, ARTIST, HASH;
+    public static string MUSICFILE, FILE, BGFILE, BGAFILE, TITLE, ARTIST, HASH, FOLDER;
     public static string LEVEL, LENGTH;
     public static float OFFSET;
     public static double MEDIAN;
@@ -27,7 +27,6 @@ public class NowPlaying : MonoBehaviour
         nt = NOTECOUNTS;
         ln = LONGNOTECOUNTS;
         string s;
-        LengthMS = player.GetLength();
         float f = LengthMS / 1000f;
         s = $" {Mathf.FloorToInt(f / 60f)} : ";
         s += (f % 60f).ToString("00");

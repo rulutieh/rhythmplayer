@@ -14,7 +14,7 @@ public class scrInput : MonoBehaviour
     public int idx;
     float LNENDTime;
     SpriteRenderer rend;
-
+    MusicHandler player;
     FileReader reader;
     ScoreManager manager;
 
@@ -23,6 +23,7 @@ public class scrInput : MonoBehaviour
     private void Start()
     {
 
+        player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
         rend = GetComponent<SpriteRenderer>();
         transform.localScale = new Vector2(0.74f * scrSetting.ColWidth, 0.6f);
         var g = GameObject.FindWithTag("NoteSys");
@@ -49,7 +50,7 @@ public class scrInput : MonoBehaviour
         }
         else
         {
-            Vector2 pos = new Vector2(transform.position.x, transform.position.y - 1f);
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y - .6f);
             RaycastHit2D auto = Physics2D.Raycast(pos, Vector2.up);
             if (isLNPRESSED)
             {
@@ -106,7 +107,6 @@ public class scrInput : MonoBehaviour
         float errorDown;
         float error;
 
-        float notetiming;
         if (LN)
         {
             float e = FileReader.Playback - LNENDTime;
@@ -137,44 +137,44 @@ public class scrInput : MonoBehaviour
 
             if (errorUp <= 174.4f || errorDown <= 174.4f)
             {
+                RaycastHit2D CloseHit;
                 if (errorUp < errorDown)
                 {
                     error = errorUp;
-                    notetiming = hitup.collider.gameObject.GetComponent<ColNote>().getTime(); //가까운 노트의 목표타이밍값 가져오기
+                    CloseHit = hitup;
                     manager.AddError(eru);
-                    if (hitup.collider.gameObject.GetComponent<ColNote>().isLN())
-                    {
-                        isLNPRESSED = true;
-                        hit = hitup;
-                        hit.collider.GetComponent<ColNote>().pressed = true;
-                        LNENDTime = hit.collider.GetComponent<ColNote>().getLnLength();
-                    }
-                    else
-                    {
-                        createhitef();
-                        Destroy(hitup.collider.gameObject);
-                    }
                 }
                 else
                 {
                     error = errorDown;
-                    notetiming = hitdown.collider.gameObject.GetComponent<ColNote>().getTime();
+                    CloseHit = hitdown;
                     manager.AddError(erd);
-                    if (hitdown.collider.gameObject.GetComponent<ColNote>().isLN())
-                    {
-                        isLNPRESSED = true;
-                        hit = hitdown;
-                        hit.collider.GetComponent<ColNote>().pressed = true;
-                        LNENDTime = hit.collider.GetComponent<ColNote>().getLnLength();
-                    }
-                    else
-                    {
-                        createhitef();
-                        Destroy(hitdown.collider.gameObject);
-                    }
                 }
-                cacJudge(error);
+                if (CloseHit.collider.GetComponent<ColNote>().isLN())
+                {
+                    isLNPRESSED = true;
+                    hit = CloseHit;
+                    CloseHit.collider.GetComponent<ColNote>().pressed = true;
+                    LNENDTime = CloseHit.collider.GetComponent<ColNote>().getLnLength();
+                }
+                else
+                {
+                    createhitef();
+                    Destroy(CloseHit.collider.gameObject);
+                }
 
+                int i = CloseHit.collider.GetComponent<ColNote>().KeySound;
+                if (i != -1)
+                    player.PlaySample(i);
+
+                cacJudge(error);
+                
+            }
+            else if (hitup)
+            {
+                int i = hitup.collider.GetComponent<ColNote>().KeySound;
+                if (i != -1)
+                    player.PlaySample(i);
             }
             #endregion
         }
@@ -196,25 +196,25 @@ public class scrInput : MonoBehaviour
     void cacJudge(float error)
     {
 
-        if (error < 50f)
+        if (error <= 49.5f)
         {
             ScoreManager.combo++;
             getJudge(0);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error < 80f)
+        else if (error <= 82.5f)
         {
             ScoreManager.combo++;
             getJudge(1);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error < 110f)
+        else if (error <= 112.5f)
         {
             ScoreManager.combo++;
             getJudge(2);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error < 135f)
+        else if (error <= 136.5f)
         {
             ScoreManager.combo = 0;
             getJudge(3);
@@ -229,22 +229,22 @@ public class scrInput : MonoBehaviour
     void cacLNJudge(float error)
     {
 
-        if (error < 50f)
+        if (error <= 99f)
         {
             ScoreManager.combo++;
             getJudge(0);
         }
-        else if (error < 100f)
+        else if (error <= 119.5f)
         {
             ScoreManager.combo++;
             getJudge(1);
         }
-        else if (error < 170f)
+        else if (error <= 165f)
         {
             ScoreManager.combo++;
             getJudge(2);
         }
-        else if (error < 230f)
+        else if (error <= 210f)
         {
             ScoreManager.combo = 0;
             getJudge(3);

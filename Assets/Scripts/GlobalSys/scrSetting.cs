@@ -309,7 +309,9 @@ public class scrSetting : MonoBehaviour
                 if (pid.id == accList[i].id && pid.pw == accList[i].pw)
                 {
                     playername = accList[i].name;
+                    
                     return "Login Success";
+                    
                 }
             }
         }

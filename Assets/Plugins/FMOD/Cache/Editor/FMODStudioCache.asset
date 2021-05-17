@@ -40,6 +40,27 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-8334219166736364404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: "C:/Users/miniw/OneDrive - \uC6B0\uC1A1\uB300\uD559\uAD50(WOOSONG UNIVERSITY)/Unity/213/123/Build/Desktop/Master.strings.bank"
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637550482315312661
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 700
+  Exists: 1
 --- !u!114 &-3455541821958947372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,14 +116,14 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -141135907493890040}
-  - {fileID: 624254660070106802}
+  - {fileID: -8334219166736364404}
+  - {fileID: 4328469877639997438}
   EditorEvents: []
   EditorParameters: []
   MasterBanks:
-  - {fileID: 624254660070106802}
+  - {fileID: 4328469877639997438}
   StringsBanks:
-  - {fileID: -141135907493890040}
+  - {fileID: -8334219166736364404}
   stringsBankWriteTime: 637550482315312661
   cacheVersion: 6
 --- !u!114 &624254660070106802
@@ -144,4 +165,25 @@ MonoBehaviour:
   lastModified: 637550482315282698
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &4328469877639997438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: "C:/Users/miniw/OneDrive - \uC6B0\uC1A1\uB300\uD559\uAD50(WOOSONG UNIVERSITY)/Unity/213/123/Build/Desktop/Master.bank"
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637550482315282698
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 1012
   Exists: 1

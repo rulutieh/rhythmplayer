@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Text.RegularExpressions;
 
 public class SettingPanel : MonoBehaviour
 {
@@ -131,12 +132,14 @@ public class SettingPanel : MonoBehaviour
         //ID PW 기억 및 로그인
         string result = st.LoadLocalPlayerAccount();
         errormessage.text = result;
+        if (result == "Login Success") ClickSound(3);
         //불러오기, 로그인 결과 출력
     }
     public void setSignUp()
     {
         //로그인
         //email 형식 체크
+        
         string id = newID.text;
         if (!id.Contains("@"))
         {
@@ -171,12 +174,18 @@ public class SettingPanel : MonoBehaviour
             errormessage.text = "must be greater than 7";
             return;
         }
+        if (Regex.IsMatch(newPW.text, "^[a-zA-Z0-9]*$"))
+        {
+            errormessage.text = "include least one special chars";
+            return;
+        }
+        errormessage.text = "Account Created";
         //계정 생성 후 리스트 저장
         st.SigninLocalPlayerAccount(id, newPW.text, nickField.text);
         //저장 후 불러오기
         st.LoadPlayerAccounts();
         signup = false;
-        errormessage.text = "Account Created";
+        ClickSound(3);
         newID.text = ""; newPW.text = ""; nickField.text = "";
     }
     public void setBool()
@@ -213,7 +222,7 @@ public class SettingPanel : MonoBehaviour
     {
         scrSetting.GlobalOffset += o;
         st.SaveSettings();
-        ClickSound(1);
+        ClickSound(4);
     }
     #endregion
 }

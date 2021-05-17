@@ -25,9 +25,9 @@ public class scrSetText : MonoBehaviour
         if (scrSetting.Random) str = "RANDOM";
         if (scrSetting.Mirror) str = "MIRROR";
         TMPMOD.text = str;
-        TMPSORT.text = "by NAME";
-        if (scrSetting.sortselection == 1) TMPSORT.text = "by ARTIST";
-        if (scrSetting.sortselection == 2) TMPSORT.text = "by LEVEL";
+        TMPSORT.text = "NAME";
+        if (scrSetting.sortselection == 1) TMPSORT.text = "ARTIST";
+        if (scrSetting.sortselection == 2) TMPSORT.text = "LEVEL";
         TMPSPC.text = "NONE";
         if (scrSetting.AutoPlay) TMPSPC.text = "AUTOPLAY";
 

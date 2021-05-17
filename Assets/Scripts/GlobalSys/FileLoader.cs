@@ -19,58 +19,52 @@ public class FileLoader : MonoBehaviour
     }
     public class Song
     {
-
-        public string name;
-        public string artist;
-        public string tags;
-        public bool hasvideo;
-        public float localoffset;
-        string audiopath;
-        string bgpath;
-        string bgapath;
+        public string AudioPath { get; set; }
+        public string BGAPath { get; set; }
+        public string BGPath { get; set; }
+        public string name { get; set; }
+        public string artist { get; set; }
+        public string tags { get; set; }
+        public bool hasvideo { get; set; }
+        public float localoffset { get; set; }
+        public string directory { get; set; }
         List<Chart> charts = new List<Chart>();
-        public Song(string name, string artist, ref string[] diffs, float offset, ref string[] id, ref string[] charter, ref string[] txtpath, string audiopath, string bgpath, string bgapath, bool hasvideo, string tags)
+        public Song(string dir, string name, string artist, ref string[] diffs, float offset, ref string[] id, ref string[] charter, ref string[] txtpath, string audiopath, string bgpath, string bgapath, bool hasvideo, string tags)
         {
 
             for (int i = 0; i < id.Length; i++)
             {
                 charts.Add(new Chart(id[i], charter[i], txtpath[i], diffs[i]));
             }
+            AudioPath = audiopath;
+            BGAPath = bgapath;
+            BGPath = bgpath;
+            directory = dir;
             this.name = name;
             this.artist = artist;
             localoffset = offset;
-            this.audiopath = audiopath;
-            this.bgpath = bgpath;
-            this.bgapath = bgapath;
             this.hasvideo = hasvideo;
             this.tags = tags;
-
             SortDiff();
-
         }
         void SortDiff()
         {
+
             charts.Sort(delegate (Chart A, Chart B)
             {
-                if (int.Parse(A.diffs) > int.Parse(B.diffs)) return 1;
-                else return -1;
+                int a, b;
+                if (int.TryParse(A.diffs, out a) && int.TryParse(B.diffs, out b))
+                {
+                    if (int.Parse(A.diffs) > int.Parse(B.diffs)) return 1;
+                    else return -1;
+                }
+                else return 0;
             });
         }
-        public string getAudio()
-        {
-            return audiopath;
-        }
+
         public string getTxt(int idx)
         {
             return charts[idx].path;
-        }
-        public string getBGA()
-        {
-            return bgapath;
-        }
-        public string getBG()
-        {
-            return bgpath;
         }
         public string getDiff(int idx)
         {
@@ -97,6 +91,7 @@ public class FileLoader : MonoBehaviour
     public List<Song> listorigin = new List<Song>();
 
     string DefaultBGPath = Path.Combine(Application.streamingAssetsPath, "Default", "background.jpg");
+    string DefaultAudioPath = Path.Combine(Application.streamingAssetsPath, "Default", "virtual.mp3");
     // Start is called before the first frame update
     private void Awake()
     {
@@ -140,6 +135,7 @@ public class FileLoader : MonoBehaviour
         bool hasvideo = false;
         DirectoryInfo d = new DirectoryInfo(dir);
         FileInfo[] Files = d.GetFiles("*.txt");
+        if (Files.Length == 0) Files = d.GetFiles("*.osu");
 
         if (Files.Length == 0) return; //채보파일 없을시 무시
 
@@ -153,7 +149,9 @@ public class FileLoader : MonoBehaviour
         }
         //채보파일 불러오기        
         FileInfo[] Musics;
-        Musics = d.GetFiles("*.mp3"); //음악파일 불러오기
+        //음악파일 불러오기
+        //General 항목이 없을 시 폴더의 mp3, ogg 자동 로드
+        Musics = d.GetFiles("*.mp3");
         if (Musics.Length == 0) Musics = d.GetFiles("*.ogg");
         if (Musics.Length == 0) return; //잘못된 폴더는 무시
         AUDIOFILE = Path.Combine(path, dir, Musics[0].Name);
@@ -174,22 +172,72 @@ public class FileLoader : MonoBehaviour
         string _title = "", _artist = "", _tags = "";
         float _offset = 0f;
         string line;
+        bool isOSUFile = false, isVirtual = false;
         for (int i = 0; i < Files.Length; i++)
         {
             StreamReader rdr = new StreamReader(TXTFILE[i]);
-            line = rdr.ReadLine();
-            line = rdr.ReadLine(); _title = line;
-            line = rdr.ReadLine(); _artist = line;
-            line = rdr.ReadLine(); CHARTERS[i] = line;
-            line = rdr.ReadLine(); _tags = line;
-            line = rdr.ReadLine(); DIFFS[i] = line;
-            line = rdr.ReadLine(); _offset = float.Parse(line);
+            while ((line = rdr.ReadLine()) != "[Metadata]")
+            {
+                if (line.Contains("osu file format"))
+                {
+                    //osu파일 체크
+                    isOSUFile = true;
+                }
+                if (line.Contains("AudioFilename"))
+                {
+                    string str = line.Split(':')[1].Trim();
+                    if (!str.Contains("virtual"))
+                    {
+                        //virtual = 음악파일 없이 키 사운드로만 재생
+                        AUDIOFILE = Path.Combine(path, dir, str);
+                    }
+                    else
+                    {
+                        isVirtual = true;
+                        AUDIOFILE = DefaultAudioPath;
+                    }
+                }
+                if (line == null) return;
+            }
+
+            if (!isOSUFile)
+            {
+                //커스텀 확장자
+                line = rdr.ReadLine(); _title = line;
+                line = rdr.ReadLine(); _artist = line;
+                line = rdr.ReadLine(); CHARTERS[i] = line;
+                line = rdr.ReadLine(); _tags = line;
+                line = rdr.ReadLine(); DIFFS[i] = line;
+                line = rdr.ReadLine(); _offset = float.Parse(line);
+            }
+            else
+            {
+                //osu 확장자
+                while ((line = rdr.ReadLine()) != "[TimingPoints]")
+                {
+                    if (line.Contains("Title:")) _title = line.Split(':')[1];
+                    if (line.Contains("Artist:")) _artist = line.Split(':')[1];
+                    if (line.Contains("Version:")) DIFFS[i] = line.Split(':')[1];
+                    if (line.Contains("Tags:")) _tags = line.Split(':')[1];
+                    if (!isVirtual)
+                        _offset = 0.015f;
+                    else if (line.Contains("normal-hitnormal1002.ogg"))
+                    {
+                        string[] strs = line.Split(',');
+                        AUDIOFILE = Path.Combine(path, dir, "normal-hitnormal1002.ogg");
+                        _offset = float.Parse(strs[1]) / 1000f + 0.01f;
+                    }
+                    if (line == null) return;
+                }
+                
+            }
+
+
             _id[i] = CalculateMD5(TXTFILE[i]); //무결성 검사
-            Debug.Log($"{_title} {DIFFS[i]} Hash {_id[i]}");
             rdr.Close();
         }
         Song s;
-        s = new Song(_title, _artist, ref DIFFS, _offset, ref _id, ref CHARTERS, ref TXTFILE, AUDIOFILE, BACKGROUND, VIDEOFILE, hasvideo, _tags);
+        s = new Song(dir, _title, _artist, ref DIFFS, _offset, ref _id, ref CHARTERS, ref TXTFILE, AUDIOFILE, BACKGROUND, VIDEOFILE, hasvideo, _tags);
         list.Add(s);
         listorigin.Add(s);
     }
@@ -198,7 +246,10 @@ public class FileLoader : MonoBehaviour
     {
         list.Sort(delegate (Song A, Song B)
         {
-            if (int.Parse(A.maxDiff()) > int.Parse(B.maxDiff())) return 1;
+            int a, b;
+            if (!int.TryParse(A.maxDiff(), out a)) return 1;
+            if (!int.TryParse(B.maxDiff(), out b)) return 1;
+            if (a > b) return 1;
             else return -1;
         });
     }

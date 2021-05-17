@@ -273,8 +273,8 @@ MonoBehaviour:
       Value: 1
       HasValue: 1
     LiveUpdatePort:
-      Value: 0
-      HasValue: 0
+      Value: 9264
+      HasValue: 1
     Overlay:
       Value: 1
       HasValue: 1
@@ -520,11 +520,11 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: 
-  sourceBankPath: "C:\\Users\\miniw\\OneDrive - \uC6B0\uC1A1\uB300\uD559\uAD50(WOOSONG
-    UNIVERSITY)\\Unity\\fspro\\123\\Build\\Desktop"
+  sourceBankPath: "C:/Users/miniw/OneDrive - \uC6B0\uC1A1\uB300\uD559\uAD50(WOOSONG
+    UNIVERSITY)/Unity/213/123/Build/Desktop"
   SourceBankPathUnformatted: 
-  AutomaticEventLoading: 1
-  BankLoadType: 0
+  AutomaticEventLoading: 0
+  BankLoadType: 2
   AutomaticSampleLoading: 0
   EncryptionKey: 
   ImportType: 0
@@ -540,14 +540,15 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
+  MasterBanks:
+  - Master
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
   AndroidUseOBB: 0
   MeterChannelOrdering: 0
-  StopEventsOutsideMaxDistance: 0
+  StopEventsOutsideMaxDistance: 1
   BoltUnitOptionsBuildPending: 0
   MigratedPlatforms: 0c000000150000000b0000000a00000009000000120000000800000005000000060000000200000001000000
 --- !u!114 &1464296391894259175
@@ -632,37 +633,37 @@ MonoBehaviour:
   Properties:
     LiveUpdate:
       Value: 0
-      HasValue: 0
+      HasValue: 1
     LiveUpdatePort:
       Value: 9264
       HasValue: 1
     Overlay:
-      Value: 0
-      HasValue: 0
+      Value: 1
+      HasValue: 1
     Logging:
       Value: 0
       HasValue: 0
     SampleRate:
       Value: 0
-      HasValue: 0
+      HasValue: 1
     BuildDirectory:
       Value: 
       HasValue: 0
     SpeakerMode:
-      Value: 0
-      HasValue: 0
+      Value: 3
+      HasValue: 1
     VirtualChannelCount:
-      Value: 0
-      HasValue: 0
+      Value: 2048
+      HasValue: 1
     RealChannelCount:
-      Value: 0
-      HasValue: 0
+      Value: 256
+      HasValue: 1
     DSPBufferLength:
-      Value: 0
-      HasValue: 0
+      Value: 64
+      HasValue: 1
     DSPBufferCount:
-      Value: 0
-      HasValue: 0
+      Value: 4
+      HasValue: 1
     Plugins:
       Value: []
       HasValue: 1
@@ -671,7 +672,7 @@ MonoBehaviour:
       HasValue: 1
     CallbackHandler:
       Value: {fileID: 0}
-      HasValue: 0
+      HasValue: 1
   outputType: 
   threadAffinities:
     Value: []

@@ -62,7 +62,8 @@ public class FileSelecter : MonoBehaviour
     void Start()
     {
         init();
-        aud.volume = sfxaud.volume = aud.volume = scrSetting.Volume; 
+        aud.volume = sfxaud.volume = aud.volume = scrSetting.Volume;
+        player.ReleaseKeysound();
     }
     public void init()
     {
@@ -195,21 +196,22 @@ public class FileSelecter : MonoBehaviour
         _artist = Loader.list[scrSetting.decide].artist;
         _diff = Loader.list[scrSetting.decide].getDiff(scrSetting.diffselection);
         _localoffset = Loader.list[scrSetting.decide].localoffset;
-        _bgpath = Loader.list[scrSetting.decide].getBG();
-        _bgapath = Loader.list[scrSetting.decide].getBGA();
+        _bgpath = Loader.list[scrSetting.decide].BGPath;
+        _bgapath = Loader.list[scrSetting.decide].BGAPath;
         _charter = Loader.list[scrSetting.decide].getCharter(scrSetting.diffselection);
         NowPlaying.isBGA = Loader.list[scrSetting.decide].hasvideo;
 
 
 
         LoadNoteFiles();
-        NowPlaying.MUSICFILE = Loader.list[scrSetting.decide].getAudio();       
+        NowPlaying.MUSICFILE = Loader.list[scrSetting.decide].AudioPath;    
         NowPlaying.OFFSET = _localoffset;
         NowPlaying.LEVEL = _diff;
         NowPlaying.BGFILE = _bgpath;
         NowPlaying.BGAFILE = _bgapath;
         NowPlaying.TITLE = _name;
         NowPlaying.ARTIST = _artist;
+        NowPlaying.FOLDER = Loader.list[scrSetting.decide].directory;
         //fmod 사운드 릴리즈
         StopCoroutine(CheckLoadedAndPlay());
         if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
@@ -439,7 +441,7 @@ public class FileSelecter : MonoBehaviour
                         if (hitObjects)
                         {
                             string[] arr = line.Split(',');
-                            lastnote = int.Parse(arr[2]);
+                            NowPlaying.LengthMS = lastnote = int.Parse(arr[2]);
                             if (int.Parse(arr[3]) != 1 && int.Parse(arr[3]) != 5)
                             {
                                 NowPlaying.LONGNOTECOUNTS++;

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System;
 using System.IO;
-
+using System.Linq;
 
 public class FileReader : MonoBehaviour
 {
@@ -13,16 +13,16 @@ public class FileReader : MonoBehaviour
 
     public float offset, loadprogress;
     public static float judgeoffset = -3.15f;
-    public static bool isFailed, isPlaying, isVideoLoaded;
+    public static bool isPlaying, isVideoLoaded, resultload, isLoaded;
     public static float PlaybackChanged, Playback;
     public static float bpm = 0, startbpm = 0;
     public static double multiply;
     float p, _TIME, _RTIME, barTIME;
-    int noteIDX, rnoteIDX, barIDX, timeIDX, preLoad, noteidx = 0, timingidx = 0;
+    int sampleIDX, noteIDX, rnoteIDX, barIDX, timeIDX, preLoad, noteidx = 0, timingidx = 0;
     public int progress = 0;
     int[] keys = { 0, 1, 2, 3, 4, 5, 6 };
-    public GameObject NoteObj, ColObj, endln, result, gameover, initsetting, judgeobj, barobj;
-    bool isLoaded = false, svEnd, noteEnd, rnoteEnd, resultload, playfieldon;
+    public GameObject NoteObj, ColObj, endln, result, gameover, initsetting, judgeobj, barobj, LoadCircle;
+    bool svEnd, noteEnd, rnoteEnd, sampleEnd, playfieldon;
     RankSystem RankSys;
     //fmod
     MusicHandler player;
@@ -42,21 +42,34 @@ public class FileReader : MonoBehaviour
     }
     //노트
     [Serializable]
-    class Notes
+    struct Notes
     {
         public int COLUMN;
         public int TIME;
-        public bool ISLN, pressed;
+        public int KeySoundINDEX;
+        public bool ISLN;
         public int LNLENGTH;
-        public Notes(int COLUMN, int TIME, bool ISLN, int LNLENGTH)
+        public Notes(int COLUMN, int TIME, bool ISLN, int LNLENGTH, int KEYSOUND)
         {
             this.COLUMN = COLUMN;
             this.TIME = TIME;
             this.ISLN = ISLN;
             this.LNLENGTH = LNLENGTH;
-            pressed = false;
+            KeySoundINDEX = KEYSOUND;
         }
 
+    }
+    //샘플
+    [Serializable]
+    struct Samples
+    {
+        public int TIME;
+        public int idx;
+        public Samples(int time, int idx)
+        {
+            TIME = time;
+            this.idx = idx;
+        }
     }
     //노트 리스트
     [SerializeField]
@@ -67,9 +80,13 @@ public class FileReader : MonoBehaviour
     //마디선 리스트
     [SerializeField]
     List<int> barlist = new List<int>();
-    //퍈정범위 내 노트 리스트
     [SerializeField]
-    List<Notes>[] curnote = new List<Notes>[7];
+    string[] keysounds;
+    [SerializeField]
+    List<string> LoadedKeySounds = new List<string>();
+    [SerializeField]
+    List<Samples> SampleList = new List<Samples>();
+
 
     int TimingCount, NoteCount;
     public static int NoteCountLongnote;
@@ -80,28 +97,30 @@ public class FileReader : MonoBehaviour
         noteIDX = 0; //노트 풀링idx
         timeIDX = 0; //타이밍 풀링 idx
         rnoteIDX = 0; //노트콜리더 풀링idx
-
+        sampleIDX = 0;
+        resultload = false;
+        isLoaded = false;
 
         if (scrSetting.Random) //노트 랜덤배치
             Random(keys);
         for (int i = 0; i < keys.Length; i++) 
         {
-            curnote[i] = new List<Notes>();
             if (scrSetting.Mirror) keys[i] = 6 - i;//노트 미러배치
         }
     }
     void Start()
     {
+        LoadCircle.SetActive(true);
         Playback = 0;
         //랭킹 등록 시스템
         w = GameObject.FindWithTag("world");
         RankSys = w.GetComponent<RankSystem>();
         player = w.GetComponent<MusicHandler>(); //Fmod sound system
-
+        player.ReleaseKeysound();
         preLoad = (int)(1500f/scrSetting.scrollSpeed); //노트 풀링 오프셋
        
         playfieldon = true;
-        isFailed = isPlaying = false;
+        isPlaying = false;
         NoteCountLongnote = 0; 
 
         //고른 음악정보 가져오기
@@ -175,7 +194,8 @@ public class FileReader : MonoBehaviour
                 }
             }
 
-
+            if (SampleList.Count != 0)
+                SampleSystem();
         }
     }
     void AudioStart() //오프셋 Invoke로 실행
@@ -186,17 +206,19 @@ public class FileReader : MonoBehaviour
     }
     IEnumerator SongInit() //async 종료 후 해당 데이터로 init
     {
+
         GetBarTime();
         yield return new WaitUntil(() => isVideoLoaded);
         Debug.Log("Load Time : " + Time.timeSinceLevelLoad);
-        yield return new WaitForSeconds(1.2f);        
+        yield return new WaitForSeconds(1.2f);
+        LoadCircle.GetComponent<LoadIcon>().Fade();
         yield return new WaitUntil(() => !Input.GetKey(KeyCode.LeftControl));
-
         startbpm = bpm = (float)TimeList[0].BPM; //1비트당 소모되는 ms
         StartCoroutine(BpmChange());
         StartCoroutine(NoteSystem());
         StartCoroutine(InputSystem());
         StartCoroutine(mBarSystem());
+
         PlaybackChanged = Playback = -2000f;
         p = Playback;
         Invoke("AudioStart", offset + 1.9f + scrSetting.GlobalOffset);
@@ -259,7 +281,28 @@ public class FileReader : MonoBehaviour
     {
         int cc = NoteList[idx].COLUMN;
         var note = Instantiate(ColObj, new Vector2(transform.position.x, 1000f), Quaternion.identity);
-        note.gameObject.GetComponent<ColNote>().SetInfo(cc, NoteList[idx].TIME, NoteList[idx].ISLN, NoteList[idx].LNLENGTH, _RTIME);
+        note.gameObject.GetComponent<ColNote>().SetInfo(cc, NoteList[idx].TIME, NoteList[idx].ISLN, NoteList[idx].LNLENGTH, _RTIME, NoteList[idx].KeySoundINDEX);
+    }
+    void SampleSystem()
+    {
+        int sampleTime = SampleList[sampleIDX].TIME;
+        if (sampleTime <= Playback && !sampleEnd)
+        {
+            int temp = sampleIDX;
+            for (int i = 0; i < 7; i++)
+            {
+                player.PlaySample(SampleList[sampleIDX].idx);
+
+                if (sampleIDX < SampleList.Count - 1)
+                    sampleIDX++;
+                else
+                {
+                    sampleEnd = true;
+                    break;
+                }
+                if (SampleList[temp].TIME != SampleList[sampleIDX].TIME) break;
+            } //7라인 검사후 없으면 break;
+        }
     }
     IEnumerator BpmChange()
     {
@@ -281,11 +324,11 @@ public class FileReader : MonoBehaviour
         _TIME = GetNoteTime(NoteList[noteIDX].TIME);
         float _TIME2 = NoteList[noteIDX].TIME;
         yield return new WaitUntil(() => _TIME <= PlaybackChanged + preLoad && !noteEnd );
-
+        int temp = noteIDX;
         for (int i = 0; i < 7; i++)
         {
             CreateNote(noteIDX, _TIME); //노트생성
-            int temp = noteIDX;
+            
             if (noteIDX < NoteList.Length - 1)
                 noteIDX++;
             else
@@ -303,12 +346,12 @@ public class FileReader : MonoBehaviour
         //순간이동 노트의 경우에는 raycast가 무시되므로 고정 속도의 콜리더 사용
         _RTIME = NoteList[rnoteIDX].TIME;
         float _TIME2 = NoteList[rnoteIDX].TIME;
-        yield return new WaitUntil(() => _RTIME <= Playback + 200f && !rnoteEnd);
-
+        yield return new WaitUntil(() => _RTIME <= Playback + 2500f && !rnoteEnd);
+        int temp = rnoteIDX;
         for (int i = 0; i < 7; i++)
         {
             CreateCollision(rnoteIDX, _RTIME); //노트생성
-            int temp = rnoteIDX;
+            
             if (rnoteIDX < NoteList.Length - 1)
                 rnoteIDX++;
             else
@@ -349,12 +392,23 @@ public class FileReader : MonoBehaviour
     //async
     async void ReadFile(string filePath) //배열에 노트 구조체 추가 (쓰레딩)
     {
+        //키사운드 로딩
+        
+        string path = NowPlaying.FOLDER;
+        string searchPatterns = "*.ogg|*.wav";
+        keysounds = searchPatterns
+                              .Split('|')
+                              .SelectMany(searchPattern => Directory.GetFiles(path, searchPattern)).ToArray();
+
+
+
         FileInfo fileInfo = new FileInfo(filePath);
         double _bpmorigin = 1;
         double _bpm = 1;
         double _sv = 1;
         bool hitObjects = false; //노트 정보 검색
         bool Timings = false;
+        bool Events = false;
         if (fileInfo.Exists)
         {
             string line;
@@ -366,8 +420,52 @@ public class FileReader : MonoBehaviour
 
                     if (!Timings) Timings = line.Contains("[TimingPoints]");
                     if (!hitObjects) hitObjects = line.Contains("[HitObjects]");
+                    if (!Events) Events = line.Contains("[Events]");
                     if (line.Contains(","))
                     {
+                        if (Events && !Timings && !hitObjects)
+                        {
+                            if (line.Contains("Sample") && !line.Contains("Storyboard"))
+                            {
+                                int ksindex = -1;
+                                bool exists = false;
+                                string[] ksarr = line.Split(',');
+
+                                string samplesound = ksarr[3];
+                                samplesound = samplesound.Replace("\"", string.Empty).Trim();
+                                int sampletiming = int.Parse(ksarr[1]);
+
+                                if (samplesound.Contains(".ogg") || samplesound.Contains(".wav"))
+                                {
+
+                                    for (int i = 0; i < LoadedKeySounds.Count; i++)
+                                    {
+                                        if (LoadedKeySounds[i] == samplesound)
+                                        {
+                                            exists = true;
+                                            ksindex = i;
+                                            SampleList.Add(new Samples(sampletiming, i));
+                                        }
+                                    }
+                                    if (!exists)
+                                    {
+                                        for (int i = 0; i < keysounds.Length; i++)
+                                        {
+                                            if (string.Compare(Path.GetFileName(keysounds[i]), samplesound) == 0)
+                                            {
+
+                                                player.LoadKeySound(keysounds[i]);
+                                                LoadedKeySounds.Add(samplesound);
+                                                ksindex = LoadedKeySounds.Count - 1;
+                                                SampleList.Add(new Samples(sampletiming, ksindex));
+                                            }
+                                        }
+                                    }
+                                }
+
+
+                            }
+                        }
                         if (Timings && !hitObjects)
                         {
                             string[] arr2 = line.Split(',');
@@ -390,6 +488,37 @@ public class FileReader : MonoBehaviour
                         }
                         if (hitObjects)
                         {
+                            int ksindex = -1;
+                            bool exists = false;
+                            string[] ksarr = line.Split(':');
+                            
+                            string keysound = ksarr[ksarr.Length - 1];
+                            
+                            if (keysound.Contains(".ogg") || keysound.Contains(".wav"))
+                            {
+                                
+                                for (int i = 0; i < LoadedKeySounds.Count; i++)
+                                {
+                                    if (LoadedKeySounds[i] == keysound)
+                                    {
+                                        exists = true;
+                                        ksindex = i;
+                                    }
+                                }
+                                if (!exists)
+                                {
+                                    for (int i = 0; i < keysounds.Length; i++)
+                                    {
+                                        if (string.Compare(Path.GetFileName(keysounds[i]),keysound) == 0)
+                                        {
+                                            
+                                            player.LoadKeySound(keysounds[i]);
+                                            LoadedKeySounds.Add(keysound);
+                                            ksindex = LoadedKeySounds.Count - 1;
+                                        }
+                                    }
+                                }
+                            }
                             string[] arr = line.Split(',', ':');
 
                             int lnlength = 0;
@@ -401,7 +530,7 @@ public class FileReader : MonoBehaviour
                             }
                             int col = (int)Mathf.Round((int.Parse(arr[0]) - 36) / 73f);
                             col = keys[col];
-                            NoteList[noteidx] = new Notes(col, int.Parse(arr[2]), isln, lnlength);
+                            NoteList[noteidx] = new Notes(col, int.Parse(arr[2]), isln, lnlength, ksindex);
                             noteidx++;
                         }
                     }
@@ -412,11 +541,36 @@ public class FileReader : MonoBehaviour
 
             rdr.Close();
 
+            SortNote();
+
+            SortSample();
+
             StartCoroutine(SongInit());
         }
         else
             Debug.Log("error");
     }
+    public void SortNote()
+    {
+        Array.Sort(NoteList, delegate (Notes A, Notes B)
+        {
+            if (A.TIME > B.TIME)
+                return 1;
+            else
+                return -1;
+        });
+    }
+    public void SortSample()
+    {
+        SampleList.Sort(delegate (Samples A, Samples B)
+        {
+            if (A.TIME > B.TIME)
+                return 1;
+            else
+                return -1;
+        });
+    }
+
     void Random<T>(T[] array) //랜덤 옵션 셔플
     {
         int random1;
