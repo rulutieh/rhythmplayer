@@ -1,0 +1,1451 @@
+[General]
+AudioFilename: virtual
+
+[Metadata]
+Altale
+削除
+siokaze
+BMS, Deemo, G2R2014 Sakuzyo
+23
+0
+
+[Events]
+//Background and Video events
+0,0,"BG.png",0,0
+//Break Periods
+2,76866,81466
+//Storyboard Layer 0 (Background)
+//Storyboard Layer 1 (Fail)
+//Storyboard Layer 2 (Pass)
+//Storyboard Layer 3 (Foreground)
+//Storyboard Layer 4 (Overlay)
+//Storyboard Sound Samples
+Sample,666,0,"Hyper_bgm_1.ogg",85
+Sample,13583,0,"intopiano_3 - Marker #6.ogg",85
+Sample,14666,0,"hyper_bgm121.ogg",85
+Sample,40638,0,"back_qurt - Marker #1.ogg",85
+Sample,53666,0,"cynbal12122.ogg",85
+Sample,56500,0,"hyper_bgm122.ogg",85
+Sample,72666,0,"breaks1 - Marker #63.ogg",85
+Sample,76666,0,"Hyper_bgm_3.ogg",85
+Sample,76666,0,"org_break_1.ogg",85
+Sample,93666,0,"strings_break_2 - Marker #6.ogg",85
+Sample,94000,0,"strings_break_1 - Marker #7.ogg",85
+Sample,94333,0,"strings_break_2 - Marker #7.ogg",85
+Sample,94666,0,"swwpbgm_1 - Marker #2.ogg",85
+Sample,95000,0,"clap_xx2.ogg",85
+Sample,95000,0,"drum_sabi_men1 - Marker #2.ogg",85
+Sample,95000,0,"seqcats - Marker #1.ogg",85
+Sample,95111,0,"drum_sabi_men1 - Marker #3.ogg",85
+Sample,95111,0,"seqcats - Marker #2.ogg",85
+Sample,95222,0,"seqcats - Marker #3.ogg",85
+5,13652,0,"intro_se1.ogg",85
+5,16666,0,"cyn1 - Marker #1.ogg",85
+5,18666,0,"cyn1 - Marker #2.ogg",85
+5,20666,0,"cyn1 - Marker #2.ogg",85
+5,22666,0,"cyn1 - Marker #2.ogg",85
+5,24666,0,"cyn1 - Marker #5.ogg",85
+5,32666,0,"cyn1 - Marker #2.ogg",85
+5,34666,0,"cyn1 - Marker #2.ogg",85
+5,36666,0,"cyn1 - Marker #2.ogg",85
+5,37666,0,"cyn1 - Marker #2.ogg",85
+5,38666,0,"cyn1 - Marker #2.ogg",85
+5,40666,0,"cyn1 - Marker #2.ogg",85
+5,41666,0,"ne1.ogg",85
+5,43666,0,"nwene1.ogg",85
+5,45666,0,"ne1.ogg",85
+5,47666,0,"nwene1.ogg",85
+5,48666,0,"cyn1 - Marker #2.ogg",85
+5,49666,0,"ne1.ogg",85
+5,51666,0,"nwene1.ogg",85
+5,52666,0,"cynbal12122.ogg",85
+5,53666,0,"ne1.ogg",85
+5,54666,0,"cynbal12122.ogg",85
+5,55666,0,"nwene1.ogg",85
+5,56666,0,"cyn1 - Marker #1.ogg",85
+5,64666,0,"cyn1 - Marker #1.ogg",85
+5,65666,0,"cyn1 - Marker #1.ogg",85
+5,66666,0,"cyn1 - Marker #1.ogg",85
+5,67666,0,"cyn1 - Marker #1.ogg",85
+5,68666,0,"cyn1 - Marker #1.ogg",85
+5,70666,0,"cyn1 - Marker #1.ogg",85
+5,72666,0,"cyn1 - Marker #1.ogg",85
+5,74666,0,"piano_fill.ogg",85
+5,76666,0,"cyn1 - Marker #1.ogg",85
+5,83583,0,"kilan1.ogg",85
+5,94666,0,"cynbal12122.ogg",85
+5,102666,0,"cynbal12122.ogg",85
+5,103666,0,"cynbal12122.ogg",85
+5,104666,0,"crgs.ogg",85
+5,105166,0,"crgs.ogg",85
+5,105666,0,"crgs.ogg",85
+5,106166,0,"crgs.ogg",85
+5,106666,0,"crgs.ogg",85
+5,108666,0,"cynbal12122.ogg",85
+5,116666,0,"cynbal12122.ogg",85
+5,117666,0,"cynbal12122.ogg",85
+5,118666,0,"crgs.ogg",85
+5,119166,0,"crgs.ogg",85
+5,119666,0,"crgs.ogg",85
+5,120166,0,"crgs.ogg",85
+5,120666,0,"crgs.ogg",85
+5,122666,0,"cynbal12122.ogg",85
+5,124666,0,"cynbals1.ogg",85
+5,141925,0,"kilan1.ogg",85
+
+Sample,95222,0,"drum_sabi_men1 - Marker #4.ogg",85
+Sample,95333,0,"seqcats - Marker #4.ogg",85
+Sample,95333,0,"clap_xx3.ogg",85
+Sample,95444,0,"drum_sabi_men1 - Marker #6.ogg",85
+Sample,95555,0,"drum_sabi_men1 - Marker #7.ogg",85
+Sample,95555,0,"seqcats - Marker #5.ogg",85
+Sample,95666,0,"seqcats - Marker #6.ogg",85
+Sample,95666,0,"snnoise_1.ogg",85
+Sample,95888,0,"drum_sabi_men1 - Marker #9.ogg",85
+Sample,95888,0,"seqcats - Marker #7.ogg",85
+Sample,96000,0,"drum_sabi_men1 - Marker #10.ogg",85
+Sample,96000,0,"seqcats - Marker #8.ogg",85
+Sample,96000,0,"clap_xx2.ogg",85
+Sample,96111,0,"seqcats - Marker #9.ogg",85
+Sample,96222,0,"seqcats - Marker #10.ogg",85
+Sample,96333,0,"seqcats - Marker #11.ogg",85
+Sample,96333,0,"clap_xx3.ogg",85
+Sample,96444,0,"drum_sabi_men1 - Marker #12.ogg",85
+Sample,96555,0,"drum_sabi_men1 - Marker #13.ogg",85
+Sample,96555,0,"seqcats - Marker #12.ogg",85
+Sample,97000,0,"seqcats - Marker #13.ogg",85
+Sample,97000,0,"drum_sabi_men1 - Marker #15.ogg",85
+Sample,97000,0,"clap_xx2.ogg",85
+Sample,97111,0,"drum_sabi_men1 - Marker #16.ogg",85
+Sample,97111,0,"seqcats - Marker #14.ogg",85
+Sample,97222,0,"seqcats - Marker #15.ogg",85
+Sample,97222,0,"drum_sabi_men1 - Marker #17.ogg",85
+Sample,97333,0,"clap_xx3.ogg",85
+Sample,97333,0,"seqcats - Marker #16.ogg",85
+Sample,97555,0,"seqcats - Marker #17.ogg",85
+Sample,97666,0,"seqcats - Marker #18.ogg",85
+Sample,97666,0,"snnoise_1.ogg",85
+Sample,97888,0,"seqcats - Marker #19.ogg",85
+Sample,98000,0,"drum_sabi_men1 - Marker #20.ogg",85
+Sample,98000,0,"seqcats - Marker #20.ogg",85
+Sample,98000,0,"clap_xx2.ogg",85
+Sample,98111,0,"seqcats - Marker #21.ogg",85
+Sample,98222,0,"drum_sabi_men1 - Marker #21.ogg",85
+Sample,98222,0,"seqcats - Marker #22.ogg",85
+Sample,98333,0,"drum_sabi_men1 - Marker #22.ogg",85
+Sample,98333,0,"clap_xx3.ogg",85
+Sample,98333,0,"seqcats - Marker #23.ogg",85
+Sample,98555,0,"seqcats - Marker #24.ogg",85
+Sample,98777,0,"drum_sabi_men1 - Marker #24.ogg",85
+Sample,98888,0,"drum_sabi_men1 - Marker #25.ogg",85
+Sample,99000,0,"clap_xx2.ogg",85
+Sample,99000,0,"drum_sabi_men1 - Marker #26.ogg",85
+Sample,99000,0,"seqcats - Marker #25.ogg",85
+Sample,99111,0,"seqcats - Marker #26.ogg",85
+Sample,99111,0,"drum_sabi_men1 - Marker #27.ogg",85
+Sample,99222,0,"drum_sabi_men1 - Marker #28.ogg",85
+Sample,99222,0,"seqcats - Marker #27.ogg",85
+Sample,99333,0,"seqcats - Marker #28.ogg",85
+Sample,99333,0,"clap_xx3.ogg",85
+Sample,99444,0,"drum_sabi_men1 - Marker #30.ogg",85
+Sample,99555,0,"seqcats - Marker #29.ogg",85
+Sample,99555,0,"drum_sabi_men1 - Marker #31.ogg",85
+Sample,99666,0,"snnoise_1.ogg",85
+Sample,99777,0,"drum_sabi_men1 - Marker #33.ogg",85
+Sample,99888,0,"drum_sabi_men1 - Marker #34.ogg",85
+Sample,100000,0,"clap_xx2.ogg",85
+Sample,100000,0,"seqcats - Marker #30.ogg",85
+Sample,100000,0,"drum_sabi_men1 - Marker #35.ogg",85
+Sample,100111,0,"seqcats - Marker #31.ogg",85
+Sample,100111,0,"drum_sabi_men1 - Marker #36.ogg",85
+Sample,100222,0,"drum_sabi_men1 - Marker #37.ogg",85
+Sample,100222,0,"seqcats - Marker #32.ogg",85
+Sample,100333,0,"drum_sabi_men1 - Marker #38.ogg",85
+Sample,100333,0,"clap_xx3.ogg",85
+Sample,100333,0,"seqcats - Marker #33.ogg",85
+Sample,100444,0,"drum_sabi_men1 - Marker #39.ogg",85
+Sample,100555,0,"drum_sabi_men1 - Marker #40.ogg",85
+Sample,100555,0,"seqcats - Marker #34.ogg",85
+Sample,100888,0,"drum_sabi_men1 - Marker #42.ogg",85
+Sample,101000,0,"drum_sabi_men1 - Marker #43.ogg",85
+Sample,101000,0,"seqcats - Marker #35.ogg",85
+Sample,101000,0,"clap_xx2.ogg",85
+Sample,101111,0,"seqcats - Marker #36.ogg",85
+Sample,101111,0,"drum_sabi_men1 - Marker #44.ogg",85
+Sample,101222,0,"drum_sabi_men1 - Marker #45.ogg",85
+Sample,101222,0,"seqcats - Marker #37.ogg",85
+Sample,101333,0,"seqcats - Marker #38.ogg",85
+Sample,101333,0,"clap_xx3.ogg",85
+Sample,101444,0,"drum_sabi_men1 - Marker #47.ogg",85
+Sample,101555,0,"seqcats - Marker #39.ogg",85
+Sample,101555,0,"drum_sabi_men1 - Marker #48.ogg",85
+Sample,101666,0,"snnoise_1.ogg",85
+Sample,101666,0,"seqcats - Marker #40.ogg",85
+Sample,101888,0,"seqcats - Marker #41.ogg",85
+Sample,102000,0,"clap_xx2.ogg",85
+Sample,102000,0,"drum_sabi_men1 - Marker #50.ogg",85
+Sample,102000,0,"seqcats - Marker #42.ogg",85
+Sample,102111,0,"seqcats - Marker #43.ogg",85
+Sample,102222,0,"seqcats - Marker #44.ogg",85
+Sample,102333,0,"seqcats - Marker #45.ogg",85
+Sample,102333,0,"clap_xx3.ogg",85
+Sample,102555,0,"drum_sabi_men1 - Marker #52.ogg",85
+Sample,102555,0,"seqcats - Marker #46.ogg",85
+Sample,103000,0,"drum_sabi_men1 - Marker #54.ogg",85
+Sample,103000,0,"seqcats - Marker #47.ogg",85
+Sample,103000,0,"clap_xx2.ogg",85
+Sample,103111,0,"seqcats - Marker #48.ogg",85
+Sample,103111,0,"drum_sabi_men1 - Marker #55.ogg",85
+Sample,103222,0,"drum_sabi_men1 - Marker #56.ogg",85
+Sample,103222,0,"seqcats - Marker #49.ogg",85
+Sample,103333,0,"seqcats - Marker #50.ogg",85
+Sample,103333,0,"clap_xx3.ogg",85
+Sample,103444,0,"drum_sabi_men1 - Marker #58.ogg",85
+Sample,103555,0,"seqcats - Marker #51.ogg",85
+Sample,103555,0,"drum_sabi_men1 - Marker #59.ogg",85
+Sample,103666,0,"snnoise_1.ogg",85
+Sample,103666,0,"seqcats - Marker #52.ogg",85
+Sample,103888,0,"seqcats - Marker #53.ogg",85
+Sample,103888,0,"drum_sabi_men1 - Marker #61.ogg",85
+Sample,104000,0,"seqcats - Marker #54.ogg",85
+Sample,104000,0,"clap_xx2.ogg",85
+Sample,104000,0,"drum_sabi_men1 - Marker #62.ogg",85
+Sample,104111,0,"seqcats - Marker #55.ogg",85
+Sample,104222,0,"seqcats - Marker #56.ogg",85
+Sample,104333,0,"clap_xx3.ogg",85
+Sample,104333,0,"seqcats - Marker #57.ogg",85
+Sample,104444,0,"drum_sabi_men1 - Marker #64.ogg",85
+Sample,104555,0,"drum_sabi_men1 - Marker #65.ogg",85
+Sample,104555,0,"seqcats - Marker #58.ogg",85
+Sample,104666,0,"seqcats - Marker #59.ogg",85
+Sample,104666,0,"drum_sabi_men1 - Marker #66.ogg",85
+Sample,104666,0,"cynbal12122.ogg",85
+Sample,104833,0,"drum_sabi_men1 - Marker #67.ogg",85
+Sample,104833,0,"seqcats - Marker #60.ogg",85
+Sample,105000,0,"seqcats - Marker #61.ogg",85
+Sample,105000,0,"drum_sabi_men1 - Marker #68.ogg",85
+Sample,105166,0,"drum_sabi_men1 - Marker #69.ogg",85
+Sample,105166,0,"seqcats - Marker #62.ogg",85
+Sample,105166,0,"cynbal12122.ogg",85
+Sample,105333,0,"drum_sabi_men1 - Marker #70.ogg",85
+Sample,105333,0,"seqcats - Marker #63.ogg",85
+Sample,105500,0,"seqcats - Marker #64.ogg",85
+Sample,105500,0,"drum_sabi_men1 - Marker #71.ogg",85
+Sample,105666,0,"drum_sabi_men1 - Marker #72.ogg",85
+Sample,105666,0,"cynbal12122.ogg",85
+Sample,105666,0,"snnoise_1.ogg",85
+Sample,105666,0,"seqcats - Marker #65.ogg",85
+Sample,105833,0,"seqcats - Marker #66.ogg",85
+Sample,105833,0,"drum_sabi_men1 - Marker #73.ogg",85
+Sample,106000,0,"drum_sabi_men1 - Marker #74.ogg",85
+Sample,106000,0,"seqcats - Marker #67.ogg",85
+Sample,106166,0,"cynbal12122.ogg",85
+Sample,106166,0,"seqcats - Marker #68.ogg",85
+Sample,106166,0,"drum_sabi_men1 - Marker #75.ogg",85
+Sample,106333,0,"seqcats - Marker #69.ogg",85
+Sample,106333,0,"drum_sabi_men1 - Marker #76.ogg",85
+Sample,106500,0,"drum_sabi_men1 - Marker #77.ogg",85
+Sample,106500,0,"seqcats - Marker #70.ogg",85
+Sample,106666,0,"cynbal12122.ogg",85
+Sample,106666,0,"seqcats - Marker #71.ogg",85
+Sample,106777,0,"drum_sabi_men1 - Marker #79.ogg",85
+Sample,106888,0,"drum_sabi_men1 - Marker #80.ogg",85
+Sample,106888,0,"seqcats - Marker #72.ogg",85
+Sample,107000,0,"drum_sabi_men1 - Marker #81.ogg",85
+Sample,107000,0,"seqcats - Marker #73.ogg",85
+Sample,107000,0,"clap_xx2.ogg",85
+Sample,107111,0,"seqcats - Marker #74.ogg",85
+Sample,107111,0,"drum_sabi_men1 - Marker #82.ogg",85
+Sample,107222,0,"drum_sabi_men1 - Marker #83.ogg",85
+Sample,107222,0,"seqcats - Marker #75.ogg",85
+Sample,107333,0,"seqcats - Marker #76.ogg",85
+Sample,107333,0,"clap_xx3.ogg",85
+Sample,107444,0,"drum_sabi_men1 - Marker #85.ogg",85
+Sample,107444,0,"seqcats - Marker #77.ogg",85
+Sample,107555,0,"seqcats - Marker #78.ogg",85
+Sample,107555,0,"drum_sabi_men1 - Marker #86.ogg",85
+Sample,107666,0,"snnoise_1.ogg",85
+Sample,107666,0,"seqcats - Marker #79.ogg",85
+Sample,107777,0,"seqcats - Marker #80.ogg",85
+Sample,107777,0,"drum_sabi_men1 - Marker #88.ogg",85
+Sample,107888,0,"drum_sabi_men1 - Marker #89.ogg",85
+Sample,107888,0,"seqcats - Marker #81.ogg",85
+Sample,108000,0,"drum_sabi_men1 - Marker #90.ogg",85
+Sample,108000,0,"clap_xx2.ogg",85
+Sample,108000,0,"seqcats - Marker #82.ogg",85
+Sample,108111,0,"seqcats - Marker #83.ogg",85
+Sample,108111,0,"drum_sabi_men1 - Marker #91.ogg",85
+Sample,108222,0,"drum_sabi_men1 - Marker #92.ogg",85
+Sample,108222,0,"seqcats - Marker #84.ogg",85
+Sample,108333,0,"drum_sabi_men1 - Marker #93.ogg",85
+Sample,108333,0,"seqcats - Marker #85.ogg",85
+Sample,108333,0,"clap_xx3.ogg",85
+Sample,108444,0,"drum_sabi_men1 - Marker #94.ogg",85
+Sample,108555,0,"drum_sabi_men1 - Marker #95.ogg",85
+Sample,108666,0,"strings_sabi_x2 - Marker #1.ogg",85
+Sample,108666,0,"strings_sabi_x1 - Marker #1.ogg",85
+Sample,109000,0,"clap_xx2.ogg",85
+Sample,109000,0,"seqcats - Marker #1.ogg",85
+Sample,109111,0,"seqcats - Marker #2.ogg",85
+Sample,109111,0,"drum_sabi_men1 - Marker #3.ogg",85
+Sample,109222,0,"seqcats - Marker #3.ogg",85
+Sample,109333,0,"strings_sabi_x2 - Marker #2.ogg",85
+Sample,109333,0,"clap_xx3.ogg",85
+Sample,109333,0,"strings_sabi_x1 - Marker #2.ogg",85
+Sample,109333,0,"seqcats - Marker #4.ogg",85
+Sample,109500,0,"strings_sabi_x1 - Marker #3.ogg",85
+Sample,109500,0,"strings_sabi_x2 - Marker #3.ogg",85
+Sample,109555,0,"seqcats - Marker #5.ogg",85
+Sample,109666,0,"strings_sabi_x2 - Marker #4.ogg",85
+Sample,109666,0,"beres1.ogg",85
+Sample,109666,0,"strings_sabi_x1 - Marker #4.ogg",85
+Sample,109666,0,"snnoise_1.ogg",85
+Sample,109666,0,"seqcats - Marker #6.ogg",85
+Sample,109888,0,"seqcats - Marker #7.ogg",85
+Sample,110000,0,"seqcats - Marker #8.ogg",85
+Sample,110000,0,"clap_xx2.ogg",85
+Sample,110111,0,"seqcats - Marker #9.ogg",85
+Sample,110222,0,"seqcats - Marker #10.ogg",85
+Sample,110333,0,"seqcats - Marker #11.ogg",85
+Sample,110333,0,"clap_xx3.ogg",85
+Sample,110333,0,"strings_sabi_x2 - Marker #5.ogg",85
+Sample,110333,0,"strings_sabi_x1 - Marker #5.ogg",85
+Sample,110500,0,"strings_sabi_x1 - Marker #6.ogg",85
+Sample,110500,0,"strings_sabi_x2 - Marker #6.ogg",85
+Sample,110555,0,"seqcats - Marker #12.ogg",85
+Sample,110666,0,"strings_sabi_x2 - Marker #7.ogg",85
+Sample,110666,0,"strings_sabi_x1 - Marker #7.ogg",85
+Sample,111000,0,"clap_xx2.ogg",85
+Sample,111000,0,"strings_sabi_x1 - Marker #8.ogg",85
+Sample,111000,0,"seqcats - Marker #13.ogg",85
+Sample,111000,0,"strings_sabi_x2 - Marker #8.ogg",85
+Sample,111111,0,"drum_sabi_men1 - Marker #16.ogg",85
+Sample,111111,0,"seqcats - Marker #14.ogg",85
+Sample,111222,0,"seqcats - Marker #15.ogg",85
+Sample,111333,0,"clap_xx3.ogg",85
+Sample,111333,0,"seqcats - Marker #16.ogg",85
+Sample,111333,0,"strings_sabi_x2 - Marker #9.ogg",85
+Sample,111333,0,"strings_sabi_x1 - Marker #9.ogg",85
+Sample,111555,0,"seqcats - Marker #17.ogg",85
+Sample,111666,0,"snnoise_1.ogg",85
+Sample,111666,0,"seqcats - Marker #18.ogg",85
+Sample,111666,0,"beres1.ogg",85
+Sample,111666,0,"strings_sabi_x2 - Marker #10.ogg",85
+Sample,111666,0,"strings_sabi_x1 - Marker #10.ogg",85
+Sample,111888,0,"seqcats - Marker #19.ogg",85
+Sample,112000,0,"clap_xx2.ogg",85
+Sample,112000,0,"seqcats - Marker #20.ogg",85
+Sample,112111,0,"seqcats - Marker #21.ogg",85
+Sample,112222,0,"seqcats - Marker #22.ogg",85
+Sample,112222,0,"drum_sabi_men1 - Marker #21.ogg",85
+Sample,112333,0,"seqcats - Marker #23.ogg",85
+Sample,112333,0,"clap_xx3.ogg",85
+Sample,112333,0,"strings_sabi_x1 - Marker #11.ogg",85
+Sample,112333,0,"strings_sabi_x2 - Marker #11.ogg",85
+Sample,112555,0,"seqcats - Marker #24.ogg",85
+Sample,112666,0,"strings_sabi_x2 - Marker #12.ogg",85
+Sample,112666,0,"strings_sabi_x1 - Marker #12.ogg",85
+Sample,112777,0,"drum_sabi_men1 - Marker #24.ogg",85
+Sample,112888,0,"drum_sabi_men1 - Marker #25.ogg",85
+Sample,113000,0,"clap_xx2.ogg",85
+Sample,113000,0,"seqcats - Marker #25.ogg",85
+Sample,113111,0,"seqcats - Marker #26.ogg",85
+Sample,113222,0,"seqcats - Marker #27.ogg",85
+Sample,113333,0,"strings_sabi_x1 - Marker #13.ogg",85
+Sample,113333,0,"clap_xx3.ogg",85
+Sample,113333,0,"seqcats - Marker #28.ogg",85
+Sample,113333,0,"strings_sabi_x2 - Marker #13.ogg",85
+Sample,113555,0,"seqcats - Marker #29.ogg",85
+Sample,113666,0,"strings_sabi_x1 - Marker #14.ogg",85
+Sample,113666,0,"snnoise_1.ogg",85
+Sample,113666,0,"beres1.ogg",85
+Sample,113666,0,"strings_sabi_x2 - Marker #14.ogg",85
+Sample,113777,0,"drum_sabi_men1 - Marker #33.ogg",85
+Sample,114000,0,"strings_sabi_x1 - Marker #15.ogg",85
+Sample,114000,0,"clap_xx2.ogg",85
+Sample,114000,0,"seqcats - Marker #30.ogg",85
+Sample,114000,0,"strings_sabi_x2 - Marker #15.ogg",85
+Sample,114111,0,"drum_sabi_men1 - Marker #36.ogg",85
+Sample,114111,0,"seqcats - Marker #31.ogg",85
+Sample,114222,0,"seqcats - Marker #32.ogg",85
+Sample,114333,0,"strings_sabi_x2 - Marker #16.ogg",85
+Sample,114333,0,"seqcats - Marker #33.ogg",85
+Sample,114333,0,"strings_sabi_x1 - Marker #16.ogg",85
+Sample,114333,0,"clap_xx3.ogg",85
+Sample,114444,0,"drum_sabi_men1 - Marker #39.ogg",85
+Sample,114555,0,"seqcats - Marker #34.ogg",85
+Sample,114666,0,"strings_sabi_x2 - Marker #17.ogg",85
+Sample,114666,0,"strings_sabi_x1 - Marker #28.ogg",85
+Sample,115000,0,"seqcats - Marker #35.ogg",85
+Sample,115000,0,"clap_xx2.ogg",85
+Sample,115111,0,"drum_sabi_men1 - Marker #44.ogg",85
+Sample,115111,0,"seqcats - Marker #36.ogg",85
+Sample,115222,0,"seqcats - Marker #37.ogg",85
+Sample,115333,0,"seqcats - Marker #38.ogg",85
+Sample,115333,0,"clap_xx3.ogg",85
+Sample,115444,0,"drum_sabi_men1 - Marker #47.ogg",85
+Sample,115555,0,"seqcats - Marker #39.ogg",85
+Sample,115666,0,"snnoise_1.ogg",85
+Sample,115666,0,"strings_sabi_x2 - Marker #18.ogg",85
+Sample,115666,0,"beres1.ogg",85
+Sample,115666,0,"seqcats - Marker #40.ogg",85
+Sample,115666,0,"strings_sabi_x1 - Marker #18.ogg",85
+Sample,115888,0,"seqcats - Marker #41.ogg",85
+Sample,116000,0,"seqcats - Marker #42.ogg",85
+Sample,116000,0,"clap_xx2.ogg",85
+Sample,116111,0,"seqcats - Marker #43.ogg",85
+Sample,116222,0,"seqcats - Marker #44.ogg",85
+Sample,116333,0,"clap_xx3.ogg",85
+Sample,116333,0,"seqcats - Marker #45.ogg",85
+Sample,116555,0,"seqcats - Marker #46.ogg",85
+Sample,116666,0,"strings_sabi_x1 - Marker #1.ogg",85
+Sample,116666,0,"strings_sabi_x2 - Marker #1.ogg",85
+Sample,117000,0,"seqcats - Marker #47.ogg",85
+Sample,117000,0,"clap_xx2.ogg",85
+Sample,117111,0,"drum_sabi_men1 - Marker #55.ogg",85
+Sample,117111,0,"seqcats - Marker #48.ogg",85
+Sample,117222,0,"seqcats - Marker #49.ogg",85
+Sample,117333,0,"strings_sabi_x2 - Marker #2.ogg",85
+Sample,117333,0,"strings_sabi_x1 - Marker #2.ogg",85
+Sample,117333,0,"seqcats - Marker #50.ogg",85
+Sample,117333,0,"clap_xx3.ogg",85
+Sample,117500,0,"strings_sabi_x2 - Marker #3.ogg",85
+Sample,117500,0,"strings_sabi_x1 - Marker #3.ogg",85
+Sample,117555,0,"seqcats - Marker #51.ogg",85
+Sample,117666,0,"seqcats - Marker #52.ogg",85
+Sample,117666,0,"strings_sabi_x2 - Marker #4.ogg",85
+Sample,117666,0,"snnoise_1.ogg",85
+Sample,117666,0,"beres1.ogg",85
+Sample,117666,0,"strings_sabi_x1 - Marker #4.ogg",85
+Sample,117888,0,"seqcats - Marker #53.ogg",85
+Sample,118000,0,"clap_xx2.ogg",85
+Sample,118000,0,"seqcats - Marker #54.ogg",85
+Sample,118111,0,"seqcats - Marker #55.ogg",85
+Sample,118222,0,"seqcats - Marker #56.ogg",85
+Sample,118333,0,"strings_sabi_x2 - Marker #5.ogg",85
+Sample,118333,0,"seqcats - Marker #57.ogg",85
+Sample,118333,0,"strings_sabi_x1 - Marker #5.ogg",85
+Sample,118333,0,"clap_xx3.ogg",85
+Sample,118444,0,"drum_sabi_men1 - Marker #64.ogg",85
+Sample,118500,0,"strings_sabi_x1 - Marker #6.ogg",85
+Sample,118500,0,"strings_sabi_x2 - Marker #6.ogg",85
+Sample,118555,0,"seqcats - Marker #58.ogg",85
+Sample,118666,0,"strings_sabi_x1 - Marker #29.ogg",85
+Sample,118666,0,"cynbal12122.ogg",85
+Sample,118666,0,"strings_sabi_x2 - Marker #28.ogg",85
+Sample,118833,0,"drum_sabi_men1 - Marker #67.ogg",85
+Sample,119000,0,"drum_sabi_men1 - Marker #68.ogg",85
+Sample,119166,0,"strings_sabi_x2 - Marker #29.ogg",85
+Sample,119166,0,"strings_sabi_x1 - Marker #30.ogg",85
+Sample,119166,0,"cynbal12122.ogg",85
+Sample,119333,0,"drum_sabi_men1 - Marker #70.ogg",85
+Sample,119500,0,"drum_sabi_men1 - Marker #71.ogg",85
+Sample,119666,0,"beres1.ogg",85
+Sample,119666,0,"drum_sabi_men1 - Marker #72.ogg",85
+Sample,119666,0,"snnoise_1.ogg",85
+Sample,119666,0,"strings_sabi_x1 - Marker #31.ogg",85
+Sample,119666,0,"cynbal12122.ogg",85
+Sample,119666,0,"strings_sabi_x2 - Marker #30.ogg",85
+Sample,119833,0,"drum_sabi_men1 - Marker #73.ogg",85
+Sample,120000,0,"drum_sabi_men1 - Marker #74.ogg",85
+Sample,120166,0,"cynbal12122.ogg",85
+Sample,120166,0,"strings_sabi_x2 - Marker #31.ogg",85
+Sample,120166,0,"strings_sabi_x1 - Marker #32.ogg",85
+Sample,120166,0,"drum_sabi_men1 - Marker #75.ogg",85
+Sample,120333,0,"drum_sabi_men1 - Marker #76.ogg",85
+Sample,120500,0,"drum_sabi_men1 - Marker #77.ogg",85
+Sample,120666,0,"cynbal12122.ogg",85
+Sample,120666,0,"seqcats - Marker #71.ogg",85
+Sample,120666,0,"strings_sabi_x1 - Marker #33.ogg",85
+Sample,120666,0,"strings_sabi_x2 - Marker #32.ogg",85
+Sample,120777,0,"drum_sabi_men1 - Marker #79.ogg",85
+Sample,120888,0,"seqcats - Marker #72.ogg",85
+Sample,120888,0,"drum_sabi_men1 - Marker #80.ogg",85
+Sample,121000,0,"clap_xx2.ogg",85
+Sample,121000,0,"seqcats - Marker #73.ogg",85
+Sample,121111,0,"seqcats - Marker #74.ogg",85
+Sample,121222,0,"seqcats - Marker #75.ogg",85
+Sample,121333,0,"seqcats - Marker #76.ogg",85
+Sample,121333,0,"clap_xx3.ogg",85
+Sample,121444,0,"drum_sabi_men1 - Marker #85.ogg",85
+Sample,121444,0,"seqcats - Marker #77.ogg",85
+Sample,121555,0,"seqcats - Marker #78.ogg",85
+Sample,121666,0,"snnoise_1.ogg",85
+Sample,121666,0,"beres1.ogg",85
+Sample,121666,0,"seqcats - Marker #71.ogg",85
+Sample,121888,0,"seqcats - Marker #72.ogg",85
+Sample,122000,0,"seqcats - Marker #73.ogg",85
+Sample,122000,0,"clap_xx2.ogg",85
+Sample,122111,0,"drum_sabi_men1 - Marker #91.ogg",85
+Sample,122111,0,"seqcats - Marker #74.ogg",85
+Sample,122222,0,"seqcats - Marker #75.ogg",85
+Sample,122333,0,"seqcats - Marker #76.ogg",85
+Sample,122333,0,"clap_xx3.ogg",85
+Sample,122444,0,"drum_sabi_men1 - Marker #94.ogg",85
+Sample,122444,0,"seqcats - Marker #77.ogg",85
+Sample,122555,0,"seqcats - Marker #78.ogg",85
+Sample,122666,0,"drum_sabi_men1 - Marker #96.ogg",85
+Sample,122666,0,"strings_sabi_x1 - Marker #34.ogg",85
+Sample,122666,0,"strings_sabi_x2 - Marker #33.ogg",85
+Sample,123666,0,"snnoise_1.ogg",85
+Sample,123666,0,"beres1.ogg",85
+Sample,124666,0,"Hyper_bgm_4.ogg",85
+
+[TimingPoints]
+0,666.666666666667,4,2,0,70,1,0
+124666,722.89156626506,4,2,0,70,1,0
+
+
+[HitObjects]
+160,192,2333,5,0,0:0:0:0:intopiano_1 - Marker #1.ogg
+288,192,2555,1,0,0:0:0:100:intopiano_2 - Marker #1.ogg
+32,192,2666,1,0,0:0:0:100:piano_x1 - Marker #1.ogg
+352,192,2666,1,0,0:0:0:100:intopiano_3 - Marker #1.ogg
+288,192,3347,1,0,0:0:0:100:intopiano_4 - Marker #1.ogg
+160,192,3569,1,0,0:0:0:100:intopiano_5 - Marker #1.ogg
+96,192,3680,1,0,0:0:0:100:piano_x2 - Marker #1.ogg
+416,192,3694,1,0,0:0:0:100:intopiano_6 - Marker #1.ogg
+288,192,4333,1,0,0:0:0:100:intopiano_1 - Marker #2.ogg
+416,192,4541,1,0,0:0:0:100:intopiano_2 - Marker #2.ogg
+480,192,4652,1,0,0:0:0:100:intopiano_3 - Marker #2.ogg
+352,192,4666,1,0,0:0:0:100:piano_x1 - Marker #2.ogg
+416,192,4999,1,0,0:0:0:100:intopiano_4 - Marker #2.ogg
+352,192,5347,1,0,0:0:0:100:intopiano_5 - Marker #2.ogg
+288,192,5555,1,0,0:0:0:100:intopiano_6 - Marker #2.ogg
+32,192,5680,1,0,0:0:0:100:piano_x2 - Marker #2.ogg
+160,192,5680,1,0,0:0:0:100:intopiano_1 - Marker #3.ogg
+416,192,6333,1,0,0:0:0:100:intopiano_2 - Marker #3.ogg
+160,192,6652,1,0,0:0:0:100:piano_x1 - Marker #3.ogg
+352,192,6666,1,0,0:0:0:100:intopiano_3 - Marker #3.ogg
+480,192,7333,1,0,0:0:0:100:intopiano_4 - Marker #3.ogg
+160,192,7666,1,0,0:0:0:100:intopiano_5 - Marker #3.ogg
+32,192,7680,1,0,0:0:0:100:piano_x2 - Marker #3.ogg
+288,192,8013,1,0,0:0:0:100:intopiano_6 - Marker #3.ogg
+352,192,8319,1,0,0:0:0:100:intopiano_1 - Marker #4.ogg
+96,192,8666,1,0,0:0:0:100:piano_x1 - Marker #4.ogg
+416,192,8666,1,0,0:0:0:100:intopiano_2 - Marker #4.ogg
+480,192,9666,1,0,0:0:0:100:intopiano_3 - Marker #4.ogg
+160,192,9680,1,0,0:0:0:100:piano_x2 - Marker #4.ogg
+96,192,10333,1,0,0:0:0:100:intopiano_4 - Marker #4.ogg
+288,192,10569,1,0,0:0:0:100:intopiano_5 - Marker #4.ogg
+32,192,10652,1,0,0:0:0:100:piano_x1 - Marker #5.ogg
+352,192,10652,1,0,0:0:0:100:intopiano_6 - Marker #4.ogg
+288,192,11333,1,0,0:0:0:100:intopiano_1 - Marker #5.ogg
+160,192,11555,1,0,0:0:0:100:intopiano_2 - Marker #5.ogg
+96,192,11638,1,0,0:0:0:100:piano_x2 - Marker #5.ogg
+352,192,11666,1,0,0:0:0:100:intopiano_3 - Marker #5.ogg
+288,192,12319,1,0,0:0:0:100:intopiano_4 - Marker #5.ogg
+352,192,12541,1,0,0:0:0:100:intopiano_5 - Marker #5.ogg
+160,192,12652,1,0,0:0:0:100:piano_x1 - Marker #6.ogg
+416,192,12680,1,0,0:0:0:100:intopiano_6 - Marker #5.ogg
+288,192,13013,1,0,0:0:0:100:intopiano_1 - Marker #6.ogg
+352,192,13347,1,0,0:0:0:100:intopiano_2 - Marker #6.ogg
+480,192,13666,1,0,0:0:0:100:intopiano_4 - Marker #6.ogg
+288,192,13680,1,0,0:0:0:100:piano_x2 - Marker #6.ogg
+416,192,13986,1,0,0:0:0:100:intopiano_5 - Marker #6.ogg
+352,192,14236,1,0,0:0:0:100:intopiano_6 - Marker #6.ogg
+288,192,14333,1,0,0:0:0:100:intopiano_1 - Marker #7.ogg
+352,192,14555,1,0,0:0:0:100:intopiano_2 - Marker #7.ogg
+160,192,14666,1,0,0:0:0:100:intro_se2(2).ogg
+32,192,14694,1,0,0:0:0:100:piano_x1 - Marker #7.ogg
+416,192,15305,1,0,0:0:0:100:intopiano_4 - Marker #7.ogg
+352,192,15555,1,0,0:0:0:100:intopiano_5 - Marker #7.ogg
+288,192,15652,1,0,0:0:0:100:intopiano_6 - Marker #7.ogg
+96,192,15680,1,0,0:0:0:100:piano_x2 - Marker #7.ogg
+352,192,15986,1,0,0:0:0:100:intopiano_1 - Marker #8.ogg
+416,192,16305,1,0,0:0:0:100:intopiano_2 - Marker #8.ogg
+96,192,16666,1,0,0:0:0:100:intobell_1.ogg
+288,192,16666,1,0,0:0:0:100:org_x_1.ogg
+416,192,16666,1,0,0:0:0:100:pianos1 - Marker #1.ogg
+160,192,16999,1,0,0:0:0:100:intobell_2.ogg
+352,192,16999,1,0,0:0:0:100:org_x_2.ogg
+480,192,16999,1,0,0:0:0:100:pianos2 - Marker #1.ogg
+96,192,17333,1,0,0:0:0:100:intobell_1.ogg
+288,192,17333,1,0,0:0:0:100:org_x_1.ogg
+416,192,17333,1,0,0:0:0:100:pianos1 - Marker #2.ogg
+160,192,17666,1,0,0:0:0:100:intobell_2.ogg
+352,192,17666,1,0,0:0:0:100:org_x_2.ogg
+480,192,17666,1,0,0:0:0:100:pianos2 - Marker #2.ogg
+96,192,18000,1,0,0:0:0:100:intobell_1.ogg
+288,192,18000,1,0,0:0:0:100:org_x_1.ogg
+416,192,18000,1,0,0:0:0:100:pianos1 - Marker #3.ogg
+160,192,18333,1,0,0:0:0:100:intobell_2.ogg
+352,192,18333,1,0,0:0:0:100:org_x_2.ogg
+480,192,18333,1,0,0:0:0:100:pianos2 - Marker #3.ogg
+32,192,18666,1,0,0:0:0:100:intobell_3.ogg
+288,192,18666,1,0,0:0:0:100:org_x_3.ogg
+416,192,18666,1,0,0:0:0:100:pianos1 - Marker #4.ogg
+96,192,19000,1,0,0:0:0:100:intobell_4.ogg
+352,192,19000,1,0,0:0:0:100:org_x_4.ogg
+480,192,19000,1,0,0:0:0:100:pianos2 - Marker #4.ogg
+32,192,19333,1,0,0:0:0:100:intobell_3.ogg
+288,192,19333,1,0,0:0:0:100:org_x_3.ogg
+416,192,19333,1,0,0:0:0:100:pianos1 - Marker #5.ogg
+96,192,19666,1,0,0:0:0:100:intobell_4.ogg
+352,192,19666,1,0,0:0:0:100:org_x_4.ogg
+480,192,19666,1,0,0:0:0:100:pianos2 - Marker #5.ogg
+32,192,20000,1,0,0:0:0:100:intobell_3.ogg
+288,192,20000,1,0,0:0:0:100:org_x_3.ogg
+416,192,20000,1,0,0:0:0:100:pianos1 - Marker #6.ogg
+96,192,20333,1,0,0:0:0:100:intobell_4.ogg
+352,192,20333,1,0,0:0:0:100:org_x_4.ogg
+480,192,20333,1,0,0:0:0:100:pianos2 - Marker #6.ogg
+32,192,20666,1,0,0:0:0:100:intobell_5.ogg
+160,192,20666,1,0,0:0:0:100:org_x_5.ogg
+416,192,20666,1,0,0:0:0:100:pianos1 - Marker #7.ogg
+96,192,21000,1,0,0:0:0:100:intobell_6.ogg
+288,192,21000,1,0,0:0:0:100:org_x_6.ogg
+480,192,21000,1,0,0:0:0:100:pianos2 - Marker #7.ogg
+32,192,21333,1,0,0:0:0:100:intobell_5.ogg
+160,192,21333,1,0,0:0:0:100:org_x_5.ogg
+416,192,21333,1,0,0:0:0:100:pianos1 - Marker #8.ogg
+96,192,21666,1,0,0:0:0:100:intobell_6.ogg
+288,192,21666,1,0,0:0:0:100:org_x_6.ogg
+480,192,21666,1,0,0:0:0:100:pianos2 - Marker #8.ogg
+32,192,22000,1,0,0:0:0:100:intobell_5.ogg
+160,192,22000,1,0,0:0:0:100:org_x_5.ogg
+416,192,22000,1,0,0:0:0:100:pianos1 - Marker #9.ogg
+96,192,22333,1,0,0:0:0:100:intobell_6.ogg
+288,192,22333,1,0,0:0:0:100:org_x_6.ogg
+480,192,22333,1,0,0:0:0:100:pianos2 - Marker #9.ogg
+32,192,22666,1,0,0:0:0:100:intobell_7.ogg
+160,192,22666,1,0,0:0:0:100:org_x_7.ogg
+352,192,22666,1,0,0:0:0:100:pianos1 - Marker #10.ogg
+96,192,23000,1,0,0:0:0:100:intobell_8.ogg
+288,192,23000,1,0,0:0:0:100:org_x_8.ogg
+416,192,23000,1,0,0:0:0:100:pianos2 - Marker #10.ogg
+32,192,23333,1,0,0:0:0:100:intobell_7.ogg
+160,192,23333,1,0,0:0:0:100:org_x_7.ogg
+352,192,23333,1,0,0:0:0:100:pianos1 - Marker #11.ogg
+96,192,23666,1,0,0:0:0:100:intobell_8.ogg
+288,192,23666,1,0,0:0:0:100:org_x_8.ogg
+416,192,23666,1,0,0:0:0:100:pianos2 - Marker #11.ogg
+32,192,24000,1,0,0:0:0:100:intobell_9.ogg
+160,192,24000,1,0,0:0:0:100:org_x_3.ogg
+352,192,24000,1,0,0:0:0:100:pianos1 - Marker #12.ogg
+96,192,24333,1,0,0:0:0:100:intobell_10.ogg
+288,192,24333,1,0,0:0:0:100:org_x_4.ogg
+416,192,24333,1,0,0:0:0:100:pianos2 - Marker #12.ogg
+160,192,24666,1,0,0:0:0:100:record1 - Marker #1.ogg
+352,192,25000,1,0,0:0:0:100:record1 - Marker #2.ogg
+160,192,25333,1,0,0:0:0:100:record1 - Marker #3.ogg
+160,192,25666,1,0,0:0:0:100:record1 - Marker #4.ogg
+480,192,25666,1,0,0:0:0:100:terotero1.ogg
+352,192,25750,1,0,0:0:0:100:terotero2.ogg
+480,192,25833,1,0,0:0:0:100:terotero1.ogg
+352,192,25916,1,0,0:0:0:100:terotero2.ogg
+32,192,26000,1,0,0:0:0:100:record1 - Marker #5.ogg
+480,192,26000,1,0,0:0:0:100:terotero1.ogg
+352,192,26083,1,0,0:0:0:100:terotero2.ogg
+480,192,26166,1,0,0:0:0:100:terotero1.ogg
+352,192,26250,1,0,0:0:0:100:terotero2.ogg
+160,192,26333,1,0,0:0:0:100:record1 - Marker #6.ogg
+480,192,26333,1,0,0:0:0:100:terotero1.ogg
+288,192,26666,1,0,0:0:0:100:record1 - Marker #7.ogg
+96,192,27000,1,0,0:0:0:100:record1 - Marker #8.ogg
+288,192,27333,1,0,0:0:0:100:record1 - Marker #9.ogg
+96,192,27666,1,0,0:0:0:100:terotero2.ogg
+480,192,27666,1,0,0:0:0:100:record1 - Marker #10.ogg
+288,192,27750,1,0,0:0:0:100:terotero1.ogg
+416,192,27833,1,0,0:0:0:100:terotero3.ogg
+288,192,27916,1,0,0:0:0:100:terotero1.ogg
+160,192,28000,1,0,0:0:0:100:terotero2.ogg
+352,192,28000,1,0,0:0:0:100:record1 - Marker #11.ogg
+480,192,28083,1,0,0:0:0:100:terotero1.ogg
+352,192,28166,1,0,0:0:0:100:terotero2.ogg
+160,192,28250,1,0,0:0:0:100:terotero4.ogg
+32,192,28333,1,0,0:0:0:100:terotero5.ogg
+480,192,28333,1,0,0:0:0:100:record1 - Marker #12.ogg
+352,192,28666,1,0,0:0:0:100:record1 - Marker #13.ogg
+160,192,29000,1,0,0:0:0:100:record1 - Marker #14.ogg
+480,192,29166,1,0,0:0:0:100:record1 - Marker #15.ogg
+416,192,29333,1,0,0:0:0:100:record1 - Marker #16.ogg
+352,192,29500,1,0,0:0:0:100:record1 - Marker #17.ogg
+32,192,29666,1,0,0:0:0:100:terotero5.ogg
+288,192,29666,1,0,0:0:0:100:record1 - Marker #18.ogg
+96,192,29750,1,0,0:0:0:100:terotero6.ogg
+160,192,29833,1,0,0:0:0:100:terotero4.ogg
+288,192,29916,1,0,0:0:0:100:terotero7.ogg
+96,192,30000,1,0,0:0:0:100:terotero2.ogg
+416,192,30000,1,0,0:0:0:100:record1 - Marker #19.ogg
+160,192,30083,1,0,0:0:0:100:terotero1.ogg
+288,192,30166,1,0,0:0:0:100:terotero8.ogg
+352,192,30250,1,0,0:0:0:100:terotero3.ogg
+160,192,30333,1,0,0:0:0:100:record1 - Marker #20.ogg
+480,192,30333,1,0,0:0:0:100:terotero9.ogg
+288,192,30666,1,0,0:0:0:100:record1 - Marker #21.ogg
+416,192,31000,1,0,0:0:0:100:record1 - Marker #22.ogg
+96,192,31333,1,0,0:0:0:100:record1 - Marker #23.ogg
+96,192,31666,1,0,0:0:0:100:record1 - Marker #24.ogg
+480,192,31666,1,0,0:0:0:100:terotero10.ogg
+416,192,31750,1,0,0:0:0:100:terotero11.ogg
+352,192,31833,1,0,0:0:0:100:terotero12.ogg
+288,192,31916,1,0,0:0:0:100:terotero9.ogg
+32,192,32000,1,0,0:0:0:100:record1 - Marker #25.ogg
+160,192,32000,1,0,0:0:0:100:terotero13.ogg
+480,192,32083,1,0,0:0:0:100:terotero1.ogg
+416,192,32166,1,0,0:0:0:100:terotero2.ogg
+352,192,32250,1,0,0:0:0:100:terotero7.ogg
+96,192,32333,1,0,0:0:0:100:record1 - Marker #26.ogg
+288,192,32333,1,0,0:0:0:100:terotero6.ogg
+32,192,32666,1,0,0:0:0:100:record1 - Marker #27.ogg
+480,192,32666,1,0,0:0:0:100:snare_5 - Marker #1.ogg
+160,192,33000,1,0,0:0:0:100:record1 - Marker #28.ogg
+480,192,33000,1,0,0:0:0:100:snare_5 - Marker #5.ogg
+352,192,33083,1,0,0:0:0:100:snare_5 - Marker #6.ogg
+480,192,33166,1,0,0:0:0:100:snare_5 - Marker #7.ogg
+352,192,33250,1,0,0:0:0:100:snare_5 - Marker #8.ogg
+32,192,33333,1,0,0:0:0:100:record1 - Marker #29.ogg
+480,192,33333,1,0,0:0:0:100:snare_5 - Marker #9.ogg
+352,192,33666,1,0,0:0:0:100:record1 - Marker #30.ogg
+480,192,33666,1,0,0:0:0:100:snare_5 - Marker #1.ogg
+288,192,34000,1,0,0:0:0:100:record1 - Marker #31.ogg
+480,192,34000,1,0,0:0:0:100:snare_5 - Marker #14.ogg
+352,192,34055,1,0,0:0:0:100:snare_5 - Marker #15.ogg
+160,192,34111,1,0,0:0:0:100:snare_5 - Marker #16.ogg
+480,192,34166,1,0,0:0:0:100:snare_5 - Marker #17.ogg
+352,192,34222,1,0,0:0:0:100:snare_5 - Marker #18.ogg
+160,192,34277,1,0,0:0:0:100:snare_5 - Marker #19.ogg
+96,192,34333,1,0,0:0:0:100:record1 - Marker #32.ogg
+480,192,34333,1,0,0:0:0:100:snare_5 - Marker #20.ogg
+32,192,34666,1,0,0:0:0:100:record1 - Marker #33.ogg
+480,192,34666,1,0,0:0:0:100:snare_5 - Marker #1.ogg
+288,192,35000,1,0,0:0:0:100:record1 - Marker #34.ogg
+480,192,35000,1,0,0:0:0:100:snare_5 - Marker #25.ogg
+352,192,35041,1,0,0:0:0:100:snare_5 - Marker #26.ogg
+160,192,35083,1,0,0:0:0:100:snare_5 - Marker #27.ogg
+32,192,35125,1,0,0:0:0:100:snare_5 - Marker #28.ogg
+480,192,35166,1,0,0:0:0:100:snare_5 - Marker #29.ogg
+352,192,35208,1,0,0:0:0:100:snare_5 - Marker #30.ogg
+160,192,35250,1,0,0:0:0:100:snare_5 - Marker #31.ogg
+32,192,35291,1,0,0:0:0:100:snare_5 - Marker #32.ogg
+96,192,35333,1,0,0:0:0:100:record1 - Marker #35.ogg
+480,192,35333,1,0,0:0:0:100:snare_5 - Marker #33.ogg
+352,192,35666,1,0,0:0:0:100:record1 - Marker #36.ogg
+480,192,35666,1,0,0:0:0:100:snare_5 - Marker #1.ogg
+288,192,36000,1,0,0:0:0:100:record1 - Marker #37.ogg
+480,192,36000,1,0,0:0:0:100:snare_5 - Marker #50.ogg
+352,192,36111,1,0,0:0:0:100:snare_5 - Marker #51.ogg
+160,192,36166,1,0,0:0:0:100:record1 - Marker #38.ogg
+480,192,36222,1,0,0:0:0:100:snare_5 - Marker #52.ogg
+96,192,36333,1,0,0:0:0:100:record1 - Marker #39.ogg
+352,192,36333,1,0,0:0:0:100:snare_5 - Marker #53.ogg
+32,192,36500,1,0,0:0:0:100:record1 - Marker #40.ogg
+160,192,36666,1,0,0:0:0:100:record1 - Marker #41.ogg
+480,192,36666,1,0,0:0:0:100:snare_5 - Marker #1.ogg
+480,192,37000,1,0,0:0:0:100:snare_5 - Marker #2.ogg
+288,192,37333,1,0,0:0:0:100:record1 - Marker #42.ogg
+480,192,37333,1,0,0:0:0:100:snare_5 - Marker #3.ogg
+352,192,37500,1,0,0:0:0:100:record1 - Marker #43.ogg
+160,192,37666,1,0,0:0:0:100:record1 - Marker #44.ogg
+480,192,37666,1,0,0:0:0:100:snare_5 - Marker #1.ogg
+32,192,38000,1,0,0:0:0:100:record1 - Marker #45.ogg
+480,192,38000,1,0,0:0:0:100:snare_5 - Marker #2.ogg
+32,192,38333,1,0,0:0:0:100:record1 - Marker #46.ogg
+480,192,38333,1,0,0:0:0:100:snare_5 - Marker #3.ogg
+96,192,38666,1,0,0:0:0:100:record1 - Marker #47.ogg
+480,192,38666,1,0,0:0:0:100:snare_5 - Marker #1.ogg
+480,192,39000,1,0,0:0:0:100:snare_5 - Marker #2.ogg
+480,192,39333,1,0,0:0:0:100:snare_5 - Marker #3.ogg
+480,192,39666,1,0,0:0:0:100:snare_5 - Marker #4.ogg
+32,192,39666,128,0,39916:0:0:0:0:lead_vio1 - Marker #1.ogg
+480,192,40000,1,0,0:0:0:100:snare_5 - Marker #5.ogg
+96,192,40000,128,0,40583:0:0:0:0:lead_vio1 - Marker #2.ogg
+352,192,40083,1,0,0:0:0:100:snare_5 - Marker #6.ogg
+480,192,40166,1,0,0:0:0:100:snare_5 - Marker #7.ogg
+352,192,40250,1,0,0:0:0:100:snare_5 - Marker #8.ogg
+480,192,40333,1,0,0:0:0:100:snare_5 - Marker #9.ogg
+160,192,40666,128,0,41583:0:0:0:0:lead_vio1 - Marker #3.ogg
+416,192,40972,1,0,0:0:0:100:back_qurt - Marker #2.ogg
+480,192,41305,1,0,0:0:0:100:back_qurt - Marker #3.ogg
+96,192,41625,128,0,42333:0:0:0:0:lead_vio1 - Marker #4.ogg
+416,192,41638,1,0,0:0:0:100:back_qurt - Marker #4.ogg
+352,192,41972,1,0,0:0:0:100:back_qurt - Marker #5.ogg
+416,192,42305,1,0,0:0:0:100:back_qurt - Marker #6.ogg
+352,192,42638,1,0,0:0:0:100:back_qurt - Marker #7.ogg
+288,192,42972,1,0,0:0:0:100:back_qurt - Marker #8.ogg
+32,192,43000,128,0,43250:0:0:0:0:lead_vio1 - Marker #5.ogg
+352,192,43305,1,0,0:0:0:100:back_qurt - Marker #9.ogg
+96,192,43333,128,0,43583:0:0:0:0:lead_vio1 - Marker #6.ogg
+160,192,43638,1,0,0:0:0:100:back_qurt - Marker #10.ogg
+352,192,43666,128,0,43916:0:0:0:0:lead_vio1 - Marker #7.ogg
+96,192,43972,1,0,0:0:0:100:back_qurt - Marker #11.ogg
+288,192,44000,128,0,45333:0:0:0:0:lead_vio1 - Marker #8.ogg
+160,192,44305,1,0,0:0:0:100:back_qurt - Marker #12.ogg
+480,192,44638,1,0,0:0:0:100:back_qurt - Marker #13.ogg
+416,192,44972,1,0,0:0:0:100:back_qurt - Marker #14.ogg
+352,192,45305,1,0,0:0:0:100:back_qurt - Marker #15.ogg
+96,192,45638,1,0,0:0:0:100:back_qurt - Marker #16.ogg
+288,192,45972,1,0,0:0:0:100:back_qurt - Marker #17.ogg
+96,192,46305,1,0,0:0:0:100:back_qurt - Marker #18.ogg
+32,192,46625,128,0,48583:0:0:0:0:back_qurt - Marker #19.ogg
+160,192,46666,128,0,47583:0:0:0:0:lead_vio1 - Marker #10.ogg
+288,192,47666,128,0,48583:0:0:0:0:lead_vio1 - Marker #11.ogg
+160,192,48638,1,0,0:0:0:100:back_qurt - Marker #20.ogg
+352,192,48666,128,0,49583:0:0:0:0:lead_vio1 - Marker #12.ogg
+96,192,48972,1,0,0:0:0:100:back_qurt - Marker #21.ogg
+160,192,49305,1,0,0:0:0:100:back_qurt - Marker #22.ogg
+96,192,49638,1,0,0:0:0:100:back_qurt - Marker #23.ogg
+416,192,49666,128,0,50583:0:0:0:0:lead_vio1 - Marker #13.ogg
+32,192,49972,1,0,0:0:0:100:back_qurt - Marker #24.ogg
+96,192,50305,1,0,0:0:0:100:back_qurt - Marker #25.ogg
+288,192,50638,1,0,0:0:0:100:back_qurt - Marker #26.ogg
+32,192,50972,1,0,0:0:0:100:back_qurt - Marker #27.ogg
+160,192,51000,128,0,51250:0:0:0:0:lead_vio1 - Marker #14.ogg
+288,192,51305,1,0,0:0:0:100:back_qurt - Marker #28.ogg
+416,192,51333,128,0,51583:0:0:0:0:lead_vio1 - Marker #15.ogg
+352,192,51638,1,0,0:0:0:100:back_qurt - Marker #29.ogg
+480,192,51666,128,0,51916:0:0:0:0:lead_vio1 - Marker #16.ogg
+288,192,51972,1,0,0:0:0:100:back_qurt - Marker #30.ogg
+416,192,52000,128,0,52250:0:0:0:0:lead_vio1 - Marker #17.ogg
+352,192,52305,1,0,0:0:0:100:back_qurt - Marker #31.ogg
+160,192,52333,128,0,52583:0:0:0:0:lead_vio1 - Marker #18.ogg
+480,192,52638,1,0,0:0:0:100:back_qurt - Marker #32.ogg
+352,192,52666,128,0,53583:0:0:0:0:lead_vio1 - Marker #19.ogg
+160,192,52972,1,0,0:0:0:100:back_qurt - Marker #33.ogg
+96,192,53305,1,0,0:0:0:100:back_qurt - Marker #34.ogg
+32,192,53638,1,0,0:0:0:100:back_qurt - Marker #35.ogg
+480,192,53666,128,0,54250:0:0:0:0:lead_vio1 - Marker #20.ogg
+288,192,53972,1,0,0:0:0:100:back_qurt - Marker #36.ogg
+160,192,54305,1,0,0:0:0:100:back_qurt - Marker #37.ogg
+416,192,54333,1,0,0:0:0:100:lead_vio1 - Marker #21.ogg
+352,192,54500,1,0,0:0:0:100:lead_vio1 - Marker #22.ogg
+96,192,54638,128,0,55986:0:0:0:0:back_qurt - Marker #38.ogg
+288,192,54666,128,0,55666:0:0:0:0:lead_vio1 - Marker #23.ogg
+352,192,56000,1,0,0:0:0:100:lead1 - Marker #1.ogg
+416,192,56333,1,0,0:0:0:100:lead1 - Marker #2.ogg
+32,192,56666,1,0,0:0:0:100:magical - Marker #1.ogg
+160,192,56750,1,0,0:0:0:100:magical - Marker #2.ogg
+288,192,56833,1,0,0:0:0:100:magical - Marker #3.ogg
+416,192,56916,1,0,0:0:0:100:magical - Marker #4.ogg
+96,192,57000,1,0,0:0:0:100:magical - Marker #5.ogg
+288,192,57083,1,0,0:0:0:100:magical - Marker #6.ogg
+352,192,57166,1,0,0:0:0:100:magical - Marker #7.ogg
+480,192,57250,1,0,0:0:0:100:magical - Marker #8.ogg
+32,192,57333,1,0,0:0:0:100:magical - Marker #9.ogg
+288,192,57416,1,0,0:0:0:100:magical - Marker #10.ogg
+352,192,57500,1,0,0:0:0:100:magical - Marker #11.ogg
+416,192,57583,1,0,0:0:0:100:magical - Marker #12.ogg
+96,192,57666,1,0,0:0:0:100:magical - Marker #13.ogg
+160,192,57750,1,0,0:0:0:100:magical - Marker #14.ogg
+288,192,57833,1,0,0:0:0:100:magical - Marker #15.ogg
+480,192,57916,1,0,0:0:0:100:magical - Marker #16.ogg
+32,192,58000,1,0,0:0:0:100:magical - Marker #17.ogg
+160,192,58083,1,0,0:0:0:100:magical - Marker #18.ogg
+352,192,58166,1,0,0:0:0:100:magical - Marker #19.ogg
+480,192,58250,1,0,0:0:0:100:magical - Marker #20.ogg
+96,192,58333,1,0,0:0:0:100:magical - Marker #21.ogg
+160,192,58416,1,0,0:0:0:100:magical - Marker #22.ogg
+352,192,58500,1,0,0:0:0:100:magical - Marker #23.ogg
+416,192,58583,1,0,0:0:0:100:magical - Marker #24.ogg
+480,192,58666,1,0,0:0:0:100:magical - Marker #25.ogg
+352,192,58750,1,0,0:0:0:100:magical - Marker #26.ogg
+288,192,58833,1,0,0:0:0:100:magical - Marker #27.ogg
+96,192,58916,1,0,0:0:0:100:magical - Marker #28.ogg
+416,192,59000,1,0,0:0:0:100:magical - Marker #29.ogg
+288,192,59083,1,0,0:0:0:100:magical - Marker #30.ogg
+160,192,59166,1,0,0:0:0:100:magical - Marker #31.ogg
+32,192,59250,1,0,0:0:0:100:magical - Marker #32.ogg
+480,192,59333,1,0,0:0:0:100:magical - Marker #33.ogg
+352,192,59416,1,0,0:0:0:100:magical - Marker #34.ogg
+160,192,59500,1,0,0:0:0:100:magical - Marker #35.ogg
+96,192,59583,1,0,0:0:0:100:magical - Marker #36.ogg
+416,192,59666,1,0,0:0:0:100:magical - Marker #37.ogg
+352,192,59750,1,0,0:0:0:100:magical - Marker #38.ogg
+160,192,59833,1,0,0:0:0:100:magical - Marker #39.ogg
+32,192,59916,1,0,0:0:0:100:magical - Marker #40.ogg
+480,192,60000,1,0,0:0:0:100:magical - Marker #41.ogg
+416,192,60083,1,0,0:0:0:100:magical - Marker #42.ogg
+288,192,60166,1,0,0:0:0:100:magical - Marker #43.ogg
+96,192,60250,1,0,0:0:0:100:magical - Marker #44.ogg
+416,192,60333,1,0,0:0:0:100:magical - Marker #45.ogg
+352,192,60416,1,0,0:0:0:100:magical - Marker #46.ogg
+288,192,60500,1,0,0:0:0:100:magical - Marker #47.ogg
+160,192,60583,1,0,0:0:0:100:magical - Marker #48.ogg
+32,192,60666,1,0,0:0:0:100:magical - Marker #49.ogg
+96,192,60750,1,0,0:0:0:100:magical - Marker #50.ogg
+288,192,60833,1,0,0:0:0:100:magical - Marker #51.ogg
+352,192,60916,1,0,0:0:0:100:magical - Marker #52.ogg
+96,192,61000,1,0,0:0:0:100:magical - Marker #53.ogg
+160,192,61083,1,0,0:0:0:100:magical - Marker #54.ogg
+352,192,61166,1,0,0:0:0:100:magical - Marker #55.ogg
+416,192,61250,1,0,0:0:0:100:magical - Marker #56.ogg
+160,192,61333,1,0,0:0:0:100:magical - Marker #57.ogg
+288,192,61416,1,0,0:0:0:100:magical - Marker #58.ogg
+416,192,61500,1,0,0:0:0:100:magical - Marker #59.ogg
+480,192,61583,1,0,0:0:0:100:magical - Marker #60.ogg
+32,192,61666,1,0,0:0:0:100:magical - Marker #61.ogg
+96,192,61750,1,0,0:0:0:100:magical - Marker #62.ogg
+160,192,61833,1,0,0:0:0:100:magical - Marker #63.ogg
+288,192,61916,1,0,0:0:0:100:magical - Marker #64.ogg
+96,192,62000,1,0,0:0:0:100:magical - Marker #65.ogg
+160,192,62083,1,0,0:0:0:100:magical - Marker #66.ogg
+288,192,62166,1,0,0:0:0:100:magical - Marker #67.ogg
+352,192,62250,1,0,0:0:0:100:magical - Marker #68.ogg
+160,192,62333,1,0,0:0:0:100:magical - Marker #69.ogg
+288,192,62416,1,0,0:0:0:100:magical - Marker #70.ogg
+352,192,62500,1,0,0:0:0:100:magical - Marker #71.ogg
+416,192,62583,1,0,0:0:0:100:magical - Marker #72.ogg
+480,192,62666,1,0,0:0:0:100:magical - Marker #73.ogg
+352,192,62750,1,0,0:0:0:100:magical - Marker #74.ogg
+480,192,62833,1,0,0:0:0:100:magical - Marker #75.ogg
+352,192,62916,1,0,0:0:0:100:magical - Marker #76.ogg
+160,192,63000,1,0,0:0:0:100:magical - Marker #77.ogg
+32,192,63083,1,0,0:0:0:100:magical - Marker #78.ogg
+160,192,63166,1,0,0:0:0:100:magical - Marker #79.ogg
+32,192,63250,1,0,0:0:0:100:magical - Marker #80.ogg
+480,192,63333,1,0,0:0:0:100:magical - Marker #81.ogg
+288,192,63416,1,0,0:0:0:100:magical - Marker #82.ogg
+32,192,63500,1,0,0:0:0:100:magical - Marker #83.ogg
+288,192,63583,1,0,0:0:0:100:magical - Marker #84.ogg
+480,192,63666,1,0,0:0:0:100:magical - Marker #85.ogg
+352,192,63750,1,0,0:0:0:100:magical - Marker #86.ogg
+32,192,63833,1,0,0:0:0:100:magical - Marker #87.ogg
+160,192,63916,1,0,0:0:0:100:magical - Marker #88.ogg
+480,192,64000,1,0,0:0:0:100:magical - Marker #89.ogg
+352,192,64083,1,0,0:0:0:100:magical - Marker #90.ogg
+32,192,64166,1,0,0:0:0:100:magical - Marker #91.ogg
+160,192,64333,1,0,0:0:0:100:piano_past - Marker #1.ogg
+352,192,64333,1,0,0:0:0:100:magical - Marker #93.ogg
+288,192,64500,1,0,0:0:0:100:piano_past - Marker #2.ogg
+416,192,64500,1,0,0:0:0:100:magical - Marker #95.ogg
+352,192,64666,1,0,0:0:0:100:orgs1 - Marker #35.ogg
+480,192,64666,1,0,0:0:0:100:piano_past - Marker #3.ogg
+32,192,64833,1,0,0:0:0:100:seq1 - Marker #1.ogg
+96,192,64916,1,0,0:0:0:100:seq1 - Marker #2.ogg
+160,192,65000,1,0,0:0:0:100:seq1 - Marker #3.ogg
+288,192,65083,1,0,0:0:0:100:seq1 - Marker #4.ogg
+352,192,65166,1,0,0:0:0:100:seq1 - Marker #5.ogg
+416,192,65250,1,0,0:0:0:100:seq1 - Marker #6.ogg
+96,192,65333,1,0,0:0:0:100:orgs1 - Marker #36.ogg
+288,192,65333,1,0,0:0:0:100:piano_past - Marker #4.ogg
+352,192,65500,1,0,0:0:0:100:orgs1 - Marker #37.ogg
+480,192,65500,1,0,0:0:0:100:piano_past - Marker #5.ogg
+96,192,65666,1,0,0:0:0:100:piano_past - Marker #6.ogg
+288,192,65666,1,0,0:0:0:100:orgs1 - Marker #38.ogg
+32,192,65833,1,0,0:0:0:100:seq1 - Marker #11.ogg
+96,192,65916,1,0,0:0:0:100:seq1 - Marker #3.ogg
+160,192,66000,1,0,0:0:0:100:seq1 - Marker #4.ogg
+416,192,66000,1,0,0:0:0:100:piano_past - Marker #7.ogg
+288,192,66083,1,0,0:0:0:100:seq1 - Marker #5.ogg
+352,192,66166,1,0,0:0:0:100:seq1 - Marker #6.ogg
+416,192,66250,1,0,0:0:0:100:seq1 - Marker #7.ogg
+160,192,66333,1,0,0:0:0:100:piano_past - Marker #8.ogg
+480,192,66333,1,0,0:0:0:100:seq1 - Marker #8.ogg
+288,192,66416,1,0,0:0:0:100:seq1 - Marker #9.ogg
+352,192,66500,1,0,0:0:0:100:seq1 - Marker #19.ogg
+416,192,66583,1,0,0:0:0:100:seq1 - Marker #20.ogg
+96,192,66666,1,0,0:0:0:100:orgs1 - Marker #41.ogg
+288,192,66666,1,0,0:0:0:100:piano_past - Marker #9.ogg
+32,192,66833,1,0,0:0:0:100:seq1 - Marker #21.ogg
+96,192,66916,1,0,0:0:0:100:seq1 - Marker #4.ogg
+160,192,67000,1,0,0:0:0:100:seq1 - Marker #5.ogg
+480,192,67000,1,0,0:0:0:100:piano_past - Marker #10.ogg
+288,192,67083,1,0,0:0:0:100:seq1 - Marker #6.ogg
+352,192,67166,1,0,0:0:0:100:seq1 - Marker #7.ogg
+416,192,67250,1,0,0:0:0:100:seq1 - Marker #8.ogg
+288,192,67333,1,0,0:0:0:100:piano_past - Marker #11.ogg
+480,192,67333,1,0,0:0:0:100:seq1 - Marker #9.ogg
+96,192,67416,1,0,0:0:0:100:seq1 - Marker #19.ogg
+160,192,67500,1,0,0:0:0:100:seq1 - Marker #29.ogg
+288,192,67583,1,0,0:0:0:100:seq1 - Marker #30.ogg
+32,192,67666,1,0,0:0:0:100:piano_past - Marker #12.ogg
+480,192,67666,1,0,0:0:0:100:seq1 - Marker #31.ogg
+416,192,67750,1,0,0:0:0:100:seq1 - Marker #32.ogg
+352,192,67833,1,0,0:0:0:100:seq1 - Marker #33.ogg
+288,192,67916,1,0,0:0:0:100:seq1 - Marker #34.ogg
+160,192,68000,1,0,0:0:0:100:orgs1 - Marker #45.ogg
+416,192,68000,1,0,0:0:0:100:seq1 - Marker #35.ogg
+352,192,68083,1,0,0:0:0:100:seq1 - Marker #36.ogg
+288,192,68166,1,0,0:0:0:100:seq1 - Marker #37.ogg
+160,192,68250,1,0,0:0:0:100:seq1 - Marker #38.ogg
+96,192,68333,1,0,0:0:0:100:orgs1 - Marker #46.ogg
+352,192,68333,1,0,0:0:0:100:seq1 - Marker #39.ogg
+480,192,68333,1,0,0:0:0:100:piano_past - Marker #13.ogg
+288,192,68416,1,0,0:0:0:100:seq1 - Marker #40.ogg
+160,192,68500,1,0,0:0:0:100:seq1 - Marker #41.ogg
+96,192,68583,1,0,0:0:0:100:seq1 - Marker #42.ogg
+32,192,68666,1,0,0:0:0:100:orgs1 - Marker #47.ogg
+480,192,68666,1,0,0:0:0:100:piano_past - Marker #14.ogg
+352,192,69333,1,0,0:0:0:100:magical - Marker #97.ogg
+480,192,69333,1,0,0:0:0:100:piano_past - Marker #15.ogg
+32,192,69416,1,0,0:0:0:100:magical - Marker #98.ogg
+160,192,69416,1,0,0:0:0:100:piano_past - Marker #16.ogg
+288,192,69500,1,0,0:0:0:100:magical - Marker #99.ogg
+416,192,69500,1,0,0:0:0:100:piano_past - Marker #17.ogg
+32,192,69583,1,0,0:0:0:100:magical - Marker #100.ogg
+160,192,69583,1,0,0:0:0:100:piano_past - Marker #18.ogg
+352,192,69666,1,0,0:0:0:100:magical - Marker #101.ogg
+480,192,69666,1,0,0:0:0:100:piano_past - Marker #19.ogg
+96,192,69750,1,0,0:0:0:100:magical - Marker #102.ogg
+288,192,69750,1,0,0:0:0:100:piano_past - Marker #20.ogg
+352,192,69833,1,0,0:0:0:100:magical - Marker #103.ogg
+480,192,69833,1,0,0:0:0:100:piano_past - Marker #21.ogg
+32,192,69916,1,0,0:0:0:100:magical - Marker #104.ogg
+160,192,69916,1,0,0:0:0:100:piano_past - Marker #22.ogg
+288,192,70000,1,0,0:0:0:100:magical - Marker #105.ogg
+416,192,70000,1,0,0:0:0:100:piano_past - Marker #23.ogg
+32,192,70083,1,0,0:0:0:100:magical - Marker #106.ogg
+160,192,70083,1,0,0:0:0:100:piano_past - Marker #24.ogg
+352,192,70166,1,0,0:0:0:100:magical - Marker #107.ogg
+480,192,70166,1,0,0:0:0:100:piano_past - Marker #25.ogg
+96,192,70250,1,0,0:0:0:100:magical - Marker #108.ogg
+288,192,70250,1,0,0:0:0:100:piano_past - Marker #26.ogg
+352,192,70333,1,0,0:0:0:100:magical - Marker #109.ogg
+480,192,70333,1,0,0:0:0:100:piano_past - Marker #27.ogg
+32,192,70666,1,0,0:0:0:100:orgs1 - Marker #51.ogg
+480,192,70666,1,0,0:0:0:100:piano_past - Marker #28.ogg
+32,192,71333,1,0,0:0:0:100:magical - Marker #97.ogg
+480,192,71333,1,0,0:0:0:100:piano_past - Marker #29.ogg
+96,192,71416,1,0,0:0:0:100:magical - Marker #98.ogg
+416,192,71416,1,0,0:0:0:100:piano_past - Marker #30.ogg
+160,192,71500,1,0,0:0:0:100:magical - Marker #99.ogg
+352,192,71500,1,0,0:0:0:100:piano_past - Marker #31.ogg
+96,192,71583,1,0,0:0:0:100:magical - Marker #100.ogg
+416,192,71583,1,0,0:0:0:100:piano_past - Marker #32.ogg
+32,192,71666,1,0,0:0:0:100:magical - Marker #101.ogg
+480,192,71666,1,0,0:0:0:100:piano_past - Marker #33.ogg
+160,192,71750,1,0,0:0:0:100:magical - Marker #102.ogg
+352,192,71750,1,0,0:0:0:100:piano_past - Marker #34.ogg
+32,192,71833,1,0,0:0:0:100:magical - Marker #103.ogg
+480,192,71833,1,0,0:0:0:100:piano_past - Marker #35.ogg
+160,192,71916,1,0,0:0:0:100:magical - Marker #104.ogg
+352,192,71916,1,0,0:0:0:100:piano_past - Marker #36.ogg
+32,192,72000,1,0,0:0:0:100:magical - Marker #105.ogg
+480,192,72000,1,0,0:0:0:100:piano_past - Marker #37.ogg
+160,192,72083,1,0,0:0:0:100:magical - Marker #106.ogg
+352,192,72083,1,0,0:0:0:100:piano_past - Marker #38.ogg
+32,192,72166,1,0,0:0:0:100:magical - Marker #107.ogg
+480,192,72166,1,0,0:0:0:100:piano_past - Marker #39.ogg
+96,192,72250,1,0,0:0:0:100:magical - Marker #108.ogg
+416,192,72250,1,0,0:0:0:100:piano_past - Marker #40.ogg
+160,192,72333,1,0,0:0:0:100:magical - Marker #109.ogg
+352,192,72333,1,0,0:0:0:100:piano_past - Marker #41.ogg
+96,192,72500,1,0,0:0:0:100:piano_past - Marker #42.ogg
+416,192,72500,1,0,0:0:0:100:orgs1 - Marker #57.ogg
+32,192,72666,1,0,0:0:0:100:kick5 - Marker #4.ogg
+352,192,72666,1,0,0:0:0:100:magical - Marker #133.ogg
+480,192,72666,1,0,0:0:0:100:piano_past - Marker #43.ogg
+96,192,72833,1,0,0:0:0:100:magical - Marker #135.ogg
+288,192,72916,1,0,0:0:0:100:magical - Marker #136.ogg
+32,192,73000,1,0,0:0:0:100:magical - Marker #137.ogg
+160,192,73083,1,0,0:0:0:100:magical - Marker #138.ogg
+352,192,73166,1,0,0:0:0:100:magical - Marker #139.ogg
+480,192,73250,1,0,0:0:0:100:magical - Marker #140.ogg
+96,192,73333,1,0,0:0:0:100:magical - Marker #141.ogg
+288,192,73416,1,0,0:0:0:100:magical - Marker #142.ogg
+416,192,73500,1,0,0:0:0:100:magical - Marker #143.ogg
+160,192,73583,1,0,0:0:0:100:magical - Marker #144.ogg
+352,192,73666,1,0,0:0:0:100:magical - Marker #145.ogg
+160,192,73750,1,0,0:0:0:100:magical - Marker #146.ogg
+416,192,73833,1,0,0:0:0:100:magical - Marker #147.ogg
+288,192,73916,1,0,0:0:0:100:magical - Marker #148.ogg
+96,192,74000,1,0,0:0:0:100:magical - Marker #149.ogg
+480,192,74083,1,0,0:0:0:100:magical - Marker #150.ogg
+352,192,74166,1,0,0:0:0:100:magical - Marker #151.ogg
+160,192,74250,1,0,0:0:0:100:magical - Marker #152.ogg
+32,192,74333,1,0,0:0:0:100:magical - Marker #153.ogg
+416,192,74416,1,0,0:0:0:100:magical - Marker #154.ogg
+288,192,74500,1,0,0:0:0:100:magical - Marker #155.ogg
+96,192,74583,1,0,0:0:0:100:magical - Marker #156.ogg
+32,192,74666,1,0,0:0:0:100:kick6 - Marker #4.ogg
+480,192,74666,1,0,0:0:0:100:cyn1 - Marker #1.ogg
+32,192,76666,1,0,0:0:0:100:kick6 - Marker #5.ogg
+160,192,83666,1,0,0:0:0:100:break_piano4 - Marker #1.ogg
+288,192,84000,1,0,0:0:0:100:break_piano6 - Marker #1.ogg
+352,192,84333,1,0,0:0:0:100:break_piano7 - Marker #1.ogg
+96,192,84666,1,0,0:0:0:100:break_piano3 - Marker #1.ogg
+416,192,84666,1,0,0:0:0:100:break_piano8 - Marker #1.ogg
+352,192,85333,1,0,0:0:0:100:break_piano4 - Marker #2.ogg
+288,192,85569,1,0,0:0:0:100:break_piano6 - Marker #2.ogg
+32,192,85666,1,0,0:0:0:100:break_piano1 - Marker #1.ogg
+416,192,85666,1,0,0:0:0:100:break_piano7 - Marker #2.ogg
+288,192,86333,1,0,0:0:0:100:break_piano8 - Marker #2.ogg
+352,192,86541,1,0,0:0:0:100:break_piano4 - Marker #3.ogg
+480,192,86666,1,0,0:0:0:100:break_piano6 - Marker #3.ogg
+416,192,87000,1,0,0:0:0:100:break_piano7 - Marker #3.ogg
+352,192,87333,1,0,0:0:0:100:break_piano8 - Marker #3.ogg
+288,192,87680,1,0,0:0:0:100:break_piano4 - Marker #4.ogg
+160,192,88333,1,0,0:0:0:100:break_piano6 - Marker #4.ogg
+96,192,88666,1,0,0:0:0:100:break_piano1 - Marker #2.ogg
+416,192,88666,1,0,0:0:0:100:break_piano7 - Marker #4.ogg
+480,192,89333,1,0,0:0:0:100:break_piano8 - Marker #4.ogg
+32,192,89666,1,0,0:0:0:100:break_piano3 - Marker #2.ogg
+352,192,89666,1,0,0:0:0:100:break_piano4 - Marker #5.ogg
+288,192,90666,128,0,92666:0:0:0:0:strings_break_1 - Marker #6.ogg
+32,192,93666,1,0,0:0:0:100:harpgliss___d1 - Marker #1.ogg
+160,192,93722,1,0,0:0:0:100:harpgliss___d1 - Marker #2.ogg
+352,192,93777,1,0,0:0:0:100:harpgliss___d1 - Marker #3.ogg
+480,192,93833,1,0,0:0:0:100:harpgliss___d1 - Marker #4.ogg
+96,192,93888,1,0,0:0:0:100:harpgliss___d1 - Marker #5.ogg
+288,192,93944,1,0,0:0:0:100:harpgliss___d1 - Marker #6.ogg
+416,192,94000,1,0,0:0:0:100:harpgliss___d1 - Marker #7.ogg
+32,192,94055,1,0,0:0:0:100:harpgliss___d1 - Marker #8.ogg
+160,192,94111,1,0,0:0:0:100:harpgliss___d1 - Marker #9.ogg
+352,192,94166,1,0,0:0:0:100:harpgliss___d1 - Marker #10.ogg
+480,192,94222,1,0,0:0:0:100:harpgliss___d1 - Marker #11.ogg
+96,192,94277,1,0,0:0:0:100:harpgliss___d1 - Marker #12.ogg
+288,192,94333,1,0,0:0:0:100:harpgliss___d1 - Marker #13.ogg
+416,192,94388,1,0,0:0:0:100:harpgliss___d1 - Marker #14.ogg
+32,192,94444,1,0,0:0:0:100:harpgliss___d1 - Marker #15.ogg
+160,192,94500,1,0,0:0:0:100:harpgliss___d1 - Marker #16.ogg
+352,192,94555,1,0,0:0:0:100:harpgliss___d1 - Marker #17.ogg
+480,192,94611,1,0,0:0:0:100:harpgliss___d1 - Marker #18.ogg
+32,192,94666,1,0,0:0:0:100:drum_sabi_men1 - Marker #1.ogg
+288,192,94666,1,0,0:0:0:100:strings_sabi_x1 - Marker #1.ogg
+416,192,94666,1,0,0:0:0:100:strings_sabi_x2 - Marker #1.ogg
+32,192,95333,1,0,0:0:0:100:drum_sabi_men1 - Marker #5.ogg
+160,192,95333,1,0,0:0:0:100:strings_sabi_x1 - Marker #2.ogg
+352,192,95333,1,0,0:0:0:100:strings_sabi_x2 - Marker #2.ogg
+96,192,95500,1,0,0:0:0:100:strings_sabi_x1 - Marker #3.ogg
+288,192,95500,1,0,0:0:0:100:strings_sabi_x2 - Marker #3.ogg
+160,192,95666,1,0,0:0:0:100:drum_sabi_men1 - Marker #8.ogg
+352,192,95666,1,0,0:0:0:100:strings_sabi_x1 - Marker #4.ogg
+480,192,95666,1,0,0:0:0:100:strings_sabi_x2 - Marker #4.ogg
+32,192,96333,1,0,0:0:0:100:drum_sabi_men1 - Marker #11.ogg
+160,192,96333,1,0,0:0:0:100:strings_sabi_x1 - Marker #5.ogg
+352,192,96333,1,0,0:0:0:100:strings_sabi_x2 - Marker #5.ogg
+288,192,96500,1,0,0:0:0:100:strings_sabi_x1 - Marker #6.ogg
+416,192,96500,1,0,0:0:0:100:strings_sabi_x2 - Marker #6.ogg
+32,192,96666,1,0,0:0:0:100:drum_sabi_men1 - Marker #14.ogg
+352,192,96666,1,0,0:0:0:100:strings_sabi_x1 - Marker #7.ogg
+480,192,96666,1,0,0:0:0:100:strings_sabi_x2 - Marker #7.ogg
+288,192,97000,1,0,0:0:0:100:strings_sabi_x1 - Marker #8.ogg
+416,192,97000,1,0,0:0:0:100:strings_sabi_x2 - Marker #8.ogg
+32,192,97333,1,0,0:0:0:100:drum_sabi_men1 - Marker #18.ogg
+160,192,97333,1,0,0:0:0:100:strings_sabi_x1 - Marker #9.ogg
+352,192,97333,1,0,0:0:0:100:strings_sabi_x2 - Marker #9.ogg
+96,192,97666,1,0,0:0:0:100:drum_sabi_men1 - Marker #19.ogg
+288,192,97666,1,0,0:0:0:100:strings_sabi_x1 - Marker #10.ogg
+416,192,97666,1,0,0:0:0:100:strings_sabi_x2 - Marker #10.ogg
+160,192,98333,1,0,0:0:0:100:strings_sabi_x1 - Marker #11.ogg
+352,192,98333,1,0,0:0:0:100:strings_sabi_x2 - Marker #11.ogg
+32,192,98666,1,0,0:0:0:100:drum_sabi_men1 - Marker #23.ogg
+96,192,98666,1,0,0:0:0:100:strings_sabi_x1 - Marker #12.ogg
+288,192,98666,1,0,0:0:0:100:strings_sabi_x2 - Marker #12.ogg
+32,192,99333,1,0,0:0:0:100:drum_sabi_men1 - Marker #29.ogg
+352,192,99333,1,0,0:0:0:100:strings_sabi_x1 - Marker #13.ogg
+480,192,99333,1,0,0:0:0:100:strings_sabi_x2 - Marker #13.ogg
+96,192,99666,1,0,0:0:0:100:drum_sabi_men1 - Marker #32.ogg
+160,192,99666,1,0,0:0:0:100:strings_sabi_x1 - Marker #14.ogg
+352,192,99666,1,0,0:0:0:100:strings_sabi_x2 - Marker #14.ogg
+288,192,100000,1,0,0:0:0:100:strings_sabi_x1 - Marker #15.ogg
+416,192,100000,1,0,0:0:0:100:strings_sabi_x2 - Marker #15.ogg
+352,192,100333,1,0,0:0:0:100:strings_sabi_x1 - Marker #16.ogg
+480,192,100333,1,0,0:0:0:100:strings_sabi_x2 - Marker #16.ogg
+32,192,100666,1,0,0:0:0:100:drum_sabi_men1 - Marker #41.ogg
+160,192,100666,1,0,0:0:0:100:strings_sabi_x1 - Marker #17.ogg
+416,192,100666,1,0,0:0:0:100:strings_sabi_x2 - Marker #17.ogg
+32,192,101333,1,0,0:0:0:100:drum_sabi_men1 - Marker #46.ogg
+96,192,101666,1,0,0:0:0:100:drum_sabi_men1 - Marker #49.ogg
+288,192,101666,1,0,0:0:0:100:strings_sabi_x1 - Marker #18.ogg
+480,192,101666,1,0,0:0:0:100:strings_sabi_x2 - Marker #18.ogg
+32,192,102333,1,0,0:0:0:100:drum_sabi_men1 - Marker #51.ogg
+32,192,102666,1,0,0:0:0:100:drum_sabi_men1 - Marker #53.ogg
+288,192,102666,1,0,0:0:0:100:strings_sabi_x1 - Marker #1.ogg
+416,192,102666,1,0,0:0:0:100:strings_sabi_x2 - Marker #1.ogg
+32,192,103333,1,0,0:0:0:100:drum_sabi_men1 - Marker #57.ogg
+160,192,103333,1,0,0:0:0:100:strings_sabi_x1 - Marker #2.ogg
+352,192,103333,1,0,0:0:0:100:strings_sabi_x2 - Marker #2.ogg
+96,192,103500,1,0,0:0:0:100:strings_sabi_x1 - Marker #3.ogg
+288,192,103500,1,0,0:0:0:100:strings_sabi_x2 - Marker #3.ogg
+160,192,103666,1,0,0:0:0:100:drum_sabi_men1 - Marker #60.ogg
+352,192,103666,1,0,0:0:0:100:strings_sabi_x1 - Marker #4.ogg
+480,192,103666,1,0,0:0:0:100:strings_sabi_x2 - Marker #4.ogg
+32,192,104333,1,0,0:0:0:100:drum_sabi_men1 - Marker #63.ogg
+160,192,104333,1,0,0:0:0:100:strings_sabi_x1 - Marker #5.ogg
+352,192,104333,1,0,0:0:0:100:strings_sabi_x2 - Marker #5.ogg
+96,192,104500,1,0,0:0:0:100:strings_sabi_x1 - Marker #6.ogg
+416,192,104500,1,0,0:0:0:100:strings_sabi_x2 - Marker #6.ogg
+32,192,104666,1,0,0:0:0:100:strings_sabi_x1 - Marker #19.ogg
+480,192,104666,1,0,0:0:0:100:strings_sabi_x2 - Marker #19.ogg
+96,192,105166,1,0,0:0:0:100:strings_sabi_x1 - Marker #20.ogg
+416,192,105166,1,0,0:0:0:100:strings_sabi_x2 - Marker #20.ogg
+160,192,105666,1,0,0:0:0:100:strings_sabi_x1 - Marker #21.ogg
+352,192,105666,1,0,0:0:0:100:strings_sabi_x2 - Marker #21.ogg
+96,192,106166,1,0,0:0:0:100:strings_sabi_x1 - Marker #22.ogg
+416,192,106166,1,0,0:0:0:100:strings_sabi_x2 - Marker #22.ogg
+32,192,106666,1,0,0:0:0:100:drum_sabi_men1 - Marker #78.ogg
+160,192,106666,1,0,0:0:0:100:strings_sabi_x1 - Marker #23.ogg
+352,192,106666,1,0,0:0:0:100:strings_sabi_x2 - Marker #23.ogg
+32,192,107333,1,0,0:0:0:100:drum_sabi_men1 - Marker #84.ogg
+352,192,107333,1,0,0:0:0:100:strings_sabi_x1 - Marker #24.ogg
+480,192,107333,1,0,0:0:0:100:strings_sabi_x2 - Marker #24.ogg
+96,192,107666,1,0,0:0:0:100:drum_sabi_men1 - Marker #87.ogg
+160,192,107666,1,0,0:0:0:100:strings_sabi_x1 - Marker #25.ogg
+352,192,107666,1,0,0:0:0:100:strings_sabi_x2 - Marker #25.ogg
+32,192,108000,1,0,0:0:0:100:sabi_piano_x211 - Marker #1.ogg
+288,192,108000,1,0,0:0:0:100:strings_sabi_x1 - Marker #26.ogg
+416,192,108000,1,0,0:0:0:100:strings_sabi_x2 - Marker #26.ogg
+96,192,108333,1,0,0:0:0:100:sabi_piano_x214 - Marker #1.ogg
+352,192,108333,1,0,0:0:0:100:strings_sabi_x1 - Marker #27.ogg
+480,192,108333,1,0,0:0:0:100:strings_sabi_x2 - Marker #27.ogg
+32,192,108666,1,0,0:0:0:100:drum_sabi_men1 - Marker #1.ogg
+288,192,108666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #1.ogg
+480,192,108666,1,0,0:0:0:100:sabi_piano_x211 - Marker #2.ogg
+160,192,109000,1,0,0:0:0:100:drum_sabi_men1 - Marker #2.ogg
+96,192,109222,1,0,0:0:0:100:drum_sabi_men1 - Marker #4.ogg
+32,192,109333,1,0,0:0:0:100:drum_sabi_men1 - Marker #5.ogg
+352,192,109333,1,0,0:0:0:100:sabi_piano_x214 - Marker #2.ogg
+160,192,109444,1,0,0:0:0:100:drum_sabi_men1 - Marker #6.ogg
+416,192,109555,1,0,0:0:0:100:drum_sabi_men1 - Marker #7.ogg
+288,192,109569,1,0,0:0:0:100:sabi_piano_x211 - Marker #3.ogg
+96,192,109666,1,0,0:0:0:100:drum_sabi_men1 - Marker #8.ogg
+352,192,109666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #2.ogg
+480,192,109666,1,0,0:0:0:100:sabi_piano_x214 - Marker #3.ogg
+288,192,109888,1,0,0:0:0:100:drum_sabi_men1 - Marker #9.ogg
+160,192,110000,1,0,0:0:0:100:drum_sabi_men1 - Marker #10.ogg
+96,192,110333,1,0,0:0:0:100:drum_sabi_men1 - Marker #11.ogg
+352,192,110333,1,0,0:0:0:100:sabi_piano_x211 - Marker #4.ogg
+288,192,110444,1,0,0:0:0:100:drum_sabi_men1 - Marker #12.ogg
+160,192,110555,1,0,0:0:0:100:drum_sabi_men1 - Marker #13.ogg
+416,192,110555,1,0,0:0:0:100:sabi_piano_x214 - Marker #4.ogg
+32,192,110666,1,0,0:0:0:100:drum_sabi_men1 - Marker #14.ogg
+352,192,110666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #3.ogg
+480,192,110666,1,0,0:0:0:100:sabi_piano_x211 - Marker #5.ogg
+288,192,110777,1,0,0:0:0:100:sabi_piano_x121 - Marker #1.ogg
+160,192,110888,1,0,0:0:0:100:sabi_piano_x121 - Marker #2.ogg
+32,192,111000,1,0,0:0:0:100:drum_sabi_men1 - Marker #15.ogg
+480,192,111000,1,0,0:0:0:100:sabi_piano_x214 - Marker #5.ogg
+352,192,111111,1,0,0:0:0:100:sabi_piano_x121 - Marker #1.ogg
+96,192,111222,1,0,0:0:0:100:drum_sabi_men1 - Marker #17.ogg
+288,192,111222,1,0,0:0:0:100:sabi_piano_x121 - Marker #2.ogg
+32,192,111333,1,0,0:0:0:100:drum_sabi_men1 - Marker #18.ogg
+416,192,111333,1,0,0:0:0:100:sabi_piano_x211 - Marker #6.ogg
+288,192,111444,1,0,0:0:0:100:sabi_piano_x121 - Marker #1.ogg
+96,192,111555,1,0,0:0:0:100:sabi_piano_x121 - Marker #2.ogg
+32,192,111666,1,0,0:0:0:100:drum_sabi_men1 - Marker #19.ogg
+160,192,111666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #4.ogg
+352,192,111666,1,0,0:0:0:100:sabi_piano_x214 - Marker #6.ogg
+96,192,112000,1,0,0:0:0:100:drum_sabi_men1 - Marker #20.ogg
+288,192,112000,1,0,0:0:0:100:sabi_piano_x211 - Marker #7.ogg
+352,192,112111,1,0,0:0:0:100:sabi_piano_x214 - Marker #7.ogg
+416,192,112222,1,0,0:0:0:100:sabi_piano_x211 - Marker #8.ogg
+32,192,112333,1,0,0:0:0:100:drum_sabi_men1 - Marker #22.ogg
+480,192,112333,1,0,0:0:0:100:sabi_piano_x214 - Marker #8.ogg
+32,192,112666,1,0,0:0:0:100:drum_sabi_men1 - Marker #23.ogg
+352,192,112666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #5.ogg
+480,192,112666,1,0,0:0:0:100:sabi_piano_x211 - Marker #9.ogg
+288,192,113000,1,0,0:0:0:100:drum_sabi_men1 - Marker #26.ogg
+416,192,113000,1,0,0:0:0:100:sabi_piano_x214 - Marker #9.ogg
+96,192,113111,1,0,0:0:0:100:drum_sabi_men1 - Marker #27.ogg
+288,192,113222,1,0,0:0:0:100:drum_sabi_men1 - Marker #28.ogg
+32,192,113333,1,0,0:0:0:100:drum_sabi_men1 - Marker #29.ogg
+416,192,113333,1,0,0:0:0:100:sabi_piano_x211 - Marker #10.ogg
+160,192,113444,1,0,0:0:0:100:drum_sabi_men1 - Marker #30.ogg
+96,192,113555,1,0,0:0:0:100:drum_sabi_men1 - Marker #31.ogg
+160,192,113666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #6.ogg
+480,192,113666,1,0,0:0:0:100:drum_sabi_men1 - Marker #32.ogg
+352,192,113680,1,0,0:0:0:100:sabi_piano_x214 - Marker #10.ogg
+288,192,113888,1,0,0:0:0:100:drum_sabi_men1 - Marker #34.ogg
+32,192,114000,1,0,0:0:0:100:drum_sabi_men1 - Marker #35.ogg
+352,192,114000,1,0,0:0:0:100:sabi_piano_x211 - Marker #11.ogg
+288,192,114222,1,0,0:0:0:100:drum_sabi_men1 - Marker #37.ogg
+160,192,114333,1,0,0:0:0:100:drum_sabi_men1 - Marker #38.ogg
+416,192,114333,1,0,0:0:0:100:sabi_piano_x214 - Marker #11.ogg
+96,192,114555,1,0,0:0:0:100:drum_sabi_men1 - Marker #40.ogg
+32,192,114666,1,0,0:0:0:100:drum_sabi_men1 - Marker #41.ogg
+160,192,114666,1,0,0:0:0:100:sabi_piano_x211 - Marker #12.ogg
+352,192,114666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #7.ogg
+416,192,114888,1,0,0:0:0:100:drum_sabi_men1 - Marker #42.ogg
+96,192,115000,1,0,0:0:0:100:drum_sabi_men1 - Marker #43.ogg
+288,192,115222,1,0,0:0:0:100:drum_sabi_men1 - Marker #45.ogg
+160,192,115333,1,0,0:0:0:100:drum_sabi_men1 - Marker #46.ogg
+96,192,115555,1,0,0:0:0:100:drum_sabi_men1 - Marker #48.ogg
+160,192,115666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #8.ogg
+352,192,115666,1,0,0:0:0:100:drum_sabi_men1 - Marker #49.ogg
+480,192,115666,1,0,0:0:0:100:sabi_piano_x214 - Marker #12.ogg
+288,192,116000,1,0,0:0:0:100:drum_sabi_men1 - Marker #50.ogg
+96,192,116333,1,0,0:0:0:100:drum_sabi_men1 - Marker #51.ogg
+352,192,116555,1,0,0:0:0:100:drum_sabi_men1 - Marker #52.ogg
+32,192,116666,1,0,0:0:0:100:drum_sabi_men1 - Marker #53.ogg
+288,192,116666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #9.ogg
+416,192,116666,1,0,0:0:0:100:sabi_piano_x211 - Marker #13.ogg
+96,192,117000,1,0,0:0:0:100:drum_sabi_men1 - Marker #54.ogg
+288,192,117222,1,0,0:0:0:100:drum_sabi_men1 - Marker #56.ogg
+32,192,117333,1,0,0:0:0:100:drum_sabi_men1 - Marker #57.ogg
+416,192,117333,1,0,0:0:0:100:sabi_piano_x214 - Marker #13.ogg
+160,192,117444,1,0,0:0:0:100:drum_sabi_men1 - Marker #58.ogg
+96,192,117555,1,0,0:0:0:100:drum_sabi_men1 - Marker #59.ogg
+288,192,117569,1,0,0:0:0:100:sabi_piano_x211 - Marker #14.ogg
+160,192,117666,1,0,0:0:0:100:drum_sabi_men1 - Marker #60.ogg
+352,192,117666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #10.ogg
+480,192,117666,1,0,0:0:0:100:sabi_piano_x214 - Marker #14.ogg
+288,192,117888,1,0,0:0:0:100:drum_sabi_men1 - Marker #61.ogg
+96,192,118000,1,0,0:0:0:100:drum_sabi_men1 - Marker #62.ogg
+160,192,118333,1,0,0:0:0:100:drum_sabi_men1 - Marker #63.ogg
+352,192,118333,1,0,0:0:0:100:sabi_piano_x211 - Marker #15.ogg
+416,192,118527,1,0,0:0:0:100:sabi_piano_x215 - Marker #1.ogg
+96,192,118555,1,0,0:0:0:100:drum_sabi_men1 - Marker #65.ogg
+32,192,118666,1,0,0:0:0:100:drum_sabi_men1 - Marker #66.ogg
+352,192,118666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #11.ogg
+480,192,118666,1,0,0:0:0:100:sabi_piano_x214 - Marker #15.ogg
+96,192,119166,1,0,0:0:0:100:drum_sabi_men1 - Marker #69.ogg
+288,192,119166,1,0,0:0:0:100:sabi_piano_x2223 - Marker #12.ogg
+416,192,119166,1,0,0:0:0:100:sabi_piano_x211 - Marker #16.ogg
+352,192,119333,1,0,0:0:0:100:piano_fx2 - Marker #1.ogg
+416,192,119500,1,0,0:0:0:100:piano_fx1 - Marker #1.ogg
+32,192,119666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #13.ogg
+352,192,119666,1,0,0:0:0:100:sabi_piano_x216 - Marker #1.ogg
+480,192,119666,1,0,0:0:0:100:piano_fx2 - Marker #2.ogg
+96,192,119777,1,0,0:0:0:100:piano_fx1 - Marker #2.ogg
+160,192,119888,1,0,0:0:0:100:piano_fx2 - Marker #3.ogg
+288,192,120000,1,0,0:0:0:100:piano_fx1 - Marker #3.ogg
+352,192,120111,1,0,0:0:0:100:piano_fx2 - Marker #4.ogg
+32,192,120166,1,0,0:0:0:100:sabi_piano_x211 - Marker #17.ogg
+160,192,120166,1,0,0:0:0:100:sabi_piano_x2223 - Marker #14.ogg
+416,192,120222,1,0,0:0:0:100:piano_fx1 - Marker #4.ogg
+96,192,120333,1,0,0:0:0:100:piano_fx2 - Marker #5.ogg
+288,192,120444,1,0,0:0:0:100:piano_fx1 - Marker #5.ogg
+416,192,120555,1,0,0:0:0:100:piano_fx2 - Marker #6.ogg
+32,192,120666,1,0,0:0:0:100:drum_sabi_men1 - Marker #78.ogg
+160,192,120666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #15.ogg
+352,192,120666,1,0,0:0:0:100:sabi_piano_x214 - Marker #17.ogg
+480,192,120666,1,0,0:0:0:100:piano_fx1 - Marker #6.ogg
+96,192,121000,1,0,0:0:0:100:drum_sabi_men1 - Marker #81.ogg
+288,192,121111,1,0,0:0:0:100:drum_sabi_men1 - Marker #82.ogg
+160,192,121222,1,0,0:0:0:100:drum_sabi_men1 - Marker #83.ogg
+480,192,121319,1,0,0:0:0:100:sabi_piano_x211 - Marker #18.ogg
+32,192,121333,1,0,0:0:0:100:drum_sabi_men1 - Marker #84.ogg
+352,192,121555,1,0,0:0:0:100:drum_sabi_men1 - Marker #86.ogg
+96,192,121666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #16.ogg
+416,192,121666,1,0,0:0:0:100:drum_sabi_men1 - Marker #87.ogg
+288,192,121680,1,0,0:0:0:100:sabi_piano_x214 - Marker #18.ogg
+160,192,121777,1,0,0:0:0:100:drum_sabi_men1 - Marker #88.ogg
+352,192,121888,1,0,0:0:0:100:drum_sabi_men1 - Marker #89.ogg
+32,192,122000,1,0,0:0:0:100:drum_sabi_men1 - Marker #90.ogg
+96,192,122222,1,0,0:0:0:100:drum_sabi_men1 - Marker #92.ogg
+288,192,122333,1,0,0:0:0:100:drum_sabi_men1 - Marker #93.ogg
+160,192,122555,1,0,0:0:0:100:drum_sabi_men1 - Marker #95.ogg
+96,192,122666,1,0,0:0:0:100:sabi_piano_x211 - Marker #19.ogg
+416,192,122666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #17.ogg
+352,192,123222,1,0,0:0:0:100:sabi_piano_x214 - Marker #19.ogg
+160,192,123333,1,0,0:0:0:100:sabi_piano_x211 - Marker #20.ogg
+32,192,123666,1,0,0:0:0:100:sabi_piano_x214 - Marker #20.ogg
+480,192,123666,1,0,0:0:0:100:sabi_piano_x2223 - Marker #18.ogg
+96,192,124666,1,0,0:0:0:100:end_piano_solo_7 - Marker #1.ogg
+416,192,124666,1,0,0:0:0:100:end_piano_solo_1 - Marker #1.ogg
+352,192,125374,1,0,0:0:0:100:end_piano_solo_2 - Marker #1.ogg
+288,192,125630,1,0,0:0:0:100:end_piano_solo_3 - Marker #1.ogg
+160,192,125735,1,0,0:0:0:100:end_piano_solo_8 - Marker #2.ogg
+480,192,125766,1,0,0:0:0:100:end_piano_solo_4 - Marker #1.ogg
+352,192,126473,1,0,0:0:0:100:end_piano_solo_5 - Marker #1.ogg
+416,192,126699,1,0,0:0:0:100:end_piano_solo_6 - Marker #1.ogg
+96,192,126835,1,0,0:0:0:100:end_piano_solo_7 - Marker #2.ogg
+480,192,126850,1,0,0:0:0:100:end_piano_solo_1 - Marker #2.ogg
+416,192,127211,1,0,0:0:0:100:end_piano_solo_2 - Marker #2.ogg
+352,192,127573,1,0,0:0:0:100:end_piano_solo_3 - Marker #2.ogg
+288,192,127829,1,0,0:0:0:100:end_piano_solo_4 - Marker #2.ogg
+32,192,127934,1,0,0:0:0:100:end_piano_solo_8 - Marker #3.ogg
+160,192,127934,1,0,0:0:0:100:end_piano_solo_5 - Marker #2.ogg
+416,192,128657,1,0,0:0:0:100:end_piano_solo_6 - Marker #2.ogg
+96,192,129004,1,0,0:0:0:100:end_piano_solo_7 - Marker #3.ogg
+352,192,129034,1,0,0:0:0:100:end_piano_solo_1 - Marker #3.ogg
+480,192,129726,1,0,0:0:0:100:end_piano_solo_2 - Marker #3.ogg
+32,192,130088,1,0,0:0:0:100:end_piano_solo_8 - Marker #4.ogg
+288,192,130103,1,0,0:0:0:100:end_piano_solo_3 - Marker #3.ogg
+96,192,132979,1,0,0:0:0:100:end_piano_solo_4 - Marker #3.ogg
+160,192,133220,1,0,0:0:0:100:end_piano_solo_5 - Marker #3.ogg
+32,192,133341,1,0,0:0:0:100:end_piano_solo_7 - Marker #4.ogg
+288,192,133341,1,0,0:0:0:100:end_piano_solo_6 - Marker #3.ogg
+416,192,133341,1,0,0:0:0:100:last_stri_2 - Marker #1.ogg
+352,192,134064,1,0,0:0:0:100:end_piano_solo_1 - Marker #4.ogg
+160,192,134320,1,0,0:0:0:100:end_piano_solo_2 - Marker #4.ogg
+96,192,134425,1,0,0:0:0:100:last_stri_2 - Marker #2.ogg
+288,192,134425,1,0,0:0:0:100:end_piano_solo_8 - Marker #5.ogg
+480,192,134425,1,0,0:0:0:100:end_piano_solo_3 - Marker #4.ogg
+32,192,135510,1,0,0:0:0:100:last_stri_2 - Marker #3.ogg
+96,192,135871,1,0,0:0:0:100:last_stri_2 - Marker #4.ogg
+160,192,136232,1,0,0:0:0:100:last_stri_2 - Marker #5.ogg
+288,192,136594,1,0,0:0:0:100:last_stri_2 - Marker #6.ogg
+352,192,136955,1,0,0:0:0:100:last_stri_2 - Marker #7.ogg
+96,192,137317,1,0,0:0:0:100:end_piano_solo_4 - Marker #4.ogg
+416,192,137317,1,0,0:0:0:100:last_stri_2 - Marker #8.ogg
+160,192,137573,1,0,0:0:0:100:end_piano_solo_5 - Marker #4.ogg
+288,192,137678,1,0,0:0:0:100:last_stri_2 - Marker #9.ogg
+480,192,137678,1,0,0:0:0:100:end_piano_solo_6 - Marker #4.ogg
+32,192,137693,1,0,0:0:0:100:end_piano_solo_7 - Marker #5.ogg
+160,192,138401,1,0,0:0:0:100:end_piano_solo_1 - Marker #5.ogg
+32,192,138657,1,0,0:0:0:100:end_piano_solo_2 - Marker #5.ogg
+96,192,138763,1,0,0:0:0:100:end_piano_solo_8 - Marker #5.ogg
+352,192,138763,1,0,0:0:0:100:last_stri_2 - Marker #10.ogg
+480,192,138763,1,0,0:0:0:100:end_piano_solo_3 - Marker #5.ogg
+288,192,140931,1,0,0:0:0:100:last_stri_2 - Marker #11.ogg
+352,192,141293,1,0,0:0:0:100:last_stri_2 - Marker #12.ogg
+416,192,141654,1,0,0:0:0:100:last_stri_2 - Marker #13.ogg
+480,192,141925,1,0,0:0:0:100:last_stri_2 - Marker #14.ogg
+96,192,141985,1,0,0:0:0:100:end_piano_solo_8 - Marker #7.ogg
+288,192,142046,1,0,0:0:0:100:end_piano_solo_9.ogg
+480,192,144184,1,0,0:0:0:100:last_harp_end1 - Marker #1.ogg
+416,192,144244,1,0,0:0:0:100:last_harp_end1 - Marker #2.ogg
+352,192,144305,1,0,0:0:0:100:last_harp_end1 - Marker #3.ogg
+288,192,144365,1,0,0:0:0:100:last_harp_end1 - Marker #4.ogg
+160,192,144425,1,0,0:0:0:100:last_harp_end1 - Marker #5.ogg
+96,192,144485,1,0,0:0:0:100:last_harp_end1 - Marker #6.ogg
+32,192,144546,1,0,0:0:0:100:last_harp_end1 - Marker #7.ogg
+480,192,144606,1,0,0:0:0:100:last_harp_end1 - Marker #8.ogg
+416,192,144666,1,0,0:0:0:100:last_harp_end1 - Marker #9.ogg
+352,192,144726,1,0,0:0:0:100:last_harp_end1 - Marker #10.ogg
+288,192,144787,1,0,0:0:0:100:last_harp_end1 - Marker #11.ogg
+160,192,144847,1,0,0:0:0:100:last_harp_end1 - Marker #12.ogg
+96,192,144907,1,0,0:0:0:100:last_harp_end1 - Marker #14.ogg
+32,192,144967,1,0,0:0:0:100:last_harp_end1 - Marker #15.ogg
+480,192,145028,1,0,0:0:0:100:last_harp_end1 - Marker #16.ogg
+416,192,145088,1,0,0:0:0:100:last_harp_end1 - Marker #17.ogg
+352,192,145148,1,0,0:0:0:100:last_harp_end1 - Marker #18.ogg
+288,192,145208,1,0,0:0:0:100:last_harp_end1 - Marker #19.ogg
+160,192,145269,1,0,0:0:0:100:last_harp_end1 - Marker #20.ogg
+96,192,145329,1,0,0:0:0:100:last_harp_end1 - Marker #21.ogg
+32,192,145389,1,0,0:0:0:100:last_harp_end1 - Marker #22.ogg
+480,192,145449,1,0,0:0:0:100:last_harp_end1 - Marker #23.ogg
+416,192,145510,1,0,0:0:0:100:last_harp_end1 - Marker #24.ogg
+352,192,145570,1,0,0:0:0:100:last_harp_end1 - Marker #25.ogg
+288,192,145630,1,0,0:0:0:100:last_harp_end1 - Marker #26.ogg
+160,192,145690,1,0,0:0:0:100:last_harp_end1 - Marker #27.ogg
+288,192,145751,1,0,0:0:0:100:last_harp_end1 - Marker #28.ogg
+352,192,145811,1,0,0:0:0:100:last_harp_end1 - Marker #29.ogg
+416,192,145871,1,0,0:0:0:100:last_harp_end1 - Marker #30.ogg
+480,192,145931,1,0,0:0:0:100:last_harp_end1 - Marker #31.ogg
+96,192,145991,1,0,0:0:0:100:last_harp_end1 - Marker #32.ogg
+160,192,146052,1,0,0:0:0:100:last_harp_end1 - Marker #33.ogg
+288,192,146112,1,0,0:0:0:100:last_harp_end1 - Marker #34.ogg
+352,192,146172,1,0,0:0:0:100:last_harp_end1 - Marker #35.ogg
+416,192,146232,1,0,0:0:0:100:last_harp_end1 - Marker #36.ogg
+32,192,146293,1,0,0:0:0:100:last_harp_end1 - Marker #37.ogg
+96,192,146353,1,0,0:0:0:100:last_harp_end1 - Marker #38.ogg
+160,192,146413,1,0,0:0:0:100:last_harp_end1 - Marker #39.ogg
+288,192,146473,1,0,0:0:0:100:last_harp_end1 - Marker #40.ogg
+352,192,146534,1,0,0:0:0:100:last_harp_end1 - Marker #41.ogg
+288,192,146594,1,0,0:0:0:100:last_harp_end1 - Marker #42.ogg
+160,192,146654,1,0,0:0:0:100:last_harp_end1 - Marker #43.ogg
+96,192,146714,1,0,0:0:0:100:last_harp_end1 - Marker #44.ogg
+32,192,146775,1,0,0:0:0:100:last_harp_end1 - Marker #45.ogg
+480,192,146835,1,0,0:0:0:100:last_harp_end1 - Marker #46.ogg
+416,192,146895,1,0,0:0:0:100:last_harp_end1 - Marker #47.ogg
+352,192,146955,1,0,0:0:0:100:last_harp_end1 - Marker #48.ogg
+288,192,147016,1,0,0:0:0:100:last_harp_end1 - Marker #49.ogg
+160,192,147076,1,0,0:0:0:100:last_harp_end1 - Marker #50.ogg
+96,192,147136,1,0,0:0:0:100:last_harp_end1 - Marker #51.ogg
+32,192,147196,1,0,0:0:0:100:last_harp_end1 - Marker #52.ogg
+96,192,147257,1,0,0:0:0:100:last_harp_end1 - Marker #53.ogg
+160,192,147317,1,0,0:0:0:100:last_harp_end1 - Marker #54.ogg
+288,192,147377,1,0,0:0:0:100:last_harp_end1 - Marker #55.ogg
+352,192,147437,1,0,0:0:0:100:last_harp_end1 - Marker #56.ogg
+96,192,147497,1,0,0:0:0:100:last_harp_end1 - Marker #57.ogg
+160,192,147558,1,0,0:0:0:100:last_harp_end1 - Marker #58.ogg
+288,192,147618,1,0,0:0:0:100:last_harp_end1 - Marker #59.ogg
+352,192,147678,1,0,0:0:0:100:last_harp_end1 - Marker #60.ogg
+416,192,147738,1,0,0:0:0:100:last_harp_end1 - Marker #61.ogg
+480,192,147799,1,0,0:0:0:100:last_harp_end1 - Marker #62.ogg
+32,192,147859,1,0,0:0:0:100:last_harp_end1 - Marker #63.ogg
+96,192,147919,1,0,0:0:0:100:last_harp_end1 - Marker #64.ogg
+160,192,147979,1,0,0:0:0:100:last_harp_end1 - Marker #65.ogg
+288,192,148040,1,0,0:0:0:100:last_harp_end1 - Marker #66.ogg
+352,192,148100,1,0,0:0:0:100:last_harp_end1 - Marker #67.ogg
+416,192,148160,1,0,0:0:0:100:last_harp_end1 - Marker #68.ogg
+96,192,148220,1,0,0:0:0:100:last_harp_end1 - Marker #69.ogg
+160,192,148281,1,0,0:0:0:100:last_harp_end1 - Marker #70.ogg
+288,192,148341,1,0,0:0:0:100:last_harp_end1 - Marker #71.ogg
+352,192,148401,1,0,0:0:0:100:last_harp_end1 - Marker #72.ogg
+416,192,148461,1,0,0:0:0:100:last_harp_end1 - Marker #73.ogg
+480,192,148522,1,0,0:0:0:100:last_harp_end1 - Marker #74.ogg
