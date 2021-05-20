@@ -10,15 +10,17 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /[Aa]ssets/StreamingAssets/Songs/*
-!/[Aa]ssets/StreamingAssets/Songs/Snow White Echo/
-!/[Aa]ssets/StreamingAssets/Songs/Identity part ii/
-!/[Aa]ssets/StreamingAssets/Songs/Doppelganger/
 !/[Aa]ssets/StreamingAssets/Songs/Altale/
+!/[Aa]ssets/StreamingAssets/Songs/Say A Vengeance/
+!/[Aa]ssets/StreamingAssets/Songs/eospo/
+!/[Aa]ssets/StreamingAssets/Songs/reendofadream/
+!/[Aa]ssets/StreamingAssets/Songs/fading star/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
 /[Aa]ssets/StreamingAssets/Songs/*.meta
+/[Aa]ssets/StreamingAssets/Songs/**/*.meta
 
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
