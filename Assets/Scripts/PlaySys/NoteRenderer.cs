@@ -66,7 +66,7 @@ public class NoteRenderer : MonoBehaviour
     {
         
         rend = GetComponent<SpriteRenderer>();
-        transform.localScale = new Vector2(transform.localScale.x * scrSetting.ColWidth, transform.localScale.y);
+        transform.localScale = new Vector2(transform.localScale.x * GlobalSettings.ColWidth, transform.localScale.y);
         //int cc = (int)Mathf.Round((c - 36) / 73f);
         COLUMN = c;
         switch (c)
@@ -89,7 +89,7 @@ public class NoteRenderer : MonoBehaviour
                 break;
         }
         TIME = t; ISLN = ln; LNLENGTH = length; _TIME = nt;
-        transform.position = new Vector2((c - 3f) * scrSetting.ColWidth, transform.position.y);
+        transform.position = new Vector2((c - 3f) * GlobalSettings.ColWidth, transform.position.y);
         
     }
     public void setLnEnd(GameObject lne)

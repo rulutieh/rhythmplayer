@@ -2,12 +2,12 @@
 AudioFilename: virtual
 
 [Metadata]
-EOS
-ginkiha
-Genesis
-bms of fighters bof
-73
-0
+Title:EOS
+Artist:ginkiha
+Creator:Genesis
+Tags:bms of fighters bof
+Version:73
+
 
 [Events]
 //Background and Video events

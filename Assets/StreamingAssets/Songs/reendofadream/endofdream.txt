@@ -2,12 +2,11 @@
 AudioFilename: virtual
 
 [Metadata]
-Re : End of a Dream
-uma vs. Morimori Atsushi
-inava
-bms of fighters
-75
-0
+Title:Re：End of a Dream
+Artist:uma vs. モリモリあつし
+Creator:inava
+Tags:bms of fighters
+Version:75
 
 [Events]
 //Background and Video events

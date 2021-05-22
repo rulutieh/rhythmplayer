@@ -23,25 +23,25 @@ public class SettingPanel : MonoBehaviour
     public TextMeshProUGUI loginas;
 
     MusicHandler player;
-    scrSetting st;
+    GlobalSettings st;
     GameObject w;
 
     public void Awake()
     {    
         w = GameObject.FindWithTag("world");
         player = w.GetComponent<MusicHandler>();
-        st = w.GetComponent<scrSetting>();
-        slcolumn.value = scrSetting.ColWidth;
-        bpm.isOn = scrSetting.isFixedScroll;
-        video.isOn = scrSetting.isPlayVideo;
-        fullscreen.isOn = scrSetting.isFullScreen;
+        st = w.GetComponent<GlobalSettings>();
+        slcolumn.value = GlobalSettings.ColWidth;
+        bpm.isOn = GlobalSettings.isFixedScroll;
+        video.isOn = GlobalSettings.isPlayVideo;
+        fullscreen.isOn = GlobalSettings.isFullScreen;
 
         #region EventListners
         bpm.onValueChanged.AddListener(
             (bool bOn) =>
             {
                 bool val = bOn;
-                scrSetting.isFixedScroll = val;
+                GlobalSettings.isFixedScroll = val;
                 st.SaveSettings();
             }
         );
@@ -50,7 +50,7 @@ public class SettingPanel : MonoBehaviour
             (bool bOn) =>
             {
                 bool val = bOn;
-                scrSetting.isPlayVideo = val;
+                GlobalSettings.isPlayVideo = val;
                 st.SaveSettings();
             }
         );
@@ -65,14 +65,14 @@ public class SettingPanel : MonoBehaviour
         slvolume.onValueChanged.AddListener(
             (float vl) =>
             {
-                scrSetting.Volume = vl;
+                GlobalSettings.Volume = vl;
                 st.SaveSettings();
             }
         );
         slcolumn.onValueChanged.AddListener(
             (float cw) =>
             {
-                scrSetting.ColWidth = cw;
+                GlobalSettings.ColWidth = cw;
                 st.SaveSettings();
             }
         );
@@ -86,14 +86,14 @@ public class SettingPanel : MonoBehaviour
         {
             ddres.value = st.res;
             ddframe.value = st.fps;
-            slvolume.value = scrSetting.Volume;
+            slvolume.value = GlobalSettings.Volume;
             init = true;
         }
     }
     private void Update()
     {
     
-        float f = Mathf.Round(scrSetting.GlobalOffset * 100f) / 100f;
+        float f = Mathf.Round(GlobalSettings.GlobalOffset * 100f) / 100f;
         offset.text = f.ToString();
         //계정 패널 관련
         if (uisys.activeUI == 3 && isUIanimationFinished)
@@ -104,7 +104,7 @@ public class SettingPanel : MonoBehaviour
                 Logoutpanel.SetActive(false);
                 Signuppanel.SetActive(true);
             }
-            else if (scrSetting.playername == "Guest")
+            else if (GlobalSettings.playername == "Guest")
             {
                 Loginpanel.SetActive(true);
                 Logoutpanel.SetActive(false);
@@ -117,12 +117,12 @@ public class SettingPanel : MonoBehaviour
                 Signuppanel.SetActive(false);
             }
         }
-        loginas.text = scrSetting.playername;
+        loginas.text = GlobalSettings.playername;
     }
     #region Account Settings
     public void setLogout()
     {
-        scrSetting.playername = "Guest";
+        GlobalSettings.playername = "Guest";
     }
     public void setLogin()
     {
@@ -220,7 +220,7 @@ public class SettingPanel : MonoBehaviour
     }
     public void SetGlobalOffset(float o)
     {
-        scrSetting.GlobalOffset += o;
+        GlobalSettings.GlobalOffset += o;
         st.SaveSettings();
         ClickSound(4);
     }

@@ -2,12 +2,11 @@
 AudioFilename: virtual
 
 [Metadata]
-Say A Vengeance
-ETIA. feat.Jenga
-WhiteAndBlack
-bms of fighters
-58
-0
+Title:Say A Vengeance
+Artist:ETIA. feat.Jenga
+Creator:WhiteAndBlack
+Tags:bms of fighters
+Version:58
 
 [Events]
 //Background and Video events

@@ -22,7 +22,7 @@ public class FileReader : MonoBehaviour
     public int progress = 0;
     int[] keys = { 0, 1, 2, 3, 4, 5, 6 };
     public GameObject NoteObj, ColObj, endln, result, gameover, initsetting, judgeobj, barobj, LoadCircle;
-    bool svEnd, noteEnd, rnoteEnd, sampleEnd, playfieldon;
+    bool svEnd, noteEnd, rnoteEnd, sampleEnd, playfieldon, musicOn;
     RankSystem RankSys;
     //fmod
     MusicHandler player;
@@ -100,12 +100,13 @@ public class FileReader : MonoBehaviour
         sampleIDX = 0;
         resultload = false;
         isLoaded = false;
+        musicOn = false;
 
-        if (scrSetting.Random) //노트 랜덤배치
+        if (GlobalSettings.Random) //노트 랜덤배치
             Random(keys);
         for (int i = 0; i < keys.Length; i++) 
         {
-            if (scrSetting.Mirror) keys[i] = 6 - i;//노트 미러배치
+            if (GlobalSettings.Mirror) keys[i] = 6 - i;//노트 미러배치
         }
     }
     void Start()
@@ -117,7 +118,7 @@ public class FileReader : MonoBehaviour
         RankSys = w.GetComponent<RankSystem>();
         player = w.GetComponent<MusicHandler>(); //Fmod sound system
         player.ReleaseKeysound();
-        preLoad = (int)(1500f/scrSetting.scrollSpeed); //노트 풀링 오프셋
+        preLoad = (int)(1500f/GlobalSettings.scrollSpeed); //노트 풀링 오프셋
        
         playfieldon = true;
         isPlaying = false;
@@ -137,19 +138,28 @@ public class FileReader : MonoBehaviour
     void Update()
     {
         
-        judgeoffset = -3.15f + scrSetting.stageYPOS;
+        judgeoffset = -3.15f + GlobalSettings.stageYPOS;
 
 
 
         //노트, 타이밍 생성
         if (isLoaded)
         {
-            if (!scrSetting.isFixedScroll)
+            if (!musicOn)
             {
-                multiply = 3f / 410f * scrSetting.scrollSpeed;
+                if (Playback > -100f + offset + GlobalSettings.GlobalOffset * 1000f)
+                {
+                    AudioStart();
+                    musicOn = true;
+                }
+            }
+
+            if (!GlobalSettings.isFixedScroll)
+            {
+                multiply = 3f / 410f * GlobalSettings.scrollSpeed;
             }
             else
-                multiply = 3f / NowPlaying.MEDIAN * scrSetting.scrollSpeed;
+                multiply = 3f / NowPlaying.MEDIAN * GlobalSettings.scrollSpeed;
             p += Time.deltaTime * 1000f;
             Playback = p;
             PlaybackChanged = GetNoteTime(Playback); // reamtime에 변속 계산 < 계산량 증가
@@ -179,10 +189,10 @@ public class FileReader : MonoBehaviour
                 if (__t < Playback && !resultload)
                 {
                     //결과창 로드
-                    if (!ScoreManager.isFailed && !scrSetting.AutoPlay) //저장
+                    if (!ScoreManager.isFailed && !GlobalSettings.AutoPlay) //저장
                     RankSys.SaveScore(
                         NowPlaying.HASH, 
-                        scrSetting.playername, 
+                        GlobalSettings.playername, 
                         Mathf.RoundToInt(ScoreManager.Score), 
                         (ScoreManager.BAD == 0 && ScoreManager.MISS == 0) ? 1 : 0 ,
                         ScoreManager.maxcombo,
@@ -190,7 +200,7 @@ public class FileReader : MonoBehaviour
                         );
                     resultload = true;
                     StartCoroutine(ShowResult());
-                    w.GetComponent<scrSetting>().SaveSettings();
+                    w.GetComponent<GlobalSettings>().SaveSettings();
                 }
             }
 
@@ -221,7 +231,7 @@ public class FileReader : MonoBehaviour
 
         PlaybackChanged = Playback = -2000f;
         p = Playback;
-        Invoke("AudioStart", offset + 1.9f + scrSetting.GlobalOffset);
+        //Invoke("AudioStart", offset + 1.9f + scrSetting.GlobalOffset);
         isLoaded = true;
 
         yield return new WaitForSeconds(1f);
@@ -368,7 +378,7 @@ public class FileReader : MonoBehaviour
         float t = GetNoteTime(barlist[barIDX]);
         yield return new WaitUntil(() => t <= PlaybackChanged + preLoad && !noteEnd);
         var b = Instantiate(barobj);
-        b.GetComponent<scrMeasureBar>()._TIME = t;
+        b.GetComponent<MeasureBars>()._TIME = t;
 
         barIDX++;
         if (barIDX != barlist.Count)

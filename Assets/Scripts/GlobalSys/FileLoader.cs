@@ -172,17 +172,12 @@ public class FileLoader : MonoBehaviour
         string _title = "", _artist = "", _tags = "";
         float _offset = 0f;
         string line;
-        bool isOSUFile = false, isVirtual = false;
         for (int i = 0; i < Files.Length; i++)
         {
             StreamReader rdr = new StreamReader(TXTFILE[i]);
             while ((line = rdr.ReadLine()) != "[Metadata]")
             {
-                if (line.Contains("osu file format"))
-                {
-                    //osu파일 체크
-                    isOSUFile = true;
-                }
+
                 if (line.Contains("AudioFilename"))
                 {
                     string str = line.Split(':')[1].Trim();
@@ -193,44 +188,30 @@ public class FileLoader : MonoBehaviour
                     }
                     else
                     {
-                        isVirtual = true;
                         AUDIOFILE = DefaultAudioPath;
                     }
+                }
+                if (line.Contains("AudioLeadIn"))
+                {
+                    string str = line.Split(':')[1].Trim();
+                    _offset = float.Parse(str);
                 }
                 if (line == null) return;
             }
 
-            if (!isOSUFile)
+            //osu 확장자
+            while ((line = rdr.ReadLine()) != "[TimingPoints]")
             {
-                //커스텀 확장자
-                line = rdr.ReadLine(); _title = line;
-                line = rdr.ReadLine(); _artist = line;
-                line = rdr.ReadLine(); CHARTERS[i] = line;
-                line = rdr.ReadLine(); _tags = line;
-                line = rdr.ReadLine(); DIFFS[i] = line;
-                line = rdr.ReadLine(); _offset = float.Parse(line);
+                if (line.Contains("Title:")) _title = line.Remove(0, 6);
+                if (line.Contains("Artist:")) _artist = line.Remove(0, 7);
+                if (line.Contains("Version:")) DIFFS[i] = line.Remove(0, 8);
+                if (line.Contains("Tags:")) _tags = line.Remove(0, 4);
+                if (line.Contains("Creator:")) CHARTERS[i] = line.Remove(0, 8);
+
+                if (line == null) return;
             }
-            else
-            {
-                //osu 확장자
-                while ((line = rdr.ReadLine()) != "[TimingPoints]")
-                {
-                    if (line.Contains("Title:")) _title = line.Split(':')[1];
-                    if (line.Contains("Artist:")) _artist = line.Split(':')[1];
-                    if (line.Contains("Version:")) DIFFS[i] = line.Split(':')[1];
-                    if (line.Contains("Tags:")) _tags = line.Split(':')[1];
-                    if (!isVirtual)
-                        _offset = 0.015f;
-                    else if (line.Contains("normal-hitnormal1002.ogg"))
-                    {
-                        string[] strs = line.Split(',');
-                        AUDIOFILE = Path.Combine(path, dir, "normal-hitnormal1002.ogg");
-                        _offset = float.Parse(strs[1]) / 1000f + 0.01f;
-                    }
-                    if (line == null) return;
-                }
-                
-            }
+
+
 
 
             _id[i] = CalculateMD5(TXTFILE[i]); //무결성 검사
@@ -275,11 +256,11 @@ public class FileLoader : MonoBehaviour
         // 해쉬값으로 곡 검색
         for (int i = 0; i < list.Count; i++)
         {
-            for(int j = 0; j < list[i].diffCount(); j++)
+            for (int j = 0; j < list[i].diffCount(); j++)
                 if (list[i].getID(j) == hash)
                 {
-                    scrSetting.decide = i;
-                    scrSetting.diffselection = j;
+                    GlobalSettings.decide = i;
+                    GlobalSettings.diffselection = j;
                 }
         }
     }

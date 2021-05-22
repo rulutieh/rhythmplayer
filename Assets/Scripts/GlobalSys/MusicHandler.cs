@@ -72,14 +72,14 @@ public class MusicHandler : MonoBehaviour
     {
         FMODUnity.RuntimeManager.CoreSystem.playSound(snd, channelGroup, false, out channel[0]); //재생
         snd.getLength(out length, FMOD.TIMEUNIT.MS); // 곡 길이
-        channelGroup.setVolume(scrSetting.Volume); //볼륨
+        channelGroup.setVolume(GlobalSettings.Volume); //볼륨
         FMODUnity.RuntimeManager.CoreSystem.getDSPBufferSize(out uint a, out int b);
         Debug.Log(a);
     }
     public void PlaySFX(int idx)
     {
         FMODUnity.RuntimeManager.CoreSystem.playSound(sfx[idx], channelGroup, false, out channel[1]);
-        channelGroup.setVolume(scrSetting.Volume);
+        channelGroup.setVolume(GlobalSettings.Volume);
     }
     public void PlaySample(int idx)
     {

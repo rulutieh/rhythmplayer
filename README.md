@@ -2,23 +2,13 @@
 
 
 구동영상
-(https://www.youtube.com/watch?v=iKv2m-eJ3rk)
-
-
-## 구동 파일
-
-osu! mania 파일, 오투잼 컨버트 파일, BMS 컨버트 파일
-StreamingAssets 폴더에 넣어서 재생 가능. 샘플 탑재 (Snow White Echo)
+(https://www.youtube.com/watch?v=pEQQA-aenLM)
 
 ## FMOD Coresystem API
 
 정확한 레이턴시, 매우 빠른 처리속도, 다채널 재생가능
+키음 재생, 1000채널까지 커버 가능 (Altale 기준 200채널까지 사용)
 https://fmod.com/resources/documentation-api?version=2.0&page=core-api-system.html
 
-## JSON을 이용한 랭킹 세이브
-
-Json .net을 이용.
-채보파일의 해쉬를 이용한 테이블로 작동.
-https://www.newtonsoft.com/json
 
 

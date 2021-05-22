@@ -14,7 +14,7 @@ public class showCombo : MonoBehaviour
     void Start()
     {
         tmpCombo = gameObject.GetComponent<TextMeshPro>();
-        col = scrSetting.ColWidth;
+        col = GlobalSettings.ColWidth;
     }
 
     // Update is called once per frame

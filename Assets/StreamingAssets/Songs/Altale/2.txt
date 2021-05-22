@@ -2,12 +2,11 @@
 AudioFilename: virtual
 
 [Metadata]
-Altale
-削除
-siokaze
-BMS, Deemo, G2R2014 Sakuzyo
-58
-0
+Title:Altale
+Artist:削除
+Creator:削除
+Tags:BMS, Deemo, G2R2014 Sakuzyo
+Version:57
 
 [Events]
 //Background and Video events

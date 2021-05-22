@@ -53,9 +53,9 @@ public class ColNote : MonoBehaviour
 
     public void SetInfo(int c, int t, bool ln, float length, float nt, int ksidx)
     {
-        transform.localScale = new Vector2(transform.localScale.x * scrSetting.ColWidth / 0.85f, transform.localScale.y);
+        transform.localScale = new Vector2(transform.localScale.x * GlobalSettings.ColWidth / 0.85f, transform.localScale.y);
         TIME = t; ISLN = ln; LNLENGTH = length; _TIME = nt;
-        transform.position = new Vector2((c - 3f) * scrSetting.ColWidth, transform.position.y);
+        transform.position = new Vector2((c - 3f) * GlobalSettings.ColWidth, transform.position.y);
         KeySound = ksidx;
 
     }

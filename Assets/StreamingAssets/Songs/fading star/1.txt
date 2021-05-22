@@ -2,12 +2,12 @@
 AudioFilename: virtual
 
 [Metadata]
-Fading Star
-ginkiha
-inava
+Title:Fading Star
+Artist:ginkiha
+Creator:inava
 bms of fighters bof
-32
-0
+Tags:Version:32
+
 
 [Events]
 //Background and Video events

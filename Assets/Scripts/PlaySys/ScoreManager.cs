@@ -50,9 +50,9 @@ public class ScoreManager : MonoBehaviour
         combo = 0;
         judgeobj.SetActive(true);
         if (a == 1) //롱노트 아애 안눌럿을시
-            judgeobj.GetComponent<scrJudge>().setInfo(5);
+            judgeobj.GetComponent<Judgement>().setInfo(5);
         else
-            judgeobj.GetComponent<scrJudge>().setInfo(4);
+            judgeobj.GetComponent<Judgement>().setInfo(4);
     }
     //패슬입력
     public void AddError(float error)

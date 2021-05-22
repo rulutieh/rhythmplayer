@@ -29,7 +29,7 @@ public class scrKeySet : MonoBehaviour
                 KeySetting.keys[(KeyAction)key] = keyEvent.keyCode;
             key = -1;
             sets.GetComponent<SettingPanel>().ClickSound(1);
-            scrSetting.SaveControlKeybinds();
+            GlobalSettings.SaveControlKeybinds();
         }
     }
     public void ChangeKey(int num)

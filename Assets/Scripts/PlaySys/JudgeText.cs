@@ -39,7 +39,7 @@ public class JudgeText : MonoBehaviour
             acc.color = new Color(1, 1, 1, ap);
             auto.color = acc.color;
             float a = ScoreManager.acc;
-            if (!scrSetting.AutoPlay)
+            if (!GlobalSettings.AutoPlay)
             {
                 error.text = $"{txt}{j}";
                 acc.text = string.Format("{0:p}", a);

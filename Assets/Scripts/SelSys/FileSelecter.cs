@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 public class FileSelecter : MonoBehaviour
 {
 
-    public GameObject bt, sfx, searchsys, rankpanel, scrollmod;
+    public GameObject bt, sfx, searchsys, rankpanel, scrollmod, DiffSelPanel;
     MusicHandler player;
     public WWW www, picture;
     FileLoader Loader;
-    scrSetting Setting;
+    GlobalSettings Setting;
     //로드된 변수값들
     public string _name, _artist, _txtpath, _bgpath, _diff, _bgapath, _charter, _hash;
     public float _localoffset, minBPM, maxBPM, medianBPM;
@@ -25,7 +25,7 @@ public class FileSelecter : MonoBehaviour
     AudioSource aud, sfxaud;
     public AudioClip audClip;
     public AudioClip[] sfxs;
-    public bool searching = false, isThreading;
+    public bool searching = false, isThreading, isSelectDiff, diffPlus, diffMinus;
     //구조체
     class BPMS
     {
@@ -55,14 +55,15 @@ public class FileSelecter : MonoBehaviour
         aud = GetComponent<AudioSource>();
         //GetSubDirectories();
         Loader = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
-        Setting = GameObject.FindWithTag("world").GetComponent<scrSetting>();
+        Setting = GameObject.FindWithTag("world").GetComponent<GlobalSettings>();
         player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
         prefer = false;
+        isSelectDiff = false;
     }
     void Start()
     {
         init();
-        aud.volume = sfxaud.volume = aud.volume = scrSetting.Volume;
+        aud.volume = sfxaud.volume = aud.volume = GlobalSettings.Volume;
         player.ReleaseKeysound();
     }
     public void init()
@@ -70,9 +71,9 @@ public class FileSelecter : MonoBehaviour
         DestroyBTs();
         LoadObjects(); //버튼 로드
         SortMod();      //모드적용
-        if (scrSetting.sortsearch != "")
+        if (GlobalSettings.sortsearch != "")
         {
-            SortSearch(scrSetting.sortsearch);
+            SortSearch(GlobalSettings.sortsearch);
         }
         else
         {
@@ -80,8 +81,8 @@ public class FileSelecter : MonoBehaviour
         }
 
         int c = Loader.list.Count;
-        if (scrSetting.decide < 0) scrSetting.decide = 0;
-        if (scrSetting.decide > c - 1) scrSetting.decide = c - 1;
+        if (GlobalSettings.decide < 0) GlobalSettings.decide = 0;
+        if (GlobalSettings.decide > c - 1) GlobalSettings.decide = c - 1;
         Loader.searchbyHash(NowPlaying.HASH);
         LoadFileInfo();
     }
@@ -92,7 +93,12 @@ public class FileSelecter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return)) songDecide();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            goTitle();
+            if (DiffSelPanel.activeSelf)
+            {
+                DiffSelPanel.SetActive(false);
+            }
+            else
+                goTitle();
         }
 
         if (Input.GetKeyDown(KeyCode.F6))
@@ -109,46 +115,50 @@ public class FileSelecter : MonoBehaviour
             SetSpecial();
         }//랜덤
 
-        if (scrSetting.scrollSpeed < 4f) //스크롤 업
+        if (GlobalSettings.scrollSpeed < 4f) //스크롤 업
                 if (Input.GetKeyDown(KeyCode.F4))
                 {
-                    scrSetting.scrollSpeed += 0.1f;
+                    GlobalSettings.scrollSpeed += 0.1f;
                     Setting.SaveSelection();
                 }
-            if (scrSetting.scrollSpeed > 1f) //스크롤 다운
+            if (GlobalSettings.scrollSpeed > 1f) //스크롤 다운
                 if (Input.GetKeyDown(KeyCode.F3))
                 {
-                    scrSetting.scrollSpeed -= 0.1f;
+                    GlobalSettings.scrollSpeed -= 0.1f;
                     Setting.SaveSelection();
                 }
         if (!isThreading)
         {
             
             //키보드 컨트롤
-            if (Input.GetKeyDown(KeyCode.UpArrow)) { scrSetting.decide--; SongScroll(); }
-            if (Input.GetKeyDown(KeyCode.DownArrow)) { scrSetting.decide++; SongScroll(); }
+            if (Input.GetKeyDown(KeyCode.UpArrow)) { GlobalSettings.decide--; SongScroll(); }
+            if (Input.GetKeyDown(KeyCode.DownArrow)) { GlobalSettings.decide++; SongScroll(); }
             //마우스휠
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             if (!rankpanel.GetComponent<RankPanel>().isOver && !scrollmod.GetComponent<ModButton>().isOver)
             {
-                if (scroll > 0.001f) { scrSetting.decide--; SongScroll(); }
-                if (scroll < -0.001f) { scrSetting.decide++; SongScroll(); }
+                if (scroll > 0.001f) { GlobalSettings.decide--; SongScroll(); }
+                if (scroll < -0.001f) { GlobalSettings.decide++; SongScroll(); }
             }
-            if (scrSetting.decide <= Loader.list.Count - 1)
-                if (Loader.list[scrSetting.decide].getID(0) == lastselect)
+            if (GlobalSettings.decide <= Loader.list.Count - 1)
+                if (Loader.list[GlobalSettings.decide].getID(0) == lastselect)
                 {
-                    if (scrSetting.diffselection > 0)
-                        if (Input.GetKeyDown(KeyCode.LeftArrow)) { scrSetting.diffselection--; getDiffinfo(); prefer = false; }
-                    if (scrSetting.diffselection < d)
-                        if (Input.GetKeyDown(KeyCode.RightArrow)) { scrSetting.diffselection++; getDiffinfo(); prefer = true; }
+                    if (GlobalSettings.diffselection == 0)
+                        diffMinus = false;
+                    if (GlobalSettings.diffselection == d)
+                        diffPlus = false;
+                    if (GlobalSettings.diffselection > 0)
+                        if (Input.GetKeyDown(KeyCode.LeftArrow) || diffMinus) { GlobalSettings.diffselection--; getDiffinfo(); prefer = false; diffMinus = false; }
+                    if (GlobalSettings.diffselection < d)
+                        if (Input.GetKeyDown(KeyCode.RightArrow) || diffPlus) { GlobalSettings.diffselection++; getDiffinfo(); prefer = true; diffPlus = false; }
                 }
         }
 
     }
-    void getDiffinfo()
+    public void getDiffinfo()
     {
-        _diff = Loader.list[scrSetting.decide].getDiff(scrSetting.diffselection);
-        _charter = Loader.list[scrSetting.decide].getCharter(scrSetting.diffselection);
+        _diff = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection);
+        _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection);
         LoadNoteFiles();
         player.PlaySFX(6);
     }
@@ -167,51 +177,51 @@ public class FileSelecter : MonoBehaviour
                     if (j + 1 != Loader.list[i].diffCount()) res += ", ";
                 }
             var ist = Instantiate(bt) as GameObject;
-            ist.GetComponent<scrButton>().setInfo(i, Loader.list[i].name, Loader.list[i].artist, res);
+            ist.GetComponent<SongButton>().setInfo(i, Loader.list[i].name, Loader.list[i].artist, res);
             ist.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
         }
 
     }
     void LoadNoteFiles()
     {
-        _txtpath = Loader.list[scrSetting.decide].getTxt(scrSetting.diffselection);
+        _txtpath = Loader.list[GlobalSettings.decide].getTxt(GlobalSettings.diffselection);
         NowPlaying.FILE = _txtpath;
-        NowPlaying.HASH = Loader.list[scrSetting.decide].getID(scrSetting.diffselection);
+        NowPlaying.LEVEL = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection);
+        NowPlaying.HASH = Loader.list[GlobalSettings.decide].getID(GlobalSettings.diffselection);
         rankpanel.GetComponent<RankPanel>().LoadRanks(NowPlaying.HASH);
         Debug.Log(_txtpath);
         countNotes(_txtpath);
     }
     void LoadFileInfo()
     {
-        _diffcount = Loader.list[scrSetting.decide].diffCount();
-        if (scrSetting.diffselection > _diffcount - 1)
+        _diffcount = Loader.list[GlobalSettings.decide].diffCount();
+        if (GlobalSettings.diffselection > _diffcount - 1)
         {
             if (prefer)
-                scrSetting.diffselection = _diffcount - 1;
+                GlobalSettings.diffselection = _diffcount - 1;
             else
-                scrSetting.diffselection = 0;
+                GlobalSettings.diffselection = 0;
         }
 
-        _name = Loader.list[scrSetting.decide].name;
-        _artist = Loader.list[scrSetting.decide].artist;
-        _diff = Loader.list[scrSetting.decide].getDiff(scrSetting.diffselection);
-        _localoffset = Loader.list[scrSetting.decide].localoffset;
-        _bgpath = Loader.list[scrSetting.decide].BGPath;
-        _bgapath = Loader.list[scrSetting.decide].BGAPath;
-        _charter = Loader.list[scrSetting.decide].getCharter(scrSetting.diffselection);
-        NowPlaying.isBGA = Loader.list[scrSetting.decide].hasvideo;
+        _name = Loader.list[GlobalSettings.decide].name;
+        _artist = Loader.list[GlobalSettings.decide].artist;
+        _diff = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection);
+        _localoffset = Loader.list[GlobalSettings.decide].localoffset;
+        _bgpath = Loader.list[GlobalSettings.decide].BGPath;
+        _bgapath = Loader.list[GlobalSettings.decide].BGAPath;
+        _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection);
+        NowPlaying.isBGA = Loader.list[GlobalSettings.decide].hasvideo;
 
 
 
         LoadNoteFiles();
-        NowPlaying.MUSICFILE = Loader.list[scrSetting.decide].AudioPath;    
+        NowPlaying.MUSICFILE = Loader.list[GlobalSettings.decide].AudioPath;    
         NowPlaying.OFFSET = _localoffset;
-        NowPlaying.LEVEL = _diff;
         NowPlaying.BGFILE = _bgpath;
         NowPlaying.BGAFILE = _bgapath;
         NowPlaying.TITLE = _name;
         NowPlaying.ARTIST = _artist;
-        NowPlaying.FOLDER = Loader.list[scrSetting.decide].directory;
+        NowPlaying.FOLDER = Loader.list[GlobalSettings.decide].directory;
         //fmod 사운드 릴리즈
         StopCoroutine(CheckLoadedAndPlay());
         if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
@@ -222,8 +232,8 @@ public class FileSelecter : MonoBehaviour
         player.LoadSound(NowPlaying.MUSICFILE);
 
         //선택변경 감지를 위한 마지막 선택곡 저장
-        lastselect = Loader.list[scrSetting.decide].getID(0);
-        lastselectdiff = Loader.list[scrSetting.decide].getID(scrSetting.diffselection);
+        lastselect = Loader.list[GlobalSettings.decide].getID(0);
+        lastselectdiff = Loader.list[GlobalSettings.decide].getID(GlobalSettings.diffselection);
         //fmod 사운드 로딩
         StartCoroutine(CheckLoadedAndPlay());
 
@@ -232,62 +242,62 @@ public class FileSelecter : MonoBehaviour
 
         var obj = GameObject.Find("AlbumUI");
         if (obj)
-            obj.GetComponent<scrAlbumArt>().LoadAlbumArt();
+            obj.GetComponent<AlbumArt>().LoadAlbumArt();
     }
     public void SetSuffle()
     {
         player.PlaySFX(0);
-        scrSetting.modselection++; if (scrSetting.modselection > 2) scrSetting.modselection = 0;
+        GlobalSettings.modselection++; if (GlobalSettings.modselection > 2) GlobalSettings.modselection = 0;
         SortMod();
         Setting.SaveSelection();
     }
     public void SetSpecial()
     {
         player.PlaySFX(0);
-        scrSetting.specialselection++; if (scrSetting.specialselection > 1) scrSetting.specialselection = 0;
+        GlobalSettings.specialselection++; if (GlobalSettings.specialselection > 1) GlobalSettings.specialselection = 0;
         SortSpecial();
     }
     public void SetSort()
     {
         player.PlaySFX(0);
-        scrSetting.sortselection++;
+        GlobalSettings.sortselection++;
         SortMusic();
         Setting.SaveSelection();
     }
     void SortMod()
     {
-        switch (scrSetting.modselection)
+        switch (GlobalSettings.modselection)
         {
             case 0:
-                scrSetting.Mirror = false;
-                scrSetting.Random = false;
+                GlobalSettings.Mirror = false;
+                GlobalSettings.Random = false;
                 break;
             case 1:
-                scrSetting.Mirror = true;
-                scrSetting.Random = false;
+                GlobalSettings.Mirror = true;
+                GlobalSettings.Random = false;
                 break;
             case 2:
-                scrSetting.Mirror = false;
-                scrSetting.Random = true;
+                GlobalSettings.Mirror = false;
+                GlobalSettings.Random = true;
                 break;
         }
     }
     void SortSpecial()
     {
-        switch (scrSetting.specialselection)
+        switch (GlobalSettings.specialselection)
         {
             case 0:
-                scrSetting.AutoPlay = false;
+                GlobalSettings.AutoPlay = false;
                 break;
             case 1:
-                scrSetting.AutoPlay = true;
+                GlobalSettings.AutoPlay = true;
                 break;
         }
     }
     void SortMusic()
     {
-        if (scrSetting.sortselection > 2) scrSetting.sortselection = 0;
-        switch (scrSetting.sortselection)
+        if (GlobalSettings.sortselection > 2) GlobalSettings.sortselection = 0;
+        switch (GlobalSettings.sortselection)
         {
             case 0:
                 Loader.SortName();
@@ -347,31 +357,47 @@ public class FileSelecter : MonoBehaviour
         player.PlaySFX(2);
         //outofrange 방지
         int c = Loader.list.Count;
-        if (scrSetting.decide < 0) scrSetting.decide = 0;
-        if (scrSetting.decide > c - 1) scrSetting.decide = c - 1;
+        if (GlobalSettings.decide < 0) GlobalSettings.decide = 0;
+        if (GlobalSettings.decide > c - 1) GlobalSettings.decide = c - 1;
         //곡 변경시 난이도 배열범위 초과 방지
         //_diffcount = Loader.list[scrSetting.decide].diffCount();
         //scrSetting.diffselection = _diffcount - 1;
     }
     public void songDecide()
     {
-        if (scrSetting.decide < Loader.list.Count && Loader.list.Count != 0)
+        if (GlobalSettings.decide < Loader.list.Count && Loader.list.Count != 0)
         {
             {
-                if (Loader.list[scrSetting.decide].getID(0) != lastselect) //곡 변경후 선택 시 (md5 해쉬 비교) 중복로드 방지
+                if (Loader.list[GlobalSettings.decide].getID(0) != lastselect) //곡 변경후 선택 시 (md5 해쉬 비교) 중복로드 방지
                 {
-                    _diffcount = 0;
-                    Setting.SaveSelection();
-                    player.PlaySFX(0);
-                    LoadFileInfo();
+
+                        _diffcount = 0;
+                        Setting.SaveSelection();
+                        player.PlaySFX(0);
+                        LoadFileInfo();
+                    
                 }
                 else if (!isThreading) //이미 곡 고르고 프리뷰 플레이시
                 {
-                    player.PlaySFX(4);
-                    StopCoroutine(CheckLoadedAndPlay());
-                    player.StopMP3();
-                    RoomChanger.roomchanger.goRoom("PlayMusic");
-
+                    if (_diffcount > 1)
+                    {
+                        if (DiffSelPanel.activeSelf)
+                        {
+                            player.PlaySFX(4);
+                            StopCoroutine(CheckLoadedAndPlay());
+                            player.StopMP3();
+                            RoomChanger.roomchanger.goRoom("PlayMusic");
+                        }
+                        else
+                            DiffSelPanel.SetActive(true);
+                    }
+                    else
+                    {
+                        player.PlaySFX(4);
+                        StopCoroutine(CheckLoadedAndPlay());
+                        player.StopMP3();
+                        RoomChanger.roomchanger.goRoom("PlayMusic");
+                    }
                 }
             }
         }

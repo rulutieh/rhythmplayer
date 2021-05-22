@@ -16,7 +16,7 @@ public class playerBGA : MonoBehaviour
     {
         rect = GetComponent<RectTransform>();
         FileReader.isVideoLoaded = false;
-        if (NowPlaying.isBGA && scrSetting.isPlayVideo)
+        if (NowPlaying.isBGA && GlobalSettings.isPlayVideo)
         {
             mVideoPlayer.url = NowPlaying.BGAFILE;
             StartCoroutine(PrepareVideo());
