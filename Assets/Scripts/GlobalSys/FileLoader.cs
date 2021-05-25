@@ -28,8 +28,9 @@ public class FileLoader : MonoBehaviour
         public bool hasvideo { get; set; }
         public float localoffset { get; set; }
         public string directory { get; set; }
+        public bool isvirtual { get; set; }
         List<Chart> charts = new List<Chart>();
-        public Song(string dir, string name, string artist, ref string[] diffs, float offset, ref string[] id, ref string[] charter, ref string[] txtpath, string audiopath, string bgpath, string bgapath, bool hasvideo, string tags)
+        public Song(string dir, string name, string artist, ref string[] diffs, float offset, ref string[] id, ref string[] charter, ref string[] txtpath, string audiopath, string bgpath, string bgapath, bool hasvideo, string tags, bool isvirtual)
         {
 
             for (int i = 0; i < id.Length; i++)
@@ -45,6 +46,7 @@ public class FileLoader : MonoBehaviour
             localoffset = offset;
             this.hasvideo = hasvideo;
             this.tags = tags;
+            this.isvirtual = isvirtual;
             SortDiff();
         }
         void SortDiff()
@@ -133,6 +135,7 @@ public class FileLoader : MonoBehaviour
     {
         string AUDIOFILE, BACKGROUND, VIDEOFILE = "";
         bool hasvideo = false;
+        bool isvirtual = false;
         DirectoryInfo d = new DirectoryInfo(dir);
         FileInfo[] Files = d.GetFiles("*.txt");
         if (Files.Length == 0) Files = d.GetFiles("*.osu");
@@ -153,6 +156,7 @@ public class FileLoader : MonoBehaviour
         //General 항목이 없을 시 폴더의 mp3, ogg 자동 로드
         Musics = d.GetFiles("*.mp3");
         if (Musics.Length == 0) Musics = d.GetFiles("*.ogg");
+        if (Musics.Length == 0) Musics = d.GetFiles("*.wav");
         if (Musics.Length == 0) return; //잘못된 폴더는 무시
         AUDIOFILE = Path.Combine(path, dir, Musics[0].Name);
         FileInfo[] bgs;
@@ -188,7 +192,13 @@ public class FileLoader : MonoBehaviour
                     }
                     else
                     {
-                        AUDIOFILE = DefaultAudioPath;
+                        isvirtual = true;
+                        if (File.Exists(Path.Combine(path,dir, "preview.mp3")))
+                        {
+                            AUDIOFILE = Path.Combine(path, dir, "preview.mp3");
+                        }
+                        else
+                            AUDIOFILE = DefaultAudioPath;
                     }
                 }
                 if (line.Contains("AudioLeadIn"))
@@ -218,7 +228,7 @@ public class FileLoader : MonoBehaviour
             rdr.Close();
         }
         Song s;
-        s = new Song(dir, _title, _artist, ref DIFFS, _offset, ref _id, ref CHARTERS, ref TXTFILE, AUDIOFILE, BACKGROUND, VIDEOFILE, hasvideo, _tags);
+        s = new Song(dir, _title, _artist, ref DIFFS, _offset, ref _id, ref CHARTERS, ref TXTFILE, AUDIOFILE, BACKGROUND, VIDEOFILE, hasvideo, _tags, isvirtual);
         list.Add(s);
         listorigin.Add(s);
     }

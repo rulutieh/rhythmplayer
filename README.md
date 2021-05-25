@@ -11,4 +11,6 @@
 https://fmod.com/resources/documentation-api?version=2.0&page=core-api-system.html
 
 
+This project is licensed under the terms of the MIT license.
+
 

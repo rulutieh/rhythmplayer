@@ -31,19 +31,21 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
     {
         decide = GlobalSettings.decide;
         float gap = decide - idx;
-        
-        Vector2 pos = new Vector2(-130f + Mathf.Abs(gap * 10), gap * 50f);
+        // + Mathf.Abs(gap * 10)
+        Vector2 pos = new Vector2(-100f, gap * 46f);
         rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, pos, Time.deltaTime * 30f);
 
         if (Mathf.Abs(gap) < 1f)
         {
             Color c = new Color(1f, 1f, 1f, 0.9f);
             rend.color = c;
+            rect.SetSiblingIndex(10000);
         }
         else
         {
             Color c = new Color(0, 0, 0, 0.7f);
             rend.color = c;
+            rect.SetSiblingIndex(idx);
         }
 
     }
@@ -52,7 +54,7 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
         tmpa.alpha = 1f;
         tmpa.text = artist;
         tmp.text = title;
-        tmpl.text = "Level : " +level;
+        tmpl.text = "LV : " +level;
         this.idx = idx;
     }
     public void OnPointerClick(PointerEventData eventData)

@@ -186,6 +186,7 @@ public class FileSelecter : MonoBehaviour
     {
         _txtpath = Loader.list[GlobalSettings.decide].getTxt(GlobalSettings.diffselection);
         NowPlaying.FILE = _txtpath;
+        
         NowPlaying.LEVEL = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection);
         NowPlaying.HASH = Loader.list[GlobalSettings.decide].getID(GlobalSettings.diffselection);
         rankpanel.GetComponent<RankPanel>().LoadRanks(NowPlaying.HASH);
@@ -211,7 +212,7 @@ public class FileSelecter : MonoBehaviour
         _bgapath = Loader.list[GlobalSettings.decide].BGAPath;
         _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection);
         NowPlaying.isBGA = Loader.list[GlobalSettings.decide].hasvideo;
-
+        NowPlaying.isVirtual = Loader.list[GlobalSettings.decide].isvirtual;
 
 
         LoadNoteFiles();

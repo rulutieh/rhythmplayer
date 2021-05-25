@@ -18,12 +18,12 @@ public class AlbumArt : MonoBehaviour, IPointerClickHandler
     // Start is called before the first frame update
     void Start()
     {
-        rend = this.GetComponent<Image>();
+        rend = GetComponent<Image>();
         c = new Color(1, 1, 1, 1);
         p = panel.GetComponent<RankPanel>();
         rect = GetComponent<RectTransform>();
         startpos = rect.transform.position;
-        endpos = Vector3.Lerp(fade.GetComponent<RectTransform>().position, startpos, 0.5f);
+        endpos = Vector3.Lerp(fade.GetComponent<RectTransform>().position, startpos, 0.66f);
 
         AnimatePanel();
     }

@@ -5,8 +5,8 @@ AudioFilename: virtual
 Title:Fading Star
 Artist:ginkiha
 Creator:inava
-bms of fighters bof
-Tags:Version:32
+Tags:bms of fighters bof
+Version:32
 
 
 [Events]

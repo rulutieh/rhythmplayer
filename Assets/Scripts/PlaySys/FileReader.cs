@@ -210,8 +210,8 @@ public class FileReader : MonoBehaviour
     }
     void AudioStart() //오프셋 Invoke로 실행
     {
-        //aud.Play();
-        player.PlayMP3();
+        if (!NowPlaying.isVirtual)
+            player.PlayMP3();
         isPlaying = true;
     }
     IEnumerator SongInit() //async 종료 후 해당 데이터로 init
@@ -443,8 +443,11 @@ public class FileReader : MonoBehaviour
 
                                 string samplesound = ksarr[3];
                                 samplesound = samplesound.Replace("\"", string.Empty).Trim();
-                                int sampletiming = int.Parse(ksarr[1]);
-
+                                //int sampletiming = int.Parse(ksarr[1]);
+                                if (!int.TryParse(ksarr[1],out int sampletiming))
+                                {
+                                    continue;
+                                }
                                 if (samplesound.Contains(".ogg") || samplesound.Contains(".wav"))
                                 {
 
@@ -564,6 +567,8 @@ public class FileReader : MonoBehaviour
     {
         Array.Sort(NoteList, delegate (Notes A, Notes B)
         {
+            if (A.TIME == B.TIME)
+                return 0;
             if (A.TIME > B.TIME)
                 return 1;
             else
@@ -574,9 +579,11 @@ public class FileReader : MonoBehaviour
     {
         SampleList.Sort(delegate (Samples A, Samples B)
         {
+            if (A.TIME == B.TIME)
+                return 0;
             if (A.TIME > B.TIME)
                 return 1;
-            else
+            else 
                 return -1;
         });
     }

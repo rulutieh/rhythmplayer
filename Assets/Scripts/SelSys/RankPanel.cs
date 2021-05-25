@@ -12,12 +12,14 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public GameObject o, isnull;
     RectTransform rect;
     RankSystem sys;
+    Vector2 startpos;
     private void Awake()
     {
         isnull.SetActive(true);
         sys = GameObject.FindWithTag("world").GetComponent<RankSystem>();
         rect = GetComponent<RectTransform>();
-        rect.DOAnchorPosX(67.93f, 0.5f, true);
+        startpos = rect.transform.position;
+        rect.DOAnchorPosX(67.93f, 0.4f, true);
     }
 
     public void onoff()
@@ -25,10 +27,10 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         isOn = !isOn;
         if (isOn)
         {
-            rect.DOAnchorPosX(67.93f, 0.5f, true);
+            rect.DOAnchorPosX(67.93f, 0.4f, true);
         }
         else
-            rect.DOAnchorPosX(-92.5f, 0.5f, true);
+            rect.DOAnchorPosX(-92.5f, 0.4f, true);
     }
 
     void Update()

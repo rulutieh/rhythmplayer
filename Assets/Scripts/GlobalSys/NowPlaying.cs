@@ -11,7 +11,7 @@ public class NowPlaying : MonoBehaviour
     public static double MEDIAN;
     public static int TIMINGCOUNTS, NOTECOUNTS, LONGNOTECOUNTS;
     public static AudioClip AUD;
-    public static bool isBGA;
+    public static bool isBGA, isVirtual;
     public int nt, ln;
     public static float LengthMS;
     MusicHandler player;
