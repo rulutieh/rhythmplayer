@@ -18,12 +18,6 @@ public class MusicHandler : MonoBehaviour
     int samplechannelidx = 26;
     List<FMOD.Sound> KeySoundList = new List<FMOD.Sound>();
 
-    private void Awake()
-    {
-
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
         //SND
@@ -35,7 +29,6 @@ public class MusicHandler : MonoBehaviour
         {
             channel[i] = new FMOD.Channel();
             channel[i].setChannelGroup(channelGroup);
-            Debug.Log(e);
         }
 
         //SFX

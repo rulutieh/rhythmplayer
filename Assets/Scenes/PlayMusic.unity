@@ -1617,26 +1617,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347923640}
   m_CullTransparentMesh: 0
---- !u!1 &407363623 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8170467411704298853, guid: 4feeceb987d918e48815fd6b490d495c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2417163686679336757}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &407363624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407363623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57bfa7c13855b484089559455917ae35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameover: {fileID: 2119632999}
-  judgeobj: {fileID: 874819459}
 --- !u!1 &409828194
 GameObject:
   m_ObjectHideFlags: 0
@@ -6701,6 +6681,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 407363624, guid: 4feeceb987d918e48815fd6b490d495c, type: 3}
+      propertyPath: gameover
+      value: 
+      objectReference: {fileID: 2119632999}
+    - target: {fileID: 407363624, guid: 4feeceb987d918e48815fd6b490d495c, type: 3}
+      propertyPath: judgeobj
+      value: 
+      objectReference: {fileID: 874819459}
     - target: {fileID: 556237093282803907, guid: 4feeceb987d918e48815fd6b490d495c,
         type: 3}
       propertyPath: m_RootOrder
@@ -6758,30 +6746,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2281776164902078672, guid: 4feeceb987d918e48815fd6b490d495c,
         type: 3}
-      propertyPath: endln
-      value: 
-      objectReference: {fileID: 3007154507085578081, guid: ab7faa8272f3ea14f80726e10e17b3c7,
-        type: 3}
-    - target: {fileID: 2281776164902078672, guid: 4feeceb987d918e48815fd6b490d495c,
-        type: 3}
-      propertyPath: ColObj
-      value: 
-      objectReference: {fileID: 5299888614014732403, guid: c91d037c902cc104b8558634ec1d8139,
-        type: 3}
-    - target: {fileID: 2281776164902078672, guid: 4feeceb987d918e48815fd6b490d495c,
-        type: 3}
-      propertyPath: barobj
-      value: 
-      objectReference: {fileID: 8719062346855963220, guid: cd3b99515fd18a54392eb41c678bf724,
-        type: 3}
-    - target: {fileID: 2281776164902078672, guid: 4feeceb987d918e48815fd6b490d495c,
-        type: 3}
-      propertyPath: result
-      value: 
-      objectReference: {fileID: 7204334513609727370, guid: f69c12a0f795c814dada8870e76c8bf0,
-        type: 3}
-    - target: {fileID: 2281776164902078672, guid: 4feeceb987d918e48815fd6b490d495c,
-        type: 3}
       propertyPath: gameover
       value: 
       objectReference: {fileID: 2119632999}
@@ -6800,28 +6764,12 @@ PrefabInstance:
       propertyPath: initsetting
       value: 
       objectReference: {fileID: 117492036}
-    - target: {fileID: 7186099554799833508, guid: 4feeceb987d918e48815fd6b490d495c,
-        type: 3}
-      propertyPath: BypassEffects
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7186099554799833508, guid: 4feeceb987d918e48815fd6b490d495c,
-        type: 3}
-      propertyPath: BypassReverbZones
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7186099554799833508, guid: 4feeceb987d918e48815fd6b490d495c,
-        type: 3}
-      propertyPath: BypassListenerEffects
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8170467411704298853, guid: 4feeceb987d918e48815fd6b490d495c,
         type: 3}
       propertyPath: m_Name
       value: NoteReader
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7186099554799833508, guid: 4feeceb987d918e48815fd6b490d495c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4feeceb987d918e48815fd6b490d495c, type: 3}
 --- !u!1001 &3578000316690520855
 PrefabInstance:

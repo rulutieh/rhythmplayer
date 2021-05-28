@@ -270,7 +270,7 @@ public class GlobalSettings : MonoBehaviour
         a.id = id; a.pw = pw; a.name = nick;
         accList.Add(a); //회원가입 (임시로 json저장, mysql대체예정)
         string json = JsonConvert.SerializeObject(accList, Formatting.Indented);
-        json = RankSystem.AESEncrypt128(json);
+        json = CryptoManager.AESEncrypt128(json);
         File.WriteAllText(Path.Combine(Application.persistentDataPath, "accounts.json"), json);
     }
 
@@ -280,7 +280,7 @@ public class GlobalSettings : MonoBehaviour
         if (File.Exists(Path.Combine(Application.persistentDataPath, "accounts.json")))
         {
             json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "accounts.json"));
-            json = RankSystem.AESDecrypt128(json);
+            json = CryptoManager.AESDecrypt128(json);
             accList = JsonConvert.DeserializeObject<List<PlayerAccount>>(json);
         }
     }
@@ -291,7 +291,7 @@ public class GlobalSettings : MonoBehaviour
         p.id = id; p.pw = pw;
 
         string json = JsonConvert.SerializeObject(p, Formatting.Indented);
-        json = RankSystem.AESEncrypt128(json);
+        json = CryptoManager.AESEncrypt128(json);
         File.WriteAllText(Path.Combine(Application.persistentDataPath, "player.json"), json);
     }
 
@@ -302,7 +302,7 @@ public class GlobalSettings : MonoBehaviour
         if (File.Exists(Path.Combine(Application.persistentDataPath, "player.json")))
         {
             json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "player.json"));
-            json = RankSystem.AESDecrypt128(json);
+            json = CryptoManager.AESDecrypt128(json);
             PlayerIDPW pid = JsonConvert.DeserializeObject<PlayerIDPW>(json);
             for (int i = 0; i < accList.Count; i++)
             {

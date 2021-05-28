@@ -9,5 +9,6 @@ public class scrinit : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        QualitySettings.vSyncCount = 0;
     }
 }

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ColNote : MonoBehaviour
 {
-    public bool pressed, lncreated, lnsetpressed;
+    public bool pressed, lnsetpressed;
     public int KeySound;
-    ScoreManager reader;
+    //FileReader
+    ScoreManager scm;
+    FileReader rdr;
     public BoxCollider2D box;
     int COLUMN;
     int TIME;
@@ -14,8 +16,17 @@ public class ColNote : MonoBehaviour
     bool ISLN;
     void Awake()
     {
-        reader = GameObject.FindWithTag("NoteSys").GetComponent<ScoreManager>();
+
+        var sys = GameObject.FindWithTag("NoteSys");
+        scm = sys.GetComponent<ScoreManager>();
+        rdr = sys.GetComponent<FileReader>();
         box = GetComponent<BoxCollider2D>();
+    }
+    void OnEnable()
+    {
+        box.enabled = true;
+        pressed = false;
+        lnsetpressed = false;
     }
     void Update()
     {
@@ -27,20 +38,23 @@ public class ColNote : MonoBehaviour
             {
                 if (!pressed)
                 {
-                    reader.SetJudge(1);
-                    Destroy(gameObject);
+                    scm.SetJudge(1);
+                    InsertQueue();
+                    //Destroy(gameObject);
                 }
                 else
                 if (LNLENGTH + 200f < FileReader.Playback)
                 {
-                    Destroy(gameObject);
+                    InsertQueue();
+                    //Destroy(gameObject);
                 }
             }
         }
         else if (TIME + 178.4f < FileReader.Playback)
         {
-            reader.SetJudge(0);
-            Destroy(gameObject);
+            scm.SetJudge(0);
+            InsertQueue();
+            //Destroy(gameObject);
         }
     }
 
@@ -78,5 +92,11 @@ public class ColNote : MonoBehaviour
     public void setPressed()
     {
         lnsetpressed = true;
+    }
+    public void InsertQueue()
+    {
+        transform.position = new Vector2(0, 1000f);
+        rdr.n_queue.Enqueue(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

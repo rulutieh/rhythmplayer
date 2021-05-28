@@ -54,7 +54,7 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
         tmpa.alpha = 1f;
         tmpa.text = artist;
         tmp.text = title;
-        tmpl.text = "LV : " +level;
+        tmpl.text = level;
         this.idx = idx;
     }
     public void OnPointerClick(PointerEventData eventData)

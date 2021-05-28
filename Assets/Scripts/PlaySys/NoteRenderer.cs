@@ -6,14 +6,24 @@ public class NoteRenderer : MonoBehaviour
 {
     public GameObject lnend, lntemp;
     GameObject inst;
-    public Sprite dk, sp, dkln, spln, defspr;
-    public bool pressed, lncreated, lnsetpressed;
+    public Sprite dk, sp, dkln, spln, def, defspr;
+    public bool lncreated;
     SpriteRenderer rend, rend2;
     Sprite tempspr;
     int COLUMN;
     int TIME;
     float LNLENGTH, _TIME;
     bool ISLN;
+
+    void Awake()
+    {
+        rend = GetComponent<SpriteRenderer>();
+        transform.localScale = new Vector2(transform.localScale.x * GlobalSettings.ColWidth, transform.localScale.y);
+    }
+    void OnEnable()
+    {
+        lncreated = false;
+    }
     void Update()
     {
         if (ISLN)
@@ -34,7 +44,6 @@ public class NoteRenderer : MonoBehaviour
             }
             else
             {
-                if (lnsetpressed) lnend.GetComponent<NoteEnd>().isPressed = true;
                 if (inst)
                 {
                     inst.transform.position = transform.position;
@@ -42,7 +51,7 @@ public class NoteRenderer : MonoBehaviour
                     float gap = Mathf.Abs(lnend.transform.position.y - transform.position.y);
                     inst.transform.localScale = new Vector2(0.95f, gap / height);
                 }
-                if (lnend.GetComponent<NoteEnd>().getTime() + 200 < FileReader.Playback )
+                if (LNLENGTH + 200 < FileReader.Playback )
                 {
                     Destroy(lnend);
                     Destroy(gameObject);
@@ -54,7 +63,6 @@ public class NoteRenderer : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void LateUpdate()
     {
         
@@ -64,10 +72,6 @@ public class NoteRenderer : MonoBehaviour
 
     public void SetInfo(int c, int t, bool ln, float length, float nt)
     {
-        
-        rend = GetComponent<SpriteRenderer>();
-        transform.localScale = new Vector2(transform.localScale.x * GlobalSettings.ColWidth, transform.localScale.y);
-        //int cc = (int)Mathf.Round((c - 36) / 73f);
         COLUMN = c;
         switch (c)
         {
@@ -85,6 +89,7 @@ public class NoteRenderer : MonoBehaviour
                 break;
 
             default:
+                rend.sprite = def;
                 tempspr = defspr;
                 break;
         }
@@ -96,5 +101,4 @@ public class NoteRenderer : MonoBehaviour
     {
         lnend = lne;
     }
-
 }

@@ -160,7 +160,8 @@ public class KeyInputManager : MonoBehaviour
                 else
                 {
                     createhitef();
-                    Destroy(CloseHit.collider.gameObject);
+                    CloseHit.collider.GetComponent<ColNote>().InsertQueue();
+                    //Destroy(CloseHit.collider.gameObject);
                 }
 
                 int i = CloseHit.collider.GetComponent<ColNote>().KeySound;

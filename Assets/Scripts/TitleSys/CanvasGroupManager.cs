@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class scrCanvasGroup : MonoBehaviour
+public class CanvasGroupManager : MonoBehaviour
 {
     public int id;
     CanvasGroup cv;

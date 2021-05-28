@@ -97,3 +97,4 @@ MonoBehaviour:
   isPressed: 0
   dk: {fileID: 21300000, guid: 98b428424f2187c40a5ba54e67032a17, type: 3}
   sp: {fileID: 21300000, guid: 8797dffbb9d4c2b4689ba319c51b0628, type: 3}
+  def: {fileID: 21300000, guid: 210adfaee8bf0b6468bb0e03a553e1f0, type: 3}

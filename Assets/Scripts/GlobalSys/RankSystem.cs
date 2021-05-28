@@ -1,71 +1,102 @@
 ﻿using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Security.Cryptography;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+
+
+[Serializable]
+class SongDB
+{
+    public string key; //hashtable
+
+    public List<ScoreData> scores = new List<ScoreData>();
+
+    public SongDB(string key)
+    {
+        this.key = key;
+    }
+
+    public void AddScore(string playername, int score, int state, int maxcombo, string date)
+    {
+        scores.Add(new ScoreData(playername, score, state, maxcombo, date));
+        SortScores();
+    }
+
+    void SortScores()
+    {
+        scores.Sort(delegate (ScoreData A, ScoreData B)
+        {
+            if (A.score == B.score) return 0;
+            if (A.score < B.score) return 1;
+            else return -1;
+        });
+    }
+}
+
+
+[Serializable]
+class ScoreData
+{
+    public string playername;
+    public string date;
+    public int score;
+    public int state;
+    public int maxcombo;
+    public ScoreData(string playername, int score, int state, int maxcombo, string date)
+    {
+        this.playername = playername;
+        this.score = score;
+        this.state = state;
+        this.maxcombo = maxcombo;
+        this.date = date;
+    }
+}
+[Serializable]
+class ReceiveScoreData
+{
+    public string date;
+    public string message;
+    public string result;
+
+    public static ReceiveScoreData CreateFromJson(string json)
+    {
+        return JsonConvert.DeserializeObject<ReceiveScoreData>(json);
+    }
+}
+
+
+
 
 public class RankSystem : MonoBehaviour
 {
-    private static readonly string PASSWORD = "gsakljerngoan4alyn3oitajlf";
+    /*
+    public delegate void ReceiveDelegate(string message);
 
-    private static readonly string KEY = PASSWORD.Substring(0, 128 / 8);
+    public event ReceiveDelegate OnReceive;
+    */
 
-    [Serializable]
-    class SongDB
-    {
-        public string key; //hashtable
-
-        public List<ScoreData> scores = new List<ScoreData>();
-
-        public SongDB(string key)
-        {
-            this.key = key;
-        }
-
-        public void AddScore( string playername, int score, int state, int maxcombo, string date)
-        {
-            scores.Add(new ScoreData(playername, score, state, maxcombo, date));
-            SortScores();
-        }
-
-        void SortScores()
-        {
-            scores.Sort(delegate (ScoreData A, ScoreData B)
-            {
-                if (A.score < B.score) return 1;
-                else return -1;
-            });
-        }
-    }
-    [Serializable]
-    class ScoreData
-    {
-        public string playername;
-        public string date;
-        public int score;
-        public int state;
-        public int maxcombo;
-        public ScoreData(string playername, int score, int state, int maxcombo, string date)
-        {
-            this.playername = playername;
-            this.score = score;
-            this.state = state;
-            this.maxcombo = maxcombo;
-            this.date = date;
-        }
-    }
     [SerializeField]
     List<SongDB> songs = new List<SongDB>();
 
     int id = -1;
+    private void Awake()
+    {
 
+    }
     private void Start()
     {
         LoadScore();
     }
+    //private void Update()
+    //{
+    //    if (Input.GetKey(KeyCode.A))
+    //        SaveScore("323", "123", 123, 0, 2, "1");
+    //}
     public void SelectSong(string key)
     {
         id = -1;
@@ -110,10 +141,11 @@ public class RankSystem : MonoBehaviour
             songs.Add(s);
         }
         string json = JsonConvert.SerializeObject(songs, Formatting.Indented);
-        json = AESEncrypt128(json);
+        json = CryptoManager.AESEncrypt128(json);
         File.WriteAllText(Path.Combine(Application.persistentDataPath, "scoredb.json"), json);
-        //mysql
+        //php+db
 
+        //RequestToWebAsync("http://127.0.0.1:8000/print/hello");
         ///////
     }
 
@@ -123,64 +155,66 @@ public class RankSystem : MonoBehaviour
         if (File.Exists(Path.Combine(Application.persistentDataPath, "scoredb.json")))
         {
             json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "scoredb.json"));
-            json = AESDecrypt128(json);
+            json = CryptoManager.AESDecrypt128(json);
             songs = JsonConvert.DeserializeObject<List<SongDB>>(json);
         }
     }
 
-    public static string AESEncrypt128(string plain)
+    private string RequestToWeb(string url)
     {
-        byte[] plainBytes = Encoding.UTF8.GetBytes(plain);
+        try
+        {
+            WebRequest webRequest;
+            webRequest = WebRequest.Create(url);
 
-        RijndaelManaged myRijndael = new RijndaelManaged();
-        myRijndael.Mode = CipherMode.CBC;
-        myRijndael.Padding = PaddingMode.PKCS7;
-        myRijndael.KeySize = 128;
+            using (WebResponse res = webRequest.GetResponse())
+            {
+                Stream objStream;
+                objStream = res.GetResponseStream();
 
-        MemoryStream memoryStream = new MemoryStream();
+                StreamReader objReader = new StreamReader(objStream);
+                StringBuilder sb = new StringBuilder();
 
-        ICryptoTransform encryptor = myRijndael.CreateEncryptor(Encoding.UTF8.GetBytes(KEY), Encoding.UTF8.GetBytes(KEY));
-
-        CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
-        cryptoStream.Write(plainBytes, 0, plainBytes.Length);
-        cryptoStream.FlushFinalBlock();
-
-        byte[] encryptBytes = memoryStream.ToArray();
-
-        string encryptString = Convert.ToBase64String(encryptBytes);
-
-        cryptoStream.Close();
-        memoryStream.Close();
-
-        return encryptString;
+                string message = "";
+                while (message != null)
+                {
+                    message = objReader.ReadLine();
+                    if (message != null)
+                        sb.Append(message);
+                    var utf8Bytes = Encoding.UTF8.GetBytes(sb.ToString());
+                    return Encoding.Default.GetString(utf8Bytes);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("asdf");
+        }
+        return "";
     }
 
-    public static string AESDecrypt128(string encrypt)
+
+    private async void RequestToWebAsync(string url)
     {
-        byte[] encryptBytes = Convert.FromBase64String(encrypt);
-
-        RijndaelManaged myRijndael = new RijndaelManaged();
-        myRijndael.Mode = CipherMode.CBC;
-        myRijndael.Padding = PaddingMode.PKCS7;
-        myRijndael.KeySize = 128;
-
-        MemoryStream memoryStream = new MemoryStream(encryptBytes);
-
-        ICryptoTransform decryptor = myRijndael.CreateDecryptor(Encoding.UTF8.GetBytes(KEY), Encoding.UTF8.GetBytes(KEY));
-
-        CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
-
-        byte[] plainBytes = new byte[encryptBytes.Length];
-
-        int plainCount = cryptoStream.Read(plainBytes, 0, plainBytes.Length);
-
-        string plainString = Encoding.UTF8.GetString(plainBytes, 0, plainCount);
-
-        cryptoStream.Close();
-        memoryStream.Close();
-
-        return plainString;
+        var reqTask = Task.Run(() => this.RequestToWeb(url));
+        var result = await reqTask;
+        onReceive(result);
     }
+    
+    private void onReceive(string result)
+    {
+        var received = ReceiveScoreData.CreateFromJson(result);
+        Debug.Log($"{received.date},{received.message},{received.result}");
+    }
+    
+
+
+
+    //public void RegisterReceiver(ReceiveDelegate receiver)
+    //{
+    //    OnReceive += receiver;
+    //}
+
 
 }
 

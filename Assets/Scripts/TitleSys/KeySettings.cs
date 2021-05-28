@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class scrKeySet : MonoBehaviour
+public class KeySettings : MonoBehaviour
 {
     public GameObject sets;
     public TextMeshProUGUI[] keynum;

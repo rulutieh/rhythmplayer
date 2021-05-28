@@ -100,7 +100,6 @@ MonoBehaviour:
   sp: {fileID: 21300000, guid: 8797dffbb9d4c2b4689ba319c51b0628, type: 3}
   dkln: {fileID: 21300000, guid: 217e438bb810b5f439dfa14c9c5af207, type: 3}
   spln: {fileID: 21300000, guid: 1b844b15af7f6e247a066d380cb3ebee, type: 3}
+  def: {fileID: 21300000, guid: 210adfaee8bf0b6468bb0e03a553e1f0, type: 3}
   defspr: {fileID: 21300000, guid: 19f3b02eb64f0484cb7861ce64861d46, type: 3}
-  pressed: 0
   lncreated: 0
-  lnsetpressed: 0

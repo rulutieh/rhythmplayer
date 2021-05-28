@@ -351,6 +351,7 @@ public class FileSelecter : MonoBehaviour
         SortMusic();
         DestroyBTs();
         LoadObjects();
+        SongScroll();
     }
 
     public void SongScroll()

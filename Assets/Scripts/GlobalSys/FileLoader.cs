@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
-using System.Security.Cryptography;
 using System;
 using System.Globalization;
 
@@ -224,7 +223,7 @@ public class FileLoader : MonoBehaviour
 
 
 
-            _id[i] = CalculateMD5(TXTFILE[i]); //무결성 검사
+            _id[i] = CryptoManager.CalculateMD5(TXTFILE[i]); //무결성 검사
             rdr.Close();
         }
         Song s;
@@ -274,17 +273,7 @@ public class FileLoader : MonoBehaviour
                 }
         }
     }
-    string CalculateMD5(string filename)
-    {
-        using (var md5 = MD5.Create())
-        {
-            using (var stream = File.OpenRead(filename))
-            {
-                var hash = md5.ComputeHash(stream);
-                return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
-            }
-        }
-    }
+
     IEnumerator loadComplete()
     {
 
