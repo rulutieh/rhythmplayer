@@ -8,6 +8,7 @@ using System.Globalization;
 
 public class FileLoader : MonoBehaviour
 {
+    [Serializable]
     public class Chart
     {
         public string hash, charter, path, diffs;
@@ -16,6 +17,7 @@ public class FileLoader : MonoBehaviour
             this.hash = hash; this.charter = charter; this.path = path; this.diffs = diffs;
         }
     }
+    [Serializable]
     public class Song
     {
         public string AudioPath { get; set; }
@@ -28,13 +30,21 @@ public class FileLoader : MonoBehaviour
         public float localoffset { get; set; }
         public string directory { get; set; }
         public bool isvirtual { get; set; }
-        List<Chart> charts = new List<Chart>();
-        public Song(string dir, string name, string artist, ref string[] diffs, float offset, ref string[] id, ref string[] charter, ref string[] txtpath, string audiopath, string bgpath, string bgapath, bool hasvideo, string tags, bool isvirtual)
+        [SerializeField]
+        public List<Chart> charts = new List<Chart>();
+        public Song()
+        {
+
+        }
+        public Song(string dir, string name, string artist, ref string[] diffs, float offset, ref string[] id, ref string[] charter, ref string[] txtpath, ref bool[] correct, string audiopath, string bgpath, string bgapath, bool hasvideo, string tags, bool isvirtual)
         {
 
             for (int i = 0; i < id.Length; i++)
             {
-                charts.Add(new Chart(id[i], charter[i], txtpath[i], diffs[i]));
+                if (correct[i]) //올바른 파일만 추가
+                {
+                    charts.Add(new Chart(id[i], charter[i], txtpath[i], diffs[i]));
+                }
             }
             AudioPath = audiopath;
             BGAPath = bgapath;
@@ -48,7 +58,7 @@ public class FileLoader : MonoBehaviour
             this.isvirtual = isvirtual;
             SortDiff();
         }
-        void SortDiff()
+        public void SortDiff()
         {
 
             charts.Sort(delegate (Chart A, Chart B)
@@ -88,7 +98,9 @@ public class FileLoader : MonoBehaviour
             return charts.Count;
         }
     }
+    [SerializeField]
     public List<Song> list = new List<Song>();
+    [SerializeField]
     public List<Song> listorigin = new List<Song>();
 
     string DefaultBGPath = Path.Combine(Application.streamingAssetsPath, "Default", "background.jpg");
@@ -100,27 +112,39 @@ public class FileLoader : MonoBehaviour
     }
     void Start()
     {
-        StartLoad(); //첫로드
+        try
+        {
+            GlobalSettings.FolderPath = PlayerPrefs.GetString("FOLDER", GlobalSettings.FolderPath);
+            StartLoad(); //첫로드
+        }
+        catch (Exception ie)
+        {
+            Debug.Log(ie);
+        }
         StartCoroutine(loadComplete());
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            list.Clear();
-            listorigin.Clear();
-            StartLoad();
-            var s = GameObject.FindWithTag("SelSys");
-            if (s)
-            {
-                s.GetComponent<FileSelecter>().init(); //리로드
-            }
+            ReLoad();
+        }
+    }
+    public void ReLoad()
+    {
+        list.Clear();
+        listorigin.Clear();
+        StartLoad();
+        var s = GameObject.FindWithTag("SelSys");
+        if (s)
+        {
+            s.GetComponent<FileSelecter>().init(); //리로드
         }
     }
     public void StartLoad() //파일 로드 시작
     {
         int idx = 0;
-        string root = Path.Combine(Application.streamingAssetsPath, "Songs");
+        string root = GlobalSettings.FolderPath;
         string[] subdirectoryEntries = Directory.GetDirectories(root);
         //폴더수만큼구조체배열할당
 
@@ -135,16 +159,17 @@ public class FileLoader : MonoBehaviour
         string AUDIOFILE, BACKGROUND, VIDEOFILE = "";
         bool hasvideo = false;
         bool isvirtual = false;
+
         DirectoryInfo d = new DirectoryInfo(dir);
         FileInfo[] Files = d.GetFiles("*.txt");
         if (Files.Length == 0) Files = d.GetFiles("*.osu");
-
         if (Files.Length == 0) return; //채보파일 없을시 무시
 
         string[] TXTFILE = new string[Files.Length]; //채보파일들
         string[] DIFFS = new string[Files.Length]; //채보별난이도들
         string[] CHARTERS = new string[Files.Length]; //채보별노터
         string[] _id = new string[Files.Length];     //채보별해쉬
+
         for (int i = 0; i < Files.Length; i++) //여러 난이도일 경우 여러번 반복
         {
             TXTFILE[i] = Path.Combine(path, dir, Files[i].Name); //경로합치기
@@ -175,61 +200,99 @@ public class FileLoader : MonoBehaviour
         string _title = "", _artist = "", _tags = "";
         float _offset = 0f;
         string line;
-        for (int i = 0; i < Files.Length; i++)
+        bool[] correctfile = new bool[Files.Length];
+        try
         {
-            StreamReader rdr = new StreamReader(TXTFILE[i]);
-            while ((line = rdr.ReadLine()) != "[Metadata]")
+            for (int i = 0; i < Files.Length; i++)
             {
+                correctfile[i] = true;
 
-                if (line.Contains("AudioFilename"))
+                StreamReader rdr = new StreamReader(TXTFILE[i]);
+                while ((line = rdr.ReadLine()) != "[Metadata]")
                 {
-                    string str = line.Split(':')[1].Trim();
-                    if (!str.Contains("virtual"))
+
+                    if (line.Contains("AudioFilename"))
                     {
-                        //virtual = 음악파일 없이 키 사운드로만 재생
-                        AUDIOFILE = Path.Combine(path, dir, str);
-                    }
-                    else
-                    {
-                        isvirtual = true;
-                        if (File.Exists(Path.Combine(path,dir, "preview.mp3")))
+                        string str = line.Split(':')[1].Trim();
+                        if (!str.Contains("virtual") && !str.Contains("nothing"))
                         {
-                            AUDIOFILE = Path.Combine(path, dir, "preview.mp3");
+                            //virtual = 음악파일 없이 키 사운드로만 재생
+                            AUDIOFILE = Path.Combine(path, dir, str);
                         }
                         else
-                            AUDIOFILE = DefaultAudioPath;
+                        {
+                            isvirtual = true;
+                            if (File.Exists(Path.Combine(path, dir, "preview.mp3")))
+                            {
+                                AUDIOFILE = Path.Combine(path, dir, "preview.mp3");
+                            }
+                            else
+                                AUDIOFILE = DefaultAudioPath;
+                        }
                     }
+                    if (line.Contains("Mode"))
+                    {
+                        if (!line.EndsWith("3"))
+                            correctfile[i] = false;
+                    }
+                    if (line.Contains("AudioLeadIn"))
+                    {
+                        string str = line.Split(':')[1].Trim();
+                        _offset = float.Parse(str);
+                    }
+                    if (line == null) return;
                 }
-                if (line.Contains("AudioLeadIn"))
+
+                //osu 확장자
+                while ((line = rdr.ReadLine()) != "[TimingPoints]")
                 {
-                    string str = line.Split(':')[1].Trim();
-                    _offset = float.Parse(str);
+                    if (line.Contains("Title:")) _title = line.Remove(0, 6);
+                    if (line.Contains("Artist:")) _artist = line.Remove(0, 7);
+                    if (line.Contains("Version:")) DIFFS[i] = line.Remove(0, 8);
+                    if (line.Contains("Tags:")) _tags = line.Remove(0, 4);
+                    if (line.Contains("Creator:")) CHARTERS[i] = line.Remove(0, 8);
+
+                    if (line == null) return;
                 }
-                if (line == null) return;
+                _id[i] = CryptoManager.CalculateMD5(TXTFILE[i]); //무결성 검사
+
+                rdr.Close();
             }
-
-            //osu 확장자
-            while ((line = rdr.ReadLine()) != "[TimingPoints]")
-            {
-                if (line.Contains("Title:")) _title = line.Remove(0, 6);
-                if (line.Contains("Artist:")) _artist = line.Remove(0, 7);
-                if (line.Contains("Version:")) DIFFS[i] = line.Remove(0, 8);
-                if (line.Contains("Tags:")) _tags = line.Remove(0, 4);
-                if (line.Contains("Creator:")) CHARTERS[i] = line.Remove(0, 8);
-
-                if (line == null) return;
-            }
-
-
-
-
-            _id[i] = CryptoManager.CalculateMD5(TXTFILE[i]); //무결성 검사
-            rdr.Close();
         }
-        Song s;
-        s = new Song(dir, _title, _artist, ref DIFFS, _offset, ref _id, ref CHARTERS, ref TXTFILE, AUDIOFILE, BACKGROUND, VIDEOFILE, hasvideo, _tags, isvirtual);
-        list.Add(s);
-        listorigin.Add(s);
+        catch (Exception ie)
+        {
+            Debug.Log(ie);
+            return;
+        }
+        //올바른 파일이 없으면 무시
+        for (int i = 0; i < correctfile.Length; i++)
+        {
+            if (correctfile[i])
+            {
+                Song s;
+                s = new Song(
+                    dir,
+                    _title,
+                    _artist,
+                    ref DIFFS,
+                    _offset,
+                    ref _id,
+                    ref CHARTERS,
+                    ref TXTFILE,
+                    ref correctfile,
+                    AUDIOFILE,
+                    BACKGROUND,
+                    VIDEOFILE,
+                    hasvideo,
+                    _tags,
+                    isvirtual
+                    );
+                list.Add(s);
+                listorigin.Add(s);
+
+                return;
+            }
+        }
     }
     #region SORT
     public void SortDiff()

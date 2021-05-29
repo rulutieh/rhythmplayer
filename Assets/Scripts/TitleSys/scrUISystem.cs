@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class scrUISystem : MonoBehaviour
 {
     public GameObject[] UIs;
+    public GameObject errScreen;
     public int activeUI = 0;
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,13 @@ public class scrUISystem : MonoBehaviour
     }
     public void NextRoom()
     {
-        StartCoroutine(LoadScene("SelectMusic"));
+        FileLoader fl = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
+        if (fl.listorigin.Count == 0)
+        {
+            errScreen.SetActive(true);
+        }
+        else
+            StartCoroutine(LoadScene("SelectMusic"));
     }
 
     IEnumerator LoadScene(string sceneName)

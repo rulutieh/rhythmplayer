@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using Ookii.Dialogs;
+using System.IO;
 
 public class SettingPanel : MonoBehaviour
 {
@@ -13,7 +16,7 @@ public class SettingPanel : MonoBehaviour
     public Slider slvolume, slcolumn;
     public Toggle video, bpm, fullscreen;
     public Dropdown ddres, ddframe;
-    public TextMeshProUGUI offset, errormessage;
+    public TextMeshProUGUI offset, errormessage, songroot;
     //login
     public InputField ID, newID, nickField;
     public InputField PW, newPW, checkPW;
@@ -25,6 +28,9 @@ public class SettingPanel : MonoBehaviour
     MusicHandler player;
     GlobalSettings st;
     GameObject w;
+
+    VistaFolderBrowserDialog OpenDialog;
+    Stream openStream = null;
 
     public void Awake()
     {    
@@ -58,7 +64,7 @@ public class SettingPanel : MonoBehaviour
             (bool bOn) =>
             {
                 bool val = bOn;
-                Screen.fullScreen = val;
+                UnityEngine.Screen.fullScreen = val;
                 st.SaveSettings();
             }
         );
@@ -89,6 +95,11 @@ public class SettingPanel : MonoBehaviour
             slvolume.value = GlobalSettings.Volume;
             init = true;
         }
+
+        songroot.text = GlobalSettings.FolderPath;
+
+        OpenDialog = new VistaFolderBrowserDialog();
+
     }
     private void Update()
     {
@@ -223,6 +234,19 @@ public class SettingPanel : MonoBehaviour
         GlobalSettings.GlobalOffset += o;
         st.SaveSettings();
         ClickSound(4);
+    }
+    public void SetFolderPath()
+    {
+        if (OpenDialog.ShowDialog() == DialogResult.OK)
+        {
+            string path = OpenDialog.SelectedPath;
+            if (path == null) return;
+            GlobalSettings.FolderPath = path;
+            PlayerPrefs.SetString("FOLDER", path);
+            songroot.text = GlobalSettings.FolderPath;
+            FileLoader fl = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
+            fl.ReLoad();
+        }
     }
     #endregion
 }

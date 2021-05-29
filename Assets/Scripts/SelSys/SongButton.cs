@@ -10,9 +10,11 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
     FileSelecter select;
     TextMeshProUGUI tmp, tmpa, tmpl;
     RectTransform rect;
+
     Image rend;
     public Transform Text, TextA, TextL;
-    int decide, idx;
+    int decide;
+    public int idx;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,7 +27,11 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
         if (!sel) Destroy(gameObject);
         select = sel.GetComponent<FileSelecter>();
     }
-
+    void OnEnable()
+    {
+        rect.anchoredPosition = new Vector2(1000f, 0);
+        transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -48,6 +54,15 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
             rect.SetSiblingIndex(idx);
         }
 
+
+    }
+    public void Pooling()
+    {
+        if (Mathf.Abs(GlobalSettings.decide - idx) > 10)
+        {
+            select.b_queue.Enqueue(gameObject);
+            gameObject.SetActive(false);
+        }
     }
     public void setInfo(int idx, string title, string artist, string level)
     {

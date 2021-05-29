@@ -46,6 +46,7 @@ public class GlobalSettings : MonoBehaviour
     public static float scrollSpeed = 2.4f, stageXPOS = 0, stageYPOS, ColWidth = 0.85f, GlobalOffset = 0f;
     public static int decide, diffselection, sortselection, modselection, specialselection;
     public static string sortsearch = "", playername = "Guest", email = "";
+    public static string FolderPath = Path.Combine(Application.streamingAssetsPath, "Songs");
 
 
     public Sprite[] SquareNotes;
@@ -182,6 +183,7 @@ public class GlobalSettings : MonoBehaviour
         PlayerPrefs.SetFloat("CW", ColWidth);
         PlayerPrefs.SetFloat("XX", stageXPOS);
         PlayerPrefs.SetFloat("YY", stageYPOS);
+        PlayerPrefs.SetString("FOLDER", FolderPath);
     }
     public void LoadSettings()
     {
