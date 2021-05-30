@@ -37,7 +37,7 @@ public class GlobalSettings : MonoBehaviour
     KeyCode[] newKeys = new KeyCode[] { KeyCode.S, KeyCode.D, KeyCode.F, KeyCode.Space, KeyCode.J, KeyCode.K, KeyCode.L };
 
 
-   
+    
 
     public static Dictionary<string, Sprite> spriteMap;
 
@@ -66,6 +66,8 @@ public class GlobalSettings : MonoBehaviour
     public int res, fps;
 
     static public float vol, tp, sync, hprecover, hprecover2, baddamage, missdamage;
+
+    public static int keycount = 7;
 
 
     //임시 로컬 회원가입
@@ -110,7 +112,7 @@ public class GlobalSettings : MonoBehaviour
 
         hprecover2 = 0.0015f; //굿 회복량
 
-        baddamage = 0.0001f;
+        baddamage = 0.01f;
 
         missdamage = 0.04f;
     }
@@ -166,10 +168,7 @@ public class GlobalSettings : MonoBehaviour
     public void SaveSelection()
     {
         PlayerPrefs.SetFloat("SPEED", scrollSpeed);
-        PlayerPrefs.SetInt("DECIDE", decide);
-        PlayerPrefs.SetInt("SORT", sortselection);
         PlayerPrefs.SetInt("MOD", modselection);
-        PlayerPrefs.SetString("SEARCH",sortsearch);
 }
     public void SaveSettings()
     {
@@ -216,10 +215,7 @@ public class GlobalSettings : MonoBehaviour
         if (PlayerPrefs.HasKey("SPEED"))
         {
             scrollSpeed = PlayerPrefs.GetFloat("SPEED");
-            decide = PlayerPrefs.GetInt("DECIDE");
-            sortselection = PlayerPrefs.GetInt("SORT");
             modselection = PlayerPrefs.GetInt("MOD");
-            sortsearch = PlayerPrefs.GetString("SEARCH");
         }
     }
 

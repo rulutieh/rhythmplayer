@@ -36,26 +36,24 @@ public class Judgement : MonoBehaviour
         {
             case 0:
                 //kool
+                rend.sprite = spr[5];
+                ScoreManager.KOOL++;
+                ScoreManager.HP += GlobalSettings.hprecover;
+                break;
+            case 1:
+                //cool
                 rend.sprite = spr[0];
                 ScoreManager.COOL++;
                 ScoreManager.HP += GlobalSettings.hprecover;
-
-                break;
-            case 1:
-                rend.sprite = spr[1];
-                ScoreManager.GREAT++;
-                ScoreManager.HP += GlobalSettings.hprecover2; 
-
                 break;
             case 2:
-                rend.sprite = spr[2];
+                rend.sprite = spr[1];
                 ScoreManager.GOOD++;
 
                 break;
             case 3:
                 rend.sprite = spr[3];
                 ScoreManager.BAD++;
-
                 ScoreManager.HP -= GlobalSettings.baddamage;
                 break;
             case 4:
@@ -63,13 +61,6 @@ public class Judgement : MonoBehaviour
                 rend.sprite = spr[4];
                 ScoreManager.MISS++;
                 ScoreManager.HP -= GlobalSettings.missdamage;
-                break;
-            case 5:
-                //miss ln
-                rend.sprite = spr[4];
-                ScoreManager.MISS += 2;
-                ScoreManager.TOTAL++;
-                ScoreManager.HP -= GlobalSettings.missdamage * 2f;
                 break;
         }
         if (ScoreManager.HP > 1f) ScoreManager.HP = 1f;

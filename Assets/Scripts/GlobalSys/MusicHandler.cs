@@ -67,7 +67,6 @@ public class MusicHandler : MonoBehaviour
         snd.getLength(out length, FMOD.TIMEUNIT.MS); // 곡 길이
         channelGroup.setVolume(GlobalSettings.Volume); //볼륨
         FMODUnity.RuntimeManager.CoreSystem.getDSPBufferSize(out uint a, out int b);
-        Debug.Log(a);
     }
     public void PlaySFX(int idx)
     {

@@ -14,6 +14,7 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
     Image rend;
     public Transform Text, TextA, TextL;
     int decide;
+    bool crunning;
     public int idx;
     // Start is called before the first frame update
     void Awake()
@@ -80,22 +81,33 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            GlobalSettings.decide = idx;
-            select.SongScroll();
+            if (!crunning)
+                StartCoroutine(Selector());
         }
 
     }
-    public void selection()
+
+    IEnumerator Selector()
     {
-        if (GlobalSettings.decide == idx)
+        crunning = true;
+        if (GlobalSettings.decide > idx)
         {
-            select.songDecide();
+            while (GlobalSettings.decide > idx)
+            {
+                select.SongScroll();
+                GlobalSettings.decide--;
+                yield return new WaitForSeconds(0.05f);
+            }
         }
         else
         {
-            GlobalSettings.decide = idx;
-            select.SongScroll();
+            while (GlobalSettings.decide < idx)
+            {
+                select.SongScroll();
+                GlobalSettings.decide++;
+                yield return new WaitForSeconds(0.05f);
+            }
         }
-        
+        crunning = false;
     }
 }

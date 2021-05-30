@@ -8,6 +8,7 @@ using System.Globalization;
 
 public class FileLoader : MonoBehaviour
 {
+    FileSystemWatcher FolderWatcher;
     [Serializable]
     public class Chart
     {
@@ -30,76 +31,73 @@ public class FileLoader : MonoBehaviour
         public float localoffset { get; set; }
         public string directory { get; set; }
         public bool isvirtual { get; set; }
-        [SerializeField]
-        public List<Chart> charts = new List<Chart>();
+        public List<Chart>[] charts = new List<Chart>[9]; //키모드 갯수 분할 1키~8키
         public Song()
         {
-
-        }
-        public Song(string dir, string name, string artist, ref string[] diffs, float offset, ref string[] id, ref string[] charter, ref string[] txtpath, ref bool[] correct, string audiopath, string bgpath, string bgapath, bool hasvideo, string tags, bool isvirtual)
-        {
-
-            for (int i = 0; i < id.Length; i++)
+            for (int i = 0; i < charts.Length; i++)
             {
-                if (correct[i]) //올바른 파일만 추가
-                {
-                    charts.Add(new Chart(id[i], charter[i], txtpath[i], diffs[i]));
-                }
+                charts[i] = new List<Chart>();
             }
-            AudioPath = audiopath;
-            BGAPath = bgapath;
-            BGPath = bgpath;
-            directory = dir;
-            this.name = name;
-            this.artist = artist;
-            localoffset = offset;
-            this.hasvideo = hasvideo;
-            this.tags = tags;
-            this.isvirtual = isvirtual;
-            SortDiff();
+        }
+        public void AddCharts(int keyCounts, string id, string noter, string txtpath, string diffs)
+        {
+            charts[keyCounts].Add(new Chart(id, noter, txtpath, diffs));
         }
         public void SortDiff()
         {
-
-            charts.Sort(delegate (Chart A, Chart B)
+            for (int i = 0; i < charts.Length; i++)
             {
-                int a, b;
-                if (int.TryParse(A.diffs, out a) && int.TryParse(B.diffs, out b))
+                charts[i].Sort(delegate (Chart A, Chart B)
                 {
-                    if (int.Parse(A.diffs) > int.Parse(B.diffs)) return 1;
-                    else return -1;
-                }
-                else return 0;
-            });
+                    int a, b;
+                    if (int.TryParse(A.diffs, out a) && int.TryParse(B.diffs, out b))
+                    {
+                        if (int.Parse(A.diffs) > int.Parse(B.diffs)) return 1;
+                        else return -1;
+                    }
+                    else return 0;
+                });
+            }
+        }
+        public string getTxt(int idx, int keys)
+        {
+            return charts[keys][idx].path;
+        }
+        public string getDiff(int idx, int keys)
+        {
+            return charts[keys][idx].diffs;
+        }
+        public string getCharter(int idx, int keys)
+        {
+            return charts[keys][idx].charter;
+        }
+        public string getID(int idx, int keys)
+        {
+            return charts[keys][idx].hash;
+        }
+        public string maxDiff(int keys)
+        {
+            return charts[keys][charts[keys].Count - 1].diffs;
+        }
+        public int diffCount(int keys)
+        {
+            return charts[keys].Count;
+        }
+        public bool CheckKeymodeExists(int keys)
+        {
+            if (charts[keys].Count != 0)
+                return true;
+            else
+                return false;
         }
 
-        public string getTxt(int idx)
-        {
-            return charts[idx].path;
-        }
-        public string getDiff(int idx)
-        {
-            return charts[idx].diffs;
-        }
-        public string getCharter(int idx)
-        {
-            return charts[idx].charter;
-        }
-        public string getID(int idx)
-        {
-            return charts[idx].hash;
-        }
-        public string maxDiff()
-        {
-            return charts[charts.Count - 1].diffs;
-        }
-        public int diffCount()
-        {
-            return charts.Count;
-        }
+
     }
+
     [SerializeField]
     public List<Song> list = new List<Song>();
+    [SerializeField]
+    public List<Song> listkeysort = new List<Song>();
     [SerializeField]
     public List<Song> listorigin = new List<Song>();
 
@@ -156,8 +154,9 @@ public class FileLoader : MonoBehaviour
     }
     void LoadSubDirs(string path, string dir, int idx) //폴더별 파일 로드
     {
+        Song newSong = new Song();
+        newSong.directory = dir;
         string AUDIOFILE, BACKGROUND, VIDEOFILE = "";
-        bool hasvideo = false;
         bool isvirtual = false;
 
         DirectoryInfo d = new DirectoryInfo(dir);
@@ -183,28 +182,39 @@ public class FileLoader : MonoBehaviour
         if (Musics.Length == 0) Musics = d.GetFiles("*.wav");
         if (Musics.Length == 0) return; //잘못된 폴더는 무시
         AUDIOFILE = Path.Combine(path, dir, Musics[0].Name);
+        newSong.AudioPath = AUDIOFILE;
+
         FileInfo[] bgs;
         bgs = d.GetFiles("*.jpg");    //배경 불러오기
         if (bgs.Length == 0) bgs = d.GetFiles("*.png");
         if (bgs.Length == 0)
-            BACKGROUND = DefaultBGPath;
+            BACKGROUND = DefaultBGPath;   //이미지 파일 없을시 default 로드
         else
             BACKGROUND = Path.Combine(path, dir, bgs[0].Name);
-        //이미지 파일 없을시 default 로드
+        newSong.BGPath = BACKGROUND;
+
         FileInfo[] bga;
         bga = d.GetFiles("*.mpg"); // 동영상 불러오기
         if (bga.Length == 0) bga = d.GetFiles("*.mp4");
         if (bga.Length == 0) bga = d.GetFiles("*.flv");
-        if (bga.Length != 0) { VIDEOFILE = Path.Combine(path, dir, bga[0].Name); hasvideo = true; }
+        if (bga.Length != 0) {
+            VIDEOFILE = Path.Combine(path, dir, bga[0].Name);
+            newSong.hasvideo = true;
+            newSong.BGAPath = VIDEOFILE;
+        }
+        else
+            newSong.hasvideo = false;
+        
+
         //제목,작곡가,난이도,오프셋파싱
-        string _title = "", _artist = "", _tags = "";
-        float _offset = 0f;
         string line;
         bool[] correctfile = new bool[Files.Length];
         try
         {
             for (int i = 0; i < Files.Length; i++)
             {
+                int keycount = 7;
+
                 correctfile[i] = true;
 
                 StreamReader rdr = new StreamReader(TXTFILE[i]);
@@ -217,45 +227,59 @@ public class FileLoader : MonoBehaviour
                         if (!str.Contains("virtual") && !str.Contains("nothing"))
                         {
                             //virtual = 음악파일 없이 키 사운드로만 재생
-                            AUDIOFILE = Path.Combine(path, dir, str);
+                            newSong.AudioPath = Path.Combine(path, dir, str);
                         }
                         else
                         {
                             isvirtual = true;
                             if (File.Exists(Path.Combine(path, dir, "preview.mp3")))
                             {
-                                AUDIOFILE = Path.Combine(path, dir, "preview.mp3");
+                                newSong.AudioPath = Path.Combine(path, dir, "preview.mp3");
                             }
                             else
-                                AUDIOFILE = DefaultAudioPath;
+                                newSong.AudioPath = DefaultAudioPath;
                         }
                     }
                     if (line.Contains("Mode"))
                     {
                         if (!line.EndsWith("3"))
+                        {
                             correctfile[i] = false;
+                            goto WRONGFILE;
+                        }
+                            
                     }
-                    if (line.Contains("AudioLeadIn"))
+                    if (line.Contains("AudioOffset"))
                     {
                         string str = line.Split(':')[1].Trim();
-                        _offset = float.Parse(str);
+                        newSong.localoffset = float.Parse(str);
                     }
                     if (line == null) return;
                 }
+                string _noter = "", _diff = "";
 
                 //osu 확장자
                 while ((line = rdr.ReadLine()) != "[TimingPoints]")
                 {
-                    if (line.Contains("Title:")) _title = line.Remove(0, 6);
-                    if (line.Contains("Artist:")) _artist = line.Remove(0, 7);
-                    if (line.Contains("Version:")) DIFFS[i] = line.Remove(0, 8);
-                    if (line.Contains("Tags:")) _tags = line.Remove(0, 4);
-                    if (line.Contains("Creator:")) CHARTERS[i] = line.Remove(0, 8);
-
+                    if (line.Contains("Title:")) newSong.name = line.Remove(0, 6);
+                    if (line.Contains("Artist:")) newSong.artist = line.Remove(0, 7);
+                    if (line.Contains("Tags:")) newSong.tags = line.Remove(0, 4);
+                    if (line.Contains("Version:")) _diff = line.Remove(0, 8);
+                    if (line.Contains("Creator:")) _noter = line.Remove(0, 8);
+                    if (line.Contains("CircleSize:"))
+                        keycount = int.Parse(line.Split(':')[1]);
                     if (line == null) return;
                 }
-                _id[i] = CryptoManager.CalculateMD5(TXTFILE[i]); //무결성 검사
+                newSong.isvirtual = isvirtual;
+                newSong.AddCharts(
+                    keycount,
+                    CryptoManager.CalculateMD5(TXTFILE[i]),
+                    _noter,
+                    TXTFILE[i],
+                    _diff
+                    );
 
+                WRONGFILE:
                 rdr.Close();
             }
         }
@@ -267,41 +291,34 @@ public class FileLoader : MonoBehaviour
         //올바른 파일이 없으면 무시
         for (int i = 0; i < correctfile.Length; i++)
         {
+            Debug.Log("add");
             if (correctfile[i])
             {
-                Song s;
-                s = new Song(
-                    dir,
-                    _title,
-                    _artist,
-                    ref DIFFS,
-                    _offset,
-                    ref _id,
-                    ref CHARTERS,
-                    ref TXTFILE,
-                    ref correctfile,
-                    AUDIOFILE,
-                    BACKGROUND,
-                    VIDEOFILE,
-                    hasvideo,
-                    _tags,
-                    isvirtual
-                    );
-                list.Add(s);
-                listorigin.Add(s);
-
+                newSong.SortDiff();
+                listorigin.Add(newSong);
                 return;
             }
         }
     }
     #region SORT
+    public void SortByKeycounts(int keycount)
+    {
+        for(int i = 0; i < listorigin.Count; i++)
+        {
+            if (listorigin[i].CheckKeymodeExists(keycount))
+            {
+                listkeysort.Add(listorigin[i]);
+                list.Add(listorigin[i]);
+            }
+        }
+    }
     public void SortDiff()
     {
         list.Sort(delegate (Song A, Song B)
         {
             int a, b;
-            if (!int.TryParse(A.maxDiff(), out a)) return 1;
-            if (!int.TryParse(B.maxDiff(), out b)) return 1;
+            if (!int.TryParse(A.maxDiff(GlobalSettings.keycount), out a)) return 1;
+            if (!int.TryParse(B.maxDiff(GlobalSettings.keycount), out b)) return 1;
             if (a > b) return 1;
             else return -1;
         });
@@ -323,18 +340,50 @@ public class FileLoader : MonoBehaviour
         });
     }
     #endregion
-    public void searchbyHash(string hash)
+    public bool searchbyHash(string hash)
     {
         // 해쉬값으로 곡 검색
         for (int i = 0; i < list.Count; i++)
         {
-            for (int j = 0; j < list[i].diffCount(); j++)
-                if (list[i].getID(j) == hash)
+            for (int j = 0; j < list[i].diffCount(GlobalSettings.keycount); j++)
+                if (list[i].getID(j, GlobalSettings.keycount) == hash)
                 {
                     GlobalSettings.decide = i;
                     GlobalSettings.diffselection = j;
+                    return true;
                 }
         }
+        return false;
+    }
+    private void Run_Watcher()
+    {
+
+        FolderWatcher = new FileSystemWatcher();
+
+        FolderWatcher.Filter = "*.*";
+
+        FolderWatcher.Path = GlobalSettings.FolderPath;
+
+        FolderWatcher.IncludeSubdirectories = true;
+
+        FolderWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+
+        FolderWatcher.Changed += new FileSystemEventHandler(OnChanged);
+
+        FolderWatcher.Created += new FileSystemEventHandler(OnChanged);
+
+        FolderWatcher.Deleted += new FileSystemEventHandler(OnChanged);
+
+        FolderWatcher.Renamed += new RenamedEventHandler(OnChanged);
+
+        FolderWatcher.EnableRaisingEvents = true;
+
+    }
+    private void OnChanged(object source, FileSystemEventArgs e)
+    {
+        //  Show that a file has been created, changed, or deleted.
+        WatcherChangeTypes wct = e.ChangeType;
+        Console.WriteLine("File {0} {1}", e.FullPath, wct.ToString());
     }
 
     IEnumerator loadComplete()

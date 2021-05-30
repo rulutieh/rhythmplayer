@@ -196,20 +196,19 @@ public class KeyInputManager : MonoBehaviour
     }
     void cacJudge(float error)
     {
-
-        if (error <= 49.5f)
+        if (error <= 18f)
         {
             ScoreManager.combo++;
             getJudge(0);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error <= 82.5f)
+        else if (error <= 49.5f)
         {
             ScoreManager.combo++;
             getJudge(1);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error <= 112.5f)
+        else if (error <= 97.5f)
         {
             ScoreManager.combo++;
             getJudge(2);
@@ -217,7 +216,7 @@ public class KeyInputManager : MonoBehaviour
         }
         else if (error <= 136.5f)
         {
-            ScoreManager.combo = 0;
+            ScoreManager.combo++;
             getJudge(3);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
@@ -229,25 +228,24 @@ public class KeyInputManager : MonoBehaviour
     }
     void cacLNJudge(float error)
     {
-
-        if (error <= 99f)
+        if (error <= 37.5f)
         {
             ScoreManager.combo++;
             getJudge(0);
         }
-        else if (error <= 119.5f)
+        else if (error <= 75f)
         {
             ScoreManager.combo++;
             getJudge(1);
         }
-        else if (error <= 165f)
+        else if (error <= 120.5f)
         {
             ScoreManager.combo++;
             getJudge(2);
         }
-        else if (error <= 210f)
+        else if (error <= 205f)
         {
-            ScoreManager.combo = 0;
+            ScoreManager.combo++;
             getJudge(3);
         }
         else

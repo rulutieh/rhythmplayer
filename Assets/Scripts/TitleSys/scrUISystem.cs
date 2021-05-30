@@ -11,7 +11,7 @@ public class scrUISystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GlobalSettings.decide = 0;
     }
 
     // Update is called once per frame
@@ -60,7 +60,10 @@ public class scrUISystem : MonoBehaviour
             errScreen.SetActive(true);
         }
         else
+        {
+            fl.SortByKeycounts(GlobalSettings.keycount);
             StartCoroutine(LoadScene("SelectMusic"));
+        }
     }
 
     IEnumerator LoadScene(string sceneName)

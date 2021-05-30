@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField]
     GameObject gameover, judgeobj;
-    public static int COOL, GREAT, GOOD, MISS, BAD, TOTAL, combo, maxcombo;
+    public static int KOOL, COOL, GOOD, MISS, BAD, TOTAL, combo, maxcombo;
     public static float acc = 100f, HP = 1f, Score, judgeerror;
     public static bool isFailed;
 
@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
     {
         isFailed = false;
         HP = 1f;
-        COOL = GREAT = GOOD = MISS = BAD = TOTAL = 0;
+        COOL = KOOL = GOOD = MISS = BAD = TOTAL = 0;
         acc = 1f;
         combo = maxcombo = 0;
         judgeerror = 0;
@@ -26,10 +26,12 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         float c = NowPlaying.NOTECOUNTS + (NowPlaying.LONGNOTECOUNTS * 2);
-        float sum = (COOL / c) + ((GREAT * 2) / (3 * c)) + (GOOD / (3 * c)) + ((BAD / (6 * c)));
+        float s = (GOOD / (2 * c)) + (BAD / (6 * c));
+        float sum = (KOOL / c) + (COOL * 9 / (c * 10)) + s;
+        float sumforacc = ((KOOL + COOL) / c) + s;
         Score = Mathf.Round(1000000f * sum);
         if (TOTAL != 0)
-            acc = Mathf.Round(10000f * (sum / (TOTAL / c))) / 10000f;
+            acc = Mathf.Round(10000f * (sumforacc / (TOTAL / c))) / 10000f;
 
 
         if (combo > maxcombo) maxcombo = combo; //최대 콤보 체크

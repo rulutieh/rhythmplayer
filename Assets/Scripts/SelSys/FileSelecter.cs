@@ -52,6 +52,7 @@ public class FileSelecter : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        
         sfxaud = sfx.GetComponent<AudioSource>();
         aud = GetComponent<AudioSource>();
         //GetSubDirectories();
@@ -59,6 +60,7 @@ public class FileSelecter : MonoBehaviour
         Setting = GameObject.FindWithTag("world").GetComponent<GlobalSettings>();
         player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
         prefer = false;
+        
         isSelectDiff = false;
     }
     void Start()
@@ -79,24 +81,21 @@ public class FileSelecter : MonoBehaviour
     public void init()
     {
         //DestroyBTs();
-        LoadObjects(); //버튼 로드
-        SortMod();      //모드적용
-
-        
-        //if (GlobalSettings.sortsearch != "")
-        //{
-        //    SortSearch(GlobalSettings.sortsearch);
-        //}
-        //else
-        //{
-        //    SortMusic();    //정렬적용
-        //}
+        SortMusic();
+        SortMod();
 
         int c = Loader.list.Count;
         if (GlobalSettings.decide < 0) GlobalSettings.decide = 0;
         if (GlobalSettings.decide > c - 1) GlobalSettings.decide = c - 1;
-        Loader.searchbyHash(NowPlaying.HASH);
+        if (!Loader.searchbyHash(NowPlaying.HASH))
+        {
+            GlobalSettings.decide = Mathf.RoundToInt(UnityEngine.Random.Range(0.0f, (float)Loader.list.Count));
+        }
         if (Loader.list.Count != 0) LoadFileInfo();
+
+
+        DestroyBTs();
+        LoadObjects();
     }
     // Update is called once per frame
     void Update()
@@ -153,7 +152,7 @@ public class FileSelecter : MonoBehaviour
                 if (scroll < -0.001f) { GlobalSettings.decide++; SongScroll(); }
             }
             if (GlobalSettings.decide <= Loader.list.Count - 1 && Loader.list.Count != 0)
-                if (Loader.list[GlobalSettings.decide].getID(0) == lastselect)
+                if (Loader.list[GlobalSettings.decide].getID(0, GlobalSettings.keycount) == lastselect)
                 {
                     if (GlobalSettings.diffselection == 0)
                         diffMinus = false;
@@ -165,12 +164,27 @@ public class FileSelecter : MonoBehaviour
                         if (Input.GetKeyDown(KeyCode.RightArrow) || diffPlus) { GlobalSettings.diffselection++; getDiffinfo(); prefer = true; diffPlus = false; }
                 }
         }
+        int max = 0;
+        int min = Int32.MaxValue;
+        var bts = GameObject.FindGameObjectsWithTag("SelBT");
+        for (int i = 0; i < bts.Length; i++)
+        {
+            bts[i].GetComponent<SongButton>().Pooling();
 
+            if (max < bts[i].GetComponent<SongButton>().idx)
+                max = bts[i].GetComponent<SongButton>().idx;
+            if (min > bts[i].GetComponent<SongButton>().idx)
+                min = bts[i].GetComponent<SongButton>().idx;
+        }
+        if (max < GlobalSettings.decide + 10)
+            ButtonPooling(GlobalSettings.decide + 10);
+        if (min > GlobalSettings.decide - 10)
+            ButtonPooling(GlobalSettings.decide - 10);
     }
     public void getDiffinfo()
     {
-        _diff = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection);
-        _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection);
+        _diff = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection, GlobalSettings.keycount);
+        _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection, GlobalSettings.keycount);
         LoadNoteFiles();
         player.PlaySFX(6);
     }
@@ -183,14 +197,14 @@ public class FileSelecter : MonoBehaviour
                 continue;
             }
             string min, max, res = "";
-            min = Loader.list[i].getDiff(0);
-            max = Loader.list[i].getDiff(Loader.list[i].diffCount() - 1);
+            min = Loader.list[i].getDiff(0, GlobalSettings.keycount);
+            max = Loader.list[i].getDiff(Loader.list[i].diffCount(GlobalSettings.keycount) - 1, GlobalSettings.keycount);
             if (string.Compare(min, max) == 0) res = min;
             else
-                for (int j = 0; j < Loader.list[i].diffCount(); j++)
+                for (int j = 0; j < Loader.list[i].diffCount(GlobalSettings.keycount); j++)
                 {
-                    res += Loader.list[i].getDiff(j);
-                    if (j + 1 != Loader.list[i].diffCount()) res += ", ";
+                    res += Loader.list[i].getDiff(j, GlobalSettings.keycount);
+                    if (j + 1 != Loader.list[i].diffCount(GlobalSettings.keycount)) res += ", ";
                 }
             
             var ist = b_queue.Dequeue();
@@ -205,14 +219,14 @@ public class FileSelecter : MonoBehaviour
         if (idx < 0) return;
 
         string min, max, res = "";
-        min = Loader.list[idx].getDiff(0);
-        max = Loader.list[idx].getDiff(Loader.list[idx].diffCount() - 1);
+        min = Loader.list[idx].getDiff(0, GlobalSettings.keycount);
+        max = Loader.list[idx].getDiff(Loader.list[idx].diffCount(GlobalSettings.keycount) - 1, GlobalSettings.keycount);
         if (string.Compare(min, max) == 0) res = min;
         else
-            for (int j = 0; j < Loader.list[idx].diffCount(); j++)
+            for (int j = 0; j < Loader.list[idx].diffCount(GlobalSettings.keycount); j++)
             {
-                res += Loader.list[idx].getDiff(j);
-                if (j + 1 != Loader.list[idx].diffCount()) res += ", ";
+                res += Loader.list[idx].getDiff(j, GlobalSettings.keycount);
+                if (j + 1 != Loader.list[idx].diffCount(GlobalSettings.keycount)) res += ", ";
             }
         var ist = b_queue.Dequeue();
         ist.SetActive(true);
@@ -232,39 +246,24 @@ public class FileSelecter : MonoBehaviour
     {
         player.PlaySFX(2);
         int c = Loader.list.Count;
-        int max = 0;
-        int min = Int32.MaxValue;
+
         if (GlobalSettings.decide < 0) GlobalSettings.decide = 0;
         if (GlobalSettings.decide > c - 1) GlobalSettings.decide = c - 1;
-        var bts = GameObject.FindGameObjectsWithTag("SelBT");
-        for (int i = 0; i < bts.Length; i++)
-        {
-            bts[i].GetComponent<SongButton>().Pooling();
 
-            if (max < bts[i].GetComponent<SongButton>().idx)
-                max = bts[i].GetComponent<SongButton>().idx;
-            if (min > bts[i].GetComponent<SongButton>().idx)
-                min = bts[i].GetComponent<SongButton>().idx;
-        }
-        if (max < GlobalSettings.decide + 10)
-            ButtonPooling(GlobalSettings.decide + 10);
-        if (min > GlobalSettings.decide - 10)
-            ButtonPooling(GlobalSettings.decide - 10);
     }
     void LoadNoteFiles()
     {
-        _txtpath = Loader.list[GlobalSettings.decide].getTxt(GlobalSettings.diffselection);
+        _txtpath = Loader.list[GlobalSettings.decide].getTxt(GlobalSettings.diffselection, GlobalSettings.keycount);
         NowPlaying.FILE = _txtpath;
-        
-        NowPlaying.LEVEL = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection);
-        NowPlaying.HASH = Loader.list[GlobalSettings.decide].getID(GlobalSettings.diffselection);
+        NowPlaying.LEVEL = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection, GlobalSettings.keycount);
+        NowPlaying.HASH = Loader.list[GlobalSettings.decide].getID(GlobalSettings.diffselection, GlobalSettings.keycount);
         rankpanel.GetComponent<RankPanel>().LoadRanks(NowPlaying.HASH);
         Debug.Log(_txtpath);
         countNotes(_txtpath);
     }
     void LoadFileInfo()
     {
-        _diffcount = Loader.list[GlobalSettings.decide].diffCount();
+        _diffcount = Loader.list[GlobalSettings.decide].diffCount(GlobalSettings.keycount);
         if (GlobalSettings.diffselection > _diffcount - 1)
         {
             if (prefer)
@@ -275,11 +274,11 @@ public class FileSelecter : MonoBehaviour
 
         _name = Loader.list[GlobalSettings.decide].name;
         _artist = Loader.list[GlobalSettings.decide].artist;
-        _diff = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection);
+        _diff = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection, GlobalSettings.keycount);
         _localoffset = Loader.list[GlobalSettings.decide].localoffset;
         _bgpath = Loader.list[GlobalSettings.decide].BGPath;
         _bgapath = Loader.list[GlobalSettings.decide].BGAPath;
-        _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection);
+        _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection, GlobalSettings.keycount);
         NowPlaying.isBGA = Loader.list[GlobalSettings.decide].hasvideo;
         NowPlaying.isVirtual = Loader.list[GlobalSettings.decide].isvirtual;
 
@@ -302,8 +301,8 @@ public class FileSelecter : MonoBehaviour
         player.LoadSound(NowPlaying.MUSICFILE);
 
         //선택변경 감지를 위한 마지막 선택곡 저장
-        lastselect = Loader.list[GlobalSettings.decide].getID(0);
-        lastselectdiff = Loader.list[GlobalSettings.decide].getID(GlobalSettings.diffselection);
+        lastselect = Loader.list[GlobalSettings.decide].getID(0, GlobalSettings.keycount);
+        lastselectdiff = Loader.list[GlobalSettings.decide].getID(GlobalSettings.diffselection, GlobalSettings.keycount);
         //fmod 사운드 로딩
         StartCoroutine(CheckLoadedAndPlay());
 
@@ -399,13 +398,13 @@ public class FileSelecter : MonoBehaviour
     public void SortSearch(string text)
     {
         Loader.list.Clear();
-        for (int i = 0; i < Loader.listorigin.Count; i++)
+        for (int i = 0; i < Loader.listkeysort.Count; i++)
         {
             if (
-                Loader.listorigin[i].name.ToUpper().Contains(text) ||
-                Loader.listorigin[i].artist.ToUpper().Contains(text) ||
-                Loader.listorigin[i].tags.ToUpper().Contains(text)
-                ) Loader.list.Add(Loader.listorigin[i]);
+                Loader.listkeysort[i].name.ToUpper().Contains(text) ||
+                Loader.listkeysort[i].artist.ToUpper().Contains(text) ||
+                Loader.listkeysort[i].tags.ToUpper().Contains(text)
+                ) Loader.list.Add(Loader.listkeysort[i]);
         }
         SortMusic();
         SongScroll();
@@ -417,7 +416,7 @@ public class FileSelecter : MonoBehaviour
         if (GlobalSettings.decide < Loader.list.Count && Loader.list.Count != 0)
         {
             {
-                if (Loader.list[GlobalSettings.decide].getID(0) != lastselect) //곡 변경후 선택 시 (md5 해쉬 비교) 중복로드 방지
+                if (Loader.list[GlobalSettings.decide].getID(0, GlobalSettings.keycount) != lastselect) //곡 변경후 선택 시 (md5 해쉬 비교) 중복로드 방지
                 {
 
                         _diffcount = 0;

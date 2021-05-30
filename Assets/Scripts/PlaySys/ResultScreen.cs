@@ -11,13 +11,12 @@ public class ResultScreen : MonoBehaviour
     public Sprite[] rankspr;
     public GameObject Rank;
     public GameObject[] elements;
-    public AudioClip[] sfxs;
     Vector2 gutterStartSize;
     Vector2 gutterEndSize;
     MusicHandler player;
     bool played;
     Image rend;
-    public TextMeshProUGUI tmptitle, tmpscore, tmpcool, tmpgreat, tmpgood, tmpmiss, tmpbad, tmpcombo, tmpresult, tmplevel;
+    public TextMeshProUGUI tmptitle, tmpscore, tmpkool, tmpcool, tmpgood, tmpmiss, tmpbad, tmpcombo, tmpresult, tmplevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,10 +47,9 @@ public class ResultScreen : MonoBehaviour
     }
     IEnumerator LoadScores()
     {
+        tmpkool.text = ScoreManager.KOOL.ToString("0000");
         yield return new WaitForSeconds(0.1f);
         tmpcool.text = ScoreManager.COOL.ToString("0000");
-        yield return new WaitForSeconds(0.1f);
-        tmpgreat.text = ScoreManager.GREAT.ToString("0000");
         yield return new WaitForSeconds(0.1f);
         tmpgood.text = ScoreManager.GOOD.ToString("0000");
         yield return new WaitForSeconds(0.1f);
