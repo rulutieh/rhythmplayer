@@ -5,6 +5,7 @@ using TMPro;
 
 public class SelectText : MonoBehaviour
 {
+    
     FileSelecter Select;
     public TextMeshProUGUI TMPTITLE, TMPARTIST, TMPBPM, TMPDIFF, TMPDIFF2, TMPSPD, TMPMOD, TMPSORT, TMPCHART, TMPNOTE, TMPLN, TMPLENGTH, TMPFIXED, TMPSPC;
     
@@ -20,7 +21,7 @@ public class SelectText : MonoBehaviour
         TMPTITLE.text = Select._name;
         TMPARTIST.text = Select._artist;
         TMPBPM.text = $"bpm : {Select.medianBPM} ({Select.minBPM} ~ {Select.maxBPM})";
-        TMPDIFF.text = TMPDIFF2.text = "Level : " + Select._diff;
+        TMPDIFF.text = TMPDIFF2.text = $"[{Select._diff}]";
         string str = "NONE";
         if (GlobalSettings.Random) str = "RANDOM";
         if (GlobalSettings.Mirror) str = "MIRROR";

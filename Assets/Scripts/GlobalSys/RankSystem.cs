@@ -21,9 +21,9 @@ class SongDB
         this.key = key;
     }
 
-    public void AddScore(string playername, int score, int state, int maxcombo, string date)
+    public void AddScore(string playername, int score,float acc, int state, int maxcombo, string date)
     {
-        scores.Add(new ScoreData(playername, score, state, maxcombo, date));
+        scores.Add(new ScoreData(playername, score, acc, state, maxcombo, date));
         SortScores();
     }
 
@@ -44,11 +44,13 @@ class ScoreData
 {
     public string playername;
     public string date;
+    public float acc;
     public int score;
     public int state;
     public int maxcombo;
-    public ScoreData(string playername, int score, int state, int maxcombo, string date)
+    public ScoreData(string playername, int score, float acc, int state, int maxcombo, string date)
     {
+        this.acc = acc;
         this.playername = playername;
         this.score = score;
         this.state = state;
@@ -113,15 +115,16 @@ public class RankSystem : MonoBehaviour
         else
             return songs[id].scores.Count;
     }
-    public void GetInfo(int idx, out string pname, out int score, out int state ,out int maxcombo, out string date)
+    public void GetInfo(int idx, out string pname, out int score, out float acc, out int state ,out int maxcombo, out string date)
     {
         pname = songs[id].scores[idx].playername;
         score = songs[id].scores[idx].score;
+        acc = songs[id].scores[idx].acc;
         state = songs[id].scores[idx].state;
         maxcombo = songs[id].scores[idx].maxcombo;
         date = songs[id].scores[idx].date;
     }
-    public void SaveScore(string key, string playername, int score, int state, int maxcombo, string date)
+    public void SaveScore(string key, string playername, int score, float acc, int state, int maxcombo, string date)
     {
         bool find = false;
         //local
@@ -131,13 +134,13 @@ public class RankSystem : MonoBehaviour
             if (songs[i].key == key)
             {
                 find = true;
-                songs[i].AddScore(playername, score, state, maxcombo, date);
+                songs[i].AddScore(playername, score, acc, state, maxcombo, date);
             }
         }
         if (!find)
         {
             SongDB s = new SongDB(key);
-            s.AddScore(playername, score, state, maxcombo, date);
+            s.AddScore(playername, score,acc, state, maxcombo, date);
             songs.Add(s);
         }
         string json = JsonConvert.SerializeObject(songs, Formatting.Indented);

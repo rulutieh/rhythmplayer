@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System;
 using System.IO;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Threading.Tasks;
 
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 public class FileSelecter : MonoBehaviour
 {
 
-    public GameObject bt, sfx, searchsys, rankpanel, scrollmod, DiffSelPanel;
+    public GameObject bt, sfx, searchsys, rankpanel, scrollmod, DiffSelPanel, icons;
     public Queue<GameObject> b_queue = new Queue<GameObject>();
     MusicHandler player;
     public WWW www, picture;
@@ -19,7 +18,7 @@ public class FileSelecter : MonoBehaviour
     //로드된 변수값들
     public string _name, _artist, _txtpath, _bgpath, _diff, _bgapath, _charter, _hash;
     public float _localoffset, minBPM, maxBPM, medianBPM;
-    int _diffcount;
+    public int _diffcount;
     bool prefer; //선호 난이도 선택 저장
     string lastselect = "", lastselectdiff = ""; //마지막 곡 해시, 마지막 난이도별 해시
     SpriteRenderer rend;
@@ -152,7 +151,7 @@ public class FileSelecter : MonoBehaviour
                 if (scroll < -0.001f) { GlobalSettings.decide++; SongScroll(); }
             }
             if (GlobalSettings.decide <= Loader.list.Count - 1 && Loader.list.Count != 0)
-                if (Loader.list[GlobalSettings.decide].getID(0, GlobalSettings.keycount) == lastselect)
+                if (DiffChangeEnable())
                 {
                     if (GlobalSettings.diffselection == 0)
                         diffMinus = false;
@@ -181,12 +180,17 @@ public class FileSelecter : MonoBehaviour
         if (min > GlobalSettings.decide - 10)
             ButtonPooling(GlobalSettings.decide - 10);
     }
+    public bool DiffChangeEnable()
+    {
+        return Loader.list[GlobalSettings.decide].getID(0, GlobalSettings.keycount) == lastselect;
+    }
     public void getDiffinfo()
     {
-        _diff = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection, GlobalSettings.keycount);
-        _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection, GlobalSettings.keycount);
-        LoadNoteFiles();
-        player.PlaySFX(6);
+            _diff = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection, GlobalSettings.keycount);
+            _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection, GlobalSettings.keycount);
+            LoadNoteFiles();
+            player.PlaySFX(6);
+        
     }
     void LoadObjects()
     {
@@ -211,6 +215,21 @@ public class FileSelecter : MonoBehaviour
             ist.SetActive(true);
             ist.GetComponent<SongButton>().setInfo(i, Loader.list[i].name, Loader.list[i].artist, res);
             ist.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+        }
+    }
+    void LoadIcons()
+    {
+        var ics = GameObject.FindGameObjectsWithTag("icons");
+        for (var i = 0; i < ics.Length; i++)
+        {
+            Destroy(ics[i]);
+        }
+        for (int i = 0; i < _diffcount; i++)
+        {
+            var inst = Instantiate(icons);
+            inst.transform.SetParent(GameObject.FindGameObjectWithTag("UICanvas").transform, false);
+            inst.GetComponent<SelectIcon>().idx = i;
+            inst.GetComponent<SelectIcon>().diffcount = _diffcount;
         }
     }
     void ButtonPooling(int idx)
@@ -284,6 +303,7 @@ public class FileSelecter : MonoBehaviour
 
 
         LoadNoteFiles();
+        LoadIcons();
         NowPlaying.MUSICFILE = Loader.list[GlobalSettings.decide].AudioPath;    
         NowPlaying.OFFSET = _localoffset;
         NowPlaying.BGFILE = _bgpath;
@@ -391,8 +411,8 @@ public class FileSelecter : MonoBehaviour
     {
         if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
             player.ReleaseMP3();
-        SceneManager.LoadScene("Title", LoadSceneMode.Single);
-        Destroy(gameObject);
+        Loader.list.Clear();
+        RoomChanger.roomchanger.goRoom("Title");
     }
     // DELEGATE 정렬
     public void SortSearch(string text)

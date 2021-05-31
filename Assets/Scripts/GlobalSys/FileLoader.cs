@@ -13,9 +13,10 @@ public class FileLoader : MonoBehaviour
     public class Chart
     {
         public string hash, charter, path, diffs;
-        public Chart(string hash, string charter, string path, string diffs)
+        public int notes;
+        public Chart(string hash, string charter, string path, string diffs, int notes)
         {
-            this.hash = hash; this.charter = charter; this.path = path; this.diffs = diffs;
+            this.hash = hash; this.charter = charter; this.path = path; this.diffs = diffs; this.notes = notes;
         }
     }
     [Serializable]
@@ -39,9 +40,9 @@ public class FileLoader : MonoBehaviour
                 charts[i] = new List<Chart>();
             }
         }
-        public void AddCharts(int keyCounts, string id, string noter, string txtpath, string diffs)
+        public void AddCharts(int keyCounts, string id, string noter, string txtpath, string diffs, int notes)
         {
-            charts[keyCounts].Add(new Chart(id, noter, txtpath, diffs));
+            charts[keyCounts].Add(new Chart(id, noter, txtpath, diffs, notes));
         }
         public void SortDiff()
         {
@@ -52,10 +53,16 @@ public class FileLoader : MonoBehaviour
                     int a, b;
                     if (int.TryParse(A.diffs, out a) && int.TryParse(B.diffs, out b))
                     {
-                        if (int.Parse(A.diffs) > int.Parse(B.diffs)) return 1;
+                        if (a == b) return 0;
+                        if (a > b) return 1;
                         else return -1;
                     }
-                    else return 0;
+                    else
+                    {
+                        if (A.notes == B.notes) return 0;
+                        if (A.notes > B.notes) return 1;
+                        else return -1;
+                    }
                 });
             }
         }
@@ -254,7 +261,7 @@ public class FileLoader : MonoBehaviour
                         string str = line.Split(':')[1].Trim();
                         newSong.localoffset = float.Parse(str);
                     }
-                    if (line == null) return;
+                    if (line == null) continue;
                 }
                 string _noter = "", _diff = "";
 
@@ -268,15 +275,32 @@ public class FileLoader : MonoBehaviour
                     if (line.Contains("Creator:")) _noter = line.Remove(0, 8);
                     if (line.Contains("CircleSize:"))
                         keycount = int.Parse(line.Split(':')[1]);
-                    if (line == null) return;
+                    if (line == null) continue;
                 }
+                while ((line = rdr.ReadLine()) != "[HitObjects]") { }
+                int notecounts = 0;
+                while ((line = rdr.ReadLine()) != null)
+                {
+                    
+                    string[] arr = line.Split(',');
+                    if (int.Parse(arr[3]) != 1 && int.Parse(arr[3]) != 5)
+                    {
+                        notecounts += 2;
+                    }
+                    else
+                        notecounts++;
+                }
+
+                if (notecounts == 0) continue;
+
                 newSong.isvirtual = isvirtual;
                 newSong.AddCharts(
                     keycount,
                     CryptoManager.CalculateMD5(TXTFILE[i]),
                     _noter,
                     TXTFILE[i],
-                    _diff
+                    _diff,
+                    notecounts
                     );
 
                 WRONGFILE:
@@ -291,7 +315,6 @@ public class FileLoader : MonoBehaviour
         //올바른 파일이 없으면 무시
         for (int i = 0; i < correctfile.Length; i++)
         {
-            Debug.Log("add");
             if (correctfile[i])
             {
                 newSong.SortDiff();

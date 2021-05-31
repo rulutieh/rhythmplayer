@@ -207,6 +207,7 @@ public class FileReader : MonoBehaviour
                             NowPlaying.HASH,
                             GlobalSettings.playername,
                             Mathf.RoundToInt(ScoreManager.Score),
+                            ScoreManager.acc,
                             (ScoreManager.BAD == 0 && ScoreManager.MISS == 0) ? 1 : 0,
                             ScoreManager.maxcombo,
                             DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")

@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
         float sumforacc = ((KOOL + COOL) / c) + s;
         Score = Mathf.Round(1000000f * sum);
         if (TOTAL != 0)
-            acc = Mathf.Round(10000f * (sumforacc / (TOTAL / c))) / 10000f;
+            acc = sumforacc / (TOTAL / c);
 
 
         if (combo > maxcombo) maxcombo = combo; //최대 콤보 체크

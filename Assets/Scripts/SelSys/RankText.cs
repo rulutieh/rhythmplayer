@@ -18,6 +18,7 @@ public class RankText : MonoBehaviour
     public TextMeshProUGUI combotxt;
     public TextMeshProUGUI datetxt;
     public TextMeshProUGUI sunwitxt;
+    public TextMeshProUGUI acctxt;
     // Start is called before the first frame update
     public void Awake()
     {
@@ -28,18 +29,19 @@ public class RankText : MonoBehaviour
     {
         rect.anchoredPosition = new Vector2(-0.1f, 60.46f - idx * 31f + rp.ypos);
     }
-    public void SetText(int id, string pname, int score, int state, int maxcombo, string date, GameObject p)
+    public void SetText(int id, string pname, int score,float acc, int state, int maxcombo, string date, GameObject p)
     {
         idx = id;
         playertxt.text = pname;
         scoretxt.text = score.ToString("0000000");
-        combotxt.text = $"max combo : {maxcombo}";
+        combotxt.text = $"{maxcombo} combo";
         datetxt.text = date;
+        acctxt.text = string.Format("{0:p}", acc);
         sunwitxt.text = $"#{id + 1}";
         panel = p;
         rp = p.GetComponent<RankPanel>();
 
-        if (score > 950000f)
+        if (acc >= 0.95f)
         {
             if (state == 1)
             {
@@ -50,15 +52,15 @@ public class RankText : MonoBehaviour
                 rend.sprite = rankspr[1];
             }
         }
-        else if (score > 900000f)
+        else if (acc >= 0.9f)
         {
             rend.sprite = rankspr[2];
         }
-        else if (score > 800000f)
+        else if (acc >= 0.8f)
         {
             rend.sprite = rankspr[3];
         }
-        else if (score > 600000f)
+        else if (acc >= 0.6f)
         {
             rend.sprite = rankspr[4];
         }

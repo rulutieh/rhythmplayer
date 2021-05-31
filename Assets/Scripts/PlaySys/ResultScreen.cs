@@ -16,7 +16,7 @@ public class ResultScreen : MonoBehaviour
     MusicHandler player;
     bool played;
     Image rend;
-    public TextMeshProUGUI tmptitle, tmpscore, tmpkool, tmpcool, tmpgood, tmpmiss, tmpbad, tmpcombo, tmpresult, tmplevel;
+    public TextMeshProUGUI tmptitle, tmpscore, tmpkool, tmpcool, tmpgood, tmpmiss, tmpbad, tmpcombo, tmpresult, tmplevel, tmpacc;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +57,8 @@ public class ResultScreen : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         tmpmiss.text = ScoreManager.MISS.ToString("0000");
         yield return new WaitForSeconds(0.2f);
+        tmpacc.text = string.Format("{0:p}", ScoreManager.acc);
+        yield return new WaitForSeconds(0.2f);
         tmpscore.text = Mathf.Round(ScoreManager.Score).ToString("0000000");
         yield return new WaitForSeconds(0.2f);
         if (!played)
@@ -83,7 +85,7 @@ public class ResultScreen : MonoBehaviour
         if (Mathf.Round(ScoreManager.Score) == 1000000) tmpcombo.text = "PERFECT";
         yield return new WaitForSeconds(0.3f);
         Rank.SetActive(true);
-        if (ScoreManager.Score > 950000f)
+        if (ScoreManager.acc >= 0.95f)
         {
             if (ScoreManager.MISS == 0 && ScoreManager.BAD == 0)
             {
@@ -94,15 +96,15 @@ public class ResultScreen : MonoBehaviour
                 rend.sprite = rankspr[1];
             }
         }
-        else if (ScoreManager.Score > 900000f)
+        else if (ScoreManager.acc >= 0.9f)
         {
             rend.sprite = rankspr[2];
         }
-        else if (ScoreManager.Score > 800000f)
+        else if (ScoreManager.acc >= 0.8f)
         {
             rend.sprite = rankspr[3];
         }
-        else if (ScoreManager.Score > 600000f)
+        else if (ScoreManager.acc >= 0.6f)
         {
             rend.sprite = rankspr[4];
         }
