@@ -13,10 +13,12 @@ public class FileLoader : MonoBehaviour
     public class Chart
     {
         public string hash, charter, path, diffs;
-        public int notes;
-        public Chart(string hash, string charter, string path, string diffs, int notes)
+        public int notes, longnotes, length;
+        public Chart(string hash, string charter, string path, string diffs, int notes, int longnotes, int length)
         {
-            this.hash = hash; this.charter = charter; this.path = path; this.diffs = diffs; this.notes = notes;
+            this.hash = hash; this.charter = charter; this.path = path;
+            this.diffs = diffs; this.notes = notes; this.longnotes = longnotes;
+            this.length = length;
         }
     }
     [Serializable]
@@ -40,9 +42,9 @@ public class FileLoader : MonoBehaviour
                 charts[i] = new List<Chart>();
             }
         }
-        public void AddCharts(int keyCounts, string id, string noter, string txtpath, string diffs, int notes)
+        public void AddCharts(int keyCounts, Chart c)
         {
-            charts[keyCounts].Add(new Chart(id, noter, txtpath, diffs, notes));
+            charts[keyCounts].Add(c);
         }
         public void SortDiff()
         {
@@ -59,8 +61,10 @@ public class FileLoader : MonoBehaviour
                     }
                     else
                     {
-                        if (A.notes == B.notes) return 0;
-                        if (A.notes > B.notes) return 1;
+                        int an = A.notes + A.longnotes * 2;
+                        int bn = B.notes + B.longnotes * 2;
+                        if (an == bn) return 0;
+                        if (an > bn) return 1;
                         else return -1;
                     }
                 });
@@ -97,6 +101,13 @@ public class FileLoader : MonoBehaviour
             else
                 return false;
         }
+        public void NoteCounts(int idx, int keys, out int note, out int ln, out int time)
+        {
+            note = charts[keys][idx].notes;
+            ln = charts[keys][idx].longnotes;
+            time = charts[keys][idx].length;
+
+        }
 
 
     }
@@ -119,6 +130,9 @@ public class FileLoader : MonoBehaviour
     {
         try
         {
+            listorigin.Clear();
+            listkeysort.Clear();
+            list.Clear();
             GlobalSettings.FolderPath = PlayerPrefs.GetString("FOLDER", GlobalSettings.FolderPath);
             StartLoad(); //첫로드
         }
@@ -271,7 +285,13 @@ public class FileLoader : MonoBehaviour
                     if (line.Contains("Title:")) newSong.name = line.Remove(0, 6);
                     if (line.Contains("Artist:")) newSong.artist = line.Remove(0, 7);
                     if (line.Contains("Tags:")) newSong.tags = line.Remove(0, 4);
-                    if (line.Contains("Version:")) _diff = line.Remove(0, 8);
+                    if (line.Contains("Version:"))
+                    {
+                        _diff = line.Remove(0, 8);
+                        if (_diff.Contains("easy lvl")) _diff =  _diff.Remove(0, 14);
+                        else if (_diff.Contains("hard lvl")) _diff = _diff.Remove(0, 14);
+                        else if (_diff.Contains("normal lvl")) _diff =_diff.Remove(0, 16);
+                    }
                     if (line.Contains("Creator:")) _noter = line.Remove(0, 8);
                     if (line.Contains("CircleSize:"))
                         keycount = int.Parse(line.Split(':')[1]);
@@ -279,13 +299,15 @@ public class FileLoader : MonoBehaviour
                 }
                 while ((line = rdr.ReadLine()) != "[HitObjects]") { }
                 int notecounts = 0;
+                int lastnote = 0;
+                int longnotecounts = 0;
                 while ((line = rdr.ReadLine()) != null)
                 {
-                    
                     string[] arr = line.Split(',');
+                    lastnote = int.Parse(arr[2]);
                     if (int.Parse(arr[3]) != 1 && int.Parse(arr[3]) != 5)
                     {
-                        notecounts += 2;
+                        longnotecounts++;
                     }
                     else
                         notecounts++;
@@ -293,14 +315,20 @@ public class FileLoader : MonoBehaviour
 
                 if (notecounts == 0) continue;
 
-                newSong.isvirtual = isvirtual;
-                newSong.AddCharts(
-                    keycount,
+                Chart c = new Chart(
                     CryptoManager.CalculateMD5(TXTFILE[i]),
                     _noter,
                     TXTFILE[i],
                     _diff,
-                    notecounts
+                    notecounts,
+                    longnotecounts,
+                    lastnote
+                    );
+
+                newSong.isvirtual = isvirtual;
+                newSong.AddCharts(
+                    keycount,
+                    c
                     );
 
                 WRONGFILE:
@@ -335,14 +363,48 @@ public class FileLoader : MonoBehaviour
             }
         }
     }
-    public void SortDiff()
+    public void SortDiff(int mode)
     {
         list.Sort(delegate (Song A, Song B)
         {
             int a, b;
-            if (!int.TryParse(A.maxDiff(GlobalSettings.keycount), out a)) return 1;
-            if (!int.TryParse(B.maxDiff(GlobalSettings.keycount), out b)) return 1;
+            if (mode == 0)
+            {
+                if (!int.TryParse(A.getDiff(0, GlobalSettings.keycount), out a)) return 1;
+                if (!int.TryParse(B.getDiff(0, GlobalSettings.keycount), out b)) return 1;
+            }
+            else
+            {
+                if (!int.TryParse(A.maxDiff(GlobalSettings.keycount), out a)) return 1;
+                if (!int.TryParse(B.maxDiff(GlobalSettings.keycount), out b)) return 1;
+            }
+
+            if (a == b) return 0;
             if (a > b) return 1;
+            else return -1;
+        });
+    }
+    public void SortNPS()
+    {
+        list.Sort(delegate (Song A, Song B)
+        {
+            A.NoteCounts(
+            A.diffCount(GlobalSettings.keycount) - 1,
+            GlobalSettings.keycount,
+            out int note,
+            out int ln,
+            out int time
+            );
+            float anps = (note + ln * 1.5f) / time;
+            B.NoteCounts(
+            B.diffCount(GlobalSettings.keycount) - 1,
+            GlobalSettings.keycount,
+            out note,
+            out ln,
+            out time
+            );
+            float bnps = (note + ln * 1.5f) / time;
+            if (anps > bnps) return 1;
             else return -1;
         });
     }

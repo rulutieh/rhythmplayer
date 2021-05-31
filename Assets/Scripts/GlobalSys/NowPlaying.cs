@@ -13,7 +13,7 @@ public class NowPlaying : MonoBehaviour
     public static AudioClip AUD;
     public static bool isBGA, isVirtual;
     public int nt, ln;
-    public static float LengthMS;
+    public static int LengthMS;
     MusicHandler player;
     // Start is called before the first frame update
     void Start()
