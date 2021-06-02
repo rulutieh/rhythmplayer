@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +7,17 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField]
     GameObject gameover, judgeobj;
-    public static int KOOL, COOL, GOOD, MISS, BAD, TOTAL, combo, maxcombo;
-    public static float acc = 100f, HP = 1f, Score, judgeerror;
+    RankSystem RankSys;
+    public static int KOOL, COOL, GOOD, MISS, BAD, TOTAL, combo, maxcombo, Score;
+    public static float acc = 100f, HP = 1f, judgeerror;
     public static bool isFailed;
 
     List<float> errorList = new List<float>();
     // Start is called before the first frame update
     void Start()
     {
+        GameObject w = GameObject.FindWithTag("world");
+        RankSys = w.GetComponent<RankSystem>();
         isFailed = false;
         HP = 1f;
         COOL = KOOL = GOOD = MISS = BAD = TOTAL = 0;
@@ -21,15 +25,16 @@ public class ScoreManager : MonoBehaviour
         combo = maxcombo = 0;
         judgeerror = 0;
     }
+    
 
     // Update is called once per frame
     void Update()
     {
         float c = NowPlaying.NOTECOUNTS + (NowPlaying.LONGNOTECOUNTS * 2);
         float s = (GOOD / (2 * c)) + (BAD / (6 * c));
-        float sum = (KOOL / c) + (COOL * 9 / (c * 10)) + s;
+        float sum = (KOOL / c) + (COOL * 19f / (c * 20f)) + s;
         float sumforacc = ((KOOL + COOL) / c) + s;
-        Score = Mathf.Round(1000000f * sum);
+        Score = Mathf.RoundToInt(1000000f * sum);
         if (TOTAL != 0)
             acc = sumforacc / (TOTAL / c);
 
@@ -66,5 +71,20 @@ public class ScoreManager : MonoBehaviour
             sum += errorList[i];
             judgeerror = sum / errorList.Count;
         }
+    }
+    public void SaveScores()
+    {
+        //COOL = KOOL = GOOD = MISS = BAD = TOTAL = 0;
+        RankSys.SaveScore(
+            NowPlaying.HASH,
+            GlobalSettings.playername,
+            KOOL,
+            COOL,
+            GOOD,
+            BAD,
+            MISS,
+            maxcombo,
+            DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")
+            );
     }
 }

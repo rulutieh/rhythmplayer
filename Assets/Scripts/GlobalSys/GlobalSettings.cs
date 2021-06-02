@@ -110,11 +110,11 @@ public class GlobalSettings : MonoBehaviour
 
         hprecover = 0.003f; //퍼펙트 회복량
 
-        hprecover2 = 0.0015f; //굿 회복량
+        hprecover2 = 0.001f; //굿 회복량
 
-        baddamage = 0.01f;
+        baddamage = 0.013f;
 
-        missdamage = 0.04f;
+        missdamage = 0.026f;
     }
     void Start()
     {

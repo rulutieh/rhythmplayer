@@ -87,7 +87,7 @@ MonoBehaviour:
       Value: 9264
       HasValue: 1
     Overlay:
-      Value: 1
+      Value: 2
       HasValue: 1
     Logging:
       Value: 0
@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
-  HasSourceProject: 1
+  HasSourceProject: 0
   HasPlatforms: 1
   sourceProjectPath: FSPRO/123/123.fspro
   sourceBankPath: FSPRO\123\Build

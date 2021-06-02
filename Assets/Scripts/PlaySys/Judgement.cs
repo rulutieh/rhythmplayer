@@ -62,6 +62,13 @@ public class Judgement : MonoBehaviour
                 ScoreManager.MISS++;
                 ScoreManager.HP -= GlobalSettings.missdamage;
                 break;
+            case 5:
+                //miss
+                rend.sprite = spr[4];
+                ScoreManager.MISS += 2;
+                ScoreManager.TOTAL++;
+                ScoreManager.HP -= GlobalSettings.missdamage * 2;
+                break;
         }
         if (ScoreManager.HP > 1f) ScoreManager.HP = 1f;
     }

@@ -10,7 +10,7 @@ using System.Linq;
 public class FileReader : MonoBehaviour
 {
     #region Variables
-
+    float startTime;
     public float offset, loadprogress;
     public static float judgeoffset = -3.15f;
     public static bool isPlaying, isVideoLoaded, resultload, isLoaded;
@@ -23,9 +23,10 @@ public class FileReader : MonoBehaviour
     int[] keys = { 0, 1, 2, 3, 4, 5, 6 };
     public GameObject NoteObj, ColObj, LNObj, endln, result, gameover, initsetting, judgeobj, barobj, LoadCircle;
     bool svEnd, noteEnd, rnoteEnd, sampleEnd, playfieldon, musicOn;
-    int TimingCount, NoteCount;
+    int TimingCount, NoteCount, LastNoteTiming;
     public static int NoteCountLongnote;
 
+    ScoreManager smanager;
     RankSystem RankSys;
     MusicHandler player;
     GameObject w;
@@ -105,7 +106,7 @@ public class FileReader : MonoBehaviour
         resultload = false;
         isLoaded = false;
         musicOn = false;
-
+        smanager = GetComponent<ScoreManager>();
         if (GlobalSettings.Random) //노트 랜덤배치
             Random(keys);
         for (int i = 0; i < keys.Length; i++)
@@ -173,48 +174,36 @@ public class FileReader : MonoBehaviour
             }
             else
                 multiply = 3f / NowPlaying.MEDIAN * GlobalSettings.scrollSpeed;
-            p += Time.deltaTime * 1000f;
+            p += Time.deltaTime * 1000f; //use deltatime
             Playback = p;
+            //Playback = Time.timeSinceLevelLoad * 1000f - startTime; //use scenemanagement
             PlaybackChanged = GetNoteTime(Playback); // reamtime에 변속 계산 < 계산량 증가
 
             if (noteEnd) //게임 종료 시
             {
-                int __t;
-                if (NoteList[NoteList.Length - 1].ISLN)
+                if (!resultload)
                 {
-                    __t = NoteList[NoteList.Length - 1].LNLENGTH + 4000;
-                }
-                else
-                {
-                    __t = NoteList[NoteList.Length - 1].TIME + 4000;
-                }
-                if (__t < Playback - 3700f && playfieldon)
-                {
-                    playfieldon = false;
-                    var gameObjects = GameObject.FindGameObjectsWithTag("player");
-                    for (var i = 0; i < gameObjects.Length; i++)
+                    int __t = LastNoteTiming + 4000;
+                    if (__t < Playback - 3700f && playfieldon)
                     {
-                        gameObjects[i].GetComponent<ColumnSetting>().onResult();
+                        playfieldon = false;
+                        var gameObjects = GameObject.FindGameObjectsWithTag("player");
+                        for (var i = 0; i < gameObjects.Length; i++)
+                        {
+                            gameObjects[i].GetComponent<ColumnSetting>().onResult();
+                        }
+
                     }
 
-                }
-
-                if (__t < Playback && !resultload)
-                {
-                    //결과창 로드
-                    if (!ScoreManager.isFailed && !GlobalSettings.AutoPlay) //저장
-                        RankSys.SaveScore(
-                            NowPlaying.HASH,
-                            GlobalSettings.playername,
-                            Mathf.RoundToInt(ScoreManager.Score),
-                            ScoreManager.acc,
-                            (ScoreManager.BAD == 0 && ScoreManager.MISS == 0) ? 1 : 0,
-                            ScoreManager.maxcombo,
-                            DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")
-                            );
-                    resultload = true;
-                    StartCoroutine(ShowResult());
-                    w.GetComponent<GlobalSettings>().SaveSettings();
+                    if (__t < Playback)
+                    {
+                        //결과창 로드
+                        if (!ScoreManager.isFailed && !GlobalSettings.AutoPlay) //저장
+                            smanager.SaveScores();
+                        resultload = true;
+                        StartCoroutine(ShowResult());
+                        w.GetComponent<GlobalSettings>().SaveSettings();
+                    }
                 }
             }
 
@@ -248,7 +237,7 @@ public class FileReader : MonoBehaviour
 
         PlaybackChanged = Playback = -2000f;
         p = Playback;
-        //Invoke("AudioStart", offset + 1.9f + scrSetting.GlobalOffset);
+        startTime = Time.timeSinceLevelLoad * 1000f;
         isLoaded = true;
 
         yield return new WaitForSeconds(1f);
@@ -473,6 +462,7 @@ public class FileReader : MonoBehaviour
         if (fileInfo.Exists)
         {
             string line;
+            LastNoteTiming = 0;
             StreamReader rdr = new StreamReader(filePath);
             await Task.Run(() =>
             {
@@ -585,7 +575,7 @@ public class FileReader : MonoBehaviour
                                 }
                             }
                             string[] arr = line.Split(',', ':');
-
+                            int nt = int.Parse(arr[2]);
                             int lnlength = 0;
                             bool isln = false;
                             if (int.Parse(arr[3]) != 1 && int.Parse(arr[3]) != 5)
@@ -595,8 +585,11 @@ public class FileReader : MonoBehaviour
                             }
                             int col = (int)Mathf.Round((int.Parse(arr[0]) - 36) / 73f);
                             col = keys[col];
-                            NoteList[noteidx] = new Notes(col, int.Parse(arr[2]), isln, lnlength, ksindex);
+                            NoteList[noteidx] = new Notes(col, nt, isln, lnlength, ksindex);
                             noteidx++;
+
+                            if (LastNoteTiming < lnlength) LastNoteTiming = lnlength;
+                            if (LastNoteTiming < nt) LastNoteTiming = nt;
                         }
                     }
                     if (Timings && (line == string.Empty)) Timings = false;

@@ -5,9 +5,19 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System;
 using System.Globalization;
+using System.Threading.Tasks;
+using TMPro;
 
 public class FileLoader : MonoBehaviour
 {
+    public bool threading = false;
+    [SerializeField]
+    TextMeshProUGUI tt;
+    [SerializeField]
+    GameObject LoadCircle;
+
+    string t;
+
     FileSystemWatcher FolderWatcher;
     [Serializable]
     public class Chart
@@ -140,7 +150,7 @@ public class FileLoader : MonoBehaviour
         {
             Debug.Log(ie);
         }
-        StartCoroutine(loadComplete());
+        //StartCoroutine(loadComplete());
     }
     void Update()
     {
@@ -148,30 +158,47 @@ public class FileLoader : MonoBehaviour
         {
             ReLoad();
         }
+        tt.text = t;
     }
     public void ReLoad()
     {
-        list.Clear();
-        listorigin.Clear();
-        StartLoad();
-        var s = GameObject.FindWithTag("SelSys");
-        if (s)
+        if (!threading)
         {
-            s.GetComponent<FileSelecter>().init(); //리로드
+            list.Clear();
+            listorigin.Clear();
+            listkeysort.Clear();
+            StartLoad();
+            var s = GameObject.FindWithTag("SelSys");
+            if (s)
+            {
+                s.GetComponent<FileSelecter>().goTitle();
+            }
         }
     }
-    public void StartLoad() //파일 로드 시작
+    async void StartLoad() //파일 로드 시작
     {
+        LoadCircle.SetActive(true);
+        threading = true;
         int idx = 0;
         string root = GlobalSettings.FolderPath;
         string[] subdirectoryEntries = Directory.GetDirectories(root);
         //폴더수만큼구조체배열할당
-
+        var tasks = new List<Task>();
         foreach (string subdirectory in subdirectoryEntries)
         {
-            LoadSubDirs(root, subdirectory, idx);
-            idx++;
+            tasks.Add(LoadDirsAsync(root, subdirectory, idx));
         }
+        
+        await Task.WhenAll(tasks);
+
+        SceneManager.LoadScene("Title", LoadSceneMode.Single);
+        t = "";
+        threading = false;
+        LoadCircle.SetActive(false);
+    }
+    Task LoadDirsAsync(string path, string dir, int idx)
+    {
+        return Task.Run(() => LoadSubDirs(path, dir,idx));
     }
     void LoadSubDirs(string path, string dir, int idx) //폴더별 파일 로드
     {
@@ -225,9 +252,10 @@ public class FileLoader : MonoBehaviour
         }
         else
             newSong.hasvideo = false;
-        
+
 
         //제목,작곡가,난이도,오프셋파싱
+        StreamReader rdr = null;
         string line;
         bool[] correctfile = new bool[Files.Length];
         try
@@ -238,7 +266,7 @@ public class FileLoader : MonoBehaviour
 
                 correctfile[i] = true;
 
-                StreamReader rdr = new StreamReader(TXTFILE[i]);
+                rdr = new StreamReader(TXTFILE[i]);
                 while ((line = rdr.ReadLine()) != "[Metadata]")
                 {
 
@@ -282,7 +310,12 @@ public class FileLoader : MonoBehaviour
                 //osu 확장자
                 while ((line = rdr.ReadLine()) != "[TimingPoints]")
                 {
-                    if (line.Contains("Title:")) newSong.name = line.Remove(0, 6);
+                    if (line.Contains("Title:"))
+                    {
+                        string s = line.Remove(0, 6);
+                        newSong.name = s;
+                        t = s;
+                    }
                     if (line.Contains("Artist:")) newSong.artist = line.Remove(0, 7);
                     if (line.Contains("Tags:")) newSong.tags = line.Remove(0, 4);
                     if (line.Contains("Version:"))
@@ -324,7 +357,7 @@ public class FileLoader : MonoBehaviour
                     longnotecounts,
                     lastnote
                     );
-
+                if (keycount > 8) continue;
                 newSong.isvirtual = isvirtual;
                 newSong.AddCharts(
                     keycount,
@@ -338,6 +371,8 @@ public class FileLoader : MonoBehaviour
         catch (Exception ie)
         {
             Debug.Log(ie);
+            if (rdr != null)
+                rdr.Dispose();
             return;
         }
         //올바른 파일이 없으면 무시
@@ -370,13 +405,13 @@ public class FileLoader : MonoBehaviour
             int a, b;
             if (mode == 0)
             {
-                if (!int.TryParse(A.getDiff(0, GlobalSettings.keycount), out a)) return 1;
-                if (!int.TryParse(B.getDiff(0, GlobalSettings.keycount), out b)) return 1;
+                int.TryParse(A.getDiff(0, GlobalSettings.keycount), out a);
+                int.TryParse(B.getDiff(0, GlobalSettings.keycount), out b);
             }
             else
             {
-                if (!int.TryParse(A.maxDiff(GlobalSettings.keycount), out a)) return 1;
-                if (!int.TryParse(B.maxDiff(GlobalSettings.keycount), out b)) return 1;
+                int.TryParse(A.maxDiff(GlobalSettings.keycount), out a);
+                int.TryParse(B.maxDiff(GlobalSettings.keycount), out b);
             }
 
             if (a == b) return 0;
@@ -473,9 +508,7 @@ public class FileLoader : MonoBehaviour
 
     IEnumerator loadComplete()
     {
-
-        yield return new WaitForSeconds(1f);
-
+        yield return new WaitUntil(() => !threading);
         SceneManager.LoadScene("Title", LoadSceneMode.Single);
     }
 }

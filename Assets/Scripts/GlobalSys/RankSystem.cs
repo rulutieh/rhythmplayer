@@ -21,9 +21,9 @@ class SongDB
         this.key = key;
     }
 
-    public void AddScore(string playername, int score,float acc, int state, int maxcombo, string date)
+    public void AddScore(ScoreData sd)
     {
-        scores.Add(new ScoreData(playername, score, acc, state, maxcombo, date));
+        scores.Add(sd);
         SortScores();
     }
 
@@ -44,18 +44,27 @@ class ScoreData
 {
     public string playername;
     public string date;
-    public float acc;
-    public int score;
-    public int state;
     public int maxcombo;
-    public ScoreData(string playername, int score, float acc, int state, int maxcombo, string date)
+    public int KOOL, COOL, GOOD, BAD, MISS;
+    public int score, state;
+    public float acc;
+    public ScoreData(string playername, int k, int c, int g, int b , int m, int maxcombo, string date)
     {
-        this.acc = acc;
         this.playername = playername;
-        this.score = score;
-        this.state = state;
         this.maxcombo = maxcombo;
         this.date = date;
+        KOOL = k; COOL = c; GOOD = g; BAD = b; MISS = m;
+        getScores();
+    }
+    void getScores()
+    {
+        float c = KOOL + COOL + GOOD + MISS + BAD;
+        float s = (GOOD / (2 * c)) + (BAD / (6 * c));
+        float sum = (KOOL / c) + (COOL * 19f / (c * 20f)) + s;
+        acc = ((KOOL + COOL) / c) + s;
+        score = Mathf.RoundToInt(1000000f * sum);
+        state = 0;
+        if (BAD == 0 && MISS == 0) state = 1;
     }
 }
 [Serializable]
@@ -82,10 +91,24 @@ public class RankSystem : MonoBehaviour
     public event ReceiveDelegate OnReceive;
     */
 
+    public enum PlayOption
+    {
+        NONE = 0,
+        MIRROR = 1, RANDOM = 2, GROOVE = 4,
+        EASY = 8, NORMAL = 16, HARD = 32,
+        SDEATH = 64, PATTACK = 128
+    }
+
+
     [SerializeField]
     List<SongDB> songs = new List<SongDB>();
 
+    List<ScoreData> onlineScores = new List<ScoreData>();
+
+    public bool AsyncLoading = false;
+
     int id = -1;
+
     private void Awake()
     {
 
@@ -94,13 +117,15 @@ public class RankSystem : MonoBehaviour
     {
         LoadScore();
     }
-    //private void Update()
-    //{
-    //    if (Input.GetKey(KeyCode.A))
-    //        SaveScore("323", "123", 123, 0, 2, "1");
-    //}
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+            SaveScore("323", "123", 1, 2, 3, 4, 5, 200, "1");
+    }
     public void SelectSong(string key)
     {
+        onlineScores.Clear();
+
         id = -1;
         for (int i = 0; i < songs.Count; i++)
         {
@@ -115,17 +140,23 @@ public class RankSystem : MonoBehaviour
         else
             return songs[id].scores.Count;
     }
-    public void GetInfo(int idx, out string pname, out int score, out float acc, out int state ,out int maxcombo, out string date)
+    public void GetInfo(bool isOnline, int idx, out string pname, out int score, out float acc, out int state ,out int maxcombo, out string date)
     {
-        pname = songs[id].scores[idx].playername;
-        score = songs[id].scores[idx].score;
-        acc = songs[id].scores[idx].acc;
-        state = songs[id].scores[idx].state;
-        maxcombo = songs[id].scores[idx].maxcombo;
-        date = songs[id].scores[idx].date;
+        ScoreData s;
+        if (isOnline)
+            s = onlineScores[idx];
+        else
+            s = songs[id].scores[idx];
+        pname = s.playername;
+        score = s.score;
+        acc = s.acc;
+        state = s.state;
+        maxcombo = s.maxcombo;
+        date = s.date;
     }
-    public void SaveScore(string key, string playername, int score, float acc, int state, int maxcombo, string date)
+    public void SaveScore(string key, string playername, int k, int c, int g, int b, int m, int maxcombo, string date)
     {
+        ScoreData sd = new ScoreData(playername, k, c, g, b, m, maxcombo, date);
         bool find = false;
         //local
         for (int i = 0; i < songs.Count; i++)
@@ -134,13 +165,13 @@ public class RankSystem : MonoBehaviour
             if (songs[i].key == key)
             {
                 find = true;
-                songs[i].AddScore(playername, score, acc, state, maxcombo, date);
+                songs[i].AddScore(sd);
             }
         }
         if (!find)
         {
             SongDB s = new SongDB(key);
-            s.AddScore(playername, score,acc, state, maxcombo, date);
+            s.AddScore(sd);
             songs.Add(s);
         }
         string json = JsonConvert.SerializeObject(songs, Formatting.Indented);
@@ -148,7 +179,22 @@ public class RankSystem : MonoBehaviour
         File.WriteAllText(Path.Combine(Application.persistentDataPath, "scoredb.json"), json);
         //php+db
 
-        //RequestToWebAsync("http://127.0.0.1:8000/print/hello");
+
+        //mob/add/{name}/tier/{tier}/attack/{attack}/hp/{hp}/mp/{mp}
+        string req = string.Format(
+            "http://127.0.0.1:8000/api/score/add/{0}/uid/{1}/sco/{2}/kk/{3}/cc/{4}/gg/{5}/bb/{6}/mm/{7}/maxcombo/{8}",
+            key,
+            0,
+            sd.score,
+            k,
+            c,
+            g,
+            b,
+            m,
+            maxcombo
+            );
+        Debug.Log(req);
+        RequestToWebAsync(req);
         ///////
     }
 
@@ -202,12 +248,26 @@ public class RankSystem : MonoBehaviour
         var reqTask = Task.Run(() => this.RequestToWeb(url));
         var result = await reqTask;
         onReceive(result);
+        AsyncLoading = false;
     }
-    
+
     private void onReceive(string result)
     {
-        var received = ReceiveScoreData.CreateFromJson(result);
-        Debug.Log($"{received.date},{received.message},{received.result}");
+        //ScoreData s = JsonConvert.DeserializeObject<ScoreData>(result);
+        //onlineScores.Add(s);
+        //Debug.Log($"{s.score},{s.playername},{s.acc}");
+        try
+        {
+            var received = ReceiveScoreData.CreateFromJson(result);
+            Debug.Log($"{received.message},{received.result},{received.date}");
+        
+        }
+        catch(Exception)
+        {
+            Debug.Log("No Network");
+        }
+       
+
     }
     
 

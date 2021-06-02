@@ -19,10 +19,11 @@ public class showScore : MonoBehaviour
     {
         float a = ScoreManager.acc;
         acc.text = string.Format("{0:p}", a);
-        score = (int)Mathf.Round(ScoreManager.Score);
+        score = ScoreManager.Score;
+        tmp.text = score.ToString("0000000");
         if (score != oldscore)
         {
-            tmp.text = score.ToString("0000000");
+            //tmp.text = score.ToString("0000000");
             oldscore = score;
         }
         

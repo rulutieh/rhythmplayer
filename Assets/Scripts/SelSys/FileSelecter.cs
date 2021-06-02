@@ -299,6 +299,7 @@ public class FileSelecter : MonoBehaviour
             out NowPlaying.LengthMS
             );
         rankpanel.GetComponent<RankPanel>().LoadRanks(NowPlaying.HASH);
+        //랭킹 로딩
         Debug.Log(_txtpath);
         countNotes(_txtpath);
     }
@@ -436,7 +437,7 @@ public class FileSelecter : MonoBehaviour
             yield return null;
         player.PlayMP3();
     }
-    void goTitle()
+    public void goTitle()
     {
         if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
             player.ReleaseMP3();

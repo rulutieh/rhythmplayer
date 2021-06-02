@@ -55,7 +55,7 @@ public class scrUISystem : MonoBehaviour
     public void NextRoom()
     {
         FileLoader fl = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
-        if (fl.listorigin.Count == 0)
+        if (fl.listorigin.Count == 0 || fl.threading)
         {
             errScreen.SetActive(true);
         }

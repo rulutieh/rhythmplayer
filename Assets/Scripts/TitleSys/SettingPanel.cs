@@ -237,6 +237,8 @@ public class SettingPanel : MonoBehaviour
     }
     public void SetFolderPath()
     {
+        FileLoader fl = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
+        if (!fl.threading)
         if (OpenDialog.ShowDialog() == DialogResult.OK)
         {
             string path = OpenDialog.SelectedPath;
@@ -244,7 +246,7 @@ public class SettingPanel : MonoBehaviour
             GlobalSettings.FolderPath = path;
             PlayerPrefs.SetString("FOLDER", path);
             songroot.text = GlobalSettings.FolderPath;
-            FileLoader fl = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
+            
             fl.ReLoad();
         }
     }
