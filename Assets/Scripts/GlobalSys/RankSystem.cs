@@ -40,7 +40,7 @@ class SongDB
 
 
 [Serializable]
-class ScoreData
+public class ScoreData
 {
     public string playername;
     public string date;
@@ -68,16 +68,36 @@ class ScoreData
     }
 }
 [Serializable]
-class ReceiveScoreData
+public class ConvertOnlineScores
+{
+    public string hash;
+    public string uid;
+    public int sco;
+    public int kk, cc, gg, bb, mm;
+    public int maxcombo;
+    public int bitwise;
+    public string created_at;
+}
+[Serializable]
+class ReceiveResult
 {
     public string date;
     public string message;
     public string result;
 
-    public static ReceiveScoreData CreateFromJson(string json)
+    public static ReceiveResult CreateFromJson(string json)
     {
-        return JsonConvert.DeserializeObject<ReceiveScoreData>(json);
+        return JsonConvert.DeserializeObject<ReceiveResult>(json);
     }
+}
+[Serializable]
+public class ReceiveScore
+{
+    public string date;
+
+    public List<ConvertOnlineScores> score = new List<ConvertOnlineScores>();
+
+    public string retrived;
 }
 
 
@@ -99,11 +119,13 @@ public class RankSystem : MonoBehaviour
         SDEATH = 64, PATTACK = 128
     }
 
-
+    
     [SerializeField]
     List<SongDB> songs = new List<SongDB>();
 
-    List<ScoreData> onlineScores = new List<ScoreData>();
+
+    public List<ConvertOnlineScores> ReceiveScores = new List<ConvertOnlineScores>();
+    public List<ScoreData> onlineScores = new List<ScoreData>();
 
     public bool AsyncLoading = false;
 
@@ -117,14 +139,19 @@ public class RankSystem : MonoBehaviour
     {
         LoadScore();
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-            SaveScore("323", "123", 1, 2, 3, 4, 5, 200, "1");
-    }
+
     public void SelectSong(string key)
     {
+        AsyncLoading = true;
         onlineScores.Clear();
+
+        string req = string.Format(
+        "http://127.0.0.1:8000/api/score/get/{0}/uid/{1}",
+        key,
+        GlobalSettings.UID
+        );
+        Debug.Log(req);
+        RequestToWebAsync(req);
 
         id = -1;
         for (int i = 0; i < songs.Count; i++)
@@ -133,12 +160,18 @@ public class RankSystem : MonoBehaviour
         }
     }
 
-    public int GetScoreCounts()
+    public int GetScoreCounts(bool online)
     {
+        if (online)
+        {
+            return onlineScores.Count;
+        }
         if (id == -1)
             return 0;
         else
+        {
             return songs[id].scores.Count;
+        }
     }
     public void GetInfo(bool isOnline, int idx, out string pname, out int score, out float acc, out int state ,out int maxcombo, out string date)
     {
@@ -179,21 +212,23 @@ public class RankSystem : MonoBehaviour
         File.WriteAllText(Path.Combine(Application.persistentDataPath, "scoredb.json"), json);
         //php+db
 
+        int bitwise = 0;
 
         //mob/add/{name}/tier/{tier}/attack/{attack}/hp/{hp}/mp/{mp}
         string req = string.Format(
-            "http://127.0.0.1:8000/api/score/add/{0}/uid/{1}/sco/{2}/kk/{3}/cc/{4}/gg/{5}/bb/{6}/mm/{7}/maxcombo/{8}",
+            "http://127.0.0.1:8000/api/score/add/{0}/uid/{1}/sco/{2}/kk/{3}/cc/{4}/gg/{5}/bb/{6}/mm/{7}/maxcombo/{8}/bitwise/{9}",
             key,
-            0,
+            GlobalSettings.UID,
             sd.score,
             k,
             c,
             g,
             b,
             m,
-            maxcombo
+            maxcombo,
+            bitwise
             );
-        Debug.Log(req);
+        //Debug.Log(req);
         RequestToWebAsync(req);
         ///////
     }
@@ -205,6 +240,7 @@ public class RankSystem : MonoBehaviour
         {
             json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "scoredb.json"));
             json = CryptoManager.AESDecrypt128(json);
+            Debug.Log(json);
             songs = JsonConvert.DeserializeObject<List<SongDB>>(json);
         }
     }
@@ -237,7 +273,7 @@ public class RankSystem : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("asdf");
+            Debug.Log(ex);
         }
         return "";
     }
@@ -247,7 +283,9 @@ public class RankSystem : MonoBehaviour
     {
         var reqTask = Task.Run(() => this.RequestToWeb(url));
         var result = await reqTask;
+
         onReceive(result);
+        
         AsyncLoading = false;
     }
 
@@ -258,12 +296,45 @@ public class RankSystem : MonoBehaviour
         //Debug.Log($"{s.score},{s.playername},{s.acc}");
         try
         {
-            var received = ReceiveScoreData.CreateFromJson(result);
-            Debug.Log($"{received.message},{received.result},{received.date}");
+
+            Debug.Log(result);
+
+            string scores = result.Substring(result.IndexOf('['), result.IndexOf(']') - result.IndexOf('[') + 1);
+
+            Debug.Log(scores);
+
+            var received = ReceiveResult.CreateFromJson(result);
+
+            Debug.Log($"{received.date},{received.result}");
+
+            if (received.result == "retrieved")
+            {
+                ReceiveScores = JsonConvert.DeserializeObject<List<ConvertOnlineScores>>(scores);
+                if (ReceiveScores.Count != 0)
+                {
+                    for (int i = 0; i < ReceiveScores.Count; i++)
+                    {
+                        ScoreData s1 = new ScoreData(
+                        ReceiveScores[i].uid,
+                        ReceiveScores[i].kk,
+                        ReceiveScores[i].cc,
+                        ReceiveScores[i].gg,
+                        ReceiveScores[i].bb,
+                        ReceiveScores[i].mm,
+                        ReceiveScores[i].maxcombo,
+                        ReceiveScores[i].created_at
+                        );
+
+                        onlineScores.Add(s1);
+
+                    }
+                }
+            }
         
         }
-        catch(Exception)
+        catch(Exception ie)
         {
+            Debug.Log(ie);
             Debug.Log("No Network");
         }
        

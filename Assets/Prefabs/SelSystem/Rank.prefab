@@ -252,7 +252,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4154021086278536213}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6529435120424037598}
+        m_MethodName: SwitchOnline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3108638669811659742
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,9 +547,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa44b79354a52d44f8aded204b5e0417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOn: 1
+  online: 0
   ypos: 0
+  ypostemp: 0
   o: {fileID: 3850557103016899433, guid: 0c08523262460ac4399851a7bfd2871a, type: 3}
   isnull: {fileID: 171102868}
+  tmp: {fileID: 2759271475844858428}
   isOver: 0
 --- !u!1001 &2027733545566864171
 PrefabInstance:
@@ -665,3 +680,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2027733545566864171}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2759271475844858428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4208915269062607127, guid: b204526bfcc6a09499dde4c523517d0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2027733545566864171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

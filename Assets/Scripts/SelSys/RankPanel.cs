@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using TMPro;
 
 public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public bool isOn = true;
+    public bool isOn = true, online = false;
     public float ypos, ypostemp;
     int counts;
+    string h;
     public GameObject o, isnull;
+    [SerializeField]
+    TextMeshProUGUI tmp;
     RectTransform rect;
     RankSystem sys;
     Vector2 startpos;
@@ -47,6 +51,8 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         ypos = Mathf.Lerp(ypos, ypostemp, 0.2f);
 
         if (!isOn) isOver = false;
+
+        
     }
 
     public bool isOver = false;
@@ -63,22 +69,39 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void LoadRanks(string hash)
     {
+        h = hash;
         ypos = 0;
+        DestroySubjects();
+        if (!online)
+            isnull.SetActive(true);
+
+        sys.SelectSong(hash);        
+        StartCoroutine(LoadSubjects());
+
+    }
+    void DestroySubjects()
+    {
         var gameObjects = GameObject.FindGameObjectsWithTag("ranks");
         for (int i = 0; i < gameObjects.Length; i++)
         {
             Destroy(gameObjects[i]);
         }
-        isnull.SetActive(true);
-        sys.SelectSong(hash);
-        counts = sys.GetScoreCounts();
+    }
+    IEnumerator LoadSubjects()
+    {
+        while (online && sys.AsyncLoading)
+            yield return null;
+
+        Debug.Log("LOAD");
+        counts = sys.GetScoreCounts(online);
+        if (counts == 0) isnull.SetActive(true);
         for (int i = 0; i < counts; i++)
         {
             isnull.SetActive(false);
             var r = Instantiate(o, transform.GetChild(0));
             string pname, date;
             int score, state, maxcombo;
-            sys.GetInfo(false, i, out pname, out score, out float acc, out state, out maxcombo, out date);
+            sys.GetInfo(online, i, out pname, out score, out float acc, out state, out maxcombo, out date);
             r.GetComponent<RankText>().SetText(
                 i,
                 pname,
@@ -90,6 +113,12 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 this.gameObject
                 );
         }
-
+    }
+    public void SwitchOnline()
+    {
+        
+        online = !online;
+        if (online) tmp.text = "Online Ranking"; else tmp.text = "Local Ranking";
+        LoadRanks(h);
     }
 }
