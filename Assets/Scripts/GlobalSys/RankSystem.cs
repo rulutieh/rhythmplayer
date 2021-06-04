@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,7 @@ public class ScoreData
     public int KOOL, COOL, GOOD, BAD, MISS;
     public int score, state;
     public float acc;
-    public ScoreData(string playername, int k, int c, int g, int b , int m, int maxcombo, string date)
+    public ScoreData(string playername, int k, int c, int g, int b, int m, int maxcombo, string date)
     {
         this.playername = playername;
         this.maxcombo = maxcombo;
@@ -81,23 +82,34 @@ public class ConvertOnlineScores
 [Serializable]
 class ReceiveResult
 {
-    public string date;
-    public string message;
-    public string result;
+    [JsonProperty("date")]
+    public string date { get; set; }
+    [JsonProperty("message")]
+    public string message { get; set; }
+    [JsonProperty("result")]
+    public string result { get; set; }
 
     public static ReceiveResult CreateFromJson(string json)
     {
         return JsonConvert.DeserializeObject<ReceiveResult>(json);
+
+
     }
 }
 [Serializable]
-public class ReceiveScore
+public class ReceiveRank
 {
-    public string date;
+    [JsonProperty("myscore")]
+    public ConvertOnlineScores myscore { get; set; }
 
-    public List<ConvertOnlineScores> score = new List<ConvertOnlineScores>();
+    [JsonProperty("score")]
+    public List<ConvertOnlineScores> scores { get; set; }
 
-    public string retrived;
+    [JsonProperty("result")]
+    public string retrived { get; set; }
+
+    [JsonProperty("ranking")]
+    public int ranking { get; set; }
 }
 
 
@@ -119,17 +131,19 @@ public class RankSystem : MonoBehaviour
         SDEATH = 64, PATTACK = 128
     }
 
-    
+
     [SerializeField]
     List<SongDB> songs = new List<SongDB>();
 
-
-    public List<ConvertOnlineScores> ReceiveScores = new List<ConvertOnlineScores>();
     public List<ScoreData> onlineScores = new List<ScoreData>();
 
     public bool AsyncLoading = false;
 
     int id = -1;
+
+    public ReceiveRank receivedScores;
+
+    public ScoreData myScore;
 
     private void Awake()
     {
@@ -137,27 +151,29 @@ public class RankSystem : MonoBehaviour
     }
     private void Start()
     {
+        myScore = new ScoreData("",0,0,0,0,0,0,"");
         LoadScore();
+        receivedScores = new ReceiveRank();
     }
 
     public void SelectSong(string key)
     {
+        myScore = new ScoreData("", 0, 0, 0, 0, 0, 0, "");
         AsyncLoading = true;
         onlineScores.Clear();
-
-        string req = string.Format(
-        "http://127.0.0.1:8000/api/score/get/{0}/uid/{1}",
-        key,
-        GlobalSettings.UID
-        );
-        Debug.Log(req);
-        RequestToWebAsync(req);
 
         id = -1;
         for (int i = 0; i < songs.Count; i++)
         {
             if (songs[i].key == key) id = i;
         }
+        Debug.Log($"key : {key}");
+        string req = string.Format(
+        "http://127.0.0.1:8000/api/score/get/{0}/uid/{1}",
+        key,
+        GlobalSettings.UID
+        );
+        RequestToWebAsync(req);
     }
 
     public int GetScoreCounts(bool online)
@@ -173,7 +189,7 @@ public class RankSystem : MonoBehaviour
             return songs[id].scores.Count;
         }
     }
-    public void GetInfo(bool isOnline, int idx, out string pname, out int score, out float acc, out int state ,out int maxcombo, out string date)
+    public void GetInfo(bool isOnline, int idx, out string pname, out int score, out float acc, out int state, out int maxcombo, out string date)
     {
         ScoreData s;
         if (isOnline)
@@ -186,6 +202,17 @@ public class RankSystem : MonoBehaviour
         state = s.state;
         maxcombo = s.maxcombo;
         date = s.date;
+    }
+    public void GetMyScore(out string pname, out int score, out float acc, out int state, out int maxcombo, out string date, out int ranking)
+    {
+            ScoreData s = myScore;
+            pname = s.playername;
+            score = s.score;
+            acc = s.acc;
+            state = s.state;
+            maxcombo = s.maxcombo;
+            date = s.date;
+        ranking = receivedScores.ranking;
     }
     public void SaveScore(string key, string playername, int k, int c, int g, int b, int m, int maxcombo, string date)
     {
@@ -285,7 +312,7 @@ public class RankSystem : MonoBehaviour
         var result = await reqTask;
 
         onReceive(result);
-        
+
         AsyncLoading = false;
     }
 
@@ -296,51 +323,57 @@ public class RankSystem : MonoBehaviour
         //Debug.Log($"{s.score},{s.playername},{s.acc}");
         try
         {
-
-            Debug.Log(result);
-
-            string scores = result.Substring(result.IndexOf('['), result.IndexOf(']') - result.IndexOf('[') + 1);
-
-            Debug.Log(scores);
-
             var received = ReceiveResult.CreateFromJson(result);
 
-            Debug.Log($"{received.date},{received.result}");
+            Debug.Log(received.result);
 
             if (received.result == "retrieved")
             {
-                ReceiveScores = JsonConvert.DeserializeObject<List<ConvertOnlineScores>>(scores);
-                if (ReceiveScores.Count != 0)
-                {
-                    for (int i = 0; i < ReceiveScores.Count; i++)
-                    {
-                        ScoreData s1 = new ScoreData(
-                        ReceiveScores[i].uid,
-                        ReceiveScores[i].kk,
-                        ReceiveScores[i].cc,
-                        ReceiveScores[i].gg,
-                        ReceiveScores[i].bb,
-                        ReceiveScores[i].mm,
-                        ReceiveScores[i].maxcombo,
-                        ReceiveScores[i].created_at
-                        );
 
+                receivedScores = JsonConvert.DeserializeObject<ReceiveRank>(result);
+
+                Debug.Log(receivedScores.ranking);
+
+                if (receivedScores.scores.Count != 0)
+                {
+                    for (int i = 0; i < receivedScores.scores.Count; i++)
+                    {
+
+                        ScoreData s1 = new ScoreData(
+                        receivedScores.scores[i].uid,
+                        receivedScores.scores[i].kk,
+                        receivedScores.scores[i].cc,
+                        receivedScores.scores[i].gg,
+                        receivedScores.scores[i].bb,
+                        receivedScores.scores[i].mm,
+                        receivedScores.scores[i].maxcombo,
+                        receivedScores.scores[i].created_at
+                        );
                         onlineScores.Add(s1);
 
                     }
+                    Debug.Log(receivedScores.myscore.uid);
+                    myScore = new ScoreData(
+                    receivedScores.myscore.uid,
+                    receivedScores.myscore.kk,
+                    receivedScores.myscore.cc,
+                    receivedScores.myscore.gg,
+                    receivedScores.myscore.bb,
+                    receivedScores.myscore.mm,
+                    receivedScores.myscore.maxcombo,
+                    receivedScores.myscore.created_at
+                    );
                 }
             }
-        
         }
-        catch(Exception ie)
+        catch (Exception ie)
         {
             Debug.Log(ie);
             Debug.Log("No Network");
         }
-       
+
 
     }
-    
 
 
 

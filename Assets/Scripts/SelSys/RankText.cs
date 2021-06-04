@@ -13,6 +13,7 @@ public class RankText : MonoBehaviour
     RankPanel rp;
     Image rend;
     int idx;
+    public int onlinerank;
     public TextMeshProUGUI playertxt;
     public TextMeshProUGUI scoretxt;
     public TextMeshProUGUI combotxt;
@@ -27,7 +28,10 @@ public class RankText : MonoBehaviour
     }
     private void Update()
     {
-        rect.anchoredPosition = new Vector2(-0.1f, 60.46f - idx * 31f + rp.ypos);
+        if (idx != -1)
+            rect.anchoredPosition = new Vector2(-0.1f, 46.46f - idx * 31f + rp.ypos);
+        else
+            sunwitxt.text = onlinerank.ToString();
     }
     public void SetText(int id, string pname, int score,float acc, int state, int maxcombo, string date, GameObject p)
     {
@@ -37,7 +41,10 @@ public class RankText : MonoBehaviour
         combotxt.text = $"{maxcombo} combo";
         datetxt.text = date;
         acctxt.text = string.Format("{0:p}", acc);
-        sunwitxt.text = $"#{id + 1}";
+        if (id != -1)
+        {
+            sunwitxt.text = $"#{id + 1}";
+        }
         panel = p;
         rp = p.GetComponent<RankPanel>();
 

@@ -11,19 +11,21 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public float ypos, ypostemp;
     int counts;
     string h;
-    public GameObject o, isnull;
+    public GameObject o, isnull, onlinemyrank;
     [SerializeField]
     TextMeshProUGUI tmp;
     RectTransform rect;
     RankSystem sys;
     Vector2 startpos;
+    RankText myRank;
     private void Awake()
     {
         isnull.SetActive(true);
         sys = GameObject.FindWithTag("world").GetComponent<RankSystem>();
         rect = GetComponent<RectTransform>();
-        startpos = rect.transform.position;
+        startpos = rect.anchoredPosition;
         rect.DOAnchorPosX(67.93f, 0.4f, true);
+        myRank = onlinemyrank.GetComponent<RankText>();
     }
 
     public void onoff()
@@ -89,18 +91,19 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     IEnumerator LoadSubjects()
     {
+        onlinemyrank.SetActive(false);
         while (online && sys.AsyncLoading)
             yield return null;
 
-        Debug.Log("LOAD");
         counts = sys.GetScoreCounts(online);
         if (counts == 0) isnull.SetActive(true);
+        string pname, date;
+        int score, state, maxcombo;
         for (int i = 0; i < counts; i++)
         {
             isnull.SetActive(false);
             var r = Instantiate(o, transform.GetChild(0));
-            string pname, date;
-            int score, state, maxcombo;
+            r.transform.position = new Vector2(1000,1000);
             sys.GetInfo(online, i, out pname, out score, out float acc, out state, out maxcombo, out date);
             r.GetComponent<RankText>().SetText(
                 i,
@@ -113,12 +116,32 @@ public class RankPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 this.gameObject
                 );
         }
+        while (sys.AsyncLoading)
+            yield return null;
+        sys.GetMyScore(out pname, out score, out float acc2, out state, out maxcombo, out date, out int orank);
+        if (!string.IsNullOrEmpty(pname))
+        {
+            onlinemyrank.SetActive(true);
+            myRank.SetText(
+                    -1,
+                    pname,
+                    score,
+                    acc2,
+                    state,
+                    maxcombo,
+                    date,
+                    this.gameObject
+                    );
+            myRank.onlinerank = orank;
+        }
     }
     public void SwitchOnline()
     {
-        
+        StopCoroutine(LoadSubjects());
         online = !online;
         if (online) tmp.text = "Online Ranking"; else tmp.text = "Local Ranking";
-        LoadRanks(h);
+        DestroySubjects();
+        StartCoroutine(LoadSubjects());
+        //LoadRanks(h);
     }
 }

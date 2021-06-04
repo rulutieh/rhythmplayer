@@ -36,6 +36,7 @@ public class FileReader : MonoBehaviour
 
     #region Notes, Sound, Queue, BPM Collections
     public Queue<GameObject> n_queue = new Queue<GameObject>();
+    public Queue<GameObject> b_queue = new Queue<GameObject>();
     [Serializable]
     struct Timings
     {
@@ -142,6 +143,10 @@ public class FileReader : MonoBehaviour
         {
             SetPooling();
         }
+        for (int i = 0; i < 6; i++) 
+        {
+            BarPooling();
+        }
 
     }
     void SetPooling()
@@ -149,6 +154,12 @@ public class FileReader : MonoBehaviour
         GameObject cobj = Instantiate(ColObj, new Vector2(0, 1000f), Quaternion.identity);
         n_queue.Enqueue(cobj);
         cobj.SetActive(false);
+    }
+    void BarPooling()
+    {
+        GameObject b = Instantiate(barobj, new Vector2(0, 1000f), Quaternion.identity);
+        b_queue.Enqueue(b);
+        b.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -417,8 +428,14 @@ public class FileReader : MonoBehaviour
     {
         float t = GetNoteTime(barlist[barIDX]);
         yield return new WaitUntil(() => t <= PlaybackChanged + preLoad && !noteEnd);
-        var b = Instantiate(barobj);
-        b.GetComponent<MeasureBars>()._TIME = t;
+        while (b_queue.Count < 2) 
+        {
+            BarPooling();
+            yield return null;
+        }
+        var bar = b_queue.Dequeue();
+        bar.SetActive(true);
+        bar.GetComponent<MeasureBars>()._TIME = t;
 
         barIDX++;
         if (barIDX != barlist.Count)

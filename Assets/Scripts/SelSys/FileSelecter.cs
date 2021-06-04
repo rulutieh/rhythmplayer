@@ -72,7 +72,6 @@ public class FileSelecter : MonoBehaviour
             bts.SetActive(false);
             
         }
-        Debug.Log(b_queue.Count);
         init();
         
         aud.volume = sfxaud.volume = aud.volume = GlobalSettings.Volume;
