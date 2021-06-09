@@ -2127,10 +2127,10 @@ RectTransform:
   m_Father: {fileID: 1485473449}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 91.39984, y: -208.5}
-  m_SizeDelta: {x: 31.214355, y: 11.743477}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 91.39984, y: 22.61}
+  m_SizeDelta: {x: 31.214355, y: 11.743469}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1125444785
 MonoBehaviour:
@@ -5516,6 +5516,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f82214e148f9e1a4e8628cbbb8a3004d, type: 3}
   - {fileID: 21300000, guid: 9509f945eb7cd254493226326137881f, type: 3}
   rk: {fileID: 2389205474610089045}
+  onlinerank: 0
   playertxt: {fileID: 1315911297129645497}
   scoretxt: {fileID: 759383069065197369}
   combotxt: {fileID: 7961548675032810964}

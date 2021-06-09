@@ -49,12 +49,25 @@ public class ScoreData
     public int KOOL, COOL, GOOD, BAD, MISS;
     public int score, state;
     public float acc;
+    [JsonConstructor]
     public ScoreData(string playername, int k, int c, int g, int b, int m, int maxcombo, string date)
     {
         this.playername = playername;
         this.maxcombo = maxcombo;
         this.date = date;
         KOOL = k; COOL = c; GOOD = g; BAD = b; MISS = m;
+        getScores();
+    }
+    public ScoreData(ConvertOnlineScores o)
+    {
+        playername = o.uid;
+        KOOL = o.kk;
+        COOL = o.cc;
+        GOOD = o.gg;
+        BAD = o.bb;
+        MISS = o.mm;
+        maxcombo = o.maxcombo;
+        date = o.created_at;
         getScores();
     }
     void getScores()
@@ -151,7 +164,7 @@ public class RankSystem : MonoBehaviour
     }
     private void Start()
     {
-        myScore = new ScoreData("",0,0,0,0,0,0,"");
+        myScore = new ScoreData("", 0, 0, 0, 0, 0, 0, "");
         LoadScore();
         receivedScores = new ReceiveRank();
     }
@@ -339,30 +352,10 @@ public class RankSystem : MonoBehaviour
                     for (int i = 0; i < receivedScores.scores.Count; i++)
                     {
 
-                        ScoreData s1 = new ScoreData(
-                        receivedScores.scores[i].uid,
-                        receivedScores.scores[i].kk,
-                        receivedScores.scores[i].cc,
-                        receivedScores.scores[i].gg,
-                        receivedScores.scores[i].bb,
-                        receivedScores.scores[i].mm,
-                        receivedScores.scores[i].maxcombo,
-                        receivedScores.scores[i].created_at
-                        );
+                        ScoreData s1 = new ScoreData(receivedScores.scores[i]);
                         onlineScores.Add(s1);
-
                     }
-                    Debug.Log(receivedScores.myscore.uid);
-                    myScore = new ScoreData(
-                    receivedScores.myscore.uid,
-                    receivedScores.myscore.kk,
-                    receivedScores.myscore.cc,
-                    receivedScores.myscore.gg,
-                    receivedScores.myscore.bb,
-                    receivedScores.myscore.mm,
-                    receivedScores.myscore.maxcombo,
-                    receivedScores.myscore.created_at
-                    );
+                    myScore = new ScoreData(receivedScores.myscore);
                 }
             }
         }

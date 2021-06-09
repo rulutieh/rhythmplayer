@@ -48,7 +48,7 @@ public class GlobalSettings : MonoBehaviour
     public static string sortsearch = "", playername = "Guest", email = "";
     public static string FolderPath = Path.Combine(Application.streamingAssetsPath, "Songs");
 
-    public static int UID = 1;
+    public static int UID = 2;
 
     public Sprite[] SquareNotes;
     public Sprite[] CircleNotes;
