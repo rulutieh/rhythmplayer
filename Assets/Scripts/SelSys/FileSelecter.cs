@@ -11,6 +11,7 @@ public class FileSelecter : MonoBehaviour
 
     public GameObject bt, sfx, searchsys, rankpanel, scrollmod, DiffSelPanel, icons;
     public Queue<GameObject> b_queue = new Queue<GameObject>();
+    List<GameObject> buttons = new List<GameObject>();
     MusicHandler player;
     public WWW www, picture;
     FileLoader Loader;
@@ -60,20 +61,21 @@ public class FileSelecter : MonoBehaviour
         Setting = GameObject.FindWithTag("world").GetComponent<GlobalSettings>();
         player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
         prefer = false;
-        
+
         isSelectDiff = false;
     }
     void Start()
     {
-        for (int i = 0; i < 40; i++)
+        for (int i = 0; i < 30; i++)
         {
             GameObject bts = Instantiate(bt);
             b_queue.Enqueue(bts);
+            buttons.Add(bts);
             bts.SetActive(false);
-            
+
         }
         init();
-        
+
         aud.volume = sfxaud.volume = aud.volume = GlobalSettings.Volume;
         player.ReleaseKeysound();
 
@@ -140,20 +142,20 @@ public class FileSelecter : MonoBehaviour
         }//랜덤
 
         if (GlobalSettings.scrollSpeed < 4f) //스크롤 업
-                if (Input.GetKeyDown(KeyCode.F4))
-                {
-                    GlobalSettings.scrollSpeed += 0.1f;
-                    Setting.SaveSelection();
-                }
-            if (GlobalSettings.scrollSpeed > 1f) //스크롤 다운
-                if (Input.GetKeyDown(KeyCode.F3))
-                {
-                    GlobalSettings.scrollSpeed -= 0.1f;
-                    Setting.SaveSelection();
-                }
+            if (Input.GetKeyDown(KeyCode.F4))
+            {
+                GlobalSettings.scrollSpeed += 0.1f;
+                Setting.SaveSelection();
+            }
+        if (GlobalSettings.scrollSpeed > 1f) //스크롤 다운
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+                GlobalSettings.scrollSpeed -= 0.1f;
+                Setting.SaveSelection();
+            }
         if (!isThreading)
         {
-            
+
             //키보드 컨트롤
             if (Input.GetKeyDown(KeyCode.UpArrow)) { GlobalSettings.decide--; SongScroll(); }
             if (Input.GetKeyDown(KeyCode.DownArrow)) { GlobalSettings.decide++; SongScroll(); }
@@ -179,15 +181,18 @@ public class FileSelecter : MonoBehaviour
         }
         int max = 0;
         int min = Int32.MaxValue;
-        var bts = GameObject.FindGameObjectsWithTag("SelBT");
-        for (int i = 0; i < bts.Length; i++)
+        //var bts = GameObject.FindGameObjectsWithTag("SelBT");
+        for (int i = 0; i < buttons.Count; i++)
         {
-            bts[i].GetComponent<SongButton>().Pooling();
+            if (buttons[i].activeInHierarchy)
+            {
+                buttons[i].GetComponent<SongButton>().Pooling();
 
-            if (max < bts[i].GetComponent<SongButton>().idx)
-                max = bts[i].GetComponent<SongButton>().idx;
-            if (min > bts[i].GetComponent<SongButton>().idx)
-                min = bts[i].GetComponent<SongButton>().idx;
+                if (max < buttons[i].GetComponent<SongButton>().idx)
+                    max = buttons[i].GetComponent<SongButton>().idx;
+                if (min > buttons[i].GetComponent<SongButton>().idx)
+                    min = buttons[i].GetComponent<SongButton>().idx;
+            }
         }
         if (max < GlobalSettings.decide + 10)
             ButtonPooling(GlobalSettings.decide + 10);
@@ -200,10 +205,10 @@ public class FileSelecter : MonoBehaviour
     }
     public void getDiffinfo()
     {
-            _diff = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection, GlobalSettings.keycount);
-            _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection, GlobalSettings.keycount);
-            LoadNoteFiles();
-            player.PlaySFX(6);
+        _diff = Loader.list[GlobalSettings.decide].getDiff(GlobalSettings.diffselection, GlobalSettings.keycount);
+        _charter = Loader.list[GlobalSettings.decide].getCharter(GlobalSettings.diffselection, GlobalSettings.keycount);
+        LoadNoteFiles();
+        player.PlaySFX(6);
     }
     void LoadObjects()
     {
@@ -223,7 +228,7 @@ public class FileSelecter : MonoBehaviour
                     res += Loader.list[i].getDiff(j, GlobalSettings.keycount);
                     if (j + 1 != Loader.list[i].diffCount(GlobalSettings.keycount)) res += ", ";
                 }
-            
+
             var ist = b_queue.Dequeue();
             ist.SetActive(true);
             ist.GetComponent<SongButton>().setInfo(i, Loader.list[i].name, Loader.list[i].artist, res);
@@ -313,7 +318,7 @@ public class FileSelecter : MonoBehaviour
             else
                 GlobalSettings.diffselection = 0;
         }
-        
+
         _name = Loader.list[d].name;
         _artist = Loader.list[d].artist;
         _diff = Loader.list[d].getDiff(GlobalSettings.diffselection, keycount);
@@ -327,7 +332,7 @@ public class FileSelecter : MonoBehaviour
 
         LoadNoteFiles();
         LoadIcons();
-        NowPlaying.MUSICFILE = Loader.list[d].AudioPath;    
+        NowPlaying.MUSICFILE = Loader.list[d].AudioPath;
         NowPlaying.OFFSET = _localoffset;
         NowPlaying.BGFILE = _bgpath;
         NowPlaying.BGAFILE = _bgapath;
@@ -350,7 +355,7 @@ public class FileSelecter : MonoBehaviour
         StartCoroutine(CheckLoadedAndPlay());
 
 
-        
+
 
         var obj = GameObject.Find("AlbumUI");
         if (obj)
@@ -469,11 +474,11 @@ public class FileSelecter : MonoBehaviour
                 if (Loader.list[GlobalSettings.decide].getID(0, GlobalSettings.keycount) != lastselect) //곡 변경후 선택 시 (md5 해쉬 비교) 중복로드 방지
                 {
 
-                        _diffcount = 0;
-                        Setting.SaveSelection();
-                        player.PlaySFX(0);
-                        LoadFileInfo();
-                    
+                    _diffcount = 0;
+                    Setting.SaveSelection();
+                    player.PlaySFX(0);
+                    LoadFileInfo();
+
                 }
                 else if (!isThreading) //이미 곡 고르고 프리뷰 플레이시
                 {
@@ -512,7 +517,7 @@ public class FileSelecter : MonoBehaviour
         NowPlaying.TIMINGCOUNTS = 0;
         FileInfo fileInfo = new FileInfo(filePath);
         if (fileInfo.Exists)
-        {    
+        {
             string line;
 
             bool hitObjects = false; //노트 정보 검색
@@ -530,11 +535,11 @@ public class FileSelecter : MonoBehaviour
                             if (line == string.Empty)
                             {
                                 Timings = false;
-                                
+
                             }
                             else if (!line.Contains(":"))
                             {
-                                
+
                                 NowPlaying.TIMINGCOUNTS++;
 
                                 string[] arr = line.Split(',');
@@ -568,7 +573,7 @@ public class FileSelecter : MonoBehaviour
         }
         bpmlist.Add(new BPMS(NowPlaying.LengthMS, _bpm));
         /////////////////////////////////가중치계산/////////////////////////////////////
-        for(int i = 0; i < bpmlist.Count; i++)
+        for (int i = 0; i < bpmlist.Count; i++)
         {
             float t;
             double b;
@@ -605,10 +610,10 @@ public class FileSelecter : MonoBehaviour
         }
         );
         medianBPM = (float)medianlist[0].bpm;
-        
+
         NowPlaying.MEDIAN = 1 / (medianBPM / 60000f);
         /////////////////////////////////완    료/////////////////////////////////////
         isThreading = false;
-    }   
+    }
 
 }

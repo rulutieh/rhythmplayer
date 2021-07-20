@@ -55,6 +55,7 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
             rect.SetSiblingIndex(idx);
         }
 
+        //Pooling();
 
     }
     public void Pooling()
