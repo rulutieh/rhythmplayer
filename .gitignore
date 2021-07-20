@@ -9,14 +9,6 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-/[Aa]ssets/StreamingAssets/Songs/*
-!/[Aa]ssets/StreamingAssets/Songs/Altale/
-!/[Aa]ssets/StreamingAssets/Songs/Say A Vengeance/
-!/[Aa]ssets/StreamingAssets/Songs/eospo/
-!/[Aa]ssets/StreamingAssets/Songs/reendofadream/
-!/[Aa]ssets/StreamingAssets/Songs/fading star/
-!/[Aa]ssets/StreamingAssets/Songs/Imperishable Night 2006/
-!/[Aa]ssets/StreamingAssets/Songs/haele/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
