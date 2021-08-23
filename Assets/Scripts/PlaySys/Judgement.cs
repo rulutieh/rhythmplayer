@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Health;
 
 public class Judgement : MonoBehaviour
 {
@@ -38,36 +39,36 @@ public class Judgement : MonoBehaviour
                 //kool
                 rend.sprite = spr[5];
                 ScoreManager.KOOL++;
-                ScoreManager.HP += GlobalSettings.hprecover;
+                ScoreManager.HP += Recovery.max;
                 break;
             case 1:
                 //cool
                 rend.sprite = spr[0];
                 ScoreManager.COOL++;
-                ScoreManager.HP += GlobalSettings.hprecover;
+                ScoreManager.HP += Recovery.max;
                 break;
             case 2:
                 rend.sprite = spr[1];
                 ScoreManager.GOOD++;
-
+                ScoreManager.HP += Recovery.good;
                 break;
             case 3:
                 rend.sprite = spr[3];
                 ScoreManager.BAD++;
-                ScoreManager.HP -= GlobalSettings.baddamage;
+                ScoreManager.HP -= Damage.bad;
                 break;
             case 4:
                 //miss
                 rend.sprite = spr[4];
                 ScoreManager.MISS++;
-                ScoreManager.HP -= GlobalSettings.missdamage;
+                ScoreManager.HP -= Damage.miss;
                 break;
             case 5:
                 //miss
                 rend.sprite = spr[4];
                 ScoreManager.MISS += 2;
                 ScoreManager.TOTAL++;
-                ScoreManager.HP -= GlobalSettings.missdamage * 2;
+                ScoreManager.HP -= Damage.miss * 2;
                 break;
         }
         if (ScoreManager.HP > 1f) ScoreManager.HP = 1f;

@@ -66,7 +66,7 @@ public class GlobalSettings : MonoBehaviour
 
     public int res, fps;
 
-    static public float vol, tp, sync, hprecover, hprecover2, baddamage, missdamage;
+    static public float vol, tp, sync;
 
     public static int keycount = 7;
 
@@ -109,13 +109,6 @@ public class GlobalSettings : MonoBehaviour
         LoadPlayerAccounts();
         LoadLocalPlayerAccount();
 
-        hprecover = 0.003f; //퍼펙트 회복량
-
-        hprecover2 = 0.001f; //굿 회복량
-
-        baddamage = 0.013f;
-
-        missdamage = 0.026f;
     }
     void Start()
     {

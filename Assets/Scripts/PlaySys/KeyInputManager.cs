@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Judges;
 
 public class KeyInputManager : MonoBehaviour
 {
@@ -196,25 +197,25 @@ public class KeyInputManager : MonoBehaviour
     }
     void cacJudge(float error)
     {
-        if (error <= 18f)
+        if (error <= Timings.j300k)
         {
             ScoreManager.combo++;
             getJudge(0);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error <= 49.5f)
+        else if (error <= Timings.j300)
         {
             ScoreManager.combo++;
             getJudge(1);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error <= 97.5f)
+        else if (error <= Timings.j200)
         {
             ScoreManager.combo++;
             getJudge(2);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
-        else if (error <= 136.5f)
+        else if (error <= Timings.j100)
         {
             ScoreManager.combo++;
             getJudge(3);
@@ -228,22 +229,22 @@ public class KeyInputManager : MonoBehaviour
     }
     void cacLNJudge(float error)
     {
-        if (error <= 37.5f)
+        if (error <= LNTimings.j300k)
         {
             ScoreManager.combo++;
             getJudge(0);
         }
-        else if (error <= 75f)
+        else if (error <= LNTimings.j300)
         {
             ScoreManager.combo++;
             getJudge(1);
         }
-        else if (error <= 120.5f)
+        else if (error <= LNTimings.j200)
         {
             ScoreManager.combo++;
             getJudge(2);
         }
-        else if (error <= 205f)
+        else if (error <= LNTimings.j100)
         {
             ScoreManager.combo++;
             getJudge(3);
