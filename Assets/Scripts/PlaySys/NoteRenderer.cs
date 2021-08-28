@@ -39,7 +39,7 @@ public class NoteRenderer : MonoBehaviour
                     float height = inst.transform.GetComponent<SpriteRenderer>().bounds.size.y;
                     float gap = 999f - transform.position.y;
                     rend2.sprite = tempspr;
-                    inst.transform.localScale = new Vector2(0.95f, gap / height);
+                    inst.transform.localScale = new Vector2(0.99f, gap / height);
                 }
             }
             else
@@ -49,7 +49,7 @@ public class NoteRenderer : MonoBehaviour
                     inst.transform.position = transform.position;
                     float height = transform.GetComponent<SpriteRenderer>().bounds.size.y;
                     float gap = Mathf.Abs(lnend.transform.position.y - transform.position.y);
-                    inst.transform.localScale = new Vector2(0.95f, gap / height);
+                    inst.transform.localScale = new Vector2(1f, gap / height);
                 }
                 if (LNLENGTH + 200 < FileReader.Playback )
                 {

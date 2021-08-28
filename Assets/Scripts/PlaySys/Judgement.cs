@@ -8,11 +8,15 @@ public class Judgement : MonoBehaviour
     float alph = 1f;
     public int c;
     SpriteRenderer rend;
+    [SerializeField]
+    GameObject score;
+    ScoreManager sc;
     public Sprite[] spr;
     // Start is called before the first frame update
     void Awake()
     {
         rend = GetComponent<SpriteRenderer>();
+        sc = score.GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -72,6 +76,7 @@ public class Judgement : MonoBehaviour
                 break;
         }
         if (ScoreManager.HP > 1f) ScoreManager.HP = 1f;
+        sc.CacScore();
     }
     
 }

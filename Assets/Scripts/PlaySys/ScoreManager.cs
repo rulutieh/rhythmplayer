@@ -30,6 +30,11 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+    //판정관련
+    public void CacScore()
+    {
         float c = NowPlaying.NOTECOUNTS + (NowPlaying.LONGNOTECOUNTS * 2);
         float s = (GOOD / (2 * c)) + (BAD / (6 * c));
         float sum = (KOOL / c) + (COOL * 19f / (c * 20f)) + s;
@@ -51,7 +56,6 @@ public class ScoreManager : MonoBehaviour
         if (errorList.Count > 30) errorList.RemoveAt(0);
 
     }
-    //판정관련
     public void SetJudge(int a)
     {
         combo = 0;

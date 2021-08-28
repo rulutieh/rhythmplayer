@@ -37,11 +37,7 @@ public class playerBGA : MonoBehaviour
             if (!played)
             {
                 mVideoPlayer.Play();
-                /*
-                float tmp =  700f / mVideoPlayer.width;
-                rect.sizeDelta = new Vector2(1280 * tmp, 720 * tmp);
                 played = true;
-                */
             }
             else
                 Destroy(gameObject);
