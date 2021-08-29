@@ -15,6 +15,7 @@ public class FileSelecter : MonoBehaviour
     MusicHandler player;
     public WWW www, picture;
     FileLoader Loader;
+    SettingPanel setting;
     GlobalSettings Setting;
     //로드된 변수값들
     public string _name, _artist, _txtpath, _bgpath, _diff, _bgapath, _charter, _hash;
@@ -60,6 +61,7 @@ public class FileSelecter : MonoBehaviour
         Loader = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
         Setting = GameObject.FindWithTag("world").GetComponent<GlobalSettings>();
         player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
+        setting = GameObject.FindWithTag("setting").GetComponent<SettingPanel>();
         prefer = false;
 
         isSelectDiff = false;
@@ -75,7 +77,6 @@ public class FileSelecter : MonoBehaviour
 
         }
         init();
-
         aud.volume = sfxaud.volume = aud.volume = GlobalSettings.Volume;
         player.ReleaseKeysound();
 
@@ -103,101 +104,105 @@ public class FileSelecter : MonoBehaviour
     void Update()
     {
         int d = _diffcount - 1;
-        if (Input.GetKeyDown(KeyCode.Return)) songDecide();
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!setting.active)
         {
-            if (DiffSelPanel.activeSelf)
+            if (Input.GetKeyDown(KeyCode.Return)) songDecide();
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                DiffSelPanel.SetActive(false);
-            }
-            else
-                goTitle();
-        }
-        if (Input.GetKeyDown(KeyCode.PageDown))
-        {
-            GlobalSettings.decide += 100;
-            SongScroll();
-            DestroyBTs();
-            LoadObjects();
-        }
-        if (Input.GetKeyDown(KeyCode.PageUp))
-        {
-            GlobalSettings.decide -= 100;
-            SongScroll();
-            DestroyBTs();
-            LoadObjects();
-        }
-        if (Input.GetKeyDown(KeyCode.F6))
-        {
-            SetSuffle();
-        }//랜덤
-        if (Input.GetKeyDown(KeyCode.F7))
-        {
-            SetSort();
-
-        }//정렬
-        if (Input.GetKeyDown(KeyCode.F8))
-        {
-            SetSpecial();
-        }//랜덤
-
-        if (GlobalSettings.scrollSpeed < 4f) //스크롤 업
-            if (Input.GetKeyDown(KeyCode.F4))
-            {
-                GlobalSettings.scrollSpeed += 0.1f;
-                Setting.SaveSelection();
-            }
-        if (GlobalSettings.scrollSpeed > 1f) //스크롤 다운
-            if (Input.GetKeyDown(KeyCode.F3))
-            {
-                GlobalSettings.scrollSpeed -= 0.1f;
-                Setting.SaveSelection();
-            }
-        if (!isThreading)
-        {
-
-            //키보드 컨트롤
-            if (Input.GetKeyDown(KeyCode.UpArrow)) { GlobalSettings.decide--; SongScroll(); }
-            if (Input.GetKeyDown(KeyCode.DownArrow)) { GlobalSettings.decide++; SongScroll(); }
-            //마우스휠
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            if (!rankpanel.GetComponent<RankPanel>().isOver && !scrollmod.GetComponent<ModButton>().isOver)
-            {
-                if (scroll > 0.001f) { GlobalSettings.decide--; SongScroll(); }
-                if (scroll < -0.001f) { GlobalSettings.decide++; SongScroll(); }
-            }
-            if (GlobalSettings.decide <= Loader.list.Count - 1 && Loader.list.Count != 0)
-                if (DiffChangeEnable())
+                if (DiffSelPanel.activeSelf)
                 {
-                    if (GlobalSettings.diffselection == 0)
-                        diffMinus = false;
-                    if (GlobalSettings.diffselection == d)
-                        diffPlus = false;
-                    if (GlobalSettings.diffselection > 0)
-                        if (Input.GetKeyDown(KeyCode.LeftArrow) || diffMinus) { GlobalSettings.diffselection--; getDiffinfo(); prefer = false; diffMinus = false; }
-                    if (GlobalSettings.diffselection < d)
-                        if (Input.GetKeyDown(KeyCode.RightArrow) || diffPlus) { GlobalSettings.diffselection++; getDiffinfo(); prefer = true; diffPlus = false; }
+                    DiffSelPanel.SetActive(false);
                 }
-        }
-        int max = 0;
-        int min = Int32.MaxValue;
-        //var bts = GameObject.FindGameObjectsWithTag("SelBT");
-        for (int i = 0; i < buttons.Count; i++)
-        {
-            if (buttons[i].activeInHierarchy)
-            {
-                buttons[i].GetComponent<SongButton>().Pooling();
-
-                if (max < buttons[i].GetComponent<SongButton>().idx)
-                    max = buttons[i].GetComponent<SongButton>().idx;
-                if (min > buttons[i].GetComponent<SongButton>().idx)
-                    min = buttons[i].GetComponent<SongButton>().idx;
+                else
+                    goTitle();
             }
+            if (Input.GetKeyDown(KeyCode.PageDown))
+            {
+                GlobalSettings.decide += 100;
+                SongScroll();
+                DestroyBTs();
+                LoadObjects();
+            }
+            if (Input.GetKeyDown(KeyCode.PageUp))
+            {
+                GlobalSettings.decide -= 100;
+                SongScroll();
+                DestroyBTs();
+                LoadObjects();
+            }
+            if (Input.GetKeyDown(KeyCode.F6))
+            {
+                SetSuffle();
+            }//랜덤
+            if (Input.GetKeyDown(KeyCode.F7))
+            {
+                SetSort();
+
+            }//정렬
+            if (Input.GetKeyDown(KeyCode.F8))
+            {
+                SetSpecial();
+            }//랜덤
+
+            if (GlobalSettings.scrollSpeed < 4f) //스크롤 업
+                if (Input.GetKeyDown(KeyCode.F4))
+                {
+                    GlobalSettings.scrollSpeed += 0.1f;
+                    Setting.SaveSelection();
+                }
+            if (GlobalSettings.scrollSpeed > 1f) //스크롤 다운
+                if (Input.GetKeyDown(KeyCode.F3))
+                {
+                    GlobalSettings.scrollSpeed -= 0.1f;
+                    Setting.SaveSelection();
+                }
+
+            if (!isThreading)
+            {
+
+                //키보드 컨트롤
+                if (Input.GetKeyDown(KeyCode.UpArrow)) { GlobalSettings.decide--; SongScroll(); }
+                if (Input.GetKeyDown(KeyCode.DownArrow)) { GlobalSettings.decide++; SongScroll(); }
+                //마우스휠
+                float scroll = Input.GetAxis("Mouse ScrollWheel");
+                if (!rankpanel.GetComponent<RankPanel>().isOver && !scrollmod.GetComponent<ModButton>().isOver)
+                {
+                    if (scroll > 0.001f) { GlobalSettings.decide--; SongScroll(); }
+                    if (scroll < -0.001f) { GlobalSettings.decide++; SongScroll(); }
+                }
+                if (GlobalSettings.decide <= Loader.list.Count - 1 && Loader.list.Count != 0)
+                    if (DiffChangeEnable())
+                    {
+                        if (GlobalSettings.diffselection == 0)
+                            diffMinus = false;
+                        if (GlobalSettings.diffselection == d)
+                            diffPlus = false;
+                        if (GlobalSettings.diffselection > 0)
+                            if (Input.GetKeyDown(KeyCode.LeftArrow) || diffMinus) { GlobalSettings.diffselection--; getDiffinfo(); prefer = false; diffMinus = false; }
+                        if (GlobalSettings.diffselection < d)
+                            if (Input.GetKeyDown(KeyCode.RightArrow) || diffPlus) { GlobalSettings.diffselection++; getDiffinfo(); prefer = true; diffPlus = false; }
+                    }
+            }
+            int max = 0;
+            int min = Int32.MaxValue;
+            //var bts = GameObject.FindGameObjectsWithTag("SelBT");
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                if (buttons[i].activeInHierarchy)
+                {
+                    buttons[i].GetComponent<SongButton>().Pooling();
+
+                    if (max < buttons[i].GetComponent<SongButton>().idx)
+                        max = buttons[i].GetComponent<SongButton>().idx;
+                    if (min > buttons[i].GetComponent<SongButton>().idx)
+                        min = buttons[i].GetComponent<SongButton>().idx;
+                }
+            }
+            if (max < GlobalSettings.decide + 10)
+                ButtonPooling(GlobalSettings.decide + 10);
+            if (min > GlobalSettings.decide - 10)
+                ButtonPooling(GlobalSettings.decide - 10);
         }
-        if (max < GlobalSettings.decide + 10)
-            ButtonPooling(GlobalSettings.decide + 10);
-        if (min > GlobalSettings.decide - 10)
-            ButtonPooling(GlobalSettings.decide - 10);
     }
     public bool DiffChangeEnable()
     {
@@ -310,7 +315,15 @@ public class FileSelecter : MonoBehaviour
     void LoadFileInfo()
     {
         int d = GlobalSettings.decide;
-        _diffcount = Loader.list[d].diffCount(keycount);
+        try
+        {
+            _diffcount = Loader.list[d].diffCount(keycount);
+        }
+        catch
+        {
+            Loader.ReLoad();
+        }
+    
         if (GlobalSettings.diffselection > _diffcount - 1)
         {
             if (prefer)
@@ -443,12 +456,16 @@ public class FileSelecter : MonoBehaviour
     }
     public void goTitle()
     {
-        if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
-            player.ReleaseMP3();
-        Loader.list.Clear();
-        Loader.listkeysort.Clear();
-        RoomChanger.roomchanger.goRoom("Title");
+        if (!setting.escdisable)
+        {
+            if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
+                player.ReleaseMP3();
+            Loader.list.Clear();
+            Loader.listkeysort.Clear();
+            RoomChanger.roomchanger.goRoom("Title");
+        }
     }
+
     // DELEGATE 정렬
     public void SortSearch(string text)
     {

@@ -22,7 +22,7 @@ public class MusicHandler : MonoBehaviour
     {
         //SND
 
-        
+
         var e = FMODUnity.RuntimeManager.CoreSystem.getMasterChannelGroup(out channelGroup);
         Debug.Log(e);
         for (int i = 0; i < 1000; i++) //할당
@@ -60,6 +60,10 @@ public class MusicHandler : MonoBehaviour
         FMODUnity.RuntimeManager.CoreSystem.createSound(fpath, FMOD.MODE.CREATESAMPLE, out ks);
         KeySoundList.Add(ks);
 
+    }
+    public void SetVolume()
+    {
+        channelGroup.setVolume(GlobalSettings.Volume);
     }
     public void PlayMP3()
     {

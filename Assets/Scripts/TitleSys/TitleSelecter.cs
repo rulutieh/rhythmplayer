@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
-public class scrUISystem : MonoBehaviour
+public class TitleSelecter : MonoBehaviour, IPointerClickHandler
 {
     public GameObject[] UIs;
     public GameObject errScreen;
@@ -15,6 +16,7 @@ public class scrUISystem : MonoBehaviour
     }
 
     // Update is called once per frame
+    /*
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -28,6 +30,7 @@ public class scrUISystem : MonoBehaviour
                 Disable();
             }
     }
+    
     public void Enable()
     {
         activeUI++;
@@ -52,6 +55,12 @@ public class scrUISystem : MonoBehaviour
         UIs[activeUI].GetComponent<scrUI>().inActive();
         activeUI -= 2;
     }
+    */
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        NextRoom();
+    }
     public void NextRoom()
     {
         FileLoader fl = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
@@ -61,7 +70,15 @@ public class scrUISystem : MonoBehaviour
         }
         else
         {
-            fl.SortByKeycounts(GlobalSettings.keycount);
+            fl.SortByKeycounts();
+            
+        }
+        if (fl.listkeysort.Count == 0)
+        {
+            errScreen.SetActive(true);
+        }
+        else
+        {
             StartCoroutine(LoadScene("SelectMusic"));
         }
     }

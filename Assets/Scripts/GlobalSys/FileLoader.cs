@@ -7,6 +7,7 @@ using System;
 using System.Globalization;
 using System.Threading.Tasks;
 using TMPro;
+using Newtonsoft.Json;
 
 public class FileLoader : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class FileLoader : MonoBehaviour
     string t;
 
     FileSystemWatcher FolderWatcher;
+
     [Serializable]
     public class Chart
     {
@@ -110,6 +112,7 @@ public class FileLoader : MonoBehaviour
                 return true;
             else
                 return false;
+            
         }
         public void NoteCounts(int idx, int keys, out int note, out int ln, out int time)
         {
@@ -138,28 +141,24 @@ public class FileLoader : MonoBehaviour
     }
     void Start()
     {
-        try
-        {
-            listorigin.Clear();
-            listkeysort.Clear();
-            list.Clear();
-            GlobalSettings.FolderPath = PlayerPrefs.GetString("FOLDER", GlobalSettings.FolderPath);
-            StartLoad(); //첫로드
-        }
-        catch (Exception ie)
-        {
-            Debug.Log(ie);
-        }
-        //StartCoroutine(loadComplete());
+        StartCoroutine(FirstLoad());
+    }
+    IEnumerator FirstLoad()
+    {
+        yield return new WaitForSeconds(0.4f);
+        GlobalSettings.FolderPath = PlayerPrefs.GetString("PATH", GlobalSettings.FolderPath);
+        ReLoad();
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F5))
         {
+
             ReLoad();
         }
         tt.text = t;
     }
+
     public void ReLoad()
     {
         if (!threading)
@@ -179,28 +178,31 @@ public class FileLoader : MonoBehaviour
     {
         LoadCircle.SetActive(true);
         threading = true;
-        int idx = 0;
         string root = GlobalSettings.FolderPath;
         string[] subdirectoryEntries = Directory.GetDirectories(root);
         //폴더수만큼구조체배열할당
         var tasks = new List<Task>();
         foreach (string subdirectory in subdirectoryEntries)
         {
-            tasks.Add(LoadDirsAsync(root, subdirectory, idx));
+            await Task.Delay(25);
+            tasks.Add(LoadDirsAsync(root, subdirectory));
         }
         
         await Task.WhenAll(tasks);
-
+        string json = JsonConvert.SerializeObject(listorigin, Formatting.Indented);
+        File.WriteAllText(Path.Combine(Application.dataPath, "1.json"), json);
+        Debug.Log(GlobalSettings.decide);
         SceneManager.LoadScene("Title", LoadSceneMode.Single);
         t = "";
         threading = false;
         LoadCircle.SetActive(false);
     }
-    Task LoadDirsAsync(string path, string dir, int idx)
+    Task LoadDirsAsync(string path, string dir)
     {
-        return Task.Run(() => LoadSubDirs(path, dir,idx));
+        
+        return Task.Run(() => LoadSubDirs(path, dir));
     }
-    void LoadSubDirs(string path, string dir, int idx) //폴더별 파일 로드
+    void LoadSubDirs(string path, string dir) //폴더별 파일 로드
     {
         Song newSong = new Song();
         newSong.directory = dir;
@@ -253,18 +255,15 @@ public class FileLoader : MonoBehaviour
         else
             newSong.hasvideo = false;
 
-
+        Debug.Log(newSong.AudioPath);
         //제목,작곡가,난이도,오프셋파싱
         StreamReader rdr = null;
         string line;
-        bool[] correctfile = new bool[Files.Length];
         try
         {
             for (int i = 0; i < Files.Length; i++)
             {
                 int keycount = 7;
-
-                correctfile[i] = true;
 
                 rdr = new StreamReader(TXTFILE[i]);
                 while ((line = rdr.ReadLine()) != "[Metadata]")
@@ -293,7 +292,6 @@ public class FileLoader : MonoBehaviour
                     {
                         if (!line.EndsWith("3"))
                         {
-                            correctfile[i] = false;
                             goto WRONGFILE;
                         }
                             
@@ -345,9 +343,6 @@ public class FileLoader : MonoBehaviour
                     else
                         notecounts++;
                 }
-
-                if (notecounts == 0) continue;
-
                 Chart c = new Chart(
                     CryptoManager.CalculateMD5(TXTFILE[i]),
                     _noter,
@@ -357,16 +352,16 @@ public class FileLoader : MonoBehaviour
                     longnotecounts,
                     lastnote
                     );
-                if (keycount > 8) continue;
                 newSong.isvirtual = isvirtual;
                 newSong.AddCharts(
                     keycount,
                     c
                     );
-
                 WRONGFILE:
                 rdr.Close();
             }
+            newSong.SortDiff();
+            listorigin.Add(newSong);
         }
         catch (Exception ie)
         {
@@ -375,27 +370,25 @@ public class FileLoader : MonoBehaviour
                 rdr.Dispose();
             return;
         }
-        //올바른 파일이 없으면 무시
-        for (int i = 0; i < correctfile.Length; i++)
-        {
-            if (correctfile[i])
-            {
-                newSong.SortDiff();
-                listorigin.Add(newSong);
-                return;
-            }
-        }
     }
     #region SORT
-    public void SortByKeycounts(int keycount)
+    public void SortByKeycounts()
     {
-        for(int i = 0; i < listorigin.Count; i++)
+        try
         {
-            if (listorigin[i].CheckKeymodeExists(keycount))
+            for (int i = 0; i < listorigin.Count; i++)
             {
-                listkeysort.Add(listorigin[i]);
-                list.Add(listorigin[i]);
+                if (listorigin[i].CheckKeymodeExists(7))
+                {
+
+                    listkeysort.Add(listorigin[i]);
+                    list.Add(listorigin[i]);
+                }
             }
+        }
+        catch
+        {
+            ReLoad();
         }
     }
     public void SortDiff(int mode)
@@ -509,6 +502,8 @@ public class FileLoader : MonoBehaviour
     IEnumerator loadComplete()
     {
         yield return new WaitUntil(() => !threading);
+
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Title", LoadSceneMode.Single);
     }
 }

@@ -658,7 +658,7 @@ MonoBehaviour:
       Value: 256
       HasValue: 1
     DSPBufferLength:
-      Value: 128
+      Value: 64
       HasValue: 1
     DSPBufferCount:
       Value: 4

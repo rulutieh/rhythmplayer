@@ -185,9 +185,9 @@ public class FileReader : MonoBehaviour
             }
             else
                 multiply = 3f / NowPlaying.MEDIAN * GlobalSettings.scrollSpeed;
-            p += Time.deltaTime * 1000f; //use deltatime
-            Playback = p;
-            //Playback = Time.timeSinceLevelLoad * 1000f - startTime; //use scenemanagement
+            //p += Time.deltaTime * 1000f; //use deltatime
+            //Playback = p;
+            Playback = Time.timeSinceLevelLoad * 1000f - startTime; //use scenemanagement
             PlaybackChanged = GetNoteTime(Playback); // reamtime에 변속 계산 < 계산량 증가
 
             if (noteEnd) //게임 종료 시

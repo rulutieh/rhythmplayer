@@ -15,8 +15,10 @@ public class scrUIButton : MonoBehaviour
     }
     private void Update()
     {
+        /*
         int idx = sys.GetComponent<scrUISystem>().activeUI;
         if (idx == id) BT.interactable = true;
         if (idx != id) BT.interactable = false;
+        */
     }
 }

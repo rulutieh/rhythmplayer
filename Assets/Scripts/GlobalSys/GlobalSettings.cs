@@ -43,7 +43,7 @@ public class GlobalSettings : MonoBehaviour
 
     public static int[] judgems = { 0, 1, 2, 3 };
 
-    public static float scrollSpeed = 2.4f, stageXPOS = 0, stageYPOS, ColWidth = 0.85f, GlobalOffset = 0f;
+    public static float scrollSpeed = 2.4f, stageXPOS = 0, stageYPOS, ColWidth = 0.85f, GlobalOffset = 0f, Transparency = 0f;
     public static int decide, diffselection, sortselection, modselection, specialselection;
     public static string sortsearch = "", playername = "Guest", email = "";
     public static string FolderPath = Path.Combine(Application.streamingAssetsPath, "Songs");
@@ -70,6 +70,7 @@ public class GlobalSettings : MonoBehaviour
 
     public static int keycount = 7;
 
+    string defpath = Path.Combine(Application.streamingAssetsPath, "Songs");
 
     //임시 로컬 회원가입
     List<PlayerAccount> accList = new List<PlayerAccount>();
@@ -176,7 +177,10 @@ public class GlobalSettings : MonoBehaviour
         PlayerPrefs.SetFloat("CW", ColWidth);
         PlayerPrefs.SetFloat("XX", stageXPOS);
         PlayerPrefs.SetFloat("YY", stageYPOS);
-        PlayerPrefs.SetString("FOLDER", FolderPath);
+        PlayerPrefs.SetFloat("TR", Transparency);
+        PlayerPrefs.SetString("PATH", FolderPath);
+
+        PlayerPrefs.Save();
     }
     public void LoadSettings()
     {
@@ -189,8 +193,10 @@ public class GlobalSettings : MonoBehaviour
             Volume = PlayerPrefs.GetFloat("VOL");
             GlobalOffset = PlayerPrefs.GetFloat("GOFFSET", 0);
             ColWidth = PlayerPrefs.GetFloat("CW", 0.85f);
+            Transparency = PlayerPrefs.GetFloat("TR", 0);
             stageXPOS = PlayerPrefs.GetFloat("XX", 0);
             stageYPOS = PlayerPrefs.GetFloat("YY", 0);
+            FolderPath = PlayerPrefs.GetString("PATH", defpath);
         }
 
         SwitchResolution();
@@ -249,7 +255,7 @@ public class GlobalSettings : MonoBehaviour
                 Application.targetFrameRate = 400;
                 break;
             case 3:
-                Application.targetFrameRate = 1000;
+                Application.targetFrameRate = 960;
                 break;
 
         }

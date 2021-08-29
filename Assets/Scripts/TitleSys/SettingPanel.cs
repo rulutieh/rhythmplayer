@@ -7,16 +7,19 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Ookii.Dialogs;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class SettingPanel : MonoBehaviour
 {
+    [SerializeField]
+    GameObject PANEL, KSETTING, w;
     public static bool isUIanimationFinished;
-    public bool init, signup;
-    public scrUISystem uisys;
-    public Slider slvolume, slcolumn;
+    public bool init, signup, active, kactive, escdisable;
+    public Slider slvolume, slkeysound, slcolumn, slstof, sljudgeline, sltrans;
     public Toggle video, bpm, fullscreen;
-    public Dropdown ddres, ddframe;
+    public TMP_Dropdown ddres, ddframe;
     public TextMeshProUGUI offset, errormessage, songroot;
+    public UnityEngine.UI.Button KeySetting;
     //login
     public InputField ID, newID, nickField;
     public InputField PW, newPW, checkPW;
@@ -27,20 +30,24 @@ public class SettingPanel : MonoBehaviour
 
     MusicHandler player;
     GlobalSettings st;
-    GameObject w;
 
     VistaFolderBrowserDialog OpenDialog;
     Stream openStream = null;
 
     public void Awake()
-    {    
-        w = GameObject.FindWithTag("world");
+    {
         player = w.GetComponent<MusicHandler>();
         st = w.GetComponent<GlobalSettings>();
         slcolumn.value = GlobalSettings.ColWidth;
+        slstof.value = GlobalSettings.stageXPOS;
+        sljudgeline.value = GlobalSettings.stageYPOS;
+        sltrans.value = GlobalSettings.Transparency;
         bpm.isOn = GlobalSettings.isFixedScroll;
         video.isOn = GlobalSettings.isPlayVideo;
         fullscreen.isOn = GlobalSettings.isFullScreen;
+
+        PANEL.SetActive(false);
+        KSETTING.SetActive(false);
 
         #region EventListners
         bpm.onValueChanged.AddListener(
@@ -72,6 +79,7 @@ public class SettingPanel : MonoBehaviour
             (float vl) =>
             {
                 GlobalSettings.Volume = vl;
+                player.SetVolume();
                 st.SaveSettings();
             }
         );
@@ -79,6 +87,27 @@ public class SettingPanel : MonoBehaviour
             (float cw) =>
             {
                 GlobalSettings.ColWidth = cw;
+                st.SaveSettings();
+            }
+        );
+        slstof.onValueChanged.AddListener(
+            (float cw) =>
+            {
+                GlobalSettings.stageXPOS = cw;
+                st.SaveSettings();
+            }
+        );
+        sljudgeline.onValueChanged.AddListener(
+            (float cw) =>
+            {
+                GlobalSettings.stageYPOS = cw;
+                st.SaveSettings();
+            }
+        );
+        sltrans.onValueChanged.AddListener(
+            (float cw) =>
+            {
+                GlobalSettings.Transparency = cw;
                 st.SaveSettings();
             }
         );
@@ -101,12 +130,57 @@ public class SettingPanel : MonoBehaviour
         OpenDialog = new VistaFolderBrowserDialog();
 
     }
+
     private void Update()
     {
-    
+        
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            if (!active)
+            {
+                active = true;
+                escdisable = true;
+                PANEL.SetActive(true);
+            }
+            else
+            {
+                active = false;
+                StartCoroutine(esc());
+                PANEL.SetActive(false);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (kactive)
+            {
+                KSETTING.SetActive(false);
+                kactive = false;
+            }
+            else if (active)
+            {
+                active = false;
+                PANEL.SetActive(false);
+                StartCoroutine(esc());
+            }
+
+        }
+        if (active)
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name == "PlayMusic")
+            {
+                KSETTING.SetActive(false);
+                kactive = false;
+                active = false;
+                PANEL.SetActive(false);
+            }
+        }
+
+
         float f = Mathf.Round(GlobalSettings.GlobalOffset * 100f) / 100f;
         offset.text = f.ToString();
         //계정 패널 관련
+        /*
         if (uisys.activeUI == 3 && isUIanimationFinished)
         {
             if (signup)
@@ -128,7 +202,16 @@ public class SettingPanel : MonoBehaviour
                 Signuppanel.SetActive(false);
             }
         }
+        
         loginas.text = GlobalSettings.playername;
+        */
+    }
+    IEnumerator esc()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("a");
+
+        escdisable = false;
     }
     #region Account Settings
     public void setLogout()
@@ -206,6 +289,14 @@ public class SettingPanel : MonoBehaviour
     }
     #endregion
     #region Game Play Settings
+    public void SetKeySet()
+    {
+        if (!kactive)
+        {
+            KSETTING.SetActive(true);
+            kactive = true;
+        }
+    }
     public void SetResolution(int val)
     {
         if (init)
@@ -244,7 +335,8 @@ public class SettingPanel : MonoBehaviour
             string path = OpenDialog.SelectedPath;
             if (path == null) return;
             GlobalSettings.FolderPath = path;
-            PlayerPrefs.SetString("FOLDER", path);
+            PlayerPrefs.SetString("PATH", path);
+            PlayerPrefs.Save();
             songroot.text = GlobalSettings.FolderPath;
             
             fl.ReLoad();

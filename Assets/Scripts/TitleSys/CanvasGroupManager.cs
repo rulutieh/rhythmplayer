@@ -12,10 +12,13 @@ public class CanvasGroupManager : MonoBehaviour
         cv = GetComponent<CanvasGroup>();
         sys = GameObject.FindWithTag("TitleSys");
     }
+    /*
     private void Update()
     {
         int idx = sys.GetComponent<scrUISystem>().activeUI;
         if (idx == id) cv.interactable = true;
         if (idx != id) cv.interactable = false;
     }
+    */
 }
+
