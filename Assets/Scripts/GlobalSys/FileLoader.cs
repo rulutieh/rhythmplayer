@@ -147,6 +147,8 @@ public class FileLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         GlobalSettings.FolderPath = PlayerPrefs.GetString("PATH", GlobalSettings.FolderPath);
+        if (!Directory.Exists(GlobalSettings.FolderPath))
+            GlobalSettings.FolderPath = Application.dataPath;
         ReLoad();
     }
     void Update()
