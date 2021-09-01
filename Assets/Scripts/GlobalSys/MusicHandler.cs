@@ -52,7 +52,7 @@ public class MusicHandler : MonoBehaviour
     public void LoadSound(string fpath)
     {
         snd = new FMOD.Sound();
-        isLoadDone = FMODUnity.RuntimeManager.CoreSystem.createSound(fpath, FMOD.MODE.CREATESAMPLE | FMOD.MODE.ACCURATETIME, out snd);
+        isLoadDone = FMODUnity.RuntimeManager.CoreSystem.createSound(fpath, FMOD.MODE.CREATESAMPLE, out snd);
     }
     public void LoadKeySound(string fpath)
     {

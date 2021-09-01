@@ -43,7 +43,7 @@ public class GlobalSettings : MonoBehaviour
 
     public static int[] judgems = { 0, 1, 2, 3 };
 
-    public static float scrollSpeed = 2.4f, stageXPOS = 0, stageYPOS, ColWidth = 0.85f, GlobalOffset = 0f, Transparency = 0f;
+    public static float scrollSpeed = 2.4f, stageXPOS = 0, stageYPOS, ColWidth = 0.85f, GlobalOffset = 0f, Transparency = 1f;
     public static int decide, diffselection, sortselection, modselection, specialselection;
     public static string sortsearch = "", playername = "Guest", email = "";
     public static string FolderPath = Path.Combine(Application.streamingAssetsPath, "Songs");
@@ -193,7 +193,7 @@ public class GlobalSettings : MonoBehaviour
             Volume = PlayerPrefs.GetFloat("VOL");
             GlobalOffset = PlayerPrefs.GetFloat("GOFFSET", 0);
             ColWidth = PlayerPrefs.GetFloat("CW", 0.85f);
-            Transparency = PlayerPrefs.GetFloat("TR", 0);
+            Transparency = PlayerPrefs.GetFloat("TR", 1);
             stageXPOS = PlayerPrefs.GetFloat("XX", 0);
             stageYPOS = PlayerPrefs.GetFloat("YY", 0);
             FolderPath = PlayerPrefs.GetString("PATH", defpath);

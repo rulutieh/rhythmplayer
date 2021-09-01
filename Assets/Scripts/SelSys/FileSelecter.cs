@@ -621,8 +621,8 @@ public class FileSelecter : MonoBehaviour
 
         medianlist.Sort(delegate (MedianCac A, MedianCac B)
         {
-
-            if (A.time >= B.time) return -1;
+            if (A.time == B.time) return 0;
+            if (A.time > B.time) return -1;
             else return 1;
         }
         );

@@ -187,7 +187,7 @@ public class FileReader : MonoBehaviour
                 multiply = 3f / NowPlaying.MEDIAN * GlobalSettings.scrollSpeed;
             //p += Time.deltaTime * 1000f; //use deltatime
             //Playback = p;
-            Playback = Time.timeSinceLevelLoad * 1000f - startTime; //use scenemanagement
+            Playback = Time.timeSinceLevelLoad * 1000f - startTime + p; //use scenemanagement
             PlaybackChanged = GetNoteTime(Playback); // reamtime에 변속 계산 < 계산량 증가
 
             if (noteEnd) //게임 종료 시
@@ -393,7 +393,7 @@ public class FileReader : MonoBehaviour
         //순간이동 노트의 경우에는 raycast가 무시되므로 고정 속도의 콜리더 사용
         _RTIME = NoteList[rnoteIDX].TIME;
         float _TIME2 = NoteList[rnoteIDX].TIME;
-        yield return new WaitUntil(() => _RTIME <= Playback + 2000f && !rnoteEnd);
+        yield return new WaitUntil(() => _RTIME <= Playback + 1500f && !rnoteEnd);
         int temp = rnoteIDX;
         for (int i = 0; i < 7; i++)
         {
