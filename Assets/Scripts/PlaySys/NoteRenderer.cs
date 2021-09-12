@@ -6,24 +6,31 @@ public class NoteRenderer : MonoBehaviour
 {
     public GameObject lnend, lntemp;
     GameObject inst;
+    FileReader rdr;
     public Sprite dk, sp, dkln, spln, def, defspr;
     public bool lncreated;
     SpriteRenderer rend, rend2;
     Sprite tempspr;
     int COLUMN;
     int TIME;
-    float LNLENGTH, _TIME;
+    float LNLENGTH, _TIME, height;
     bool ISLN;
 
     void Awake()
     {
+        var sys = GameObject.FindWithTag("NoteSys");
+        rdr = sys.GetComponent<FileReader>();
         rend = GetComponent<SpriteRenderer>();
         transform.localScale = new Vector2(transform.localScale.x * GlobalSettings.ColWidth, transform.localScale.y);
+
     }
     void OnEnable()
     {
         lncreated = false;
+        lnend = null;
     }
+
+
     void Update()
     {
         if (ISLN)
@@ -51,7 +58,7 @@ public class NoteRenderer : MonoBehaviour
                     float gap = Mathf.Abs(lnend.transform.position.y - transform.position.y);
                     inst.transform.localScale = new Vector2(1f, gap / height);
                 }
-                if (LNLENGTH + 200 < FileReader.Playback )
+                if (LNLENGTH + 200 < FileReader.Playback)
                 {
                     Destroy(lnend);
                     Destroy(gameObject);
@@ -60,7 +67,7 @@ public class NoteRenderer : MonoBehaviour
         }
         else if (TIME + 178.4f < FileReader.Playback)
         {
-            Destroy(gameObject);
+            InsertQueue();
         }
     }
     private void LateUpdate()
@@ -100,5 +107,12 @@ public class NoteRenderer : MonoBehaviour
     public void setLnEnd(GameObject lne)
     {
         lnend = lne;
+    }
+    public void InsertQueue()
+    {
+        if (inst) Destroy(inst);
+        transform.position = new Vector2(0, 1000f);
+        rdr.start_queue.Enqueue(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

@@ -21,7 +21,7 @@ public class FileReader : MonoBehaviour
     int sampleIDX, noteIDX, rnoteIDX, barIDX, timeIDX, preLoad, noteidx = 0, timingidx = 0;
     public int progress = 0;
     int[] keys = { 0, 1, 2, 3, 4, 5, 6 };
-    public GameObject NoteObj, ColObj, LNObj, endln, result, gameover, initsetting, judgeobj, barobj, LoadCircle;
+    public GameObject NoteObj, ColObj, endln, result, gameover, initsetting, judgeobj, barobj, LoadCircle;
     bool svEnd, noteEnd, rnoteEnd, sampleEnd, playfieldon, musicOn;
     int TimingCount, NoteCount, LastNoteTiming;
     public static int NoteCountLongnote;
@@ -37,6 +37,8 @@ public class FileReader : MonoBehaviour
     #region Notes, Sound, Queue, BPM Collections
     public Queue<GameObject> n_queue = new Queue<GameObject>();
     public Queue<GameObject> b_queue = new Queue<GameObject>();
+    public Queue<GameObject> start_queue = new Queue<GameObject>();
+    public Queue<GameObject> end_queue = new Queue<GameObject>();
     [Serializable]
     struct Timings
     {
@@ -141,7 +143,9 @@ public class FileReader : MonoBehaviour
 
         for (int i = 0; i < 200; i++) // 미리 200개의 객체 미리 생성
         {
-            SetPooling();
+            SetPooling(0);
+            SetPooling(1);
+            SetPooling(2);
         }
         for (int i = 0; i < 6; i++) 
         {
@@ -149,11 +153,27 @@ public class FileReader : MonoBehaviour
         }
 
     }
-    void SetPooling()
+    void SetPooling(int index)
     {
-        GameObject cobj = Instantiate(ColObj, new Vector2(0, 1000f), Quaternion.identity);
-        n_queue.Enqueue(cobj);
-        cobj.SetActive(false);
+        GameObject cobj;
+        switch (index)
+        {
+            case 0:
+                cobj = Instantiate(ColObj, new Vector2(0, 1000f), Quaternion.identity);
+                n_queue.Enqueue(cobj);
+                cobj.SetActive(false);
+                break;
+            case 1:
+                cobj = Instantiate(NoteObj, new Vector2(0, 1000f), Quaternion.identity);
+                start_queue.Enqueue(cobj);
+                cobj.SetActive(false);
+                break;
+            case 2:
+                cobj = Instantiate(endln, new Vector2(0, 1000f), Quaternion.identity);
+                end_queue.Enqueue(cobj);
+                cobj.SetActive(false);
+                break;
+        }
     }
     void BarPooling()
     {
@@ -363,7 +383,13 @@ public class FileReader : MonoBehaviour
         for (int i = 0; i < 7; i++)
         {
             int cc = NoteList[noteIDX].COLUMN;
-            var note = Instantiate(NoteObj, new Vector2(transform.position.x, 1000f), Quaternion.identity);
+            while (start_queue.Count < 10) //풀링 큐 부족할 시 노트 추가생성 기다리기
+            {
+                SetPooling(1);
+                yield return null;
+            }
+            var note = start_queue.Dequeue();
+            note.SetActive(true);
             note.gameObject.GetComponent<NoteRenderer>().SetInfo(
                 cc,
                 NoteList[noteIDX].TIME,
@@ -400,7 +426,7 @@ public class FileReader : MonoBehaviour
             int cc = NoteList[rnoteIDX].COLUMN;
             while (n_queue.Count < 10) //풀링 큐 부족할 시 노트 추가생성 기다리기
             {
-                SetPooling();
+                SetPooling(0);
                 yield return null;
             }
             var note = n_queue.Dequeue();
@@ -445,7 +471,13 @@ public class FileReader : MonoBehaviour
     {
         float __TIME = GetNoteTime(LNTIME);
         yield return new WaitUntil(() => __TIME <= PlaybackChanged + preLoad);
-        var lnend = Instantiate(endln, new Vector2(transform.position.x, 1000f), Quaternion.identity);
+        while (end_queue.Count < 10) //풀링 큐 부족할 시 노트 추가생성 기다리기
+        {
+            SetPooling(2);
+            yield return null;
+        }
+        var lnend = end_queue.Dequeue();
+        lnend.SetActive(true);
         lnend.GetComponent<NoteEnd>().setInfo(cc, LNTIME, note, __TIME);
         note.gameObject.GetComponent<NoteRenderer>().setLnEnd(lnend);
 

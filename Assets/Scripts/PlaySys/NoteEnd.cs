@@ -7,9 +7,11 @@ public class NoteEnd : MonoBehaviour
     float TIME, _TIME;
     public Sprite dk, sp, def;
     SpriteRenderer rend;
-
+    FileReader rdr;
     private void Awake()
     {
+        var sys = GameObject.FindWithTag("NoteSys");
+        rdr = sys.GetComponent<FileReader>();
         rend = GetComponent<SpriteRenderer>();
         transform.localScale = new Vector2(transform.localScale.x * GlobalSettings.ColWidth, transform.localScale.y);
     }
@@ -27,7 +29,13 @@ public class NoteEnd : MonoBehaviour
             transform.position = new Vector2(obj.transform.position.x, transform.position.y);
         else
         {
-            Destroy(gameObject);
+            InsertQueue();
         }
+    }
+    public void InsertQueue()
+    {
+        transform.position = new Vector2(0, 1000f);
+        rdr.end_queue.Enqueue(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

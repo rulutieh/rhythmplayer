@@ -31,7 +31,7 @@ public class ColNote : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(transform.position, Vector3.up, Color.red);
-        Debug.DrawLine(new Vector2(transform.position.x - 0.3f, transform.position.y), new Vector2(transform.position.x + 0.3f, transform.position.y),Color.red);
+        Debug.DrawLine(new Vector2(transform.position.x - 0.3f, transform.position.y), new Vector2(transform.position.x + 0.3f, transform.position.y), Color.red);
         if (ISLN)
         {
             if (TIME + 178.4f < FileReader.Playback)
