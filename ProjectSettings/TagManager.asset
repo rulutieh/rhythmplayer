@@ -18,6 +18,7 @@ TagManager:
   - icons
   - UICanvas
   - setting
+  - Mask
   layers:
   - Default
   - TransparentFX

@@ -24,6 +24,7 @@ public class ScoreManager : MonoBehaviour
         acc = 1f;
         combo = maxcombo = 0;
         judgeerror = 0;
+        Score = 0;
     }
     
 

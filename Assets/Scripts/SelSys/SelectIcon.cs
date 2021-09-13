@@ -31,7 +31,7 @@ public class SelectIcon : MonoBehaviour , IPointerClickHandler
         {
             image.color = new Color(1, 1, 1, 0.4f);
         }
-        rect.anchoredPosition = new Vector2(-171.9f - diffcount * 20f / 2f + 20f * idx, 135.2f);
+        rect.anchoredPosition = new Vector2(209.87f + 12.5f - diffcount * 25f / 2f + 25f * idx, -136.68f);
     }
     public void OnPointerClick(PointerEventData eventData)
     {

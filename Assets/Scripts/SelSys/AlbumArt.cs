@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class AlbumArt : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject panel, fade;
+    public GameObject panel;
     RectTransform rect;
     RankPanel p;
     Image rend;
@@ -22,8 +22,8 @@ public class AlbumArt : MonoBehaviour, IPointerClickHandler
         c = new Color(1, 1, 1, 1);
         p = panel.GetComponent<RankPanel>();
         rect = GetComponent<RectTransform>();
-        startpos = rect.transform.position;
-        endpos = Vector3.Lerp(fade.GetComponent<RectTransform>().position, startpos, 0.66f);
+        //startpos = rect.transform.position;
+        //endpos = Vector3.Lerp(fade.GetComponent<RectTransform>().position, startpos, 0.66f);
 
         AnimatePanel();
     }
@@ -48,6 +48,7 @@ public class AlbumArt : MonoBehaviour, IPointerClickHandler
 
     public void AnimatePanel()
     {
+        /*
         if (p.isOn)
         {
             rend.CrossFadeAlpha(0.9f, 0.3f, false);
@@ -58,6 +59,7 @@ public class AlbumArt : MonoBehaviour, IPointerClickHandler
             rend.CrossFadeAlpha(1f, 0.3f, false);
             rect.DOMove(startpos, 0.3f, false);
         }
+        */
     }
 
     public void LoadAlbumArt()

@@ -39,7 +39,7 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
         decide = GlobalSettings.decide;
         float gap = decide - idx;
         // + Mathf.Abs(gap * 10)
-        Vector2 pos = new Vector2(-100f, gap * 46f);
+        Vector2 pos = new Vector2(-165f, gap * 42f);
         rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, pos, Time.deltaTime * 30f);
 
         if (Mathf.Abs(gap) < 1f)
