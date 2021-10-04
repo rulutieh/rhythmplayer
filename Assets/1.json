@@ -2365,39 +2365,6 @@
       [],
       [
         {
-          "hash": "6fd10525ec816826007ea2bdd3ea499e",
-          "charter": "inava",
-          "path": "H:\\Songs\\reendofadream\\endofdream.txt",
-          "diffs": "75",
-          "notes": 2165,
-          "longnotes": 979,
-          "length": 139415
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\reendofadream\\preview.mp3",
-    "BGAPath": "H:\\Songs\\reendofadream\\_uvm_bga.mp4",
-    "BGPath": "H:\\Songs\\reendofadream\\bg.png",
-    "name": "Re：End of a Dream",
-    "artist": "uma vs. モリモリあつし",
-    "tags": ":bms of fighters",
-    "hasvideo": true,
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\reendofadream",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
           "hash": "637b3e4b089c2813b443468952d9fa78",
           "charter": "Kevin.o2SE",
           "path": "H:\\Songs\\Red Sign\\2.txt",
@@ -2436,6 +2403,39 @@
     "hasvideo": false,
     "localoffset": 0.0,
     "directory": "H:\\Songs\\Red Sign",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "6fd10525ec816826007ea2bdd3ea499e",
+          "charter": "inava",
+          "path": "H:\\Songs\\reendofadream\\endofdream.txt",
+          "diffs": "75",
+          "notes": 2165,
+          "longnotes": 979,
+          "length": 139415
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\reendofadream\\preview.mp3",
+    "BGAPath": "H:\\Songs\\reendofadream\\_uvm_bga.mp4",
+    "BGPath": "H:\\Songs\\reendofadream\\bg.png",
+    "name": "Re：End of a Dream",
+    "artist": "uma vs. モリモリあつし",
+    "tags": ":bms of fighters",
+    "hasvideo": true,
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\reendofadream",
     "isvirtual": true
   },
   {
@@ -3385,6 +3385,57 @@
     "localoffset": 0.0,
     "directory": "H:\\Songs\\yuru",
     "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "2df4e1a82384dba9cbc891a4ae9d2d43",
+          "charter": "Jakads",
+          "path": "H:\\Songs\\Yunomi - Game Over (feat TORIENA)\\Yunomi - Game Over (feat. TORIENA) (Jakads) [[HD] Your Adventure Ends Here.].osu",
+          "diffs": "[HD] Your Adventure Ends Here.",
+          "notes": 2264,
+          "longnotes": 146,
+          "length": 225674
+        },
+        {
+          "hash": "8dff2c62af923f23f9fd73884b8b142d",
+          "charter": "Jakads",
+          "path": "H:\\Songs\\Yunomi - Game Over (feat TORIENA)\\Yunomi - Game Over (feat. TORIENA) (Jakads) [[IN] Do You Want to Continue (YN)].osu",
+          "diffs": "[IN] Do You Want to Continue? (Y/N)",
+          "notes": 2379,
+          "longnotes": 603,
+          "length": 225674
+        },
+        {
+          "hash": "38d1523388151eda9bc750177e57f3b7",
+          "charter": "Jakads",
+          "path": "H:\\Songs\\Yunomi - Game Over (feat TORIENA)\\Yunomi - Game Over (feat. TORIENA) (Jakads) [[EX] Insert [1] Coin(s) to Continue . . .].osu",
+          "diffs": "[EX] Insert [1] Coin(s) to Continue . . .",
+          "notes": 3103,
+          "longnotes": 785,
+          "length": 225674
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Yunomi - Game Over (feat TORIENA)\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Yunomi - Game Over (feat TORIENA)\\bg.png",
+    "name": "Game Over (feat. TORIENA)",
+    "artist": "Yunomi",
+    "tags": ":Wonki dudehacker ゆのみ 未来茶屋 Vol. 0 Miraichaya Mirai 未来茶レコード Miraicha Records Jpop Japanese Electronic WACCA",
+    "hasvideo": false,
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Yunomi - Game Over (feat TORIENA)",
+    "isvirtual": false
   },
   {
     "charts": [

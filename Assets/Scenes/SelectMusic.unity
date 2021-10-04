@@ -546,7 +546,7 @@ RectTransform:
   m_Children:
   - {fileID: 247534172}
   m_Father: {fileID: 1990829512}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -990,7 +990,7 @@ Transform:
   m_LocalScale: {x: 0.627451, y: 0.627451, z: 0.627451}
   m_Children: []
   m_Father: {fileID: 1990829512}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &600417868
 MonoBehaviour:
@@ -1019,6 +1019,8 @@ MonoBehaviour:
   TMPLENGTH: {fileID: 471732176}
   TMPFIXED: {fileID: 1898092812}
   TMPSPC: {fileID: 877982888}
+  TMPTUNES: {fileID: 1801183184}
+  TMPPNAME: {fileID: 790096244}
 --- !u!1 &681612104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,7 +1060,7 @@ RectTransform:
   - {fileID: 877982887}
   - {fileID: 1771064162}
   m_Father: {fileID: 1990829512}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1133,7 +1135,7 @@ RectTransform:
   m_Children:
   - {fileID: 1782368726}
   m_Father: {fileID: 1990829512}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -1207,7 +1209,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1990829512}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -1227,7 +1229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5176471}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1337,7 +1339,7 @@ GameObject:
   - component: {fileID: 790096245}
   - component: {fileID: 790096244}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: PNAMETEXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1409,8 +1411,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2098,7 +2100,7 @@ RectTransform:
   - {fileID: 400413435}
   - {fileID: 921114868}
   m_Father: {fileID: 1990829512}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4021,7 +4023,7 @@ RectTransform:
   - {fileID: 1460765300}
   - {fileID: 1731226440}
   m_Father: {fileID: 1990829512}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -4041,7 +4043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.50980395}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4611,7 +4613,7 @@ GameObject:
   - component: {fileID: 1801183185}
   - component: {fileID: 1801183184}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TUNETEXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4629,11 +4631,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1990829512}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -189.6, y: 199}
+  m_AnchoredPosition: {x: -189.6, y: 203.6}
   m_SizeDelta: {x: 372.4049, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1801183184
@@ -4683,8 +4685,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5263,6 +5265,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1801183183}
   - {fileID: 701093640}
   - {fileID: 600417867}
   - {fileID: 746900496}
@@ -5271,7 +5274,6 @@ RectTransform:
   - {fileID: 681612105}
   - {fileID: 419418795}
   - {fileID: 939388018}
-  - {fileID: 1801183183}
   - {fileID: 790096243}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -6245,7 +6247,7 @@ PrefabInstance:
     - target: {fileID: 4322529495056641237, guid: b1ddf1c69d79bb642a8c698b77bfb3f7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4322529495056641237, guid: b1ddf1c69d79bb642a8c698b77bfb3f7,
         type: 3}

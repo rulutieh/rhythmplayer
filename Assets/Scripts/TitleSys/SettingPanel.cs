@@ -16,7 +16,7 @@ public class SettingPanel : MonoBehaviour
     public static bool isUIanimationFinished;
     public bool init, signup, active, kactive, escdisable;
     public Slider slvolume, slkeysound, slcolumn, slstof, sljudgeline, sltrans;
-    public Toggle video, bpm, fullscreen;
+    public Toggle video, cutoff, fullscreen;
     public TMP_Dropdown ddres, ddframe;
     public TextMeshProUGUI offset, errormessage, songroot;
     public UnityEngine.UI.Button KeySetting;
@@ -42,7 +42,7 @@ public class SettingPanel : MonoBehaviour
         slstof.value = GlobalSettings.stageXPOS;
         sljudgeline.value = GlobalSettings.stageYPOS;
         sltrans.value = GlobalSettings.Transparency;
-        bpm.isOn = GlobalSettings.isFixedScroll;
+        cutoff.isOn = GlobalSettings.isCutOff;
         video.isOn = GlobalSettings.isPlayVideo;
         fullscreen.isOn = GlobalSettings.isFullScreen;
 
@@ -50,11 +50,11 @@ public class SettingPanel : MonoBehaviour
         KSETTING.SetActive(false);
 
         #region EventListners
-        bpm.onValueChanged.AddListener(
+        cutoff.onValueChanged.AddListener(
             (bool bOn) =>
             {
                 bool val = bOn;
-                GlobalSettings.isFixedScroll = val;
+                GlobalSettings.isCutOff = val;
                 st.SaveSettings();
             }
         );

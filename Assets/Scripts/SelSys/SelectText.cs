@@ -11,7 +11,7 @@ public class SelectText : MonoBehaviour
     RectTransform srlRect;
     FileSelecter Select;
     FileLoader Loader;
-    public TextMeshProUGUI TMPTITLE, TMPARTIST, TMPBPM, TMPDIFF, TMPDIFF2, TMPSPD, TMPMOD, TMPSORT, TMPCHART, TMPNOTE, TMPLN, TMPLENGTH, TMPFIXED, TMPSPC;
+    public TextMeshProUGUI TMPTITLE, TMPARTIST, TMPBPM, TMPDIFF, TMPDIFF2, TMPSPD, TMPMOD, TMPSORT, TMPCHART, TMPNOTE, TMPLN, TMPLENGTH, TMPFIXED, TMPSPC, TMPTUNES, TMPPNAME;
     int maxvalue;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +19,8 @@ public class SelectText : MonoBehaviour
         Select = GameObject.FindWithTag("SelSys").GetComponent<FileSelecter>();
         Loader = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
         srlRect = srl.GetComponent<RectTransform>();
+        TMPTUNES.text = GlobalSettings.keycount + "Key TUNES";
+        TMPPNAME.text = "Player Name : " + GlobalSettings.playername;
     }
 
     // Update is called once per frame
@@ -50,7 +52,6 @@ public class SelectText : MonoBehaviour
         TMPLN.text = $"Longnote counts : {NowPlaying.LONGNOTECOUNTS}";
 
         TMPFIXED.text = "F3 / F4";
-        if (!GlobalSettings.isFixedScroll) TMPFIXED.text = "F3 / F4        [FIXED]";
         float per = (float)GlobalSettings.decide / maxvalue;
         float v = 120f - maxvalue * 0.5f;
         if (v < 30f) v = 30f;

@@ -54,8 +54,8 @@ public class GlobalSettings : MonoBehaviour
     public Sprite[] CircleNotes;
 
     public bool isCircleNote;
-    
-    public static bool isFixedScroll = true;
+
+    public static bool isCutOff = false;
     public static bool isPlayVideo = true;
     public static bool isFullScreen = false;
     public static bool Mirror = false;
@@ -167,7 +167,7 @@ public class GlobalSettings : MonoBehaviour
 }
     public void SaveSettings()
     {
-        PlayerPrefs.SetInt("SCROLL", boolToInt(isFixedScroll));
+        PlayerPrefs.SetInt("CUT", boolToInt(isCutOff));
         PlayerPrefs.SetInt("VIDEO", boolToInt(isPlayVideo));
         PlayerPrefs.SetInt("FSCREEN", boolToInt(isFullScreen));
         PlayerPrefs.SetInt("RESOLUTION", res);
@@ -184,8 +184,8 @@ public class GlobalSettings : MonoBehaviour
     }
     public void LoadSettings()
     {
-        if (PlayerPrefs.HasKey("SCROLL")) {
-            isFixedScroll = intToBool(PlayerPrefs.GetInt("SCROLL"));
+        if (PlayerPrefs.HasKey("FPS")) {
+            isCutOff = intToBool(PlayerPrefs.GetInt("CUT", 0));
             isPlayVideo = intToBool(PlayerPrefs.GetInt("VIDEO"));
             isFullScreen = intToBool(PlayerPrefs.GetInt("FSCREEN"));
             res = PlayerPrefs.GetInt("RESOLUTION");

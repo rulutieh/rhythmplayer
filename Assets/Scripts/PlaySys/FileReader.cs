@@ -151,7 +151,6 @@ public class FileReader : MonoBehaviour
         {
             BarPooling();
         }
-
     }
     void SetPooling(int index)
     {
@@ -198,13 +197,13 @@ public class FileReader : MonoBehaviour
                     musicOn = true;
                 }
             }
-
-            if (!GlobalSettings.isFixedScroll)
-            {
-                multiply = 3f / 410f * GlobalSettings.scrollSpeed;
-            }
-            else
-                multiply = 3f / NowPlaying.MEDIAN * GlobalSettings.scrollSpeed;
+            multiply = 3f / 410f * GlobalSettings.scrollSpeed;
+            //if (!GlobalSettings.isFixedScroll)
+            //{
+            //    multiply = 3f / 410f * GlobalSettings.scrollSpeed;
+            //}
+            //else
+            //    multiply = 3f / NowPlaying.MEDIAN * GlobalSettings.scrollSpeed;
             //p += Time.deltaTime * 1000f; //use deltatime
             //Playback = p;
             Playback = Time.timeSinceLevelLoad * 1000f - startTime + p; //use scenemanagement

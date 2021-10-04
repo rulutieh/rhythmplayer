@@ -1028,6 +1028,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842949987}
   m_CullTransparentMesh: 0
+--- !u!114 &934403905 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7471574150051845711, guid: 9786ee0988ec4f344a07e6b7ee3de11d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1998833332}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &951909969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1445,7 @@ PrefabInstance:
     - target: {fileID: 7471574148190426693, guid: 9786ee0988ec4f344a07e6b7ee3de11d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000069618225
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7471574148334543970, guid: 9786ee0988ec4f344a07e6b7ee3de11d,
         type: 3}
@@ -1455,6 +1467,11 @@ PrefabInstance:
       propertyPath: w
       value: 
       objectReference: {fileID: 170250741}
+    - target: {fileID: 7471574148405814740, guid: 9786ee0988ec4f344a07e6b7ee3de11d,
+        type: 3}
+      propertyPath: cutoff
+      value: 
+      objectReference: {fileID: 934403905}
     - target: {fileID: 7471574148518300921, guid: 9786ee0988ec4f344a07e6b7ee3de11d,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1509,6 +1526,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471574149466114340, guid: 9786ee0988ec4f344a07e6b7ee3de11d,
+        type: 3}
+      propertyPath: m_Name
+      value: cutoff
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471574149466114340, guid: 9786ee0988ec4f344a07e6b7ee3de11d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7471574149627933251, guid: 9786ee0988ec4f344a07e6b7ee3de11d,
         type: 3}
@@ -1649,6 +1676,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471574149784878842, guid: 9786ee0988ec4f344a07e6b7ee3de11d,
+        type: 3}
+      propertyPath: m_text
+      value: Cut-off Hold End
       objectReference: {fileID: 0}
     - target: {fileID: 7471574149804781788, guid: 9786ee0988ec4f344a07e6b7ee3de11d,
         type: 3}

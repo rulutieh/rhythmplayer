@@ -21,7 +21,8 @@ public class FileSelecter : MonoBehaviour
     public string _name, _artist, _txtpath, _bgpath, _diff, _bgapath, _charter, _hash;
     public float _localoffset, minBPM, maxBPM, medianBPM;
     public int _diffcount;
-    int keycount;
+    int keycount; //키카운트
+    float keydelay;// 키보드난이도선택딜레이
     bool prefer; //선호 난이도 선택 저장
     string lastselect = "", lastselectdiff = ""; //마지막 곡 해시, 마지막 난이도별 해시
     SpriteRenderer rend;
@@ -163,6 +164,16 @@ public class FileSelecter : MonoBehaviour
                 //키보드 컨트롤
                 if (Input.GetKeyDown(KeyCode.UpArrow)) { GlobalSettings.decide--; SongScroll(); }
                 if (Input.GetKeyDown(KeyCode.DownArrow)) { GlobalSettings.decide++; SongScroll(); }
+                float translation = Input.GetAxis("Vertical");
+                if (keydelay < 0)
+                {
+                    if (translation > 0.95f) { GlobalSettings.decide--; SongScroll(); keydelay = 0.05f; }
+                    if (translation < -0.95f) { GlobalSettings.decide++; SongScroll(); keydelay = 0.05f; }
+                }
+                else
+                {
+                    keydelay -= Time.deltaTime;
+                }
                 //마우스휠
                 float scroll = Input.GetAxis("Mouse ScrollWheel");
                 if (!rankpanel.GetComponent<RankPanel>().isOver && !scrollmod.GetComponent<ModButton>().isOver)

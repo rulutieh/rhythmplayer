@@ -13,7 +13,7 @@ public class NoteRenderer : MonoBehaviour
     Sprite tempspr;
     int COLUMN;
     int TIME;
-    float LNLENGTH, _TIME, height;
+    float LNLENGTH, _TIME, height = -1f, cf;
     bool ISLN;
 
     void Awake()
@@ -22,6 +22,7 @@ public class NoteRenderer : MonoBehaviour
         rdr = sys.GetComponent<FileReader>();
         rend = GetComponent<SpriteRenderer>();
         transform.localScale = new Vector2(transform.localScale.x * GlobalSettings.ColWidth, transform.localScale.y);
+        if (GlobalSettings.isCutOff) cf = 0.2f; else cf = 0;
 
     }
     void OnEnable()
@@ -55,7 +56,8 @@ public class NoteRenderer : MonoBehaviour
                 {
                     inst.transform.position = transform.position;
                     float height = transform.GetComponent<SpriteRenderer>().bounds.size.y;
-                    float gap = Mathf.Abs(lnend.transform.position.y - transform.position.y);
+                    float gap = lnend.transform.position.y - transform.position.y - cf;
+                    if (gap < 0) gap = 0;
                     inst.transform.localScale = new Vector2(1f, gap / height);
                 }
                 if (LNLENGTH + 200 < FileReader.Playback)

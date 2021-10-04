@@ -14,6 +14,7 @@ public class NoteEnd : MonoBehaviour
         rdr = sys.GetComponent<FileReader>();
         rend = GetComponent<SpriteRenderer>();
         transform.localScale = new Vector2(transform.localScale.x * GlobalSettings.ColWidth, transform.localScale.y);
+        if (GlobalSettings.isCutOff) rend.enabled = false;
     }
     private void LateUpdate()
     {
@@ -22,8 +23,8 @@ public class NoteEnd : MonoBehaviour
 
     public void setInfo(int c, float t, GameObject obj, float nt) //콜룸, 타임, 시작노트
     {
-        
-        if (c == 1 || c == 5) { rend.sprite = dk; } else if (c == 3) { rend.sprite = sp; } else { rend.sprite = def; }
+        if (!GlobalSettings.isCutOff)
+            if (c == 1 || c == 5) { rend.sprite = dk; } else if (c == 3) { rend.sprite = sp; } else { rend.sprite = def; }
         TIME = t; _TIME = nt;
         if (obj)
             transform.position = new Vector2(obj.transform.position.x, transform.position.y);
