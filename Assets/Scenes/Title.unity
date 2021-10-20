@@ -639,6 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcb914a5a254fd4bacb6f2d4cf010ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuActive: 0
   Key4: {fileID: 1729511673}
   Key7: {fileID: 379210282}
   errScreen: {fileID: 167770942}
@@ -1791,6 +1792,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1857343638}
     m_Modifications:
+    - target: {fileID: 2477820350692086939, guid: 4bbbba1fcc472bf46ad30e5281daf776,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2477820350692087012, guid: 4bbbba1fcc472bf46ad30e5281daf776,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1900,6 +1906,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ErrorScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2477820350692087013, guid: 4bbbba1fcc472bf46ad30e5281daf776,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2477820350924845689, guid: 4bbbba1fcc472bf46ad30e5281daf776,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bbbba1fcc472bf46ad30e5281daf776, type: 3}

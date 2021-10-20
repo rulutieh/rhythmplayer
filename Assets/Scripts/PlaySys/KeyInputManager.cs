@@ -46,9 +46,11 @@ public class KeyInputManager : MonoBehaviour
                     break;
                 case 2:
                     transform.position = new Vector2(-0.5f * Manager.ColumnWidth, transform.position.y);
+                    transform.localScale = new Vector2(0.82f * Manager.ColumnWidth, 0.6f);
                     break;
                 case 4:
                     transform.position = new Vector2(0.5f * Manager.ColumnWidth, transform.position.y);
+                    transform.localScale = new Vector2(0.82f * Manager.ColumnWidth, 0.6f);
                     break;
                 case 5:
                     transform.position = new Vector2(1.5f * Manager.ColumnWidth, transform.position.y);

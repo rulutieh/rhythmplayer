@@ -39,7 +39,6 @@ public class TitleSelecter : MonoBehaviour, IPointerClickHandler
     }
     public void NextMenu()
     {
-        
 
         if (menuActive)
         {
@@ -52,6 +51,7 @@ public class TitleSelecter : MonoBehaviour, IPointerClickHandler
             if (fl.listorigin.Count == 0 || fl.threading)
             {
                 errScreen.SetActive(true);
+                StartCoroutine(HideError());
             }
             else
             {
@@ -60,6 +60,7 @@ public class TitleSelecter : MonoBehaviour, IPointerClickHandler
                 if (fl.listkeysort.Count == 0)
                 {
                     errScreen.SetActive(true);
+                    StartCoroutine(HideError());
                 }
                 else
                 {
@@ -77,5 +78,10 @@ public class TitleSelecter : MonoBehaviour, IPointerClickHandler
         yield return new WaitForSeconds(0.5f);
         Key4.SetActive(true);
         Key7.SetActive(true);
+    }
+    IEnumerator HideError()
+    {
+        yield return new WaitForSeconds(4f);
+        errScreen.SetActive(false);
     }
 }

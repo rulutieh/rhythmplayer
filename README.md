@@ -26,9 +26,7 @@ Online Ranking uses PHP (Laravel)
 
 In setting(F10), select "Songs" folder in osu! install location.
 or download songs from https://osu.ppy.sh/ and unzip in specific folder and select.
-It only supports 7k now. 
-But you can select another keymode from GlobalSetting.
-It works on a 7k skin.
+Supports 4K / 7K 
 
 This project is licensed under the terms of the MIT license.
 
