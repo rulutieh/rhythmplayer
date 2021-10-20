@@ -36,7 +36,7 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
-        decide = GlobalSettings.decide;
+        decide = Manager.decide;
         float gap = decide - idx;
         // + Mathf.Abs(gap * 10)
         Vector2 pos = new Vector2(-165f, gap * 42f);
@@ -60,7 +60,7 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
     }
     public void Pooling()
     {
-        if (Mathf.Abs(GlobalSettings.decide - idx) > 10)
+        if (Mathf.Abs(Manager.decide - idx) > 10)
         {
             select.b_queue.Enqueue(gameObject);
             gameObject.SetActive(false);
@@ -76,7 +76,7 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (GlobalSettings.decide == idx)
+        if (Manager.decide == idx)
         {
             select.songDecide();
         }
@@ -91,21 +91,21 @@ public class SongButton : MonoBehaviour, IPointerClickHandler
     IEnumerator Selector()
     {
         crunning = true;
-        if (GlobalSettings.decide > idx)
+        if (Manager.decide > idx)
         {
-            while (GlobalSettings.decide > idx)
+            while (Manager.decide > idx)
             {
                 select.SongScroll();
-                GlobalSettings.decide--;
+                Manager.decide--;
                 yield return new WaitForSeconds(0.05f);
             }
         }
         else
         {
-            while (GlobalSettings.decide < idx)
+            while (Manager.decide < idx)
             {
                 select.SongScroll();
-                GlobalSettings.decide++;
+                Manager.decide++;
                 yield return new WaitForSeconds(0.05f);
             }
         }

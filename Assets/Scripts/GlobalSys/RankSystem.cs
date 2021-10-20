@@ -180,11 +180,10 @@ public class RankSystem : MonoBehaviour
         {
             if (songs[i].key == key) id = i;
         }
-        Debug.Log($"key : {key}");
         string req = string.Format(
         "http://127.0.0.1:8000/api/score/get/{0}/uid/{1}",
         key,
-        GlobalSettings.UID
+        Manager.UID
         );
         RequestToWebAsync(req);
     }
@@ -258,7 +257,7 @@ public class RankSystem : MonoBehaviour
         string req = string.Format(
             "http://127.0.0.1:8000/api/score/add/{0}/uid/{1}/sco/{2}/kk/{3}/cc/{4}/gg/{5}/bb/{6}/mm/{7}/maxcombo/{8}/bitwise/{9}",
             key,
-            GlobalSettings.UID,
+            Manager.UID,
             sd.score,
             k,
             c,

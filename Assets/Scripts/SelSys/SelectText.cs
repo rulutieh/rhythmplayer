@@ -19,8 +19,8 @@ public class SelectText : MonoBehaviour
         Select = GameObject.FindWithTag("SelSys").GetComponent<FileSelecter>();
         Loader = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
         srlRect = srl.GetComponent<RectTransform>();
-        TMPTUNES.text = GlobalSettings.keycount + "Key TUNES";
-        TMPPNAME.text = "Player Name : " + GlobalSettings.playername;
+        TMPTUNES.text = Manager.keycount + "Key TUNES";
+        TMPPNAME.text = "Player Name : " + Manager.playername;
     }
 
     // Update is called once per frame
@@ -32,18 +32,18 @@ public class SelectText : MonoBehaviour
         TMPBPM.text = $"bpm : {Select.medianBPM} ({Select.minBPM} ~ {Select.maxBPM})";
         TMPDIFF.text = TMPDIFF2.text = $"[{Select._diff}]";
         string str = "NONE";
-        if (GlobalSettings.Random) str = "RANDOM";
-        if (GlobalSettings.Mirror) str = "MIRROR";
+        if (Manager.Random) str = "RANDOM";
+        if (Manager.Mirror) str = "MIRROR";
         TMPMOD.text = str;
         TMPSORT.text = "TITLE";
-        if (GlobalSettings.sortselection == 1) TMPSORT.text = "ARTIST";
-        if (GlobalSettings.sortselection == 2) TMPSORT.text = "minLV";
-        if (GlobalSettings.sortselection == 3) TMPSORT.text = "maxLV";
-        if (GlobalSettings.sortselection == 4) TMPSORT.text = "NPS";
+        if (Manager.sortselection == 1) TMPSORT.text = "ARTIST";
+        if (Manager.sortselection == 2) TMPSORT.text = "minLV";
+        if (Manager.sortselection == 3) TMPSORT.text = "maxLV";
+        if (Manager.sortselection == 4) TMPSORT.text = "NPS";
         TMPSPC.text = "NONE";
-        if (GlobalSettings.AutoPlay) TMPSPC.text = "AUTOPLAY";
+        if (Manager.AutoPlay) TMPSPC.text = "AUTOPLAY";
 
-        TMPSPD.text = "Scroll Speed : " + Mathf.Round(GlobalSettings.scrollSpeed * 10f - 8f);
+        TMPSPD.text = "Scroll Speed : " + Mathf.Round(Manager.scrollSpeed * 10f - 8f);
 
         TMPCHART.text = "Noter : " + Select._charter;
         TMPLENGTH.text = $"Length : {NowPlaying.LENGTH}";
@@ -52,7 +52,7 @@ public class SelectText : MonoBehaviour
         TMPLN.text = $"Longnote counts : {NowPlaying.LONGNOTECOUNTS}";
 
         TMPFIXED.text = "F3 / F4";
-        float per = (float)GlobalSettings.decide / maxvalue;
+        float per = (float)Manager.decide / maxvalue;
         float v = 120f - maxvalue * 0.5f;
         if (v < 30f) v = 30f;
         srlRect.anchoredPosition = new Vector2(-44.2f, 213.7f - v / 2f - (387.7f - v) * per);
@@ -68,21 +68,21 @@ public class SelectText : MonoBehaviour
     }
     IEnumerator Selector(int select)
     {
-        if (GlobalSettings.decide > select)
+        if (Manager.decide > select)
         {
-            while (GlobalSettings.decide > select)
+            while (Manager.decide > select)
             {
                 Select.SongScroll();
-                GlobalSettings.decide--;
+                Manager.decide--;
                 yield return new WaitForEndOfFrame();
             }
         }
         else
         {
-            while (GlobalSettings.decide < select)
+            while (Manager.decide < select)
             {
                 Select.SongScroll();
-                GlobalSettings.decide++;
+                Manager.decide++;
                 yield return new WaitForEndOfFrame();
             }
         }

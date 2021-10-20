@@ -18,7 +18,7 @@ public class RoomChanger : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "PlayMusic")
         {
-            if (FileReader.isLoaded)
+            if (NotePlayer.isLoaded)
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 StartCoroutine(LoadScene("SelectMusic"));

@@ -29,7 +29,7 @@ class PlayerOnlineStatus
 [System.Serializable]
 public static class KeySetting { public static Dictionary<KeyAction, KeyCode> keys = new Dictionary<KeyAction, KeyCode>(); }
 
-public class GlobalSettings : MonoBehaviour
+public class Manager : MonoBehaviour
 {
 
 
@@ -43,9 +43,10 @@ public class GlobalSettings : MonoBehaviour
 
     public static int[] judgems = { 0, 1, 2, 3 };
 
-    public static float scrollSpeed = 2.4f, stageXPOS = 0, stageYPOS, ColWidth = 0.85f, GlobalOffset = 0f, Transparency = 1f;
+    public static float scrollSpeed = 2.4f, stageXPOS = 0, stageYPOS, GlobalOffset = 0f, Transparency = 1f;
+    public static float ColWidth = 0.85f, ColumnWidth; //7키일시 컬럼 넓이, 다른 키카운트 컬럼넓이
     public static int decide, diffselection, sortselection, modselection, specialselection;
-    public static string sortsearch = "", playername = "Guest", email = "";
+    public static string sortsearch = "", playername = "TEST", email = "";
     public static string FolderPath = Path.Combine(Application.streamingAssetsPath, "Songs");
 
     public static int UID = 2;
@@ -68,9 +69,11 @@ public class GlobalSettings : MonoBehaviour
 
     static public float vol, tp, sync;
 
-    public static int keycount = 7;
+    public static int keycount = 4;
 
     string defpath = Path.Combine(Application.streamingAssetsPath, "Songs");
+
+    
 
     //임시 로컬 회원가입
     List<PlayerAccount> accList = new List<PlayerAccount>();
@@ -78,7 +81,7 @@ public class GlobalSettings : MonoBehaviour
     // Start is called before the first frame update 
     void Awake()
     {
-
+        decide = 0;
         //저장값 불러오기
         if (PlayerPrefs.HasKey("K0"))
         {
@@ -107,19 +110,13 @@ public class GlobalSettings : MonoBehaviour
         res = (int)Resolution._1920_1080;
         LoadSettings();
         LoadSelection();
-        LoadPlayerAccounts();
-        LoadLocalPlayerAccount();
+        //LoadPlayerAccounts();
+        //LoadLocalPlayerAccount();
 
     }
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame 
-    void Update()
-    {
-
+        ColumnWidth = ColWidth * (7f / keycount);
     }
 
     public static void SaveControlKeybinds()

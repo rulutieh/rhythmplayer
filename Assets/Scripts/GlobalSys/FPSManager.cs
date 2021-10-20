@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class FPSManager : MonoBehaviour
 {
     Scene curScene;
-    GlobalSettings set;
+    Manager set;
     private void Awake()
     {
-        set = GetComponent<GlobalSettings>();
+        set = GetComponent<Manager>();
     }
     private void OnEnable()
     {

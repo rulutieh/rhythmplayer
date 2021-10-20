@@ -42,7 +42,6 @@ public class FileLoader : MonoBehaviour
         public string name { get; set; }
         public string artist { get; set; }
         public string tags { get; set; }
-        public bool hasvideo { get; set; }
         public float localoffset { get; set; }
         public string directory { get; set; }
         public bool isvirtual { get; set; }
@@ -146,9 +145,9 @@ public class FileLoader : MonoBehaviour
     IEnumerator FirstLoad()
     {
         yield return new WaitForSeconds(0.4f);
-        GlobalSettings.FolderPath = PlayerPrefs.GetString("PATH", GlobalSettings.FolderPath);
-        if (!Directory.Exists(GlobalSettings.FolderPath))
-            GlobalSettings.FolderPath = Application.dataPath;
+        Manager.FolderPath = PlayerPrefs.GetString("PATH", Manager.FolderPath);
+        if (!Directory.Exists(Manager.FolderPath))
+            Manager.FolderPath = Application.dataPath;
         ReLoad();
     }
     void Update()
@@ -180,20 +179,18 @@ public class FileLoader : MonoBehaviour
     {
         LoadCircle.SetActive(true);
         threading = true;
-        string root = GlobalSettings.FolderPath;
+        string root = Manager.FolderPath;
         string[] subdirectoryEntries = Directory.GetDirectories(root);
         //폴더수만큼구조체배열할당
         var tasks = new List<Task>();
         foreach (string subdirectory in subdirectoryEntries)
         {
-            await Task.Delay(25);
             tasks.Add(LoadDirsAsync(root, subdirectory));
         }
         
         await Task.WhenAll(tasks);
         string json = JsonConvert.SerializeObject(listorigin, Formatting.Indented);
         File.WriteAllText(Path.Combine(Application.dataPath, "1.json"), json);
-        Debug.Log(GlobalSettings.decide);
         SceneManager.LoadScene("Title", LoadSceneMode.Single);
         t = "";
         threading = false;
@@ -244,20 +241,14 @@ public class FileLoader : MonoBehaviour
         else
             BACKGROUND = Path.Combine(path, dir, bgs[0].Name);
         newSong.BGPath = BACKGROUND;
-
         FileInfo[] bga;
         bga = d.GetFiles("*.mpg"); // 동영상 불러오기
         if (bga.Length == 0) bga = d.GetFiles("*.mp4");
         if (bga.Length == 0) bga = d.GetFiles("*.flv");
         if (bga.Length != 0) {
             VIDEOFILE = Path.Combine(path, dir, bga[0].Name);
-            newSong.hasvideo = true;
             newSong.BGAPath = VIDEOFILE;
         }
-        else
-            newSong.hasvideo = false;
-
-        Debug.Log(newSong.AudioPath);
         //제목,작곡가,난이도,오프셋파싱
         StreamReader rdr = null;
         string line;
@@ -265,6 +256,7 @@ public class FileLoader : MonoBehaviour
         {
             for (int i = 0; i < Files.Length; i++)
             {
+                bool wrongfile = false;
                 int keycount = 7;
 
                 rdr = new StreamReader(TXTFILE[i]);
@@ -294,7 +286,7 @@ public class FileLoader : MonoBehaviour
                     {
                         if (!line.EndsWith("3"))
                         {
-                            goto WRONGFILE;
+                            wrongfile = true;
                         }
                             
                     }
@@ -345,25 +337,28 @@ public class FileLoader : MonoBehaviour
                     else
                         notecounts++;
                 }
-                Chart c = new Chart(
-                    CryptoManager.CalculateMD5(TXTFILE[i]),
-                    _noter,
-                    TXTFILE[i],
-                    _diff,
-                    notecounts,
-                    longnotecounts,
-                    lastnote
-                    );
-                newSong.isvirtual = isvirtual;
-                newSong.AddCharts(
-                    keycount,
-                    c
-                    );
-                WRONGFILE:
+                if (!wrongfile)
+                {
+                    Chart c = new Chart(
+                        CryptoManager.CalculateMD5(TXTFILE[i]),
+                        _noter,
+                        TXTFILE[i],
+                        _diff,
+                        notecounts,
+                        longnotecounts,
+                        lastnote
+                        );
+                    newSong.isvirtual = isvirtual;
+                    newSong.AddCharts(
+                        keycount,
+                        c
+                        );
+                }
                 rdr.Close();
             }
             newSong.SortDiff();
-            listorigin.Add(newSong);
+            if (!(newSong is null))
+                listorigin.Add(newSong);
         }
         catch (Exception ie)
         {
@@ -380,7 +375,7 @@ public class FileLoader : MonoBehaviour
         {
             for (int i = 0; i < listorigin.Count; i++)
             {
-                if (listorigin[i].CheckKeymodeExists(7))
+                if (listorigin[i].CheckKeymodeExists(Manager.keycount))
                 {
 
                     listkeysort.Add(listorigin[i]);
@@ -400,13 +395,13 @@ public class FileLoader : MonoBehaviour
             int a, b;
             if (mode == 0)
             {
-                int.TryParse(A.getDiff(0, GlobalSettings.keycount), out a);
-                int.TryParse(B.getDiff(0, GlobalSettings.keycount), out b);
+                int.TryParse(A.getDiff(0, Manager.keycount), out a);
+                int.TryParse(B.getDiff(0, Manager.keycount), out b);
             }
             else
             {
-                int.TryParse(A.maxDiff(GlobalSettings.keycount), out a);
-                int.TryParse(B.maxDiff(GlobalSettings.keycount), out b);
+                int.TryParse(A.maxDiff(Manager.keycount), out a);
+                int.TryParse(B.maxDiff(Manager.keycount), out b);
             }
 
             if (a == b) return 0;
@@ -419,16 +414,16 @@ public class FileLoader : MonoBehaviour
         list.Sort(delegate (Song A, Song B)
         {
             A.NoteCounts(
-            A.diffCount(GlobalSettings.keycount) - 1,
-            GlobalSettings.keycount,
+            A.diffCount(Manager.keycount) - 1,
+            Manager.keycount,
             out int note,
             out int ln,
             out int time
             );
             float anps = (note + ln * 1.5f) / time;
             B.NoteCounts(
-            B.diffCount(GlobalSettings.keycount) - 1,
-            GlobalSettings.keycount,
+            B.diffCount(Manager.keycount) - 1,
+            Manager.keycount,
             out note,
             out ln,
             out time
@@ -460,11 +455,11 @@ public class FileLoader : MonoBehaviour
         // 해쉬값으로 곡 검색
         for (int i = 0; i < list.Count; i++)
         {
-            for (int j = 0; j < list[i].diffCount(GlobalSettings.keycount); j++)
-                if (list[i].getID(j, GlobalSettings.keycount) == hash)
+            for (int j = 0; j < list[i].diffCount(Manager.keycount); j++)
+                if (list[i].getID(j, Manager.keycount) == hash)
                 {
-                    GlobalSettings.decide = i;
-                    GlobalSettings.diffselection = j;
+                    Manager.decide = i;
+                    Manager.diffselection = j;
                     return true;
                 }
         }
@@ -477,7 +472,7 @@ public class FileLoader : MonoBehaviour
 
         FolderWatcher.Filter = "*.*";
 
-        FolderWatcher.Path = GlobalSettings.FolderPath;
+        FolderWatcher.Path = Manager.FolderPath;
 
         FolderWatcher.IncludeSubdirectories = true;
 

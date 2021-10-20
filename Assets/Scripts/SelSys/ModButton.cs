@@ -8,7 +8,7 @@ public class ModButton : MonoBehaviour , IPointerClickHandler, IPointerEnterHand
     public bool isOver;
     public GameObject sys, rank;
     FileSelecter select;
-    GlobalSettings setting;
+    Manager setting;
 
     public int mod;
     float scroll;
@@ -18,7 +18,7 @@ public class ModButton : MonoBehaviour , IPointerClickHandler, IPointerEnterHand
         if (!sys)
             sys = GameObject.FindWithTag("SelSys");
         select = sys.GetComponent<FileSelecter>();
-        setting = GameObject.FindWithTag("world").GetComponent<GlobalSettings>();
+        setting = GameObject.FindWithTag("world").GetComponent<Manager>();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -56,16 +56,16 @@ public class ModButton : MonoBehaviour , IPointerClickHandler, IPointerEnterHand
             scroll = Input.GetAxis("Mouse ScrollWheel");
             if (isOver)
             {
-                if (GlobalSettings.scrollSpeed < 4f) //스크롤 업
+                if (Manager.scrollSpeed < 4f) //스크롤 업
                     if (scroll > -0.001f)
                     {
-                        GlobalSettings.scrollSpeed += 0.1f;
+                        Manager.scrollSpeed += 0.1f;
                         setting.SaveSelection();
                     }
-                if (GlobalSettings.scrollSpeed > 1f) //스크롤 다운
+                if (Manager.scrollSpeed > 1f) //스크롤 다운
                     if (scroll < 0.001f)
                     {
-                        GlobalSettings.scrollSpeed -= 0.1f;
+                        Manager.scrollSpeed -= 0.1f;
                         setting.SaveSelection();
                     }
             }

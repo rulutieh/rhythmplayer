@@ -13,7 +13,7 @@ public class JudgeText : MonoBehaviour
     void Update()
     {
         float j = Mathf.RoundToInt(ScoreManager.judgeerror);
-        if (FileReader.Playback > 100) active = true;
+        if (NotePlayer.Playback > 100) active = true;
         if (active)
         {
             if (ap < 0.7f)
@@ -39,7 +39,7 @@ public class JudgeText : MonoBehaviour
             acc.color = new Color(1, 1, 1, ap);
             auto.color = acc.color;
             float a = ScoreManager.acc;
-            if (!GlobalSettings.AutoPlay)
+            if (!Manager.AutoPlay)
             {
                 error.text = $"{txt}{j}";
                 acc.text = string.Format("{0:p}", a);

@@ -18,27 +18,27 @@ public class playField : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow)) GlobalSettings.stageXPOS += 0.2f;
-            if (Input.GetKeyDown(KeyCode.RightArrow)) GlobalSettings.stageXPOS -= 0.2f;
-            if (Input.GetKeyDown(KeyCode.UpArrow)) GlobalSettings.stageYPOS += 0.1f;
-            if (Input.GetKeyDown(KeyCode.DownArrow)) GlobalSettings.stageYPOS -= 0.1f;
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) Manager.stageXPOS += 0.2f;
+            if (Input.GetKeyDown(KeyCode.RightArrow)) Manager.stageXPOS -= 0.2f;
+            if (Input.GetKeyDown(KeyCode.UpArrow)) Manager.stageYPOS += 0.1f;
+            if (Input.GetKeyDown(KeyCode.DownArrow)) Manager.stageYPOS -= 0.1f;
 
-            if (GlobalSettings.stageXPOS > 5f) GlobalSettings.stageXPOS = 5f;
-            if (GlobalSettings.stageXPOS < -5f) GlobalSettings.stageXPOS = -5f;
-            if (GlobalSettings.stageYPOS > 1f) GlobalSettings.stageYPOS = 1f;
-            if (GlobalSettings.stageXPOS < -0.2f) GlobalSettings.stageYPOS = -0.2f;
+            if (Manager.stageXPOS > 5f) Manager.stageXPOS = 5f;
+            if (Manager.stageXPOS < -5f) Manager.stageXPOS = -5f;
+            if (Manager.stageYPOS > 1f) Manager.stageYPOS = 1f;
+            if (Manager.stageXPOS < -0.2f) Manager.stageYPOS = -0.2f;
         }
 
-        transform.position = new Vector3(GlobalSettings.stageXPOS, transform.position.y, transform.position.z);
-        judgeline.transform.position = new Vector2(0, yy + GlobalSettings.stageYPOS);
+        transform.position = new Vector3(Manager.stageXPOS, transform.position.y, transform.position.z);
+        judgeline.transform.position = new Vector2(0, yy + Manager.stageYPOS);
 
-        if (Input.GetKeyDown(KeyCode.PageDown) && GlobalSettings.Transparency > 0)
-        { GlobalSettings.Transparency -= 0.2f; SetFade(); }
-        if (Input.GetKeyDown(KeyCode.PageUp) && GlobalSettings.Transparency < 1)
-        { GlobalSettings.Transparency += 0.2f; SetFade(); }
+        if (Input.GetKeyDown(KeyCode.PageDown) && Manager.Transparency > 0)
+        { Manager.Transparency -= 0.2f; SetFade(); }
+        if (Input.GetKeyDown(KeyCode.PageUp) && Manager.Transparency < 1)
+        { Manager.Transparency += 0.2f; SetFade(); }
     }
     void SetFade()
     {
-        fade.color = new Color(0, 0, 0, 1f - GlobalSettings.Transparency);
+        fade.color = new Color(0, 0, 0, 1f - Manager.Transparency);
     }
 }

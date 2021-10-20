@@ -12,7 +12,7 @@ public class LineEffects : MonoBehaviour
     void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        transform.localScale = new Vector2(transform.localScale.x * GlobalSettings.ColWidth, transform.localScale.y);
+        transform.localScale = new Vector2(transform.localScale.x * Manager.ColumnWidth, transform.localScale.y);
     }
 
     // Update is called once per frame
@@ -36,7 +36,27 @@ public class LineEffects : MonoBehaviour
     }
     public void setCol(int idx)
     {
-        transform.position = new Vector2((idx - 3f) * GlobalSettings.ColWidth, 1.28f + GlobalSettings.stageYPOS);
+        float xx = idx - 3f;
+        if (Manager.keycount != 7)
+        {
+            switch (idx)
+            {
+                case 1:
+                    xx = -1.5f;
+                    break;
+                case 2:
+                    xx = -0.5f;
+                    break;
+                case 4:
+                    xx = 0.5f;
+                    break;
+                case 5:
+                    xx = 1.5f;
+                    break;
+            }
+        }
+
+        transform.position = new Vector2(xx * Manager.ColumnWidth, 1.28f  + Manager.stageYPOS);
     }
     public void setActive()
     {

@@ -16,7 +16,7 @@ public class showBPM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bpm = Mathf.Round((1f / FileReader.bpm * 1000f * 60f) * 100f) / 100f;
+        bpm = Mathf.Round((1f / NotePlayer.bpm * 1000f * 60f) * 100f) / 100f;
         if (bpm != oldbpm)
         {
             tmp.text = "BPM : " + bpm.ToString();

@@ -22,13 +22,13 @@ namespace Health
     public class Recovery
     {
         public static float max = 0.002f;
-        public static float good = 0.0004f;
+        public static float good = 0.0005f;
 
     }
     public class Damage
     {
-        public static float bad = 0.01f;
-        public static float miss = 0.025f;
+        public static float bad = 0.005f;
+        public static float miss = 0.027f;
     }
 
 }

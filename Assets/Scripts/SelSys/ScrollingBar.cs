@@ -50,17 +50,17 @@ public class ScrollingBar : MonoBehaviour, IDragHandler, IEndDragHandler, IBegin
         {
             if (pos < 0.3f)
             {
-                if (GlobalSettings.decide < Loader.list.Count - 1)
+                if (Manager.decide < Loader.list.Count - 1)
                 {
-                    GlobalSettings.decide++;
+                    Manager.decide++;
                     Select.SongScroll();
                 }
             }
             if (pos > 0.3f)
             {
-                if (GlobalSettings.decide > 0)
+                if (Manager.decide > 0)
                 {
-                    GlobalSettings.decide--;
+                    Manager.decide--;
                     Select.SongScroll();
                 }
             }

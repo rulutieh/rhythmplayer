@@ -22,7 +22,7 @@ public class Judgement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 target = new Vector2(transform.position.x, -1.2f + GlobalSettings.stageYPOS);
+        Vector2 target = new Vector2(transform.position.x, -1.2f + Manager.stageYPOS);
         transform.position = Vector3.MoveTowards(transform.position, target, 4f * Time.deltaTime);
         Color tmp = rend.color;
         tmp.a = alph;
@@ -34,19 +34,19 @@ public class Judgement : MonoBehaviour
     }
     public void setInfo(int j)
     {
-        transform.position = new Vector2(0, -1f + GlobalSettings.stageYPOS);
+        transform.position = new Vector2(0, -1f + Manager.stageYPOS);
         alph = 1;
         ScoreManager.TOTAL++;
         switch (j)
         {
             case 0:
-                //kool
+                //kool (롱놋)
                 rend.sprite = spr[5];
                 ScoreManager.KOOL++;
                 ScoreManager.HP += Recovery.max;
                 break;
             case 1:
-                //cool
+                //cool (롱놋)
                 rend.sprite = spr[0];
                 ScoreManager.COOL++;
                 ScoreManager.HP += Recovery.max;
@@ -68,11 +68,24 @@ public class Judgement : MonoBehaviour
                 ScoreManager.HP -= Damage.miss;
                 break;
             case 5:
-                //miss
+                //miss2
                 rend.sprite = spr[4];
                 ScoreManager.MISS += 2;
                 ScoreManager.TOTAL++;
                 ScoreManager.HP -= Damage.miss * 2;
+                break;
+
+            case 6:
+                //bad  (단놋)
+                rend.sprite = spr[3];
+                ScoreManager.BAD++;
+                ScoreManager.HP -= Damage.bad * 1.5f;
+                break;
+            case 7:
+                //miss(단놋)
+                rend.sprite = spr[4];
+                ScoreManager.MISS++;
+                ScoreManager.HP -= Damage.miss * 1.5f;
                 break;
         }
         if (ScoreManager.HP > 1f) ScoreManager.HP = 1f;

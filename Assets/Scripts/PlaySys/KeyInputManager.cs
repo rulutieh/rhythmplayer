@@ -12,32 +12,59 @@ public class KeyInputManager : MonoBehaviour
     GameObject LNEND;
     public Transform lnhitef;
     public Sprite DEF, PRESS;
+    public Sprite DEF4K, PRESS4K;
     public int idx;
     float LNENDTime;
+    int shiftInput;
     SpriteRenderer rend;
     MusicHandler player;
-    FileReader reader;
+    NotePlayer reader;
     ScoreManager manager;
 
     // Start is called before the first frame update
     // Update is called once per frame
     private void Start()
     {
-
         player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
         rend = GetComponent<SpriteRenderer>();
-        transform.localScale = new Vector2(0.74f * GlobalSettings.ColWidth, 0.6f);
+        transform.localScale = new Vector2(0.74f * Manager.ColumnWidth, 0.6f);
         var g = GameObject.FindWithTag("NoteSys");
-        reader = g.GetComponent<FileReader>();
+        reader = g.GetComponent<NotePlayer>();
         manager = g.GetComponent<ScoreManager>();
 
+
+        if (Manager.keycount == 7)
+            transform.position = new Vector2((idx - 3) * Manager.ColumnWidth, transform.position.y);
+        else
+        {
+            DEF = DEF4K;
+            PRESS = PRESS4K;
+            switch (idx)
+            {
+                case 1:
+                    transform.position = new Vector2(-1.5f * Manager.ColumnWidth, transform.position.y);
+                    break;
+                case 2:
+                    transform.position = new Vector2(-0.5f * Manager.ColumnWidth, transform.position.y);
+                    break;
+                case 4:
+                    transform.position = new Vector2(0.5f * Manager.ColumnWidth, transform.position.y);
+                    break;
+                case 5:
+                    transform.position = new Vector2(1.5f * Manager.ColumnWidth, transform.position.y);
+                    break;
+                default:
+                    Destroy(gameObject);
+                    break;
+            }
+        }
     }
     void Update()
     {
         Debug.DrawRay(transform.position, Vector3.up);
 
 
-        if (!GlobalSettings.AutoPlay)
+        if (!Manager.AutoPlay)
         {
 
             if (Input.GetKey(KeySetting.keys[(KeyAction)idx]))
@@ -55,13 +82,13 @@ public class KeyInputManager : MonoBehaviour
             RaycastHit2D auto = Physics2D.Raycast(pos, Vector2.up);
             if (isLNPRESSED)
             {
-                if (LNENDTime - FileReader.Playback < 1f)
+                if (LNENDTime - NotePlayer.Playback < 1f)
                     KeyRelease();
             }
             else if (auto)
             {
                 ColNote note = auto.collider.GetComponent<ColNote>();
-                if (note.getTime() - FileReader.Playback < 1f)
+                if (note.getTime() - NotePlayer.Playback < 1f)
                 {
                     KeyInput(isLNPRESSED, true);
                     if (!note.isLN())
@@ -73,7 +100,7 @@ public class KeyInputManager : MonoBehaviour
 
         if (isLNPRESSED) //롱놋 안 땠을 시 미스처리
         {
-            float error = FileReader.Playback - LNENDTime;
+            float error = NotePlayer.Playback - LNENDTime;
             if (error > 270f)
             {
                 ScoreManager.combo = 0;
@@ -84,7 +111,7 @@ public class KeyInputManager : MonoBehaviour
         }
         else lnhitef.gameObject.SetActive(false);
 
-        transform.position = new Vector2((idx - 3) * GlobalSettings.ColWidth, transform.position.y);
+
 
 
     }
@@ -110,7 +137,7 @@ public class KeyInputManager : MonoBehaviour
 
         if (LN)
         {
-            float e = FileReader.Playback - LNENDTime;
+            float e = NotePlayer.Playback - LNENDTime;
             error = Mathf.Abs(e);
             if (error < 180f)
                 manager.AddError(e);
@@ -125,13 +152,13 @@ public class KeyInputManager : MonoBehaviour
             hitdown = Physics2D.Raycast(transform.position, Vector2.down); //아래로 레이
             if (hitup.collider != null)
             { //위 체크
-                eru = FileReader.Playback - hitup.collider.GetComponent<ColNote>().getTime();
+                eru = NotePlayer.Playback - hitup.collider.GetComponent<ColNote>().getTime();
                 errorUp = Mathf.Abs(eru); //현재시간에서 노트의 시간값 빼서 오차가져오기
             }
             else errorUp = 9999f;
             if (hitdown.collider != null)
             { //아래 체크
-                erd = FileReader.Playback - hitdown.collider.GetComponent<ColNote>().getTime();
+                erd = NotePlayer.Playback - hitdown.collider.GetComponent<ColNote>().getTime();
                 errorDown = Mathf.Abs(erd);
             }
             else errorDown = 9999f;
@@ -139,29 +166,32 @@ public class KeyInputManager : MonoBehaviour
             if (errorUp <= 174.4f || errorDown <= 174.4f)
             {
                 RaycastHit2D CloseHit;
+                ColNote cn;
                 if (errorUp < errorDown)
                 {
                     error = errorUp;
                     CloseHit = hitup;
                     manager.AddError(eru);
+                    cn = CloseHit.collider.GetComponent<ColNote>();
                 }
                 else
                 {
                     error = errorDown;
                     CloseHit = hitdown;
                     manager.AddError(erd);
+                    cn = CloseHit.collider.GetComponent<ColNote>();
                 }
-                if (CloseHit.collider.GetComponent<ColNote>().isLN())
+                if (cn.isLN())
                 {
                     isLNPRESSED = true;
                     hit = CloseHit;
-                    CloseHit.collider.GetComponent<ColNote>().pressed = true;
-                    LNENDTime = CloseHit.collider.GetComponent<ColNote>().getLnLength();
+                    cn.pressed = true;
+                    LNENDTime = cn.getLnLength();
                 }
                 else
                 {
                     createhitef();
-                    CloseHit.collider.GetComponent<ColNote>().InsertQueue();
+                    cn.InsertQueue();
                     //Destroy(CloseHit.collider.gameObject);
                 }
 
@@ -169,7 +199,7 @@ public class KeyInputManager : MonoBehaviour
                 if (i != -1)
                     player.PlaySample(i);
 
-                cacJudge(error);
+                cacJudge(error, cn.isLN());
                 
             }
             else if (hitup)
@@ -195,7 +225,7 @@ public class KeyInputManager : MonoBehaviour
                 hit.collider.GetComponent<ColNote>().DestroyCollider();
         }
     }
-    void cacJudge(float error)
+    void cacJudge(float error, bool ln)
     {
         if (error <= Timings.j300k)
         {
@@ -218,13 +248,19 @@ public class KeyInputManager : MonoBehaviour
         else if (error <= Timings.j100)
         {
             ScoreManager.combo++;
-            getJudge(3);
+            if (ln)
+                getJudge(3);
+            else
+                getJudge(6);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
         else
         {
             ScoreManager.combo = 0;
-            getJudge(4);
+            if (ln)
+                getJudge(4);
+            else
+                getJudge(7);
         }
     }
     void cacLNJudge(float error)

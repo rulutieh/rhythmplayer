@@ -68,7 +68,7 @@ public class ResultScreen : MonoBehaviour
                 tmpresult.text = "Failed";
                 player.PlaySFX(8);
             }
-            else if (GlobalSettings.AutoPlay)
+            else if (Manager.AutoPlay)
             {
                 tmpresult.text = "AutoPlay";
                 player.PlaySFX(7);
@@ -81,7 +81,7 @@ public class ResultScreen : MonoBehaviour
             played = true;
         }
         yield return new WaitForSeconds(0.2f);
-        if (ScoreManager.maxcombo == FileReader.NoteCountLongnote) tmpcombo.text = "FULL COMBO";
+        if (ScoreManager.maxcombo == NotePlayer.NoteCountLongnote) tmpcombo.text = "FULL COMBO";
         if (Mathf.Round(ScoreManager.Score) == 1000000) tmpcombo.text = "PERFECT";
         yield return new WaitForSeconds(0.3f);
         Rank.SetActive(true);

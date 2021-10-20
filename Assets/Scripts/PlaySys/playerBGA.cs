@@ -15,15 +15,15 @@ public class playerBGA : MonoBehaviour
     void Start()
     {
         rect = GetComponent<RectTransform>();
-        FileReader.isVideoLoaded = false;
-        if (NowPlaying.isBGA && GlobalSettings.isPlayVideo)
+        NotePlayer.isVideoLoaded = false;
+        if (!string.IsNullOrEmpty(NowPlaying.BGAFILE) && Manager.isPlayVideo)
         {
             mVideoPlayer.url = NowPlaying.BGAFILE;
             StartCoroutine(PrepareVideo());
         }
         else
         {
-            FileReader.isVideoLoaded = true;
+            NotePlayer.isVideoLoaded = true;
             Destroy(gameObject);
         }
 
@@ -32,7 +32,7 @@ public class playerBGA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (FileReader.isPlaying && !mVideoPlayer.isPlaying && mVideoPlayer.isPrepared)
+        if (NotePlayer.isPlaying && !mVideoPlayer.isPlaying && mVideoPlayer.isPrepared)
         {
             if (!played)
             {
@@ -54,7 +54,7 @@ public class playerBGA : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
         }
 
-        FileReader.isVideoLoaded = true;
+        NotePlayer.isVideoLoaded = true;
         mScreen.texture = mVideoPlayer.texture;
     }
 }

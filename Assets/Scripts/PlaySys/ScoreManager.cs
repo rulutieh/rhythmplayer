@@ -63,6 +63,8 @@ public class ScoreManager : MonoBehaviour
         judgeobj.SetActive(true);
         if (a == 1) //롱노트 아애 안눌럿을시
             judgeobj.GetComponent<Judgement>().setInfo(5);
+        else if (a == 2)
+            judgeobj.GetComponent<Judgement>().setInfo(7);
         else
             judgeobj.GetComponent<Judgement>().setInfo(4);
     }
@@ -82,7 +84,7 @@ public class ScoreManager : MonoBehaviour
         //COOL = KOOL = GOOD = MISS = BAD = TOTAL = 0;
         RankSys.SaveScore(
             NowPlaying.HASH,
-            GlobalSettings.playername,
+            Manager.playername,
             KOOL,
             COOL,
             GOOD,

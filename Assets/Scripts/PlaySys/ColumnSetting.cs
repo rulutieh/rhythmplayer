@@ -11,7 +11,7 @@ public class ColumnSetting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        float colw = GlobalSettings.ColWidth;
+        float colw = Manager.ColWidth;
         SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
         if (!isJudgeline)
         {

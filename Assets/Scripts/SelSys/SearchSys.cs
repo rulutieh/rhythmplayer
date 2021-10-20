@@ -17,7 +17,7 @@ public class SearchSys : MonoBehaviour
         Loader = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
         tmp = inputfield.GetComponent<InputField>();
         selsys = GameObject.FindWithTag("SelSys");
-        tmp.text = GlobalSettings.sortsearch;
+        tmp.text = Manager.sortsearch;
     }
 
     // Update is called once per frame
@@ -27,12 +27,12 @@ public class SearchSys : MonoBehaviour
         string inputext = tmp.text;
         if (string.Compare(inputext, oldtext) != 0)
         {
-            GlobalSettings.decide = 0;
+            Manager.decide = 0;
             Loader.searchbyHash(NowPlaying.HASH); //가장 최근 선택한 값 찾기 없으면 변경없음
             text = inputext.ToUpper();
             oldtext = tmp.text;
-            GlobalSettings.sortsearch = text;
-            selsys.GetComponent<FileSelecter>().SortSearch(GlobalSettings.sortsearch);
+            Manager.sortsearch = text;
+            selsys.GetComponent<FileSelecter>().SortSearch(Manager.sortsearch);
         }
         if (tmp.text == "")
         {

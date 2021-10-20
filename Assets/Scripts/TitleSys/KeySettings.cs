@@ -29,7 +29,7 @@ public class KeySettings : MonoBehaviour
                 KeySetting.keys[(KeyAction)key] = keyEvent.keyCode;
             key = -1;
             sets.GetComponent<SettingPanel>().ClickSound(1);
-            GlobalSettings.SaveControlKeybinds();
+            Manager.SaveControlKeybinds();
         }
     }
     public void ChangeKey(int num)

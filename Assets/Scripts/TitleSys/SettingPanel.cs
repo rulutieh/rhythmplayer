@@ -29,7 +29,7 @@ public class SettingPanel : MonoBehaviour
     public TextMeshProUGUI loginas;
 
     MusicHandler player;
-    GlobalSettings st;
+    Manager st;
 
     VistaFolderBrowserDialog OpenDialog;
     Stream openStream = null;
@@ -37,14 +37,14 @@ public class SettingPanel : MonoBehaviour
     public void Awake()
     {
         player = w.GetComponent<MusicHandler>();
-        st = w.GetComponent<GlobalSettings>();
-        slcolumn.value = GlobalSettings.ColWidth;
-        slstof.value = GlobalSettings.stageXPOS;
-        sljudgeline.value = GlobalSettings.stageYPOS;
-        sltrans.value = GlobalSettings.Transparency;
-        cutoff.isOn = GlobalSettings.isCutOff;
-        video.isOn = GlobalSettings.isPlayVideo;
-        fullscreen.isOn = GlobalSettings.isFullScreen;
+        st = w.GetComponent<Manager>();
+        slcolumn.value = Manager.ColWidth;
+        slstof.value = Manager.stageXPOS;
+        sljudgeline.value = Manager.stageYPOS;
+        sltrans.value = Manager.Transparency;
+        cutoff.isOn = Manager.isCutOff;
+        video.isOn = Manager.isPlayVideo;
+        fullscreen.isOn = Manager.isFullScreen;
 
         PANEL.SetActive(false);
         KSETTING.SetActive(false);
@@ -54,7 +54,7 @@ public class SettingPanel : MonoBehaviour
             (bool bOn) =>
             {
                 bool val = bOn;
-                GlobalSettings.isCutOff = val;
+                Manager.isCutOff = val;
                 st.SaveSettings();
             }
         );
@@ -63,7 +63,7 @@ public class SettingPanel : MonoBehaviour
             (bool bOn) =>
             {
                 bool val = bOn;
-                GlobalSettings.isPlayVideo = val;
+                Manager.isPlayVideo = val;
                 st.SaveSettings();
             }
         );
@@ -78,7 +78,7 @@ public class SettingPanel : MonoBehaviour
         slvolume.onValueChanged.AddListener(
             (float vl) =>
             {
-                GlobalSettings.Volume = vl;
+                Manager.Volume = vl;
                 player.SetVolume();
                 st.SaveSettings();
             }
@@ -86,28 +86,28 @@ public class SettingPanel : MonoBehaviour
         slcolumn.onValueChanged.AddListener(
             (float cw) =>
             {
-                GlobalSettings.ColWidth = cw;
+                Manager.ColWidth = cw;
                 st.SaveSettings();
             }
         );
         slstof.onValueChanged.AddListener(
             (float cw) =>
             {
-                GlobalSettings.stageXPOS = cw;
+                Manager.stageXPOS = cw;
                 st.SaveSettings();
             }
         );
         sljudgeline.onValueChanged.AddListener(
             (float cw) =>
             {
-                GlobalSettings.stageYPOS = cw;
+                Manager.stageYPOS = cw;
                 st.SaveSettings();
             }
         );
         sltrans.onValueChanged.AddListener(
             (float cw) =>
             {
-                GlobalSettings.Transparency = cw;
+                Manager.Transparency = cw;
                 st.SaveSettings();
             }
         );
@@ -121,11 +121,11 @@ public class SettingPanel : MonoBehaviour
         {
             ddres.value = st.res;
             ddframe.value = st.fps;
-            slvolume.value = GlobalSettings.Volume;
+            slvolume.value = Manager.Volume;
             init = true;
         }
 
-        songroot.text = GlobalSettings.FolderPath;
+        songroot.text = Manager.FolderPath;
 
         OpenDialog = new VistaFolderBrowserDialog();
 
@@ -177,7 +177,7 @@ public class SettingPanel : MonoBehaviour
         }
 
 
-        float f = Mathf.Round(GlobalSettings.GlobalOffset * 100f) / 100f;
+        float f = Mathf.Round(Manager.GlobalOffset * 100f) / 100f;
         offset.text = f.ToString();
         //계정 패널 관련
         /*
@@ -216,7 +216,7 @@ public class SettingPanel : MonoBehaviour
     #region Account Settings
     public void setLogout()
     {
-        GlobalSettings.playername = "Guest";
+        Manager.playername = "Guest";
     }
     public void setLogin()
     {
@@ -322,7 +322,7 @@ public class SettingPanel : MonoBehaviour
     }
     public void SetGlobalOffset(float o)
     {
-        GlobalSettings.GlobalOffset += o;
+        Manager.GlobalOffset += o;
         st.SaveSettings();
         ClickSound(4);
     }
@@ -334,10 +334,10 @@ public class SettingPanel : MonoBehaviour
         {
             string path = OpenDialog.SelectedPath;
             if (path == null) return;
-            GlobalSettings.FolderPath = path;
+            Manager.FolderPath = path;
             PlayerPrefs.SetString("PATH", path);
             PlayerPrefs.Save();
-            songroot.text = GlobalSettings.FolderPath;
+            songroot.text = Manager.FolderPath;
             
             fl.ReLoad();
         }

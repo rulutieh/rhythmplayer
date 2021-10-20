@@ -8,7 +8,7 @@ public class ColNote : MonoBehaviour
     public int KeySound;
     //FileReader
     ScoreManager scm;
-    FileReader rdr;
+    NotePlayer rdr;
     public BoxCollider2D box;
     int COLUMN;
     int TIME;
@@ -19,7 +19,7 @@ public class ColNote : MonoBehaviour
 
         var sys = GameObject.FindWithTag("NoteSys");
         scm = sys.GetComponent<ScoreManager>();
-        rdr = sys.GetComponent<FileReader>();
+        rdr = sys.GetComponent<NotePlayer>();
         box = GetComponent<BoxCollider2D>();
     }
     void OnEnable()
@@ -34,7 +34,7 @@ public class ColNote : MonoBehaviour
         Debug.DrawLine(new Vector2(transform.position.x - 0.3f, transform.position.y), new Vector2(transform.position.x + 0.3f, transform.position.y), Color.red);
         if (ISLN)
         {
-            if (TIME + 178.4f < FileReader.Playback)
+            if (TIME + 178.4f < NotePlayer.Playback)
             {
                 if (!pressed)
                 {
@@ -43,16 +43,16 @@ public class ColNote : MonoBehaviour
                     //Destroy(gameObject);
                 }
                 else
-                if (LNLENGTH + 200f < FileReader.Playback)
+                if (LNLENGTH + 200f < NotePlayer.Playback)
                 {
                     InsertQueue();
                     //Destroy(gameObject);
                 }
             }
         }
-        else if (TIME + 178.4f < FileReader.Playback)
+        else if (TIME + 178.4f < NotePlayer.Playback)
         {
-            scm.SetJudge(0);
+            scm.SetJudge(2);
             InsertQueue();
             //Destroy(gameObject);
         }
@@ -62,14 +62,17 @@ public class ColNote : MonoBehaviour
     {
 
         transform.position = new Vector2(transform.position.x, (float)
-            (FileReader.judgeoffset + (_TIME - FileReader.Playback) * 0.01f));
+            (NotePlayer.judgeoffset + (_TIME - NotePlayer.Playback) * 0.01f));
     }
 
     public void SetInfo(int c, int t, bool ln, float length, float nt, int ksidx)
     {
-        //transform.localScale = new Vector2(transform.localScale.x * GlobalSettings.ColWidth / 0.85f, transform.localScale.y);
         TIME = t; ISLN = ln; LNLENGTH = length; _TIME = nt;
-        transform.position = new Vector2((c - 3f) * GlobalSettings.ColWidth, transform.position.y);
+
+        if (Manager.keycount == 7)
+            transform.position = new Vector2((c - 3f) * Manager.ColumnWidth, transform.position.y);
+        else
+            transform.position = new Vector2((c - 1.5f) * Manager.ColumnWidth, transform.position.y);
         KeySound = ksidx;
 
     }

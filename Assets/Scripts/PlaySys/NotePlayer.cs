@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-public class FileReader : MonoBehaviour
+public class NotePlayer : MonoBehaviour
 {
     #region Variables
     float startTime;
@@ -20,7 +20,8 @@ public class FileReader : MonoBehaviour
     float p, _TIME, _RTIME, barTIME;
     int sampleIDX, noteIDX, rnoteIDX, barIDX, timeIDX, preLoad, noteidx = 0, timingidx = 0;
     public int progress = 0;
-    int[] keys = { 0, 1, 2, 3, 4, 5, 6 };
+    int[] keys7 = { 0, 1, 2, 3, 4, 5, 6 };
+    int[] keys4 = { 0, 1, 2, 3 };
     public GameObject NoteObj, ColObj, endln, result, gameover, initsetting, judgeobj, barobj, LoadCircle;
     bool svEnd, noteEnd, rnoteEnd, sampleEnd, playfieldon, musicOn;
     int TimingCount, NoteCount, LastNoteTiming;
@@ -110,11 +111,23 @@ public class FileReader : MonoBehaviour
         isLoaded = false;
         musicOn = false;
         smanager = GetComponent<ScoreManager>();
-        if (GlobalSettings.Random) //노트 랜덤배치
-            Random(keys);
-        for (int i = 0; i < keys.Length; i++)
+        if (Manager.keycount == 7)
         {
-            if (GlobalSettings.Mirror) keys[i] = 6 - i;//노트 미러배치
+            if (Manager.Random) //노트 랜덤배치
+                Random(keys7);
+            for (int i = 0; i < keys7.Length; i++)
+            {
+                if (Manager.Mirror) keys7[i] = 6 - i;//노트 미러배치
+            }
+        }
+        else
+        {
+            if (Manager.Random) //노트 랜덤배치
+                Random(keys4);
+            for (int i = 0; i < keys4.Length; i++)
+            {
+                if (Manager.Mirror) keys4[i] = 3 - i;//노트 미러배치
+            }
         }
     }
     void Start()
@@ -126,7 +139,7 @@ public class FileReader : MonoBehaviour
         RankSys = w.GetComponent<RankSystem>();
         player = w.GetComponent<MusicHandler>(); //Fmod sound system
         player.ReleaseKeysound();
-        preLoad = (int)(1500f / GlobalSettings.scrollSpeed); //노트 풀링 오프셋
+        preLoad = (int)(1500f / Manager.scrollSpeed); //노트 풀링 오프셋
 
         playfieldon = true;
         isPlaying = false;
@@ -184,20 +197,20 @@ public class FileReader : MonoBehaviour
     void Update()
     {
 
-        judgeoffset = -3.15f + GlobalSettings.stageYPOS;
+        judgeoffset = -3.15f + Manager.stageYPOS;
 
         //노트, 타이밍 생성
         if (isLoaded)
         {
             if (!musicOn)
             {
-                if (Playback > -100f + offset + GlobalSettings.GlobalOffset * 1000f)
+                if (Playback > -100f + offset + Manager.GlobalOffset * 1000f)
                 {
                     AudioStart();
                     musicOn = true;
                 }
             }
-            multiply = 3f / 410f * GlobalSettings.scrollSpeed;
+            multiply = 3f / 410f * Manager.scrollSpeed;
             //if (!GlobalSettings.isFixedScroll)
             //{
             //    multiply = 3f / 410f * GlobalSettings.scrollSpeed;
@@ -228,11 +241,11 @@ public class FileReader : MonoBehaviour
                     if (__t < Playback)
                     {
                         //결과창 로드
-                        if (!ScoreManager.isFailed && !GlobalSettings.AutoPlay) //저장
+                        if (!ScoreManager.isFailed && !Manager.AutoPlay) //저장
                             smanager.SaveScores();
                         resultload = true;
                         StartCoroutine(ShowResult());
-                        w.GetComponent<GlobalSettings>().SaveSettings();
+                        w.GetComponent<Manager>().SaveSettings();
                     }
                 }
             }
@@ -376,10 +389,9 @@ public class FileReader : MonoBehaviour
     {
         //노트 렌더링 오브젝트 출력 (변속타임)
         _TIME = GetNoteTime(NoteList[noteIDX].TIME);
-        float _TIME2 = NoteList[noteIDX].TIME;
         yield return new WaitUntil(() => _TIME <= PlaybackChanged + preLoad && !noteEnd);
         int temp = noteIDX;
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < Manager.keycount; i++)
         {
             int cc = NoteList[noteIDX].COLUMN;
             while (start_queue.Count < 10) //풀링 큐 부족할 시 노트 추가생성 기다리기
@@ -420,7 +432,7 @@ public class FileReader : MonoBehaviour
         float _TIME2 = NoteList[rnoteIDX].TIME;
         yield return new WaitUntil(() => _RTIME <= Playback + 1500f && !rnoteEnd);
         int temp = rnoteIDX;
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < Manager.keycount; i++)
         {
             int cc = NoteList[rnoteIDX].COLUMN;
             while (n_queue.Count < 10) //풀링 큐 부족할 시 노트 추가생성 기다리기
@@ -631,8 +643,18 @@ public class FileReader : MonoBehaviour
                                 isln = true;
                                 lnlength = int.Parse(arr[5]);
                             }
-                            int col = (int)Mathf.Round((int.Parse(arr[0]) - 36) / 73f);
-                            col = keys[col];
+                            int col;
+                            if (Manager.keycount == 7)
+                            {
+                                col = (int)Mathf.Round((int.Parse(arr[0]) - 36) / 73f);
+                                col = keys7[col];
+                            }
+                            else
+                            {
+                                col = (int)Mathf.Round((int.Parse(arr[0]) - 64) / 128f);
+                                col = keys4[col];
+                            }
+                            
                             NoteList[noteidx] = new Notes(col, nt, isln, lnlength, ksindex);
                             noteidx++;
 

@@ -23,7 +23,7 @@ public class SelectIcon : MonoBehaviour , IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
-        if (GlobalSettings.diffselection == idx)
+        if (Manager.diffselection == idx)
         {
             image.color = new Color(1, 1, 1, 1);
         }
@@ -37,7 +37,7 @@ public class SelectIcon : MonoBehaviour , IPointerClickHandler
     {
         if (select.DiffChangeEnable())
         {
-            GlobalSettings.diffselection = idx;
+            Manager.diffselection = idx;
             select.getDiffinfo();
         }
     }

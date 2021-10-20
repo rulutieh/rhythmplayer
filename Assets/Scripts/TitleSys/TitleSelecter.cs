@@ -6,89 +6,76 @@ using UnityEngine.EventSystems;
 
 public class TitleSelecter : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject[] UIs;
+    Vector2 myPos;
+    RectTransform rect;
+    FileLoader fl;
+    public bool menuActive = false;
+    public GameObject Key4, Key7;
     public GameObject errScreen;
     public int activeUI = 0;
     // Start is called before the first frame update
     void Start()
     {
-        GlobalSettings.decide = 0;
+        fl = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
+        Manager.decide = 0;
+        rect = GetComponent<RectTransform>();
+        myPos = rect.anchoredPosition;
     }
-
-    // Update is called once per frame
-    /*
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            if (activeUI == 3)
-            {
-                Disable2();
-            }
-        else
-            if (activeUI > 0)
-            {
-                Disable();
-            }
-    }
-    
-    public void Enable()
-    {
-        activeUI++;
-        //UIs[activeUI].GetComponent<CanvasGroup>().interactable = true;
-        UIs[activeUI].GetComponent<scrUI>().Active();
-    }
-    public void Enable2()
-    {
-        activeUI+=2;
-        //UIs[activeUI].GetComponent<CanvasGroup>().interactable = true;
-        UIs[activeUI].GetComponent<scrUI>().Active();
-    }
-    public void Disable()
-    {
-        //UIs[activeUI].GetComponent<CanvasGroup>().interactable = false;
-        UIs[activeUI].GetComponent<scrUI>().inActive();
-        activeUI--;
-    }
-    public void Disable2()
-    {
-        //UIs[activeUI].GetComponent<CanvasGroup>().interactable = false;
-        UIs[activeUI].GetComponent<scrUI>().inActive();
-        activeUI -= 2;
-    }
-    */
-
     public void OnPointerClick(PointerEventData eventData)
     {
-        NextRoom();
+        NextMenu();
+        fl.list.Clear();
+        fl.listkeysort.Clear();
+
     }
-    public void NextRoom()
+    void Update()
     {
-        FileLoader fl = GameObject.FindWithTag("FileSys").GetComponent<FileLoader>();
-        if (fl.listorigin.Count == 0 || fl.threading)
+        
+        Vector2 v = new Vector2(-90.5f, rect.anchoredPosition.y);
+        if (menuActive)
+            rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, v, 6f * Time.deltaTime);
+        else
+            rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, myPos, 6f * Time.deltaTime);
+    }
+    public void NextMenu()
+    {
+        
+
+        if (menuActive)
         {
-            errScreen.SetActive(true);
+            menuActive = false;
+            Key4.SetActive(false);
+            Key7.SetActive(false);
         }
         else
         {
-            fl.SortByKeycounts();
-            
-        }
-        if (fl.listkeysort.Count == 0)
-        {
-            errScreen.SetActive(true);
-        }
-        else
-        {
-            StartCoroutine(LoadScene("SelectMusic"));
+            if (fl.listorigin.Count == 0 || fl.threading)
+            {
+                errScreen.SetActive(true);
+            }
+            else
+            {
+                fl.SortByKeycounts();
+
+                if (fl.listkeysort.Count == 0)
+                {
+                    errScreen.SetActive(true);
+                }
+                else
+                {
+                    menuActive = true;
+                    StartCoroutine(ShowMenu());
+                }
+            }
+
         }
     }
 
-    IEnumerator LoadScene(string sceneName)
+    IEnumerator ShowMenu()
     {
-        AsyncOperation asyncOper = SceneManager.LoadSceneAsync(sceneName);
-        while (!asyncOper.isDone)
-        {
-            yield return null;
-        }
+        
+        yield return new WaitForSeconds(0.5f);
+        Key4.SetActive(true);
+        Key7.SetActive(true);
     }
 }

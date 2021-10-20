@@ -63,19 +63,19 @@ public class MusicHandler : MonoBehaviour
     }
     public void SetVolume()
     {
-        channelGroup.setVolume(GlobalSettings.Volume);
+        channelGroup.setVolume(Manager.Volume);
     }
     public void PlayMP3()
     {
         FMODUnity.RuntimeManager.CoreSystem.playSound(snd, channelGroup, false, out channel[0]); //재생
         snd.getLength(out length, FMOD.TIMEUNIT.MS); // 곡 길이
-        channelGroup.setVolume(GlobalSettings.Volume); //볼륨
+        channelGroup.setVolume(Manager.Volume); //볼륨
         FMODUnity.RuntimeManager.CoreSystem.getDSPBufferSize(out uint a, out int b);
     }
     public void PlaySFX(int idx)
     {
         FMODUnity.RuntimeManager.CoreSystem.playSound(sfx[idx], channelGroup, false, out channel[1]);
-        channelGroup.setVolume(GlobalSettings.Volume);
+        channelGroup.setVolume(Manager.Volume);
     }
     public void PlaySample(int idx)
     {

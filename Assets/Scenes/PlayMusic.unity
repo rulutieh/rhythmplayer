@@ -383,6 +383,8 @@ MonoBehaviour:
   lnhitef: {fileID: 1938083235}
   DEF: {fileID: 21300000, guid: 99188f3d3efee9d499696b9c6772eac3, type: 3}
   PRESS: {fileID: 21300000, guid: c8cb1c8519db83e4185928e1c1a35c73, type: 3}
+  DEF4K: {fileID: 21300000, guid: d996df856d2206d4995b546c6ba2e3b2, type: 3}
+  PRESS4K: {fileID: 21300000, guid: b2298128f85a22643907d098035535a0, type: 3}
   idx: 4
 --- !u!212 &67461741
 SpriteRenderer:
@@ -485,6 +487,8 @@ MonoBehaviour:
   lnhitef: {fileID: 1707987764}
   DEF: {fileID: 21300000, guid: f29ce94db2e51fd488b1a1eaaddf7b7b, type: 3}
   PRESS: {fileID: 21300000, guid: eb2ef5bca045c8c4c9a4033c05e50b31, type: 3}
+  DEF4K: {fileID: 0}
+  PRESS4K: {fileID: 0}
   idx: 0
 --- !u!212 &89623724
 SpriteRenderer:
@@ -1215,6 +1219,8 @@ MonoBehaviour:
   lnhitef: {fileID: 1548120614}
   DEF: {fileID: 21300000, guid: b33cd6af51ac5ca4a84a50032680aedf, type: 3}
   PRESS: {fileID: 21300000, guid: 24599d7f8d2c47047a38ae568f6aebff, type: 3}
+  DEF4K: {fileID: 21300000, guid: 6801404fa5456b147b1243fb661c8d20, type: 3}
+  PRESS4K: {fileID: 21300000, guid: 4f5a94c2509b83e42afd82cbe8710220, type: 3}
   idx: 2
 --- !u!212 &238646901
 SpriteRenderer:
@@ -5108,6 +5114,8 @@ MonoBehaviour:
   lnhitef: {fileID: 1374748468}
   DEF: {fileID: 21300000, guid: 9f7a40497d7938c4fa0e1dcc67053d32, type: 3}
   PRESS: {fileID: 21300000, guid: 38f63c2cd8d80c649a8b1bf4bb536f71, type: 3}
+  DEF4K: {fileID: 0}
+  PRESS4K: {fileID: 0}
   idx: 3
 --- !u!212 &1648978689
 SpriteRenderer:
@@ -5210,6 +5218,8 @@ MonoBehaviour:
   lnhitef: {fileID: 211086682}
   DEF: {fileID: 21300000, guid: 6801404fa5456b147b1243fb661c8d20, type: 3}
   PRESS: {fileID: 21300000, guid: 4f5a94c2509b83e42afd82cbe8710220, type: 3}
+  DEF4K: {fileID: 21300000, guid: f29ce94db2e51fd488b1a1eaaddf7b7b, type: 3}
+  PRESS4K: {fileID: 21300000, guid: eb2ef5bca045c8c4c9a4033c05e50b31, type: 3}
   idx: 1
 --- !u!212 &1670075078
 SpriteRenderer:
@@ -5557,6 +5567,8 @@ MonoBehaviour:
   lnhitef: {fileID: 1353309373}
   DEF: {fileID: 21300000, guid: 3037886945c41d645874f22b05608c85, type: 3}
   PRESS: {fileID: 21300000, guid: 9b38b318ca0619649b731870ed9522f6, type: 3}
+  DEF4K: {fileID: 0}
+  PRESS4K: {fileID: 0}
   idx: 6
 --- !u!212 &1834965751
 SpriteRenderer:
@@ -6055,6 +6067,8 @@ MonoBehaviour:
   lnhitef: {fileID: 1120784835}
   DEF: {fileID: 21300000, guid: d996df856d2206d4995b546c6ba2e3b2, type: 3}
   PRESS: {fileID: 21300000, guid: b2298128f85a22643907d098035535a0, type: 3}
+  DEF4K: {fileID: 21300000, guid: 3037886945c41d645874f22b05608c85, type: 3}
+  PRESS4K: {fileID: 21300000, guid: 9b38b318ca0619649b731870ed9522f6, type: 3}
   idx: 5
 --- !u!212 &1894177978
 SpriteRenderer:
