@@ -160,7 +160,7 @@ public class NotePlayer : MonoBehaviour
             SetPooling(1);
             SetPooling(2);
         }
-        for (int i = 0; i < 6; i++) 
+        for (int i = 0; i < 20; i++) 
         {
             BarPooling();
         }
@@ -265,14 +265,25 @@ public class NotePlayer : MonoBehaviour
     }
     IEnumerator SongInit() //async 종료 후 해당 데이터로 init
     {
-
+        //마디선 추가
         GetBarTime();
+
+
+        //변속곡 전용 마디선 추가
+        if (TimeList.Length >= 70)
+            for (int i = 0; i < 130; i++)
+            {
+                BarPooling();
+            }
+
+        //비디오 대기
         yield return new WaitUntil(() => isVideoLoaded);
-        Debug.Log("Load Time : " + Time.timeSinceLevelLoad);
         yield return new WaitForSeconds(1.2f);
         LoadCircle.GetComponent<LoadIcon>().Fade();
         yield return new WaitUntil(() => !Input.GetKey(KeyCode.LeftControl));
         startbpm = bpm = (float)TimeList[0].BPM; //1비트당 소모되는 ms
+
+        //스트리밍 시작
         StartCoroutine(BpmChange());
         StartCoroutine(NoteSystem());
         StartCoroutine(InputSystem());
@@ -435,7 +446,7 @@ public class NotePlayer : MonoBehaviour
         for (int i = 0; i < Manager.keycount; i++)
         {
             int cc = NoteList[rnoteIDX].COLUMN;
-            while (n_queue.Count < 10) //풀링 큐 부족할 시 노트 추가생성 기다리기
+            while (n_queue.Count < 3) //풀링 큐 부족할 시 노트 추가생성 기다리기
             {
                 SetPooling(0);
                 yield return null;
@@ -464,17 +475,25 @@ public class NotePlayer : MonoBehaviour
     IEnumerator mBarSystem()
     {
         float t = GetNoteTime(barlist[barIDX]);
-        yield return new WaitUntil(() => t <= PlaybackChanged + preLoad && !noteEnd);
-        while (b_queue.Count < 2) 
-        {
-            BarPooling();
-            yield return null;
-        }
-        var bar = b_queue.Dequeue();
-        bar.SetActive(true);
-        bar.GetComponent<MeasureBars>()._TIME = t;
 
-        barIDX++;
+        yield return new WaitUntil(() => t <= PlaybackChanged + preLoad && !noteEnd);
+
+        for (int i = 0; i < 10; i++)
+        {
+            while (b_queue.Count < 3)
+            {
+                BarPooling();
+                yield return null;
+            }
+            var bar = b_queue.Dequeue();
+            bar.SetActive(true);
+            bar.GetComponent<MeasureBars>()._TIME = t;
+
+            barIDX++;
+            if (barIDX == barlist.Count) break;
+
+            t = GetNoteTime(barlist[barIDX]);
+        }
         if (barIDX != barlist.Count)
             StartCoroutine(mBarSystem());
     }
@@ -482,7 +501,7 @@ public class NotePlayer : MonoBehaviour
     {
         float __TIME = GetNoteTime(LNTIME);
         yield return new WaitUntil(() => __TIME <= PlaybackChanged + preLoad);
-        while (end_queue.Count < 10) //풀링 큐 부족할 시 노트 추가생성 기다리기
+        while (end_queue.Count < 3) //풀링 큐 부족할 시 노트 추가생성 기다리기
         {
             SetPooling(2);
             yield return null;
@@ -588,8 +607,10 @@ public class NotePlayer : MonoBehaviour
 
                             if (arr2[6] == "1")
                             {
+                                _sv = 1f;
                                 _bpmorigin = double.Parse(strbpm);
-                                _bpm = _sv * _bpmorigin; //if bpm // o2jam 확장자
+                                _bpm = _bpmorigin; //if bpm // o2jam 확장자
+                                
                             }
                             else
                             {

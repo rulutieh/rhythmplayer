@@ -37,8 +37,11 @@ public class KeyInputManager : MonoBehaviour
             transform.position = new Vector2((idx - 3) * Manager.ColumnWidth, transform.position.y);
         else
         {
+            
             DEF = DEF4K;
             PRESS = PRESS4K;
+            rend.sprite = DEF;
+
             switch (idx)
             {
                 case 1:

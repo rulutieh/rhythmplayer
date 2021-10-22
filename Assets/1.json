@@ -37,126 +37,30 @@
       [],
       [],
       [],
-      [],
-      [],
-      [],
       [
         {
-          "hash": "9329f18e015370b499671783cc603f61",
-          "charter": "Bephilops & Sequencer",
-          "path": "H:\\Songs\\go to mcdonald\\gotomcdonald.txt",
-          "diffs": "999",
-          "notes": 919,
-          "longnotes": 333,
-          "length": 139883
+          "hash": "4abcd1d4ce5daa6ee9805f6db252f197",
+          "charter": "PiraTom",
+          "path": "H:\\Songs\\Berry Go\\berry.txt",
+          "diffs": "BERRY HARD",
+          "notes": 647,
+          "longnotes": 887,
+          "length": 113507
         }
       ],
+      [],
+      [],
+      [],
       []
     ],
-    "AudioPath": "H:\\Songs\\go to mcdonald\\mc.mp3",
+    "AudioPath": "H:\\Songs\\Berry Go\\audio.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\go to mcdonald\\background.jpg",
-    "name": "Go to McDonald!!",
-    "artist": "McGiygas",
-    "tags": ":ran ran ru mother earthbound",
-    "localoffset": 100.0,
-    "directory": "H:\\Songs\\go to mcdonald",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "1c3fb4e5af1d26cfb8927de9794106c4",
-          "charter": "Rocher&WhiteAndBlack",
-          "path": "H:\\Songs\\ELPIS\\elpis.txt",
-          "diffs": "67",
-          "notes": 1005,
-          "longnotes": 1165,
-          "length": 127371
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\ELPIS\\el.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\ELPIS\\31095898_p0.jpg",
-    "name": "ΕΛΠΙΣ",
-    "artist": "dj TAKA",
-    "tags": ":Beatmania IIDX ELPIS",
-    "localoffset": 770.0,
-    "directory": "H:\\Songs\\ELPIS",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "8bab0947ec4f5a655ad898b20b55be94",
-          "charter": "All.o2SE",
-          "path": "H:\\Songs\\End Of Fight\\38.osu",
-          "diffs": "38",
-          "notes": 1749,
-          "longnotes": 290,
-          "length": 169550
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\End Of Fight\\preview.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\End Of Fight\\background.jpg",
-    "name": "End Of Fight",
-    "artist": "All.o2SE",
-    "tags": ":",
+    "BGPath": "H:\\Songs\\Berry Go\\bg1.jpg",
+    "name": "Berry Go!!",
+    "artist": "Freezer feat. 妃苺",
+    "tags": ":bofu2017 妃苺 mippai ln",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\End Of Fight",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "a13eb66913709294529d5e4deeaba857",
-          "charter": "Jinjin & Blocko",
-          "path": "H:\\Songs\\noma - Brain Power\\noma - Brain Power (Jinjin & Blocko  yuko) [7k - hard lvl 75].osu",
-          "diffs": "75",
-          "notes": 1078,
-          "longnotes": 1458,
-          "length": 106635
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\noma - Brain Power\\bp.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\noma - Brain Power\\background.jpg",
-    "name": "Brain Power",
-    "artist": "noma",
-    "tags": ":o2jam o2ma587",
-    "localoffset": 585.0,
-    "directory": "H:\\Songs\\noma - Brain Power",
+    "directory": "H:\\Songs\\Berry Go",
     "isvirtual": false
   },
   {
@@ -170,130 +74,25 @@
       [],
       [
         {
-          "hash": "5e219882fce2ffc62a7d74d0150fb526",
-          "charter": "Eleventh",
-          "path": "H:\\Songs\\Lyrith -Meikyuu Lyrith-\\ly.txt",
-          "diffs": "62",
-          "notes": 1853,
-          "longnotes": 755,
-          "length": 145084
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Lyrith -Meikyuu Lyrith-\\preview.mp3",
-    "BGAPath": "H:\\Songs\\Lyrith -Meikyuu Lyrith-\\ly.mp4",
-    "BGPath": "H:\\Songs\\Lyrith -Meikyuu Lyrith-\\Lyrith.jpg",
-    "name": "Lyrith -迷宮リリス-",
-    "artist": "LeaF",
-    "tags": ":bms of fighters Lyrith -Meikyuu Lyrith-",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Lyrith -Meikyuu Lyrith-",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "64f199da376a15aee44bc0c5bbae3eca",
-          "charter": "Alices",
-          "path": "H:\\Songs\\Listen!!\\listen.txt",
-          "diffs": "75",
-          "notes": 1652,
-          "longnotes": 1302,
-          "length": 151544
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Listen!!\\f.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Listen!!\\69146bfd1bbda12001241e0f67a45890.jpg",
-    "name": "Listen!!",
-    "artist": "K-ON",
-    "tags": ":houkago tea time",
-    "localoffset": 1633.0,
-    "directory": "H:\\Songs\\Listen!!",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "e14eb8b3a777751b577dd136605f2d8a",
-          "charter": "Genesis",
-          "path": "H:\\Songs\\melt\\melt.txt",
-          "diffs": "73",
-          "notes": 1950,
-          "longnotes": 1187,
-          "length": 180133
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\melt\\song.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\melt\\background.jpg",
-    "name": "Melt (Nagi ver.)",
-    "artist": "Supercell",
-    "tags": ":yanagi nagi vocaloid hatsune miku",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\melt",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "31c3229ff5fcf82bd6a10e5a9e8f73eb",
+          "hash": "0c38f8934899b4af083ea79cfdf85468",
           "charter": "Tix B.",
-          "path": "H:\\Songs\\LUCID\\33.txt",
-          "diffs": "33",
-          "notes": 1138,
-          "longnotes": 331,
-          "length": 113829
-        },
-        {
-          "hash": "c94d41477c6e1de46332180d950085ee",
-          "charter": "Tix B.",
-          "path": "H:\\Songs\\LUCID\\61.txt",
-          "diffs": "61",
-          "notes": 1052,
-          "longnotes": 774,
-          "length": 113829
+          "path": "H:\\Songs\\censored\\censored.txt",
+          "diffs": "55",
+          "notes": 1251,
+          "longnotes": 615,
+          "length": 113848
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\LUCID\\normal-hitnormal1002.ogg",
+    "AudioPath": "H:\\Songs\\censored\\CENSORED!!.ogg",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\LUCID\\background.jpg",
-    "name": "LUCID ~Another~",
-    "artist": "yak_won (EZ2ON)",
-    "tags": ":o2jam o2ma1796",
-    "localoffset": 1471.0,
-    "directory": "H:\\Songs\\LUCID",
+    "BGPath": "H:\\Songs\\censored\\BG.jpg",
+    "name": "CENSORED!!",
+    "artist": "t+pazolite",
+    "tags": ": konami Sound Voltex",
+    "localoffset": 619.0,
+    "directory": "H:\\Songs\\censored",
     "isvirtual": false
   },
   {
@@ -307,66 +106,25 @@
       [],
       [
         {
-          "hash": "1485e21112f92c66c3a6e0cbca8d6803",
-          "charter": "BMS",
-          "path": "H:\\Songs\\hitsugi to futago\\fytag.txt",
-          "diffs": "166",
-          "notes": 3754,
-          "longnotes": 0,
-          "length": 142209
+          "hash": "a043b8b9677da11d7da50250a3e11abb",
+          "charter": "Xin_U",
+          "path": "H:\\Songs\\crisp\\yak_won.txt",
+          "diffs": "35",
+          "notes": 1523,
+          "longnotes": 194,
+          "length": 116630
         }
       ],
       []
     ],
-    "AudioPath": "H:/UnityProject/RT/Assets/StreamingAssets\\Default\\virtual.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\hitsugi to futago\\titlefutago.png",
-    "name": "ひつぎとふたご",
-    "artist": "plastic feat.サキト  yuyuko",
-    "tags": ":BMS of fighters hitsugi to futago",
+    "AudioPath": "H:\\Songs\\crisp\\Crisp.mp3",
+    "BGAPath": "H:\\Songs\\crisp\\Crisp.mp4",
+    "BGPath": "H:\\Songs\\crisp\\fd.jpg",
+    "name": "Crisp",
+    "artist": "yak_won",
+    "tags": ":Mintice Kazukisinx EZ2AC",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\hitsugi to futago",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "f21e25623035b4d1be6d991773d503ab",
-          "charter": "Ayasakura",
-          "path": "H:\\Songs\\gekkou ranbu\\ranbu.txt",
-          "diffs": "47",
-          "notes": 1546,
-          "longnotes": 324,
-          "length": 110968
-        },
-        {
-          "hash": "64b954b70e4a836cf736ab6c7cd325a2",
-          "charter": "Ayasakura",
-          "path": "H:\\Songs\\gekkou ranbu\\ranbu2.txt",
-          "diffs": "71",
-          "notes": 1534,
-          "longnotes": 590,
-          "length": 110968
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\gekkou ranbu\\PxLight - Gekkou Ranbu.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\gekkou ranbu\\BG.jpg",
-    "name": "月光乱舞",
-    "artist": "P*Light",
-    "tags": ":Sound Voltex Gekkou Ranbu",
-    "localoffset": 538.0,
-    "directory": "H:\\Songs\\gekkou ranbu",
+    "directory": "H:\\Songs\\crisp",
     "isvirtual": false
   },
   {
@@ -380,121 +138,57 @@
       [],
       [
         {
-          "hash": "73252747651e3839fae95a2868485d53",
-          "charter": "ELUisol",
-          "path": "H:\\Songs\\flyaway\\flyaway.txt",
-          "diffs": "54",
-          "notes": 2567,
-          "longnotes": 1460,
-          "length": 218421
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\flyaway\\Fly Away!.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\flyaway\\Fly Away!.jpg",
-    "name": "Fly Away!",
-    "artist": "P*Light feat. Nanahira",
-    "tags": ":Colory Starry",
-    "localoffset": 2667.0,
-    "directory": "H:\\Songs\\flyaway",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "bfcc0be368257a56b7ef032807e8d6e5",
-          "charter": "Genesis",
-          "path": "H:\\Songs\\futuregazer\\futga.txt",
-          "diffs": "76",
-          "notes": 2102,
-          "longnotes": 2080,
-          "length": 216519
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\futuregazer\\1.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\futuregazer\\background.jpg",
-    "name": "future gazer (speed up)",
-    "artist": "fripSide",
-    "tags": ":to aru kagaku no railgun misaka mikoto",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\futuregazer",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "c62ad50fa1cbbe22b36ac267b34af00a",
-          "charter": "Kanasando",
-          "path": "H:\\Songs\\niji o ametara\\nj.txt",
-          "diffs": "72",
-          "notes": 2021,
-          "longnotes": 2426,
-          "length": 256625
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\niji o ametara\\audio.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\niji o ametara\\bg.jpg",
-    "name": "虹を編めたら",
-    "artist": "fhana",
-    "tags": ":haruchika op niji o ametara",
-    "localoffset": 3730.0,
-    "directory": "H:\\Songs\\niji o ametara",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "f4f51d7171e7ece79bb9856ae0afb003",
+          "hash": "2c9b1c7ec2e50c93f0dd524cf3c02d00",
           "charter": "inava",
-          "path": "H:\\Songs\\oniyuri\\oniyuri.txt",
-          "diffs": "63",
-          "notes": 1642,
-          "longnotes": 585,
-          "length": 119501
+          "path": "H:\\Songs\\fading star\\1.txt",
+          "diffs": "32",
+          "notes": 1412,
+          "longnotes": 320,
+          "length": 120000
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\oniyuri\\audio.mp3",
+    "AudioPath": "H:\\Songs\\fading star\\preview.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\oniyuri\\bg.jpg",
-    "name": "オニユリ",
-    "artist": "ぺのれり",
-    "tags": ":Sound voltex konami",
+    "BGPath": "H:\\Songs\\fading star\\fs.png",
+    "name": "Fading Star",
+    "artist": "ginkiha",
+    "tags": ":bms of fighters bof",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\oniyuri",
+    "directory": "H:\\Songs\\fading star",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "cdc2124c69832cdeae223a1318832256",
+          "charter": "Luyuja",
+          "path": "H:\\Songs\\Akasagarbha\\ins.txt",
+          "diffs": "48",
+          "notes": 1727,
+          "longnotes": 12,
+          "length": 112187
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Akasagarbha\\akasagarbha 7K Insane NK.mp3",
+    "BGAPath": "H:\\Songs\\Akasagarbha\\Untitled.mp4",
+    "BGPath": "H:\\Songs\\Akasagarbha\\title.jpg",
+    "name": "Akasagarbha",
+    "artist": "wa.vs ETIA.",
+    "tags": ":BMS",
+    "localoffset": 100.0,
+    "directory": "H:\\Songs\\Akasagarbha",
     "isvirtual": false
   },
   {
@@ -540,25 +234,121 @@
       [],
       [
         {
-          "hash": "37f2766ee7955bfb88e5668f762ee82c",
-          "charter": " ",
-          "path": "H:\\Songs\\conflict\\conflict.txt",
+          "hash": "1c3fb4e5af1d26cfb8927de9794106c4",
+          "charter": "Rocher&WhiteAndBlack",
+          "path": "H:\\Songs\\ELPIS\\elpis.txt",
           "diffs": "67",
-          "notes": 2112,
-          "longnotes": 597,
-          "length": 147375
+          "notes": 1005,
+          "longnotes": 1165,
+          "length": 127371
         }
       ],
       []
     ],
-    "AudioPath": "H:/UnityProject/RT/Assets/StreamingAssets\\Default\\virtual.mp3",
-    "BGAPath": "H:\\Songs\\conflict\\ncvd.mp4",
-    "BGPath": "H:\\Songs\\conflict\\image.jpg",
-    "name": "conflict",
-    "artist": "siromaru + cranky",
-    "tags": ":BMS of fighters",
+    "AudioPath": "H:\\Songs\\ELPIS\\el.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\ELPIS\\31095898_p0.jpg",
+    "name": "ΕΛΠΙΣ",
+    "artist": "dj TAKA",
+    "tags": ":Beatmania IIDX ELPIS",
+    "localoffset": 770.0,
+    "directory": "H:\\Songs\\ELPIS",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "47a6b8a08534db08a0be5f93a218667e",
+          "charter": "inava",
+          "path": "H:\\Songs\\Final Letter\\final.txt",
+          "diffs": "47",
+          "notes": 2217,
+          "longnotes": 286,
+          "length": 119979
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Final Letter\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Final Letter\\afdlafd.jpg",
+    "name": "ファイナルレター",
+    "artist": "かねこちはる",
+    "tags": ":Sound Voltex Final Letter kaneko chiharu",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\conflict",
+    "directory": "H:\\Songs\\Final Letter",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "5a1c14c644447ca15df7f476da4fcf26",
+          "charter": "inava",
+          "path": "H:\\Songs\\croix\\croix.txt",
+          "diffs": "72",
+          "notes": 1887,
+          "longnotes": 573,
+          "length": 111539
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\croix\\croix.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\croix\\croix.jpg",
+    "name": "croiX",
+    "artist": "TeamGrimoire+Amaneko",
+    "tags": ": konami Sound Voltex",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\croix",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "8bab0947ec4f5a655ad898b20b55be94",
+          "charter": "All.o2SE",
+          "path": "H:\\Songs\\End Of Fight\\38.osu",
+          "diffs": "38",
+          "notes": 1749,
+          "longnotes": 290,
+          "length": 169550
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\End Of Fight\\preview.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\End Of Fight\\background.jpg",
+    "name": "End Of Fight",
+    "artist": "All.o2SE",
+    "tags": ":",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\End Of Fight",
     "isvirtual": true
   },
   {
@@ -572,25 +362,313 @@
       [],
       [
         {
-          "hash": "28d20620f517647cb88e58ca8e6f8814",
-          "charter": "misSky",
-          "path": "H:\\Songs\\PLight - FUNKY SUMMER BEACH\\55.txt",
-          "diffs": "55",
-          "notes": 1155,
-          "longnotes": 771,
-          "length": 102857
+          "hash": "351cf2a030afde4d0ec9064984634fa3",
+          "charter": "WhiteAndblack",
+          "path": "H:\\Songs\\chikyuusaigonokokuhaku\\asdfd.txt",
+          "diffs": "70",
+          "notes": 1769,
+          "longnotes": 1305,
+          "length": 201175
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\PLight - FUNKY SUMMER BEACH\\214.ogg",
+    "AudioPath": "H:\\Songs\\chikyuusaigonokokuhaku\\normal-hitnormal1002.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\PLight - FUNKY SUMMER BEACH\\nohomo.jpg",
-    "name": "FUNKY SUMMER BEACH",
-    "artist": "P*Light",
-    "tags": ":o2jam o2ma314",
-    "localoffset": 1450.0,
-    "directory": "H:\\Songs\\PLight - FUNKY SUMMER BEACH",
+    "BGPath": "H:\\Songs\\chikyuusaigonokokuhaku\\507f3e20da742f1f36fb2cfbb9b5160b.jpg",
+    "name": "地球最後の告白を",
+    "artist": "ゆいこんぬ",
+    "tags": ":Nico Nico Douga Utaite chikyuu saigo no kokuhaku yuikonnu",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\chikyuusaigonokokuhaku",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "675cb3d48149b26adfec449078dab995",
+          "charter": "Agkaemon",
+          "path": "H:\\Songs\\DJ SHARPNEL - BLUE ARMY\\DJ SHARPNEL - BLUE ARMY (Agkaemon) [4k KBSM].osu",
+          "diffs": "4k KBSM",
+          "notes": 3167,
+          "longnotes": 0,
+          "length": 382642
+        }
+      ],
+      [],
+      [],
+      [],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\DJ SHARPNEL - BLUE ARMY\\BLUE ARMY.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\DJ SHARPNEL - BLUE ARMY\\Blue Army-BG.png",
+    "name": "BLUE ARMY",
+    "artist": "DJ SHARPNEL",
+    "tags": ":",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\DJ SHARPNEL - BLUE ARMY",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "c501ef9a8a62a6bc7b33c345b9fa4825",
+          "charter": "Genesis",
+          "path": "H:\\Songs\\eospo\\eos.txt",
+          "diffs": "73",
+          "notes": 1971,
+          "longnotes": 942,
+          "length": 146742
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\eospo\\preview.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\eospo\\BG.png",
+    "name": "EOS",
+    "artist": "ginkiha",
+    "tags": ":bms of fighters bof",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\eospo",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "b4958c1ce98e3cd5bb8ccf0ef77e4481",
+          "charter": "LCH",
+          "path": "H:\\Songs\\ama no jaku\\324.txt",
+          "diffs": "84",
+          "notes": 1818,
+          "longnotes": 1403,
+          "length": 182336
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\ama no jaku\\normal-hitnormal1002.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\ama no jaku\\ama no jaku.jpg",
+    "name": "天ノ弱",
+    "artist": "164P",
+    "tags": ":vocaloid ama no jaku",
+    "localoffset": 538.0,
+    "directory": "H:\\Songs\\ama no jaku",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "9329f18e015370b499671783cc603f61",
+          "charter": "Bephilops & Sequencer",
+          "path": "H:\\Songs\\go to mcdonald\\gotomcdonald.txt",
+          "diffs": "999",
+          "notes": 919,
+          "longnotes": 333,
+          "length": 139883
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\go to mcdonald\\mc.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\go to mcdonald\\background.jpg",
+    "name": "Go to McDonald!!",
+    "artist": "McGiygas",
+    "tags": ":ran ran ru mother earthbound",
+    "localoffset": 100.0,
+    "directory": "H:\\Songs\\go to mcdonald",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "2b4751627f1062da46703be3879eee39",
+          "charter": " ",
+          "path": "H:\\Songs\\fragment of tears\\21321.txt",
+          "diffs": "76",
+          "notes": 1435,
+          "longnotes": 1023,
+          "length": 124508
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\fragment of tears\\preview.mp3",
+    "BGAPath": "H:\\Songs\\fragment of tears\\video.mp4",
+    "BGPath": "H:\\Songs\\fragment of tears\\bg.jpg",
+    "name": "fragment of tears",
+    "artist": "SYNC.ART'S",
+    "tags": ":BOF2011 Nakamura Meiko bms",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\fragment of tears",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "861d9a57348227a938385702d39e778d",
+          "charter": "17VA",
+          "path": "H:\\Songs\\ginkiha - Starlight Express\\inf.txt",
+          "diffs": "45",
+          "notes": 1387,
+          "longnotes": 535,
+          "length": 96227
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\ginkiha - Starlight Express\\Starlight Express.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\ginkiha - Starlight Express\\12.jpg",
+    "name": "Starlight Express",
+    "artist": "ginkiha",
+    "tags": ":sdvx hojuu nue",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\ginkiha - Starlight Express",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "2f7611912c68fcc47ae24079746f9dde",
+          "charter": "농부와붕붕카",
+          "path": "H:\\Songs\\Angelus\\angel.txt",
+          "diffs": "70",
+          "notes": 1943,
+          "longnotes": 1993,
+          "length": 252849
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Angelus\\normal-hitnormal1003.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Angelus\\background.jpg",
+    "name": "Angelus",
+    "artist": "島谷ひとみ",
+    "tags": ":o2jam o2ma492",
+    "localoffset": 1020.0,
+    "directory": "H:\\Songs\\Angelus",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "8390bebb4f091a5d3cc69fa9c5514834",
+          "charter": " ",
+          "path": "H:\\Songs\\haele\\haele.txt",
+          "diffs": "36",
+          "notes": 1974,
+          "longnotes": 9,
+          "length": 135449
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\haele\\preview.mp3",
+    "BGAPath": "H:\\Songs\\haele\\HAELEQUIN_BGA.mp4",
+    "BGPath": "H:\\Songs\\haele\\title_haele.png",
+    "name": "HAELEQUIN",
+    "artist": "orangentle",
+    "tags": ":bms of fighers",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\haele",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "0ed9cb922c4f7c53909d2eaae9563e8d",
+          "charter": "Destiny19",
+          "path": "H:\\Songs\\Akatsuki Zukuyo\\zukuyo.txt",
+          "diffs": "70",
+          "notes": 2135,
+          "longnotes": 2022,
+          "length": 275753
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Akatsuki Zukuyo\\akatsuki.mp3",
+    "BGAPath": "H:\\Songs\\Akatsuki Zukuyo\\暁月夜アカツキヅクヨ.mp4",
+    "BGPath": "H:\\Songs\\Akatsuki Zukuyo\\47187043_p0.jpg",
+    "name": "暁月夜-アカツキヅクヨ- ",
+    "artist": "Honey Works",
+    "tags": ":naruto sana Akatsuki Zukuyo ",
+    "localoffset": 2394.0,
+    "directory": "H:\\Songs\\Akatsuki Zukuyo",
     "isvirtual": false
   },
   {
@@ -654,189 +732,66 @@
       [],
       [
         {
-          "hash": "0a5f74d4af6516a2416251f28bb9eb6f",
-          "charter": "BIG",
-          "path": "H:\\Songs\\PLight (Feat mow2) - OVERDRIVERS\\66.txt",
-          "diffs": "66",
-          "notes": 1121,
-          "longnotes": 1100,
-          "length": 112542
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\PLight (Feat mow2) - OVERDRIVERS\\1.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\PLight (Feat mow2) - OVERDRIVERS\\background.jpg",
-    "name": "OVERDRIVERS",
-    "artist": "P*Light (Feat. mow*2)",
-    "tags": ":o2jam o2ma437",
-    "localoffset": 1371.0,
-    "directory": "H:\\Songs\\PLight (Feat mow2) - OVERDRIVERS",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "19a985e69ec792390d6b9c3f859e8a39",
-          "charter": "Destiny19",
-          "path": "H:\\Songs\\Out Of The Blue\\ob.txt",
-          "diffs": "74",
-          "notes": 1359,
-          "longnotes": 1313,
-          "length": 142353
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Out Of The Blue\\normal-hitnormal1002.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Out Of The Blue\\background.jpg",
-    "name": "Out Of The Blue",
-    "artist": "Yak_Won",
-    "tags": ":o2jam o2ma1177",
-    "localoffset": 1026.0,
-    "directory": "H:\\Songs\\Out Of The Blue",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "34a05d24fc57d8c2c8c456a1e535cd8e",
-          "charter": "SUWAKO",
-          "path": "H:\\Songs\\koi yomi zakura\\19.txt",
-          "diffs": "19",
-          "notes": 998,
-          "longnotes": 65,
-          "length": 132993
-        },
-        {
-          "hash": "ccd8e34b7dbde77bb55c024b2b924291",
-          "charter": "SUWAKO",
-          "path": "H:\\Songs\\koi yomi zakura\\36.txt",
-          "diffs": "36",
-          "notes": 1835,
-          "longnotes": 58,
-          "length": 132993
-        },
-        {
-          "hash": "684a0205d2bb48f7739b9b126756464a",
-          "charter": "SUWAKO",
-          "path": "H:\\Songs\\koi yomi zakura\\72.txt",
-          "diffs": "72",
-          "notes": 1525,
-          "longnotes": 904,
-          "length": 132993
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\koi yomi zakura\\loos - Omoi Yoshino.mp3",
-    "BGAPath": "H:\\Songs\\koi yomi zakura\\loos - Omoi Yoshino.mp4",
-    "BGPath": "H:\\Songs\\koi yomi zakura\\hanahubuki.jpg",
-    "name": "恋詠桜",
-    "artist": "Loos",
-    "tags": ":オモイヨシノ Koi Yomi Zakura",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\koi yomi zakura",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "24b643d8293001bc4ecc7cd9ca1a64fa",
-          "charter": "Zei-",
-          "path": "H:\\Songs\\Run Lads Run\\asdf.txt",
-          "diffs": "38",
-          "notes": 2117,
-          "longnotes": 17,
-          "length": 128202
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Run Lads Run\\KillerBlood - Run Lads Run.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Run Lads Run\\Run_Lads_Run.jpg",
-    "name": "Run Lads Run",
-    "artist": "KillerBlood",
-    "tags": ":Deemo",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Run Lads Run",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "f27ab97d5e28da027e8598a121fe2825",
-          "charter": "Kawawa",
-          "path": "H:\\Songs\\ongaku resolve\\1.txt",
-          "diffs": "19",
-          "notes": 971,
-          "longnotes": 338,
-          "length": 119636
-        },
-        {
-          "hash": "7262a815751886154f684568d17b9262",
-          "charter": "Kawawa",
-          "path": "H:\\Songs\\ongaku resolve\\2.txt",
-          "diffs": "34",
-          "notes": 1536,
-          "longnotes": 325,
-          "length": 119636
-        },
-        {
-          "hash": "4be8c12b327b515476922670b709a71a",
-          "charter": "Kawawa",
-          "path": "H:\\Songs\\ongaku resolve\\3.txt",
+          "hash": "73252747651e3839fae95a2868485d53",
+          "charter": "ELUisol",
+          "path": "H:\\Songs\\flyaway\\flyaway.txt",
           "diffs": "54",
-          "notes": 1687,
-          "longnotes": 678,
-          "length": 119636
+          "notes": 2567,
+          "longnotes": 1460,
+          "length": 218421
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\ongaku resolve\\audio.mp3",
+    "AudioPath": "H:\\Songs\\flyaway\\Fly Away!.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\ongaku resolve\\Background.jpg",
-    "name": "音楽 -resolve-",
-    "artist": "Yu_Asahina",
-    "tags": ":wac pop'n music konami sound voltex Ongaku -resolve-",
+    "BGPath": "H:\\Songs\\flyaway\\Fly Away!.jpg",
+    "name": "Fly Away!",
+    "artist": "P*Light feat. Nanahira",
+    "tags": ":Colory Starry",
+    "localoffset": 2667.0,
+    "directory": "H:\\Songs\\flyaway",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "0498603bb2073bf3c7c5b9e8eb0c8572",
+          "charter": "Genesis",
+          "path": "H:\\Songs\\Alteration\\33.txt",
+          "diffs": "33",
+          "notes": 1482,
+          "longnotes": 319,
+          "length": 161744
+        },
+        {
+          "hash": "55eee8921953dedba483b9b30ed38818",
+          "charter": "Genesis",
+          "path": "H:\\Songs\\Alteration\\73.txt",
+          "diffs": "73",
+          "notes": 2012,
+          "longnotes": 1216,
+          "length": 161744
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Alteration\\song.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Alteration\\BG.jpg",
+    "name": "Alteration",
+    "artist": "ZAQ",
+    "tags": ":sasami san ganbaranai",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\ongaku resolve",
+    "directory": "H:\\Songs\\Alteration",
     "isvirtual": false
   },
   {
@@ -850,25 +805,25 @@
       [],
       [
         {
-          "hash": "39102ae89be9bdd44164f092f5df617b",
-          "charter": "WhiteAndBlack",
-          "path": "H:\\Songs\\Prayer\\S.I.D-Sound - Prayer.txt",
-          "diffs": "59",
-          "notes": 2125,
-          "longnotes": 1507,
-          "length": 242321
+          "hash": "48ebf6203a66c70df5b954c44932e472",
+          "charter": "inava",
+          "path": "H:\\Songs\\idola\\idola.txt",
+          "diffs": "55",
+          "notes": 2473,
+          "longnotes": 32,
+          "length": 124210
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\Prayer\\07 - Prayer.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Prayer\\111.jpg",
-    "name": "Prayer",
-    "artist": "S.I.D-Sound",
-    "tags": ":Sword Girls",
-    "localoffset": 424.0,
-    "directory": "H:\\Songs\\Prayer",
+    "AudioPath": "H:\\Songs\\idola\\audio.mp3",
+    "BGAPath": "H:\\Songs\\idola\\Idola iconoclasm feat.GUMI.mp4",
+    "BGPath": "H:\\Songs\\idola\\BG 1.jpg",
+    "name": "Idola",
+    "artist": "iconoclasm feat. GUMI",
+    "tags": ":beatmania iidx",
+    "localoffset": 22.0,
+    "directory": "H:\\Songs\\idola",
     "isvirtual": false
   },
   {
@@ -882,25 +837,25 @@
       [],
       [
         {
-          "hash": "01db1d98e9af8dd75abd409b4fd5585c",
-          "charter": "oni",
-          "path": "H:\\Songs\\kirby\\kirby.txt",
-          "diffs": "145",
-          "notes": 5752,
-          "longnotes": 0,
-          "length": 196988
+          "hash": "37f2766ee7955bfb88e5668f762ee82c",
+          "charter": " ",
+          "path": "H:\\Songs\\conflict\\conflict.txt",
+          "diffs": "67",
+          "notes": 2112,
+          "longnotes": 597,
+          "length": 147375
         }
       ],
       []
     ],
     "AudioPath": "H:/UnityProject/RT/Assets/StreamingAssets\\Default\\virtual.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\kirby\\artworks-daNq60GRpDixiWx0-1PQx9A-t500x500.jpg",
-    "name": "ピアノ協奏曲第１番蠍火（なんでも詰め込む神域譜面のための）",
-    "artist": "fether",
+    "BGAPath": "H:\\Songs\\conflict\\ncvd.mp4",
+    "BGPath": "H:\\Songs\\conflict\\image.jpg",
+    "name": "conflict",
+    "artist": "siromaru + cranky",
     "tags": ":BMS of fighters",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\kirby",
+    "directory": "H:\\Songs\\conflict",
     "isvirtual": true
   },
   {
@@ -914,89 +869,403 @@
       [],
       [
         {
-          "hash": "c9ac2b0ead2ba24dd9335f39fb14537f",
-          "charter": "WhiteAndBlack&lms1065",
-          "path": "H:\\Songs\\otsukimi recital\\otsukimi.txt",
-          "diffs": "91",
-          "notes": 2259,
-          "longnotes": 2002,
-          "length": 216171
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\otsukimi recital\\mp3.mp3",
-    "BGAPath": "H:\\Songs\\otsukimi recital\\video.mp4",
-    "BGPath": "H:\\Songs\\otsukimi recital\\bg.png",
-    "name": "オツキミリサイタル",
-    "artist": "ゆいこんぬ",
-    "tags": ":kagerou project otsukimi recital yuikonnu",
-    "localoffset": 2000.0,
-    "directory": "H:\\Songs\\otsukimi recital",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
+          "hash": "9868513e711ea84dfc1c71536580afa3",
+          "charter": "o2jam",
+          "path": "H:\\Songs\\Fusion Invitation\\13.txt",
+          "diffs": "13",
+          "notes": 421,
+          "longnotes": 160,
+          "length": 150857
+        },
         {
-          "hash": "fd4d2b54ddc4151bc8e658e708b3ea3f",
-          "charter": "LCH",
-          "path": "H:\\Songs\\rosen vampir\\vampi.txt",
-          "diffs": "56",
-          "notes": 1764,
-          "longnotes": 637,
-          "length": 119593
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\rosen vampir\\Gothpheus - Rosen Vampir.mp3",
-    "BGAPath": "H:\\Songs\\rosen vampir\\video.mp4",
-    "BGPath": "H:\\Songs\\rosen vampir\\bloody-rose-white-red.jpg",
-    "name": "Rosen Vampir",
-    "artist": "Gothpheus",
-    "tags": ":EZ2AC",
-    "localoffset": 1350.0,
-    "directory": "H:\\Songs\\rosen vampir",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
+          "hash": "4b8d216750c18b55c35cd96a081534c7",
+          "charter": "o2jam",
+          "path": "H:\\Songs\\Fusion Invitation\\27.txt",
+          "diffs": "27",
+          "notes": 1019,
+          "longnotes": 181,
+          "length": 150857
+        },
         {
-          "hash": "ae98add6b17e503f5ca03e1cb8600b51",
-          "charter": "17VA",
-          "path": "H:\\Songs\\ray tuning\\ray.txt",
-          "diffs": "65",
-          "notes": 1965,
-          "longnotes": 1036,
-          "length": 144071
+          "hash": "8c3a66237f56f9dc48c8113dd0df06b2",
+          "charter": "o2jam",
+          "path": "H:\\Songs\\Fusion Invitation\\33.txt",
+          "diffs": "33",
+          "notes": 1311,
+          "longnotes": 256,
+          "length": 150857
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\ray tuning\\audio.mp3",
-    "BGAPath": "H:\\Songs\\ray tuning\\video.mp4",
-    "BGPath": "H:\\Songs\\ray tuning\\bg.png",
-    "name": "Ray Tuning",
-    "artist": "NayutalieN",
-    "tags": ":maimai MURASAKi PLUS",
+    "AudioPath": "H:\\Songs\\Fusion Invitation\\preview.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Fusion Invitation\\background.jpg",
+    "name": "Invitation",
+    "artist": "Warak",
+    "tags": ":o2jam o2ma960",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\ray tuning",
+    "directory": "H:\\Songs\\Fusion Invitation",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "f4d8093e6b18f99dc913be9db255634f",
+          "charter": "Reba",
+          "path": "H:\\Songs\\Inscape\\heaven.txt",
+          "diffs": "67",
+          "notes": 2169,
+          "longnotes": 231,
+          "length": 111913
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Inscape\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Inscape\\Inscape BG.jpg",
+    "name": "Inscape",
+    "artist": "technoplanet",
+    "tags": ":SOUND VOLTEX IV HEAVENLY HAVEN",
+    "localoffset": 5.0,
+    "directory": "H:\\Songs\\Inscape",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "fe7a178090de9890e899843f40bdb3f1",
+          "charter": "lZenxl",
+          "path": "H:\\Songs\\Danshi\\Reol - +Danshi (lZenxl) [7K SHD].osu",
+          "diffs": "7K SHD",
+          "notes": 1318,
+          "longnotes": 963,
+          "length": 214391
+        },
+        {
+          "hash": "73b3c66514b77c91d393cad2299cbc6d",
+          "charter": "lZenxl",
+          "path": "H:\\Songs\\Danshi\\Reol - +Danshi (lZenxl) [7K OVERLOAD].osu",
+          "diffs": "7K OVERLOAD",
+          "notes": 2001,
+          "longnotes": 1433,
+          "length": 214391
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Danshi\\Reol.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Danshi\\BG.png",
+    "name": "+Danshi",
+    "artist": "Reol",
+    "tags": ":GigaP neonat Tagre Plus Boy Hinsvar Fort Papcio [I]MMoRTal[S] mike91lau Player_X Soldsaga_KunG Okoratu",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Danshi",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "f21e25623035b4d1be6d991773d503ab",
+          "charter": "Ayasakura",
+          "path": "H:\\Songs\\gekkou ranbu\\ranbu.txt",
+          "diffs": "47",
+          "notes": 1546,
+          "longnotes": 324,
+          "length": 110968
+        },
+        {
+          "hash": "64b954b70e4a836cf736ab6c7cd325a2",
+          "charter": "Ayasakura",
+          "path": "H:\\Songs\\gekkou ranbu\\ranbu2.txt",
+          "diffs": "71",
+          "notes": 1534,
+          "longnotes": 590,
+          "length": 110968
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\gekkou ranbu\\PxLight - Gekkou Ranbu.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\gekkou ranbu\\BG.jpg",
+    "name": "月光乱舞",
+    "artist": "P*Light",
+    "tags": ":Sound Voltex Gekkou Ranbu",
+    "localoffset": 538.0,
+    "directory": "H:\\Songs\\gekkou ranbu",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "bfcc0be368257a56b7ef032807e8d6e5",
+          "charter": "Genesis",
+          "path": "H:\\Songs\\futuregazer\\futga.txt",
+          "diffs": "76",
+          "notes": 2102,
+          "longnotes": 2080,
+          "length": 216519
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\futuregazer\\1.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\futuregazer\\background.jpg",
+    "name": "future gazer (speed up)",
+    "artist": "fripSide",
+    "tags": ":to aru kagaku no railgun misaka mikoto",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\futuregazer",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "f1761d0ec9ba99611b7d726b268ebac4",
+          "charter": "inava",
+          "path": "H:\\Songs\\Khionos TiARA\\khionos.txt",
+          "diffs": "55",
+          "notes": 2105,
+          "longnotes": 508,
+          "length": 118388
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Khionos TiARA\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Khionos TiARA\\img.jpg",
+    "name": "Khionos TiARA",
+    "artist": "Ellim Gnirps vs yomi",
+    "tags": ":sound voltex kanako chiharu",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Khionos TiARA",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "e200e3d93ec070228a20b7a7c8ae11cc",
+          "charter": "Destiny19",
+          "path": "H:\\Songs\\carrymeaway\\carry.txt",
+          "diffs": "72",
+          "notes": 3653,
+          "longnotes": 2036,
+          "length": 237171
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\carrymeaway\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\carrymeaway\\bg.jpg",
+    "name": "Carry Me Away (Extended Mix)",
+    "artist": "lapix",
+    "tags": ": ",
+    "localoffset": 279.0,
+    "directory": "H:\\Songs\\carrymeaway",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "26ea42842546b70129df892f820a8b78",
+          "charter": "jakads",
+          "path": "H:\\Songs\\LeaF - Aleph-0\\LeaF - Aleph-0 (jakads) [Cardinality].osu",
+          "diffs": "Cardinality",
+          "notes": 881,
+          "longnotes": 119,
+          "length": 131952
+        }
+      ],
+      [],
+      [],
+      [],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\LeaF - Aleph-0\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\LeaF - Aleph-0\\85929.jpg",
+    "name": "Aleph-0",
+    "artist": "LeaF",
+    "tags": ":BOFU2016 - Legendary Again - Aleph-naught Aleph zero Aleph-null",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\LeaF - Aleph-0",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "d81f72a35b20fcca211aa46b86549f40",
+          "charter": "SHK",
+          "path": "H:\\Songs\\identity part iii\\18.txt",
+          "diffs": "18",
+          "notes": 832,
+          "longnotes": 34,
+          "length": 124800
+        },
+        {
+          "hash": "14047f7032035a3069156ffb0e6a7535",
+          "charter": "SHK",
+          "path": "H:\\Songs\\identity part iii\\30.txt",
+          "diffs": "30",
+          "notes": 1155,
+          "longnotes": 184,
+          "length": 124800
+        },
+        {
+          "hash": "f10f48bf25bafe7c2049ee616f9fa7da",
+          "charter": "SHK",
+          "path": "H:\\Songs\\identity part iii\\139.txt",
+          "diffs": "139",
+          "notes": 1166,
+          "longnotes": 214,
+          "length": 124800
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\identity part iii\\preview.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\identity part iii\\1.png",
+    "name": "Identity part III",
+    "artist": "SHK",
+    "tags": ":o2jam",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\identity part iii",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "97e721e68aff5c635cfea9e054e66a07",
+          "charter": "Critical_Star",
+          "path": "H:\\Songs\\Crow Solace -\\m108 -  Crow Solace  (Critical_Star) [Normal].osu",
+          "diffs": "4K Normal",
+          "notes": 449,
+          "longnotes": 86,
+          "length": 140529
+        },
+        {
+          "hash": "8c8c2131f2c0d8db19325195b415862a",
+          "charter": "Critical_Star",
+          "path": "H:\\Songs\\Crow Solace -\\m108 -  Crow Solace  (Critical_Star) [Hyper].osu",
+          "diffs": "4K Hyper",
+          "notes": 846,
+          "longnotes": 148,
+          "length": 140529
+        },
+        {
+          "hash": "9870120c809f726f2f3fa486217d6130",
+          "charter": "Critical_Star",
+          "path": "H:\\Songs\\Crow Solace -\\m108 -  Crow Solace  (Critical_Star) [Another].osu",
+          "diffs": "Avalon's 4K Another",
+          "notes": 1235,
+          "longnotes": 140,
+          "length": 140529
+        },
+        {
+          "hash": "7c0b89834b1e2f21c86b8addecbf416d",
+          "charter": "Critical_Star",
+          "path": "H:\\Songs\\Crow Solace -\\m108 -  Crow Solace  (Critical_Star) [Extra].osu",
+          "diffs": "4K Extra",
+          "notes": 1269,
+          "longnotes": 195,
+          "length": 140529
+        },
+        {
+          "hash": "0ec84734595cc71e76c5244fba1f0be7",
+          "charter": "Critical_Star",
+          "path": "H:\\Songs\\Crow Solace -\\m108 -  Crow Solace  (Critical_Star) [Claidheamh].osu",
+          "diffs": "4K Claidheamh",
+          "notes": 1694,
+          "longnotes": 153,
+          "length": 140529
+        }
+      ],
+      [],
+      [],
+      [],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Crow Solace -\\Crow Solace.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Crow Solace -\\BG.jpg",
+    "name": "* Crow Solace *",
+    "artist": "m108",
+    "tags": ":THE BMS OF FIGHTERS 2012  EPIC TRANCECORE - Ein neuer Heiliger -   [_A_v_a_l_o_n_] Zan_- richardfeder Rizqy ExPew Kuo Kyoka Raymond",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Crow Solace -",
     "isvirtual": false
   },
   {
@@ -1030,38 +1299,6 @@
     "localoffset": 0.0,
     "directory": "H:\\Songs\\Lucky Vacuum - Daily Lunch Special",
     "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "819c067fb2b7fd4803dd58c307c96bd2",
-          "charter": "DE-CADE",
-          "path": "H:\\Songs\\marigold\\marigold.txt",
-          "diffs": "27",
-          "notes": 1603,
-          "longnotes": 84,
-          "length": 145409
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\marigold\\Marigold.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\marigold\\BG.jpg",
-    "name": "Marigold (feat. Guriri)",
-    "artist": "M2U",
-    "tags": ":Deemo",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\marigold",
-    "isvirtual": false
   },
   {
     "charts": [
@@ -1142,25 +1379,25 @@
       [],
       [
         {
-          "hash": "a043b8b9677da11d7da50250a3e11abb",
-          "charter": "Xin_U",
-          "path": "H:\\Songs\\crisp\\yak_won.txt",
-          "diffs": "35",
-          "notes": 1523,
-          "longnotes": 194,
-          "length": 116630
+          "hash": "ff45f2c2bb18322a8ca20b69736e3848",
+          "charter": "SoleilU",
+          "path": "H:\\Songs\\Heartbeat Overheat!!!!\\Camellia & Nanahira - Heartbeat Overheat!!!! (SoleilU) [7k - hard lvl 69].txt",
+          "diffs": "69",
+          "notes": 1621,
+          "longnotes": 2445,
+          "length": 247474
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\crisp\\Crisp.mp3",
-    "BGAPath": "H:\\Songs\\crisp\\Crisp.mp4",
-    "BGPath": "H:\\Songs\\crisp\\fd.jpg",
-    "name": "Crisp",
-    "artist": "yak_won",
-    "tags": ":Mintice Kazukisinx EZ2AC",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\crisp",
+    "AudioPath": "H:\\Songs\\Heartbeat Overheat!!!!\\normal-hitnormal1002.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Heartbeat Overheat!!!!\\background.jpg",
+    "name": "Heartbeat Overheat!!!!",
+    "artist": "かめりあ＆ななひら",
+    "tags": ":Camellia nanahira",
+    "localoffset": 1295.0,
+    "directory": "H:\\Songs\\Heartbeat Overheat!!!!",
     "isvirtual": false
   },
   {
@@ -1174,25 +1411,1390 @@
       [],
       [
         {
-          "hash": "cdc2124c69832cdeae223a1318832256",
-          "charter": "Luyuja",
-          "path": "H:\\Songs\\Akasagarbha\\ins.txt",
-          "diffs": "48",
-          "notes": 1727,
-          "longnotes": 12,
-          "length": 112187
+          "hash": "1485e21112f92c66c3a6e0cbca8d6803",
+          "charter": "BMS",
+          "path": "H:\\Songs\\hitsugi to futago\\fytag.txt",
+          "diffs": "166",
+          "notes": 3754,
+          "longnotes": 0,
+          "length": 142209
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\Akasagarbha\\akasagarbha 7K Insane NK.mp3",
-    "BGAPath": "H:\\Songs\\Akasagarbha\\Untitled.mp4",
-    "BGPath": "H:\\Songs\\Akasagarbha\\title.jpg",
-    "name": "Akasagarbha",
-    "artist": "wa.vs ETIA.",
+    "AudioPath": "H:/UnityProject/RT/Assets/StreamingAssets\\Default\\virtual.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\hitsugi to futago\\titlefutago.png",
+    "name": "ひつぎとふたご",
+    "artist": "plastic feat.サキト  yuyuko",
+    "tags": ":BMS of fighters hitsugi to futago",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\hitsugi to futago",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "819c067fb2b7fd4803dd58c307c96bd2",
+          "charter": "DE-CADE",
+          "path": "H:\\Songs\\marigold\\marigold.txt",
+          "diffs": "27",
+          "notes": 1603,
+          "longnotes": 84,
+          "length": 145409
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\marigold\\Marigold.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\marigold\\BG.jpg",
+    "name": "Marigold (feat. Guriri)",
+    "artist": "M2U",
+    "tags": ":Deemo",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\marigold",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "64f199da376a15aee44bc0c5bbae3eca",
+          "charter": "Alices",
+          "path": "H:\\Songs\\Listen!!\\listen.txt",
+          "diffs": "75",
+          "notes": 1652,
+          "longnotes": 1302,
+          "length": 151544
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Listen!!\\f.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Listen!!\\69146bfd1bbda12001241e0f67a45890.jpg",
+    "name": "Listen!!",
+    "artist": "K-ON",
+    "tags": ":houkago tea time",
+    "localoffset": 1633.0,
+    "directory": "H:\\Songs\\Listen!!",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "76c024b4d0a953b4d1cf558f6d05557f",
+          "charter": "WhiteAndBlack",
+          "path": "H:\\Songs\\Kakuzetsu Thanatos\\ro.txt",
+          "diffs": "89",
+          "notes": 2334,
+          "longnotes": 2279,
+          "length": 210979
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Kakuzetsu Thanatos\\autohit1000.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Kakuzetsu Thanatos\\background.jpg",
+    "name": "隔絶≡タナトス",
+    "artist": "Rohi",
+    "tags": ":vocaloid kagamine rin Kakuzetsu Thanatos",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Kakuzetsu Thanatos",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "255c859a712d3c5bde006e30c89b08b8",
+          "charter": "LCH",
+          "path": "H:\\Songs\\Daisy x Daisy - Towa no Kizuna feat Another Infinity\\53.txt",
+          "diffs": "53",
+          "notes": 2310,
+          "longnotes": 961,
+          "length": 193561
+        },
+        {
+          "hash": "0c72fd859224973a2bae89b1ac9cf5cc",
+          "charter": "LCH",
+          "path": "H:\\Songs\\Daisy x Daisy - Towa no Kizuna feat Another Infinity\\91.txt",
+          "diffs": "91",
+          "notes": 2337,
+          "longnotes": 2009,
+          "length": 193561
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Daisy x Daisy - Towa no Kizuna feat Another Infinity\\autohit1000.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Daisy x Daisy - Towa no Kizuna feat Another Infinity\\background.jpg",
+    "name": "永久のキズナ feat. Another Infinity",
+    "artist": "Daisy x Daisy",
+    "tags": ":o2jam",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Daisy x Daisy - Towa no Kizuna feat Another Infinity",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "2f7dce10bcd72ece5a21fdc20ad50b92",
+          "charter": "SHK.o2SE",
+          "path": "H:\\Songs\\Identity part ii\\3.txt",
+          "diffs": "3",
+          "notes": 424,
+          "longnotes": 0,
+          "length": 159608
+        },
+        {
+          "hash": "25a1e78dfd802acd4333aed01ed6a940",
+          "charter": "SHK.o2SE",
+          "path": "H:\\Songs\\Identity part ii\\16.txt",
+          "diffs": "16",
+          "notes": 1097,
+          "longnotes": 107,
+          "length": 159608
+        },
+        {
+          "hash": "cc790d7bfde8815e8b6932b732c6dd84",
+          "charter": "SHK.o2SE",
+          "path": "H:\\Songs\\Identity part ii\\34.txt",
+          "diffs": "34",
+          "notes": 1848,
+          "longnotes": 226,
+          "length": 172208
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Identity part ii\\preview.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Identity part ii\\background.jpg",
+    "name": "Identity part II",
+    "artist": "SHK.o2SE",
+    "tags": ":o2jam o2ma506",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Identity part ii",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "5e219882fce2ffc62a7d74d0150fb526",
+          "charter": "Eleventh",
+          "path": "H:\\Songs\\Lyrith -Meikyuu Lyrith-\\ly.txt",
+          "diffs": "62",
+          "notes": 1853,
+          "longnotes": 755,
+          "length": 145084
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Lyrith -Meikyuu Lyrith-\\preview.mp3",
+    "BGAPath": "H:\\Songs\\Lyrith -Meikyuu Lyrith-\\ly.mp4",
+    "BGPath": "H:\\Songs\\Lyrith -Meikyuu Lyrith-\\Lyrith.jpg",
+    "name": "Lyrith -迷宮リリス-",
+    "artist": "LeaF",
+    "tags": ":bms of fighters Lyrith -Meikyuu Lyrith-",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Lyrith -Meikyuu Lyrith-",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "31c3229ff5fcf82bd6a10e5a9e8f73eb",
+          "charter": "Tix B.",
+          "path": "H:\\Songs\\LUCID\\33.txt",
+          "diffs": "33",
+          "notes": 1138,
+          "longnotes": 331,
+          "length": 113829
+        },
+        {
+          "hash": "c94d41477c6e1de46332180d950085ee",
+          "charter": "Tix B.",
+          "path": "H:\\Songs\\LUCID\\61.txt",
+          "diffs": "61",
+          "notes": 1052,
+          "longnotes": 774,
+          "length": 113829
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\LUCID\\normal-hitnormal1002.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\LUCID\\background.jpg",
+    "name": "LUCID ~Another~",
+    "artist": "yak_won (EZ2ON)",
+    "tags": ":o2jam o2ma1796",
+    "localoffset": 1471.0,
+    "directory": "H:\\Songs\\LUCID",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "17dcbc14f84a676b219a74524ae2581f",
+          "charter": "o2jam",
+          "path": "H:\\Songs\\nine point eight\\70.txt",
+          "diffs": "72",
+          "notes": 1526,
+          "longnotes": 837,
+          "length": 146341
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\nine point eight\\normal-hitnormal1002.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\nine point eight\\background.jpg",
+    "name": "Nine Point Eight",
+    "artist": "Mili",
+    "tags": ":Deemo ei",
+    "localoffset": 771.0,
+    "directory": "H:\\Songs\\nine point eight",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "8ece3ffe0e1900afe6440e2e7612221e",
+          "charter": "Cheolu",
+          "path": "H:\\Songs\\Nihilism\\NIHILISM.txt",
+          "diffs": "65",
+          "notes": 1562,
+          "longnotes": 843,
+          "length": 134670
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Nihilism\\223. NIHILISM.mp3",
+    "BGAPath": "H:\\Songs\\Nihilism\\nihilism.mp4",
+    "BGPath": "H:\\Songs\\Nihilism\\Nihilism.jpg",
+    "name": "NIHILISM",
+    "artist": "nato",
+    "tags": ":Artcore EZ2AC",
+    "localoffset": 3320.0,
+    "directory": "H:\\Songs\\Nihilism",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "b15231b24c538d7070639546af687a3e",
+          "charter": "KenZ",
+          "path": "H:\\Songs\\Natsu no Owari, Koi no Hajimari\\yuikonnu - Natsu no Owari, Koi no Hajimari (KenZ) [Mini ZenoCORE!].osu",
+          "diffs": "Mini ZenoCORE!",
+          "notes": 1690,
+          "longnotes": 1025,
+          "length": 240952
+        }
+      ],
+      [],
+      [],
+      [],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Natsu no Owari, Koi no Hajimari\\NatsunoOwariKoinoHajimari.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Natsu no Owari, Koi no Hajimari\\BG.jpg",
+    "name": "夏の終わり、恋の始まり",
+    "artist": "ゆいこんぬ",
+    "tags": ":",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Natsu no Owari, Koi no Hajimari",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "a13eb66913709294529d5e4deeaba857",
+          "charter": "Jinjin & Blocko",
+          "path": "H:\\Songs\\noma - Brain Power\\noma - Brain Power (Jinjin & Blocko  yuko) [7k - hard lvl 75].osu",
+          "diffs": "75",
+          "notes": 1078,
+          "longnotes": 1458,
+          "length": 106635
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\noma - Brain Power\\bp.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\noma - Brain Power\\background.jpg",
+    "name": "Brain Power",
+    "artist": "noma",
+    "tags": ":o2jam o2ma587",
+    "localoffset": 585.0,
+    "directory": "H:\\Songs\\noma - Brain Power",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "0717d1d38deaa2d7150a96bc0205030b",
+          "charter": "Jinjin",
+          "path": "H:\\Songs\\Doppelganger\\1.txt",
+          "diffs": "7",
+          "notes": 236,
+          "longnotes": 33,
+          "length": 141790
+        },
+        {
+          "hash": "3afe3a3d3a949f73c8d4ba618a417df4",
+          "charter": "Jinjin",
+          "path": "H:\\Songs\\Doppelganger\\2.txt",
+          "diffs": "19",
+          "notes": 901,
+          "longnotes": 140,
+          "length": 144790
+        },
+        {
+          "hash": "7ee2b0faee40ca2eaefce47afa2db29b",
+          "charter": "Jinjin",
+          "path": "H:\\Songs\\Doppelganger\\3.txt",
+          "diffs": "30",
+          "notes": 2048,
+          "longnotes": 396,
+          "length": 144790
+        },
+        {
+          "hash": "6af58c03c72173d0a0941d84590a388c",
+          "charter": "Jinjin",
+          "path": "H:\\Songs\\Doppelganger\\4.txt",
+          "diffs": "52",
+          "notes": 2489,
+          "longnotes": 306,
+          "length": 144790
+        },
+        {
+          "hash": "8ad9485f8b80a9bf8f48a44ef20b363f",
+          "charter": "Jinjin",
+          "path": "H:\\Songs\\Doppelganger\\5.txt",
+          "diffs": "75",
+          "notes": 2765,
+          "longnotes": 761,
+          "length": 144790
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Doppelganger\\Doppelganger.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Doppelganger\\doppelganger bg new.jpg",
+    "name": "Doppelganger",
+    "artist": "LeaF",
+    "tags": ":bms of fighters 2013",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Doppelganger",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "01644c1bbeb52755cf68b9c7a10a13b5",
+          "charter": "xxbidiao",
+          "path": "H:\\Songs\\Imperishable Night 2006\\4k (2).txt",
+          "diffs": "4K PROGUY's Normal",
+          "notes": 602,
+          "longnotes": 15,
+          "length": 128757
+        },
+        {
+          "hash": "dee392b51568675487f9967907aaa8b4",
+          "charter": "xxbidiao",
+          "path": "H:\\Songs\\Imperishable Night 2006\\4k (1).txt",
+          "diffs": "4K Insane",
+          "notes": 1876,
+          "longnotes": 26,
+          "length": 128850
+        }
+      ],
+      [],
+      [],
+      [
+        {
+          "hash": "e96c64c12c6f04426493f2400b2fba18",
+          "charter": "for D+",
+          "path": "H:\\Songs\\Imperishable Night 2006\\lunatic.txt",
+          "diffs": "68",
+          "notes": 2671,
+          "longnotes": 26,
+          "length": 128850
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Imperishable Night 2006\\preview.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Imperishable Night 2006\\imperi_title.jpg",
+    "name": "Imperishable Night 2006",
+    "artist": "篠螺悠那 feat. 鯛の小骨",
     "tags": ":BMS",
-    "localoffset": 100.0,
-    "directory": "H:\\Songs\\Akasagarbha",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Imperishable Night 2006",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "e14eb8b3a777751b577dd136605f2d8a",
+          "charter": "Genesis",
+          "path": "H:\\Songs\\melt\\melt.txt",
+          "diffs": "73",
+          "notes": 1950,
+          "longnotes": 1187,
+          "length": 180133
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\melt\\song.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\melt\\background.jpg",
+    "name": "Melt (Nagi ver.)",
+    "artist": "Supercell",
+    "tags": ":yanagi nagi vocaloid hatsune miku",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\melt",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "f4f51d7171e7ece79bb9856ae0afb003",
+          "charter": "inava",
+          "path": "H:\\Songs\\oniyuri\\oniyuri.txt",
+          "diffs": "63",
+          "notes": 1642,
+          "longnotes": 585,
+          "length": 119501
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\oniyuri\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\oniyuri\\bg.jpg",
+    "name": "オニユリ",
+    "artist": "ぺのれり",
+    "tags": ":Sound voltex konami",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\oniyuri",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "2a48a2bf2e863ddd60e8ab0a210a5950",
+          "charter": "LCH",
+          "path": "H:\\Songs\\natsu no yakusoku\\natsu.txt",
+          "diffs": "59",
+          "notes": 1635,
+          "longnotes": 1573,
+          "length": 230671
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\natsu no yakusoku\\Dog Days 2ED - Natsu no Yakusoku.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\natsu no yakusoku\\background.jpg",
+    "name": "夏の約束",
+    "artist": "堀江 由衣",
+    "tags": ":dog days ed horie yui  Natsu no Yakusoku",
+    "localoffset": 50.0,
+    "directory": "H:\\Songs\\natsu no yakusoku",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "0a5f74d4af6516a2416251f28bb9eb6f",
+          "charter": "BIG",
+          "path": "H:\\Songs\\PLight (Feat mow2) - OVERDRIVERS\\66.txt",
+          "diffs": "66",
+          "notes": 1121,
+          "longnotes": 1100,
+          "length": 112542
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\PLight (Feat mow2) - OVERDRIVERS\\1.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\PLight (Feat mow2) - OVERDRIVERS\\background.jpg",
+    "name": "OVERDRIVERS",
+    "artist": "P*Light (Feat. mow*2)",
+    "tags": ":o2jam o2ma437",
+    "localoffset": 1371.0,
+    "directory": "H:\\Songs\\PLight (Feat mow2) - OVERDRIVERS",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "28d20620f517647cb88e58ca8e6f8814",
+          "charter": "misSky",
+          "path": "H:\\Songs\\PLight - FUNKY SUMMER BEACH\\55.txt",
+          "diffs": "55",
+          "notes": 1155,
+          "longnotes": 771,
+          "length": 102857
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\PLight - FUNKY SUMMER BEACH\\214.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\PLight - FUNKY SUMMER BEACH\\nohomo.jpg",
+    "name": "FUNKY SUMMER BEACH",
+    "artist": "P*Light",
+    "tags": ":o2jam o2ma314",
+    "localoffset": 1450.0,
+    "directory": "H:\\Songs\\PLight - FUNKY SUMMER BEACH",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "34a05d24fc57d8c2c8c456a1e535cd8e",
+          "charter": "SUWAKO",
+          "path": "H:\\Songs\\koi yomi zakura\\19.txt",
+          "diffs": "19",
+          "notes": 998,
+          "longnotes": 65,
+          "length": 132993
+        },
+        {
+          "hash": "ccd8e34b7dbde77bb55c024b2b924291",
+          "charter": "SUWAKO",
+          "path": "H:\\Songs\\koi yomi zakura\\36.txt",
+          "diffs": "36",
+          "notes": 1835,
+          "longnotes": 58,
+          "length": 132993
+        },
+        {
+          "hash": "684a0205d2bb48f7739b9b126756464a",
+          "charter": "SUWAKO",
+          "path": "H:\\Songs\\koi yomi zakura\\72.txt",
+          "diffs": "72",
+          "notes": 1525,
+          "longnotes": 904,
+          "length": 132993
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\koi yomi zakura\\loos - Omoi Yoshino.mp3",
+    "BGAPath": "H:\\Songs\\koi yomi zakura\\loos - Omoi Yoshino.mp4",
+    "BGPath": "H:\\Songs\\koi yomi zakura\\hanahubuki.jpg",
+    "name": "恋詠桜",
+    "artist": "Loos",
+    "tags": ":オモイヨシノ Koi Yomi Zakura",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\koi yomi zakura",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "19a985e69ec792390d6b9c3f859e8a39",
+          "charter": "Destiny19",
+          "path": "H:\\Songs\\Out Of The Blue\\ob.txt",
+          "diffs": "74",
+          "notes": 1359,
+          "longnotes": 1313,
+          "length": 142353
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Out Of The Blue\\normal-hitnormal1002.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Out Of The Blue\\background.jpg",
+    "name": "Out Of The Blue",
+    "artist": "Yak_Won",
+    "tags": ":o2jam o2ma1177",
+    "localoffset": 1026.0,
+    "directory": "H:\\Songs\\Out Of The Blue",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "9f9aaaf2337fadb9018165446ac13261",
+          "charter": "Entozer",
+          "path": "H:\\Songs\\Nou Shou Sakuretsu Girl\\in.txt",
+          "diffs": "61",
+          "notes": 2329,
+          "longnotes": 903,
+          "length": 189222
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Nou Shou Sakuretsu Girl\\Nou Shou Sakuretsu Girl_.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Nou Shou Sakuretsu Girl\\BG.jpg",
+    "name": "Nou Shou Sakuretsu Girl",
+    "artist": "rerulili",
+    "tags": ":",
+    "localoffset": 10.0,
+    "directory": "H:\\Songs\\Nou Shou Sakuretsu Girl",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "9302f467728e39b3f9b27da4dda526ba",
+          "charter": "Niima",
+          "path": "H:\\Songs\\Nishizawa Shiena - FUBUKI\\Nishizawa Shiena - FUBUKI (Niima) [Hard].osu",
+          "diffs": "Hard",
+          "notes": 1450,
+          "longnotes": 1892,
+          "length": 246555
+        }
+      ],
+      [],
+      [],
+      [],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Nishizawa Shiena - FUBUKI\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Nishizawa Shiena - FUBUKI\\Fubuki.(Kantai.Collection).full.1831865.jpg",
+    "name": "吹雪",
+    "artist": "西沢幸奏",
+    "tags": ":kantai collection Niima -kancolle- KanColle japanese anime pop",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Nishizawa Shiena - FUBUKI",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "c62ad50fa1cbbe22b36ac267b34af00a",
+          "charter": "Kanasando",
+          "path": "H:\\Songs\\niji o ametara\\nj.txt",
+          "diffs": "72",
+          "notes": 2021,
+          "longnotes": 2426,
+          "length": 256625
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\niji o ametara\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\niji o ametara\\bg.jpg",
+    "name": "虹を編めたら",
+    "artist": "fhana",
+    "tags": ":haruchika op niji o ametara",
+    "localoffset": 3730.0,
+    "directory": "H:\\Songs\\niji o ametara",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "aaf51a2304ab8b7d0bea58db98171b3c",
+          "charter": "Fresh Chicken",
+          "path": "H:\\Songs\\lotus\\Getty vs. DJ DiA - DropZ-Line- (Fresh Chicken) [BASIC].osu",
+          "diffs": "BASIC",
+          "notes": 397,
+          "longnotes": 23,
+          "length": 117978
+        },
+        {
+          "hash": "8e9f67a4a5113affa9a672a1d9f88982",
+          "charter": "Fresh Chicken",
+          "path": "H:\\Songs\\lotus\\Getty vs. DJ DiA - DropZ-Line- (Fresh Chicken) [NOVICE].osu",
+          "diffs": "NOVICE",
+          "notes": 651,
+          "longnotes": 43,
+          "length": 117978
+        },
+        {
+          "hash": "d5043bc46c69fa7707f59b00fa08fd8c",
+          "charter": "Fresh Chicken",
+          "path": "H:\\Songs\\lotus\\Getty vs. DJ DiA - DropZ-Line- (Fresh Chicken) [ADVANCED].osu",
+          "diffs": "ADVANCED",
+          "notes": 1063,
+          "longnotes": 30,
+          "length": 117978
+        },
+        {
+          "hash": "d941d610e57a7145dea94faff1232ae4",
+          "charter": "Fresh Chicken",
+          "path": "H:\\Songs\\lotus\\Getty vs. DJ DiA - DropZ-Line- (Fresh Chicken) [EXHAUST].osu",
+          "diffs": "EXHAUST",
+          "notes": 1303,
+          "longnotes": 74,
+          "length": 117978
+        },
+        {
+          "hash": "d7ebfbbfda98d23fb71c951a82f863a8",
+          "charter": "Fresh Chicken",
+          "path": "H:\\Songs\\lotus\\Getty vs. DJ DiA - DropZ-Line- (Fresh Chicken) [MAXIMUM].osu",
+          "diffs": "MAXIMUM",
+          "notes": 1486,
+          "longnotes": 175,
+          "length": 117978
+        }
+      ],
+      [],
+      [],
+      [],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\lotus\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\lotus\\yesitis.jpg",
+    "name": "DropZ-Line-",
+    "artist": "Getty vs. DJ DiA",
+    "tags": ":FLOOR Original SDVX4 KONAMI BEMANI PumpCore",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\lotus",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "01db1d98e9af8dd75abd409b4fd5585c",
+          "charter": "oni",
+          "path": "H:\\Songs\\kirby\\kirby.txt",
+          "diffs": "145",
+          "notes": 5752,
+          "longnotes": 0,
+          "length": 196988
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:/UnityProject/RT/Assets/StreamingAssets\\Default\\virtual.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\kirby\\artworks-daNq60GRpDixiWx0-1PQx9A-t500x500.jpg",
+    "name": "ピアノ協奏曲第１番蠍火（なんでも詰め込む神域譜面のための）",
+    "artist": "fether",
+    "tags": ":BMS of fighters",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\kirby",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "bf1c827887756f040cd6cad827b1f583",
+          "charter": "Destiny19",
+          "path": "H:\\Songs\\REANIMATE\\Warak - REANIMATE (Destiny19) [Lv.80 For O2Jam].osu",
+          "diffs": "80",
+          "notes": 1108,
+          "longnotes": 1460,
+          "length": 150711
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\REANIMATE\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\REANIMATE\\bg.png",
+    "name": "REANIMATE",
+    "artist": "Warak",
+    "tags": ":",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\REANIMATE",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "fd4d2b54ddc4151bc8e658e708b3ea3f",
+          "charter": "LCH",
+          "path": "H:\\Songs\\rosen vampir\\vampi.txt",
+          "diffs": "56",
+          "notes": 1764,
+          "longnotes": 637,
+          "length": 119593
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\rosen vampir\\Gothpheus - Rosen Vampir.mp3",
+    "BGAPath": "H:\\Songs\\rosen vampir\\video.mp4",
+    "BGPath": "H:\\Songs\\rosen vampir\\bloody-rose-white-red.jpg",
+    "name": "Rosen Vampir",
+    "artist": "Gothpheus",
+    "tags": ":EZ2AC",
+    "localoffset": 1350.0,
+    "directory": "H:\\Songs\\rosen vampir",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "24b643d8293001bc4ecc7cd9ca1a64fa",
+          "charter": "Zei-",
+          "path": "H:\\Songs\\Run Lads Run\\asdf.txt",
+          "diffs": "38",
+          "notes": 2117,
+          "longnotes": 17,
+          "length": 128202
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Run Lads Run\\KillerBlood - Run Lads Run.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Run Lads Run\\Run_Lads_Run.jpg",
+    "name": "Run Lads Run",
+    "artist": "KillerBlood",
+    "tags": ":Deemo",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Run Lads Run",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "39102ae89be9bdd44164f092f5df617b",
+          "charter": "WhiteAndBlack",
+          "path": "H:\\Songs\\Prayer\\S.I.D-Sound - Prayer.txt",
+          "diffs": "59",
+          "notes": 2125,
+          "longnotes": 1507,
+          "length": 242321
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Prayer\\07 - Prayer.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Prayer\\111.jpg",
+    "name": "Prayer",
+    "artist": "S.I.D-Sound",
+    "tags": ":Sword Girls",
+    "localoffset": 424.0,
+    "directory": "H:\\Songs\\Prayer",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "c9ac2b0ead2ba24dd9335f39fb14537f",
+          "charter": "WhiteAndBlack&lms1065",
+          "path": "H:\\Songs\\otsukimi recital\\otsukimi.txt",
+          "diffs": "91",
+          "notes": 2259,
+          "longnotes": 2002,
+          "length": 216171
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\otsukimi recital\\mp3.mp3",
+    "BGAPath": "H:\\Songs\\otsukimi recital\\video.mp4",
+    "BGPath": "H:\\Songs\\otsukimi recital\\bg.png",
+    "name": "オツキミリサイタル",
+    "artist": "ゆいこんぬ",
+    "tags": ":kagerou project otsukimi recital yuikonnu",
+    "localoffset": 2000.0,
+    "directory": "H:\\Songs\\otsukimi recital",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "0674e7cf5c33f4130686aaf7eb59ecf3",
+          "charter": "Fullerene-",
+          "path": "H:\\Songs\\Shiraishi - Odin\\Shiraishi - Odin (Fullerene-) [VIKINGFJORD].osu",
+          "diffs": "VIKINGFJORD",
+          "notes": 2201,
+          "longnotes": 0,
+          "length": 119185
+        }
+      ],
+      [],
+      [],
+      [],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Shiraishi - Odin\\Odin.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Shiraishi - Odin\\odin_background.png",
+    "name": "Odin",
+    "artist": "Shiraishi",
+    "tags": ":",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Shiraishi - Odin",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "ae98add6b17e503f5ca03e1cb8600b51",
+          "charter": "17VA",
+          "path": "H:\\Songs\\ray tuning\\ray.txt",
+          "diffs": "65",
+          "notes": 1965,
+          "longnotes": 1036,
+          "length": 144071
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\ray tuning\\audio.mp3",
+    "BGAPath": "H:\\Songs\\ray tuning\\video.mp4",
+    "BGPath": "H:\\Songs\\ray tuning\\bg.png",
+    "name": "Ray Tuning",
+    "artist": "NayutalieN",
+    "tags": ":maimai MURASAKi PLUS",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\ray tuning",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "bb35154b83b1ded3a527d126c648c052",
+          "charter": "Destiny19",
+          "path": "H:\\Songs\\Omoi - Teo\\teo.osu",
+          "diffs": "85",
+          "notes": 2267,
+          "longnotes": 3115,
+          "length": 204866
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Omoi - Teo\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Omoi - Teo\\BG.jpg",
+    "name": "Teo",
+    "artist": "Omoi",
+    "tags": ":o2jam ln",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Omoi - Teo",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "f27ab97d5e28da027e8598a121fe2825",
+          "charter": "Kawawa",
+          "path": "H:\\Songs\\ongaku resolve\\1.txt",
+          "diffs": "19",
+          "notes": 971,
+          "longnotes": 338,
+          "length": 119636
+        },
+        {
+          "hash": "7262a815751886154f684568d17b9262",
+          "charter": "Kawawa",
+          "path": "H:\\Songs\\ongaku resolve\\2.txt",
+          "diffs": "34",
+          "notes": 1536,
+          "longnotes": 325,
+          "length": 119636
+        },
+        {
+          "hash": "4be8c12b327b515476922670b709a71a",
+          "charter": "Kawawa",
+          "path": "H:\\Songs\\ongaku resolve\\3.txt",
+          "diffs": "54",
+          "notes": 1687,
+          "longnotes": 678,
+          "length": 119636
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\ongaku resolve\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\ongaku resolve\\Background.jpg",
+    "name": "音楽 -resolve-",
+    "artist": "Yu_Asahina",
+    "tags": ":wac pop'n music konami sound voltex Ongaku -resolve-",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\ongaku resolve",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "9b3a97395aa76948a10cb3adec734011",
+          "charter": "Destiny19",
+          "path": "H:\\Songs\\Shawn Wasabi - Marble Soda\\2.osu",
+          "diffs": "60",
+          "notes": 1367,
+          "longnotes": 1392,
+          "length": 161168
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Shawn Wasabi - Marble Soda\\audio.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Shawn Wasabi - Marble Soda\\marble.jpg",
+    "name": "Marble Soda",
+    "artist": "Shawn Wasabi",
+    "tags": ":",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Shawn Wasabi - Marble Soda",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "fbdcd80e7d5aa988bbc40796ecdb2b26",
+          "charter": "WhiteAndBlack",
+          "path": "H:\\Songs\\Say A Vengeance\\txt.txt",
+          "diffs": "58",
+          "notes": 1419,
+          "longnotes": 935,
+          "length": 128756
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Say A Vengeance\\preview.mp3",
+    "BGAPath": "H:\\Songs\\Say A Vengeance\\_bga.mp4",
+    "BGPath": "H:\\Songs\\Say A Vengeance\\_title.png",
+    "name": "Say A Vengeance",
+    "artist": "ETIA. feat.Jenga",
+    "tags": ":bms of fighters",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Say A Vengeance",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "80f5a0d40179b90083277ca364332383",
+          "charter": "Exit",
+          "path": "H:\\Songs\\Lachyryma ReQueem\\1.txt",
+          "diffs": "36",
+          "notes": 1502,
+          "longnotes": 226,
+          "length": 118476
+        },
+        {
+          "hash": "b4cee489977fbbc18b4d751a40b653b9",
+          "charter": "Exit",
+          "path": "H:\\Songs\\Lachyryma ReQueem\\2.txt",
+          "diffs": "72",
+          "notes": 1838,
+          "longnotes": 555,
+          "length": 118476
+        },
+        {
+          "hash": "61f9ca27b32647e342e0bef0d3fe97c5",
+          "charter": "Exit",
+          "path": "H:\\Songs\\Lachyryma ReQueem\\3.txt",
+          "diffs": "130",
+          "notes": 1747,
+          "longnotes": 1456,
+          "length": 118476
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Lachyryma ReQueem\\lachryma.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Lachyryma ReQueem\\EVCGfpwWkAMMmOX.png",
+    "name": "Lachryma《Re:Queen’M》",
+    "artist": "かねこちはる",
+    "tags": ":Sound Voltex Konami kaneko chiharu",
+    "localoffset": 439.0,
+    "directory": "H:\\Songs\\Lachyryma ReQueem",
     "isvirtual": false
   },
   {
@@ -1238,134 +2840,6 @@
       [],
       [
         {
-          "hash": "fbdcd80e7d5aa988bbc40796ecdb2b26",
-          "charter": "WhiteAndBlack",
-          "path": "H:\\Songs\\Say A Vengeance\\txt.txt",
-          "diffs": "58",
-          "notes": 1419,
-          "longnotes": 935,
-          "length": 128756
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Say A Vengeance\\preview.mp3",
-    "BGAPath": "H:\\Songs\\Say A Vengeance\\_bga.mp4",
-    "BGPath": "H:\\Songs\\Say A Vengeance\\_title.png",
-    "name": "Say A Vengeance",
-    "artist": "ETIA. feat.Jenga",
-    "tags": ":bms of fighters",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Say A Vengeance",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "2c9b1c7ec2e50c93f0dd524cf3c02d00",
-          "charter": "inava",
-          "path": "H:\\Songs\\fading star\\1.txt",
-          "diffs": "32",
-          "notes": 1412,
-          "longnotes": 320,
-          "length": 120000
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\fading star\\preview.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\fading star\\fs.png",
-    "name": "Fading Star",
-    "artist": "ginkiha",
-    "tags": ":bms of fighters bof",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\fading star",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "9b3a97395aa76948a10cb3adec734011",
-          "charter": "Destiny19",
-          "path": "H:\\Songs\\Shawn Wasabi - Marble Soda\\2.osu",
-          "diffs": "60",
-          "notes": 1367,
-          "longnotes": 1392,
-          "length": 161168
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Shawn Wasabi - Marble Soda\\audio.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Shawn Wasabi - Marble Soda\\marble.jpg",
-    "name": "Marble Soda",
-    "artist": "Shawn Wasabi",
-    "tags": ":",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Shawn Wasabi - Marble Soda",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "0c38f8934899b4af083ea79cfdf85468",
-          "charter": "Tix B.",
-          "path": "H:\\Songs\\censored\\censored.txt",
-          "diffs": "55",
-          "notes": 1251,
-          "longnotes": 615,
-          "length": 113848
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\censored\\CENSORED!!.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\censored\\BG.jpg",
-    "name": "CENSORED!!",
-    "artist": "t+pazolite",
-    "tags": ": konami Sound Voltex",
-    "localoffset": 619.0,
-    "directory": "H:\\Songs\\censored",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
           "hash": "ed7a7eeed05b465ac394ff594717585a",
           "charter": "Loco",
           "path": "H:\\Songs\\Totsugeki! Glass no Kneesocks Hime!\\insane.txt",
@@ -1385,38 +2859,6 @@
     "tags": ":beatmania iidx",
     "localoffset": 0.0,
     "directory": "H:\\Songs\\Totsugeki! Glass no Kneesocks Hime!",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "861d9a57348227a938385702d39e778d",
-          "charter": "17VA",
-          "path": "H:\\Songs\\ginkiha - Starlight Express\\inf.txt",
-          "diffs": "45",
-          "notes": 1387,
-          "longnotes": 535,
-          "length": 96227
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\ginkiha - Starlight Express\\Starlight Express.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\ginkiha - Starlight Express\\12.jpg",
-    "name": "Starlight Express",
-    "artist": "ginkiha",
-    "tags": ":sdvx hojuu nue",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\ginkiha - Starlight Express",
     "isvirtual": false
   },
   {
@@ -1512,6 +2954,216 @@
       [],
       [
         {
+          "hash": "cf72d1f826ec8d2bbea83120e8217070",
+          "charter": "inava",
+          "path": "H:\\Songs\\squartatrice\\sayaka.txt",
+          "diffs": "53",
+          "notes": 2233,
+          "longnotes": 368,
+          "length": 128333
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\squartatrice\\preview.mp3",
+    "BGAPath": "H:\\Songs\\squartatrice\\_bga.mp4",
+    "BGPath": "H:\\Songs\\squartatrice\\night.jpg",
+    "name": "squartatrice",
+    "artist": "美樹さやか vs. 美樹さやか (fw. 美樹さやか)",
+    "tags": ":mahou shoujo madoka magica bms of fighters",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\squartatrice",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "b57b7324c1db80693f0dfa92b6219454",
+          "charter": "LunaticAnt",
+          "path": "H:\\Songs\\STYX HELIX\\helix.txt",
+          "diffs": "73",
+          "notes": 1389,
+          "longnotes": 2018,
+          "length": 203641
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\STYX HELIX\\normal-hitnormal1002.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\STYX HELIX\\11edc51a737fd726f73e0a5f9e48aca8.jpg",
+    "name": "STYX HELIX",
+    "artist": "MYTH & ROID",
+    "tags": ":re zero kara hajimaru isekai seikatsu",
+    "localoffset": 1258.0,
+    "directory": "H:\\Songs\\STYX HELIX",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "ec16ef1aff5330af409087a93d264daf",
+          "charter": "LCH",
+          "path": "H:\\Songs\\Trigger Happy\\TriggerHappy.txt",
+          "diffs": "65",
+          "notes": 1207,
+          "longnotes": 737,
+          "length": 110270
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Trigger Happy\\TRIGGERHAPPY.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Trigger Happy\\BG.jpg",
+    "name": "Trigger*Happy",
+    "artist": "P*Light",
+    "tags": ":sound voltex konami",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Trigger Happy",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "0dd73e0538e0764a44fbba2476f6ed7b",
+          "charter": "Genesis",
+          "path": "H:\\Songs\\Synchrogazer\\64.txt",
+          "diffs": "64",
+          "notes": 2093,
+          "longnotes": 1054,
+          "length": 190959
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Synchrogazer\\1.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Synchrogazer\\background.jpg",
+    "name": "Synchrogazer",
+    "artist": "水樹奈々",
+    "tags": ":mizuki nana museum",
+    "localoffset": 988.0,
+    "directory": "H:\\Songs\\Synchrogazer",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "3c363cd3ca876c408e7f747ec0870866",
+          "charter": "xxbidiao",
+          "path": "H:\\Songs\\TJHangneil - Kamui\\TJ.Hangneil - Kamui (xxbidiao) [victorica' NM].osu",
+          "diffs": "victorica' NM",
+          "notes": 276,
+          "longnotes": 96,
+          "length": 116856
+        },
+        {
+          "hash": "f86554cc3927236274f43633580f70c4",
+          "charter": "xxbidiao",
+          "path": "H:\\Songs\\TJHangneil - Kamui\\TJ.Hangneil - Kamui (xxbidiao) [Hard].osu",
+          "diffs": "Hard",
+          "notes": 593,
+          "longnotes": 123,
+          "length": 116856
+        },
+        {
+          "hash": "c03c74d2f48d501a04f0b0a8898f44e5",
+          "charter": "xxbidiao",
+          "path": "H:\\Songs\\TJHangneil - Kamui\\TJ.Hangneil - Kamui (xxbidiao) [Insane].osu",
+          "diffs": "Insane",
+          "notes": 1172,
+          "longnotes": 179,
+          "length": 116856
+        }
+      ],
+      [],
+      [],
+      [],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\TJHangneil - Kamui\\Kamui.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\TJHangneil - Kamui\\BG.jpg",
+    "name": "Kamui",
+    "artist": "TJ.Hangneil",
+    "tags": ":sasakure.UK victorica_db",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\TJHangneil - Kamui",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "f8091bb5b017426e71f25dd0a12c78cf",
+          "charter": "Destiny19",
+          "path": "H:\\Songs\\tricklash\\d.txt",
+          "diffs": "84",
+          "notes": 1190,
+          "longnotes": 1309,
+          "length": 111173
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\tricklash\\df.ogg",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\tricklash\\BG.jpg",
+    "name": "Trickl4sh 220",
+    "artist": "t+pazolite",
+    "tags": ":sdvx sound voltex",
+    "localoffset": 979.0,
+    "directory": "H:\\Songs\\tricklash",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
           "hash": "f2abbe2d10251f3d917a11020000e40c",
           "charter": "SHK",
           "path": "H:\\Songs\\SHKo2SE - Death Moon\\5.txt",
@@ -1549,170 +3201,6 @@
     "tags": ":o2jam",
     "localoffset": 0.0,
     "directory": "H:\\Songs\\SHKo2SE - Death Moon",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "78d9684251a9bb7b6f94d2d8f5aa33d4",
-          "charter": "Kevin.o2SE",
-          "path": "H:\\Songs\\r3\\3.txt",
-          "diffs": "3",
-          "notes": 300,
-          "longnotes": 9,
-          "length": 149163
-        },
-        {
-          "hash": "581f77fdf484620000e94c8759b8736c",
-          "charter": "Kevin.o2SE",
-          "path": "H:\\Songs\\r3\\14.txt",
-          "diffs": "14",
-          "notes": 1001,
-          "longnotes": 50,
-          "length": 149131
-        },
-        {
-          "hash": "6c053b587228550884a849c3d22964a3",
-          "charter": "Kevin.o2SE",
-          "path": "H:\\Songs\\r3\\31.txt",
-          "diffs": "31",
-          "notes": 1382,
-          "longnotes": 391,
-          "length": 147931
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:/UnityProject/RT/Assets/StreamingAssets\\Default\\virtual.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\r3\\background.jpg",
-    "name": "R3",
-    "artist": "Kevin.o2SE",
-    "tags": ":o2jam o2ma521",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\r3",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "8390bebb4f091a5d3cc69fa9c5514834",
-          "charter": " ",
-          "path": "H:\\Songs\\haele\\haele.txt",
-          "diffs": "36",
-          "notes": 1974,
-          "longnotes": 9,
-          "length": 135449
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\haele\\preview.mp3",
-    "BGAPath": "H:\\Songs\\haele\\HAELEQUIN_BGA.mp4",
-    "BGPath": "H:\\Songs\\haele\\title_haele.png",
-    "name": "HAELEQUIN",
-    "artist": "orangentle",
-    "tags": ":bms of fighers",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\haele",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "17dcbc14f84a676b219a74524ae2581f",
-          "charter": "o2jam",
-          "path": "H:\\Songs\\nine point eight\\70.txt",
-          "diffs": "72",
-          "notes": 1526,
-          "longnotes": 837,
-          "length": 146341
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\nine point eight\\normal-hitnormal1002.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\nine point eight\\background.jpg",
-    "name": "Nine Point Eight",
-    "artist": "Mili",
-    "tags": ":Deemo ei",
-    "localoffset": 771.0,
-    "directory": "H:\\Songs\\nine point eight",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "637b3e4b089c2813b443468952d9fa78",
-          "charter": "Kevin.o2SE",
-          "path": "H:\\Songs\\Red Sign\\2.txt",
-          "diffs": "2",
-          "notes": 248,
-          "longnotes": 18,
-          "length": 177467
-        },
-        {
-          "hash": "0361e7d34f6989739eca115934c4b064",
-          "charter": "Kevin.o2SE",
-          "path": "H:\\Songs\\Red Sign\\15.txt",
-          "diffs": "15",
-          "notes": 790,
-          "longnotes": 54,
-          "length": 177467
-        },
-        {
-          "hash": "85ffa7335958fd249a6446fc1c8112a8",
-          "charter": "Kevin.o2SE",
-          "path": "H:\\Songs\\Red Sign\\34.txt",
-          "diffs": "34",
-          "notes": 2118,
-          "longnotes": 74,
-          "length": 177467
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:/UnityProject/RT/Assets/StreamingAssets\\Default\\virtual.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Red Sign\\background.jpg",
-    "name": "Red Sign",
-    "artist": "Kevin.o2SE",
-    "tags": ":o2jam o2ma394",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Red Sign",
     "isvirtual": true
   },
   {
@@ -1790,121 +3278,25 @@
       [],
       [
         {
-          "hash": "cf72d1f826ec8d2bbea83120e8217070",
-          "charter": "inava",
-          "path": "H:\\Songs\\squartatrice\\sayaka.txt",
-          "diffs": "53",
-          "notes": 2233,
-          "longnotes": 368,
-          "length": 128333
+          "hash": "81a6c7d8ed0ff6eb83ceca5c7e021670",
+          "charter": "Ryu X3",
+          "path": "H:\\Songs\\signal graph\\signal.txt",
+          "diffs": "80",
+          "notes": 2888,
+          "longnotes": 2225,
+          "length": 278443
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\squartatrice\\preview.mp3",
-    "BGAPath": "H:\\Songs\\squartatrice\\_bga.mp4",
-    "BGPath": "H:\\Songs\\squartatrice\\night.jpg",
-    "name": "squartatrice",
-    "artist": "美樹さやか vs. 美樹さやか (fw. 美樹さやか)",
-    "tags": ":mahou shoujo madoka magica bms of fighters",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\squartatrice",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "8ece3ffe0e1900afe6440e2e7612221e",
-          "charter": "Cheolu",
-          "path": "H:\\Songs\\Nihilism\\NIHILISM.txt",
-          "diffs": "65",
-          "notes": 1562,
-          "longnotes": 843,
-          "length": 134670
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Nihilism\\223. NIHILISM.mp3",
-    "BGAPath": "H:\\Songs\\Nihilism\\nihilism.mp4",
-    "BGPath": "H:\\Songs\\Nihilism\\Nihilism.jpg",
-    "name": "NIHILISM",
-    "artist": "nato",
-    "tags": ":Artcore EZ2AC",
-    "localoffset": 3320.0,
-    "directory": "H:\\Songs\\Nihilism",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "0dd73e0538e0764a44fbba2476f6ed7b",
-          "charter": "Genesis",
-          "path": "H:\\Songs\\Synchrogazer\\64.txt",
-          "diffs": "64",
-          "notes": 2093,
-          "longnotes": 1054,
-          "length": 190959
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Synchrogazer\\1.ogg",
+    "AudioPath": "H:\\Songs\\signal graph\\normal-hitnormal1002.ogg",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\Synchrogazer\\background.jpg",
-    "name": "Synchrogazer",
-    "artist": "水樹奈々",
-    "tags": ":mizuki nana museum",
-    "localoffset": 988.0,
-    "directory": "H:\\Songs\\Synchrogazer",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "f4d8093e6b18f99dc913be9db255634f",
-          "charter": "Reba",
-          "path": "H:\\Songs\\Inscape\\heaven.txt",
-          "diffs": "67",
-          "notes": 2169,
-          "longnotes": 231,
-          "length": 111913
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Inscape\\audio.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Inscape\\Inscape BG.jpg",
-    "name": "Inscape",
-    "artist": "technoplanet",
-    "tags": ":SOUND VOLTEX IV HEAVENLY HAVEN",
-    "localoffset": 5.0,
-    "directory": "H:\\Songs\\Inscape",
+    "BGPath": "H:\\Songs\\signal graph\\1db7fd1df9fa1f91cfb4963b6972611f.jpg",
+    "name": "Signal Graph",
+    "artist": "Annabel",
+    "tags": ":koi to senkyo to chocolate",
+    "localoffset": 3603.0,
+    "directory": "H:\\Songs\\signal graph",
     "isvirtual": false
   },
   {
@@ -1950,25 +3342,43 @@
       [],
       [
         {
-          "hash": "e176aa7d38583ea25ba6cfd71a1f1bb9",
-          "charter": "Ken Yu",
-          "path": "H:\\Songs\\yuru\\ChuGoraku Bu - Yes! Yu Yu! YuriYuri (Ken Yu) [7k - hard lvl 44].osu",
-          "diffs": "44",
-          "notes": 1270,
-          "longnotes": 304,
-          "length": 116289
+          "hash": "78d9684251a9bb7b6f94d2d8f5aa33d4",
+          "charter": "Kevin.o2SE",
+          "path": "H:\\Songs\\r3\\3.txt",
+          "diffs": "3",
+          "notes": 300,
+          "longnotes": 9,
+          "length": 149163
+        },
+        {
+          "hash": "581f77fdf484620000e94c8759b8736c",
+          "charter": "Kevin.o2SE",
+          "path": "H:\\Songs\\r3\\14.txt",
+          "diffs": "14",
+          "notes": 1001,
+          "longnotes": 50,
+          "length": 149131
+        },
+        {
+          "hash": "6c053b587228550884a849c3d22964a3",
+          "charter": "Kevin.o2SE",
+          "path": "H:\\Songs\\r3\\31.txt",
+          "diffs": "31",
+          "notes": 1382,
+          "longnotes": 391,
+          "length": 147931
         }
       ],
       []
     ],
     "AudioPath": "H:/UnityProject/RT/Assets/StreamingAssets\\Default\\virtual.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\yuru\\g.jpg",
-    "name": "Yes! Yu Yu! Yuri?Yuri",
-    "artist": "Chu?Goraku Bu",
-    "tags": ":o2jam o2ma1782",
+    "BGPath": "H:\\Songs\\r3\\background.jpg",
+    "name": "R3",
+    "artist": "Kevin.o2SE",
+    "tags": ":o2jam o2ma521",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\yuru",
+    "directory": "H:\\Songs\\r3",
     "isvirtual": true
   },
   {
@@ -1982,217 +3392,43 @@
       [],
       [
         {
-          "hash": "b57b7324c1db80693f0dfa92b6219454",
-          "charter": "LunaticAnt",
-          "path": "H:\\Songs\\STYX HELIX\\helix.txt",
-          "diffs": "73",
-          "notes": 1389,
-          "longnotes": 2018,
-          "length": 203641
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\STYX HELIX\\normal-hitnormal1002.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\STYX HELIX\\11edc51a737fd726f73e0a5f9e48aca8.jpg",
-    "name": "STYX HELIX",
-    "artist": "MYTH & ROID",
-    "tags": ":re zero kara hajimaru isekai seikatsu",
-    "localoffset": 1258.0,
-    "directory": "H:\\Songs\\STYX HELIX",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
+          "hash": "637b3e4b089c2813b443468952d9fa78",
+          "charter": "Kevin.o2SE",
+          "path": "H:\\Songs\\Red Sign\\2.txt",
+          "diffs": "2",
+          "notes": 248,
+          "longnotes": 18,
+          "length": 177467
+        },
         {
-          "hash": "81a6c7d8ed0ff6eb83ceca5c7e021670",
-          "charter": "Ryu X3",
-          "path": "H:\\Songs\\signal graph\\signal.txt",
-          "diffs": "80",
-          "notes": 2888,
-          "longnotes": 2225,
-          "length": 278443
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\signal graph\\normal-hitnormal1002.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\signal graph\\1db7fd1df9fa1f91cfb4963b6972611f.jpg",
-    "name": "Signal Graph",
-    "artist": "Annabel",
-    "tags": ":koi to senkyo to chocolate",
-    "localoffset": 3603.0,
-    "directory": "H:\\Songs\\signal graph",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
+          "hash": "0361e7d34f6989739eca115934c4b064",
+          "charter": "Kevin.o2SE",
+          "path": "H:\\Songs\\Red Sign\\15.txt",
+          "diffs": "15",
+          "notes": 790,
+          "longnotes": 54,
+          "length": 177467
+        },
         {
-          "hash": "5a1c14c644447ca15df7f476da4fcf26",
-          "charter": "inava",
-          "path": "H:\\Songs\\croix\\croix.txt",
-          "diffs": "72",
-          "notes": 1887,
-          "longnotes": 573,
-          "length": 111539
+          "hash": "85ffa7335958fd249a6446fc1c8112a8",
+          "charter": "Kevin.o2SE",
+          "path": "H:\\Songs\\Red Sign\\34.txt",
+          "diffs": "34",
+          "notes": 2118,
+          "longnotes": 74,
+          "length": 177467
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\croix\\croix.mp3",
+    "AudioPath": "H:/UnityProject/RT/Assets/StreamingAssets\\Default\\virtual.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\croix\\croix.jpg",
-    "name": "croiX",
-    "artist": "TeamGrimoire+Amaneko",
-    "tags": ": konami Sound Voltex",
+    "BGPath": "H:\\Songs\\Red Sign\\background.jpg",
+    "name": "Red Sign",
+    "artist": "Kevin.o2SE",
+    "tags": ":o2jam o2ma394",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\croix",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "48ebf6203a66c70df5b954c44932e472",
-          "charter": "inava",
-          "path": "H:\\Songs\\idola\\idola.txt",
-          "diffs": "55",
-          "notes": 2473,
-          "longnotes": 32,
-          "length": 124210
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\idola\\audio.mp3",
-    "BGAPath": "H:\\Songs\\idola\\Idola iconoclasm feat.GUMI.mp4",
-    "BGPath": "H:\\Songs\\idola\\BG 1.jpg",
-    "name": "Idola",
-    "artist": "iconoclasm feat. GUMI",
-    "tags": ":beatmania iidx",
-    "localoffset": 22.0,
-    "directory": "H:\\Songs\\idola",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "47a6b8a08534db08a0be5f93a218667e",
-          "charter": "inava",
-          "path": "H:\\Songs\\Final Letter\\final.txt",
-          "diffs": "47",
-          "notes": 2217,
-          "longnotes": 286,
-          "length": 119979
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Final Letter\\audio.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Final Letter\\afdlafd.jpg",
-    "name": "ファイナルレター",
-    "artist": "かねこちはる",
-    "tags": ":Sound Voltex Final Letter kaneko chiharu",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Final Letter",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "cdeec050cf455433081929a93a311b23",
-          "charter": "inava",
-          "path": "H:\\Songs\\Whiteout\\wo.txt",
-          "diffs": "112",
-          "notes": 1990,
-          "longnotes": 943,
-          "length": 127010
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Whiteout\\WHITEOUT.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Whiteout\\yukihi2.jpg",
-    "name": "WHITEOUT",
-    "artist": "かねこちはる",
-    "tags": ":Kaneko Chiharu SOUND VOLTEX konami",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Whiteout",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "2b4751627f1062da46703be3879eee39",
-          "charter": " ",
-          "path": "H:\\Songs\\fragment of tears\\21321.txt",
-          "diffs": "76",
-          "notes": 1435,
-          "longnotes": 1023,
-          "length": 124508
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\fragment of tears\\preview.mp3",
-    "BGAPath": "H:\\Songs\\fragment of tears\\video.mp4",
-    "BGPath": "H:\\Songs\\fragment of tears\\bg.jpg",
-    "name": "fragment of tears",
-    "artist": "SYNC.ART'S",
-    "tags": ":BOF2011 Nakamura Meiko bms",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\fragment of tears",
+    "directory": "H:\\Songs\\Red Sign",
     "isvirtual": true
   },
   {
@@ -2238,26 +3474,122 @@
       [],
       [
         {
-          "hash": "f1761d0ec9ba99611b7d726b268ebac4",
-          "charter": "inava",
-          "path": "H:\\Songs\\Khionos TiARA\\khionos.txt",
-          "diffs": "55",
-          "notes": 2105,
-          "longnotes": 508,
-          "length": 118388
+          "hash": "697a8f2b49059f62781aad0dafdc03ff",
+          "charter": "Ayasakura",
+          "path": "H:\\Songs\\XyHatte\\2.txt",
+          "diffs": "75",
+          "notes": 1532,
+          "longnotes": 1049,
+          "length": 116477
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\Khionos TiARA\\audio.mp3",
+    "AudioPath": "H:\\Songs\\XyHatte\\song.ogg",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\Khionos TiARA\\img.jpg",
-    "name": "Khionos TiARA",
-    "artist": "Ellim Gnirps vs yomi",
-    "tags": ":sound voltex kanako chiharu",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Khionos TiARA",
+    "BGPath": "H:\\Songs\\XyHatte\\03151g.png",
+    "name": "XyHATTE",
+    "artist": "cosMo@暴走 Ultimate",
+    "tags": ":sound voltex konami ",
+    "localoffset": 827.0,
+    "directory": "H:\\Songs\\XyHatte",
     "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "e176aa7d38583ea25ba6cfd71a1f1bb9",
+          "charter": "Ken Yu",
+          "path": "H:\\Songs\\yuru\\ChuGoraku Bu - Yes! Yu Yu! YuriYuri (Ken Yu) [7k - hard lvl 44].osu",
+          "diffs": "44",
+          "notes": 1270,
+          "longnotes": 304,
+          "length": 116289
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:/UnityProject/RT/Assets/StreamingAssets\\Default\\virtual.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\yuru\\g.jpg",
+    "name": "Yes! Yu Yu! Yuri?Yuri",
+    "artist": "Chu?Goraku Bu",
+    "tags": ":o2jam o2ma1782",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\yuru",
+    "isvirtual": true
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "cdeec050cf455433081929a93a311b23",
+          "charter": "inava",
+          "path": "H:\\Songs\\Whiteout\\wo.txt",
+          "diffs": "112",
+          "notes": 1990,
+          "longnotes": 943,
+          "length": 127010
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\Whiteout\\WHITEOUT.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\Whiteout\\yukihi2.jpg",
+    "name": "WHITEOUT",
+    "artist": "かねこちはる",
+    "tags": ":Kaneko Chiharu SOUND VOLTEX konami",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\Whiteout",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "a22d372a09cd64bd8df7467431a616cd",
+          "charter": "tarolabo",
+          "path": "H:\\Songs\\地球塔デヴォーション\\tou2.txt",
+          "diffs": "31",
+          "notes": 573,
+          "longnotes": 611,
+          "length": 141063
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\地球塔デヴォーション\\preview.mp3",
+    "BGAPath": "H:\\Songs\\地球塔デヴォーション\\DVTN.mp4",
+    "BGPath": "H:\\Songs\\地球塔デヴォーション\\cover.jpg",
+    "name": "地球塔デヴォーション",
+    "artist": "tarolabo × 月雫 浪漫映像制作倶楽部",
+    "tags": ":Chikyuu Tou Devo^shon Gatsu Shizuku Rouman Eizou Seisaku Kurabu",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\地球塔デヴォーション",
+    "isvirtual": true
   },
   {
     "charts": [
@@ -2289,6 +3621,38 @@
     "tags": ": ",
     "localoffset": 1585.0,
     "directory": "H:\\Songs\\the glory days",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "hash": "a662ef7477e4a97c922954ad321fefcf",
+          "charter": "Eleventh",
+          "path": "H:\\Songs\\youyoumu no gotoku\\yoyo.txt",
+          "diffs": "56",
+          "notes": 1735,
+          "longnotes": 1017,
+          "length": 189221
+        }
+      ],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\youyoumu no gotoku\\youmu1.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\youyoumu no gotoku\\background.jpg",
+    "name": "漸う夢の如く",
+    "artist": "senya",
+    "tags": ":yuuhei satellite touhou zun iceon youyoumu no gotoku",
+    "localoffset": 1049.0,
+    "directory": "H:\\Songs\\youyoumu no gotoku",
     "isvirtual": false
   },
   {
@@ -2338,6 +3702,38 @@
       [],
       [],
       [],
+      [
+        {
+          "hash": "b36c5daecfe350571e988195e195d658",
+          "charter": "_underjoy",
+          "path": "H:\\Songs\\tpazolite feat Rizna Unlimited Spark!\\t+pazolite feat. Rizna - Unlimited Spark! (remake) (_underjoy) [Prism].osu",
+          "diffs": "Prism",
+          "notes": 1698,
+          "longnotes": 2899,
+          "length": 342486
+        }
+      ],
+      [],
+      [],
+      [],
+      []
+    ],
+    "AudioPath": "H:\\Songs\\tpazolite feat Rizna Unlimited Spark!\\13_uspark_remake.mp3",
+    "BGAPath": null,
+    "BGPath": "H:\\Songs\\tpazolite feat Rizna Unlimited Spark!\\SPARK.jpg",
+    "name": "Unlimited Spark! (remake)",
+    "artist": "t+pazolite feat. Rizna",
+    "tags": ":Touhou 東方 LN",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\tpazolite feat Rizna Unlimited Spark!",
+    "isvirtual": false
+  },
+  {
+    "charts": [
+      [],
+      [],
+      [],
+      [],
       [],
       [],
       [],
@@ -2375,89 +3771,25 @@
       [],
       [
         {
-          "hash": "351cf2a030afde4d0ec9064984634fa3",
-          "charter": "WhiteAndblack",
-          "path": "H:\\Songs\\chikyuusaigonokokuhaku\\asdfd.txt",
-          "diffs": "70",
-          "notes": 1769,
-          "longnotes": 1305,
-          "length": 201175
+          "hash": "8b5456f75ac4e9c3ed91b6c21ec12f28",
+          "charter": "Kawawa",
+          "path": "H:\\Songs\\光吉猛修の兄 - Amphisbaena\\fallen.txt",
+          "diffs": "56",
+          "notes": 2010,
+          "longnotes": 275,
+          "length": 156972
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\chikyuusaigonokokuhaku\\normal-hitnormal1002.mp3",
+    "AudioPath": "H:\\Songs\\光吉猛修の兄 - Amphisbaena\\preview.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\chikyuusaigonokokuhaku\\507f3e20da742f1f36fb2cfbb9b5160b.jpg",
-    "name": "地球最後の告白を",
-    "artist": "ゆいこんぬ",
-    "tags": ":Nico Nico Douga Utaite chikyuu saigo no kokuhaku yuikonnu",
+    "BGPath": "H:\\Songs\\光吉猛修の兄 - Amphisbaena\\_title.jpg",
+    "name": "Amphisbaena",
+    "artist": "光吉猛修の兄",
+    "tags": ":BMS of fighters",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\chikyuusaigonokokuhaku",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "b4958c1ce98e3cd5bb8ccf0ef77e4481",
-          "charter": "LCH",
-          "path": "H:\\Songs\\ama no jaku\\324.txt",
-          "diffs": "84",
-          "notes": 1818,
-          "longnotes": 1403,
-          "length": 182336
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\ama no jaku\\normal-hitnormal1002.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\ama no jaku\\ama no jaku.jpg",
-    "name": "天ノ弱",
-    "artist": "164P",
-    "tags": ":vocaloid ama no jaku",
-    "localoffset": 538.0,
-    "directory": "H:\\Songs\\ama no jaku",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "c501ef9a8a62a6bc7b33c345b9fa4825",
-          "charter": "Genesis",
-          "path": "H:\\Songs\\eospo\\eos.txt",
-          "diffs": "73",
-          "notes": 1971,
-          "longnotes": 942,
-          "length": 146742
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\eospo\\preview.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\eospo\\BG.png",
-    "name": "EOS",
-    "artist": "ginkiha",
-    "tags": ":bms of fighters bof",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\eospo",
+    "directory": "H:\\Songs\\光吉猛修の兄 - Amphisbaena",
     "isvirtual": true
   },
   {
@@ -2466,62 +3798,30 @@
       [],
       [],
       [],
-      [],
-      [],
-      [],
       [
         {
-          "hash": "2a48a2bf2e863ddd60e8ab0a210a5950",
-          "charter": "LCH",
-          "path": "H:\\Songs\\natsu no yakusoku\\natsu.txt",
-          "diffs": "59",
-          "notes": 1635,
-          "longnotes": 1573,
-          "length": 230671
+          "hash": "a39f97bf0c0aad7d4eb7f81ce7816b96",
+          "charter": "11Bit",
+          "path": "H:\\Songs\\YOASOBI - Yoru ni Kakeru\\yo.txt",
+          "diffs": "a lonely night...",
+          "notes": 3899,
+          "longnotes": 110,
+          "length": 258484
         }
       ],
+      [],
+      [],
+      [],
       []
     ],
-    "AudioPath": "H:\\Songs\\natsu no yakusoku\\Dog Days 2ED - Natsu no Yakusoku.mp3",
+    "AudioPath": "H:\\Songs\\YOASOBI - Yoru ni Kakeru\\audio.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\natsu no yakusoku\\background.jpg",
-    "name": "夏の約束",
-    "artist": "堀江 由衣",
-    "tags": ":dog days ed horie yui  Natsu no Yakusoku",
-    "localoffset": 50.0,
-    "directory": "H:\\Songs\\natsu no yakusoku",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "9f9aaaf2337fadb9018165446ac13261",
-          "charter": "Entozer",
-          "path": "H:\\Songs\\Nou Shou Sakuretsu Girl\\in.txt",
-          "diffs": "61",
-          "notes": 2329,
-          "longnotes": 903,
-          "length": 189222
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Nou Shou Sakuretsu Girl\\Nou Shou Sakuretsu Girl_.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Nou Shou Sakuretsu Girl\\BG.jpg",
-    "name": "Nou Shou Sakuretsu Girl",
-    "artist": "rerulili",
-    "tags": ":",
-    "localoffset": 10.0,
-    "directory": "H:\\Songs\\Nou Shou Sakuretsu Girl",
+    "BGPath": "H:\\Songs\\YOASOBI - Yoru ni Kakeru\\bg.jpg",
+    "name": "夜に駆ける",
+    "artist": "YOASOBI",
+    "tags": ":japanese pop racing into the night 幾田りら ikuta lilas ayase",
+    "localoffset": 0.0,
+    "directory": "H:\\Songs\\YOASOBI - Yoru ni Kakeru",
     "isvirtual": false
   },
   {
@@ -2573,416 +3873,64 @@
       [],
       [
         {
-          "hash": "675cb3d48149b26adfec449078dab995",
-          "charter": "Agkaemon",
-          "path": "H:\\Songs\\DJ SHARPNEL - BLUE ARMY\\DJ SHARPNEL - BLUE ARMY (Agkaemon) [4k KBSM].osu",
-          "diffs": "4k KBSM",
-          "notes": 3167,
-          "longnotes": 0,
-          "length": 382642
-        }
-      ],
-      [],
-      [],
-      [],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\DJ SHARPNEL - BLUE ARMY\\BLUE ARMY.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\DJ SHARPNEL - BLUE ARMY\\Blue Army-BG.png",
-    "name": "BLUE ARMY",
-    "artist": "DJ SHARPNEL",
-    "tags": ":",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\DJ SHARPNEL - BLUE ARMY",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "be340c4af5f245a0724fa00e933b0db6",
-          "charter": "Niima",
-          "path": "H:\\Songs\\Nishizawa Shiena - FUBUKI\\Nishizawa Shiena - FUBUKI (Niima) [Hard].osu",
-          "diffs": "Hard",
-          "notes": 1450,
-          "longnotes": 1892,
-          "length": 246555
-        }
-      ],
-      [],
-      [],
-      [],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Nishizawa Shiena - FUBUKI\\audio.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Nishizawa Shiena - FUBUKI\\Fubuki.(Kantai.Collection).full.1831865.jpg",
-    "name": "FUBUKI",
-    "artist": "Nishizawa Shiena",
-    "tags": ":kantai collection Niima -kancolle- KanColle japanese anime pop",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Nishizawa Shiena - FUBUKI",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "8b5456f75ac4e9c3ed91b6c21ec12f28",
-          "charter": "Kawawa",
-          "path": "H:\\Songs\\光吉猛修の兄 - Amphisbaena\\fallen.txt",
-          "diffs": "56",
-          "notes": 2010,
-          "longnotes": 275,
-          "length": 156972
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\光吉猛修の兄 - Amphisbaena\\preview.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\光吉猛修の兄 - Amphisbaena\\_title.jpg",
-    "name": "Amphisbaena",
-    "artist": "光吉猛修の兄",
-    "tags": ":BMS of fighters",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\光吉猛修の兄 - Amphisbaena",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "a22d372a09cd64bd8df7467431a616cd",
-          "charter": "tarolabo",
-          "path": "H:\\Songs\\地球塔デヴォーション\\tou2.txt",
-          "diffs": "31",
-          "notes": 573,
-          "longnotes": 611,
-          "length": 141063
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\地球塔デヴォーション\\preview.mp3",
-    "BGAPath": "H:\\Songs\\地球塔デヴォーション\\DVTN.mp4",
-    "BGPath": "H:\\Songs\\地球塔デヴォーション\\cover.jpg",
-    "name": "地球塔デヴォーション",
-    "artist": "tarolabo × 月雫 浪漫映像制作倶楽部",
-    "tags": ":Chikyuu Tou Devo^shon Gatsu Shizuku Rouman Eizou Seisaku Kurabu",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\地球塔デヴォーション",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "ec16ef1aff5330af409087a93d264daf",
-          "charter": "LCH",
-          "path": "H:\\Songs\\Trigger Happy\\TriggerHappy.txt",
-          "diffs": "65",
-          "notes": 1207,
-          "longnotes": 737,
-          "length": 110270
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Trigger Happy\\TRIGGERHAPPY.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Trigger Happy\\BG.jpg",
-    "name": "Trigger*Happy",
-    "artist": "P*Light",
-    "tags": ":sound voltex konami",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Trigger Happy",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "2f7611912c68fcc47ae24079746f9dde",
-          "charter": "농부와붕붕카",
-          "path": "H:\\Songs\\Angelus\\angel.txt",
-          "diffs": "70",
-          "notes": 1943,
-          "longnotes": 1993,
-          "length": 252849
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Angelus\\normal-hitnormal1003.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Angelus\\background.jpg",
-    "name": "Angelus",
-    "artist": "島谷ひとみ",
-    "tags": ":o2jam o2ma492",
-    "localoffset": 1020.0,
-    "directory": "H:\\Songs\\Angelus",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "d81f72a35b20fcca211aa46b86549f40",
-          "charter": "SHK",
-          "path": "H:\\Songs\\identity part iii\\18.txt",
-          "diffs": "18",
-          "notes": 832,
-          "longnotes": 34,
-          "length": 124800
+          "hash": "99ab8dc36b05466aee535980e5b6ca2f",
+          "charter": "Insp1r3",
+          "path": "H:\\Songs\\wa - Black Lotus\\wa. - Black Lotus (Insp1r3) [Beginner].osu",
+          "diffs": "Beginner",
+          "notes": 314,
+          "longnotes": 68,
+          "length": 106740
         },
         {
-          "hash": "14047f7032035a3069156ffb0e6a7535",
-          "charter": "SHK",
-          "path": "H:\\Songs\\identity part iii\\30.txt",
-          "diffs": "30",
-          "notes": 1155,
-          "longnotes": 184,
-          "length": 124800
+          "hash": "228cadefb53a798e28b4a9d5283b7b76",
+          "charter": "Insp1r3",
+          "path": "H:\\Songs\\wa - Black Lotus\\wa. - Black Lotus (Insp1r3) [Jeez's Normal].osu",
+          "diffs": "Jeez's Normal",
+          "notes": 543,
+          "longnotes": 77,
+          "length": 106140
         },
         {
-          "hash": "f10f48bf25bafe7c2049ee616f9fa7da",
-          "charter": "SHK",
-          "path": "H:\\Songs\\identity part iii\\139.txt",
-          "diffs": "139",
-          "notes": 1166,
-          "longnotes": 214,
-          "length": 124800
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\identity part iii\\preview.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\identity part iii\\1.png",
-    "name": "Identity part III",
-    "artist": "SHK",
-    "tags": ":o2jam",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\identity part iii",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "0ed9cb922c4f7c53909d2eaae9563e8d",
-          "charter": "Destiny19",
-          "path": "H:\\Songs\\Akatsuki Zukuyo\\zukuyo.txt",
-          "diffs": "70",
-          "notes": 2135,
-          "longnotes": 2022,
-          "length": 275753
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Akatsuki Zukuyo\\akatsuki.mp3",
-    "BGAPath": "H:\\Songs\\Akatsuki Zukuyo\\暁月夜アカツキヅクヨ.mp4",
-    "BGPath": "H:\\Songs\\Akatsuki Zukuyo\\47187043_p0.jpg",
-    "name": "暁月夜-アカツキヅクヨ- ",
-    "artist": "Honey Works",
-    "tags": ":naruto sana Akatsuki Zukuyo ",
-    "localoffset": 2394.0,
-    "directory": "H:\\Songs\\Akatsuki Zukuyo",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "ff45f2c2bb18322a8ca20b69736e3848",
-          "charter": "SoleilU",
-          "path": "H:\\Songs\\Heartbeat Overheat!!!!\\Camellia & Nanahira - Heartbeat Overheat!!!! (SoleilU) [7k - hard lvl 69].txt",
-          "diffs": "69",
-          "notes": 1621,
-          "longnotes": 2445,
-          "length": 247474
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Heartbeat Overheat!!!!\\normal-hitnormal1002.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Heartbeat Overheat!!!!\\background.jpg",
-    "name": "Heartbeat Overheat!!!!",
-    "artist": "かめりあ＆ななひら",
-    "tags": ":Camellia nanahira",
-    "localoffset": 1295.0,
-    "directory": "H:\\Songs\\Heartbeat Overheat!!!!",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "bf1c827887756f040cd6cad827b1f583",
-          "charter": "Destiny19",
-          "path": "H:\\Songs\\Warak - REANIMATE\\Warak - REANIMATE (Destiny19) [Lv.80 For O2Jam].osu",
-          "diffs": "80",
-          "notes": 1108,
-          "longnotes": 1460,
-          "length": 150711
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Warak - REANIMATE\\audio.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Warak - REANIMATE\\bg.png",
-    "name": "REANIMATE",
-    "artist": "Warak",
-    "tags": ":",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Warak - REANIMATE",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "9868513e711ea84dfc1c71536580afa3",
-          "charter": "o2jam",
-          "path": "H:\\Songs\\Fusion Invitation\\13.txt",
-          "diffs": "13",
-          "notes": 421,
-          "longnotes": 160,
-          "length": 150857
+          "hash": "2f39a0b7c6b1e294416f2e74fae5441b",
+          "charter": "Insp1r3",
+          "path": "H:\\Songs\\wa - Black Lotus\\wa. - Black Lotus (Insp1r3) [Hyper].osu",
+          "diffs": "Hyper",
+          "notes": 986,
+          "longnotes": 40,
+          "length": 106740
         },
         {
-          "hash": "4b8d216750c18b55c35cd96a081534c7",
-          "charter": "o2jam",
-          "path": "H:\\Songs\\Fusion Invitation\\27.txt",
-          "diffs": "27",
-          "notes": 1019,
-          "longnotes": 181,
-          "length": 150857
+          "hash": "7f4fd3e3f3fc6b5eebff1760aba6dd53",
+          "charter": "Insp1r3",
+          "path": "H:\\Songs\\wa - Black Lotus\\wa. - Black Lotus (Insp1r3) [Another].osu",
+          "diffs": "Another",
+          "notes": 1463,
+          "longnotes": 78,
+          "length": 106740
         },
         {
-          "hash": "8c3a66237f56f9dc48c8113dd0df06b2",
-          "charter": "o2jam",
-          "path": "H:\\Songs\\Fusion Invitation\\33.txt",
-          "diffs": "33",
-          "notes": 1311,
-          "longnotes": 256,
-          "length": 150857
+          "hash": "070542ea36f2f3c83a55364e5eabbd50",
+          "charter": "Insp1r3",
+          "path": "H:\\Songs\\wa - Black Lotus\\wa. - Black Lotus (Insp1r3) [Blooming].osu",
+          "diffs": "Blooming",
+          "notes": 1772,
+          "longnotes": 50,
+          "length": 106740
         }
       ],
+      [],
+      [],
+      [],
       []
     ],
-    "AudioPath": "H:\\Songs\\Fusion Invitation\\preview.mp3",
+    "AudioPath": "H:\\Songs\\wa - Black Lotus\\audio.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\Fusion Invitation\\background.jpg",
-    "name": "Invitation",
-    "artist": "Warak",
-    "tags": ":o2jam o2ma960",
+    "BGPath": "H:\\Songs\\wa - Black Lotus\\bg_4.jpg",
+    "name": "Black Lotus",
+    "artist": "wa.",
+    "tags": ":BOFU2016 legendary again grimreaper ノリと勢い Jesuren SV error_exe777 FAMoss",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\Fusion Invitation",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "f8091bb5b017426e71f25dd0a12c78cf",
-          "charter": "Destiny19",
-          "path": "H:\\Songs\\tricklash\\d.txt",
-          "diffs": "84",
-          "notes": 1190,
-          "longnotes": 1309,
-          "length": 111173
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\tricklash\\df.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\tricklash\\BG.jpg",
-    "name": "Trickl4sh 220",
-    "artist": "t+pazolite",
-    "tags": ":sdvx sound voltex",
-    "localoffset": 979.0,
-    "directory": "H:\\Songs\\tricklash",
+    "directory": "H:\\Songs\\wa - Black Lotus",
     "isvirtual": false
   },
   {
@@ -2996,121 +3944,25 @@
       [],
       [
         {
-          "hash": "697a8f2b49059f62781aad0dafdc03ff",
-          "charter": "Ayasakura",
-          "path": "H:\\Songs\\XyHatte\\2.txt",
-          "diffs": "75",
-          "notes": 1532,
-          "longnotes": 1049,
-          "length": 116477
+          "hash": "6ceae7bedcb9fbcc6445b58c1e7a4ca6",
+          "charter": "SubTitle_",
+          "path": "H:\\Songs\\星が瞬くこんな夜に\\supercell -  (SubTitle_) [7k - hard lvl 83].osu",
+          "diffs": "83",
+          "notes": 1648,
+          "longnotes": 1665,
+          "length": 219738
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\XyHatte\\song.ogg",
+    "AudioPath": "H:\\Songs\\星が瞬くこんな夜に\\normal-hitnormal1004.ogg",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\XyHatte\\03151g.png",
-    "name": "XyHATTE",
-    "artist": "cosMo@暴走 Ultimate",
-    "tags": ":sound voltex konami ",
-    "localoffset": 827.0,
-    "directory": "H:\\Songs\\XyHatte",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "4dc3559fd998a08aae16f82a216c102d",
-          "charter": "HeathErika",
-          "path": "H:\\Songs\\magicaride\\73.txt",
-          "diffs": "73",
-          "notes": 2124,
-          "longnotes": 2271,
-          "length": 257766
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\magicaride\\normal-hitnormal1002.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\magicaride\\2889534696_31afe03e5b_o.jpg",
-    "name": "Magicaride",
-    "artist": "fripside",
-    "tags": ":o2jam dacoda",
-    "localoffset": 171.0,
-    "directory": "H:\\Songs\\magicaride",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "76c024b4d0a953b4d1cf558f6d05557f",
-          "charter": "WhiteAndBlack",
-          "path": "H:\\Songs\\Kakuzetsu Thanatos\\ro.txt",
-          "diffs": "89",
-          "notes": 2334,
-          "longnotes": 2279,
-          "length": 210979
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Kakuzetsu Thanatos\\autohit1000.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Kakuzetsu Thanatos\\background.jpg",
-    "name": "隔絶≡タナトス",
-    "artist": "Rohi",
-    "tags": ":vocaloid kagamine rin Kakuzetsu Thanatos",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Kakuzetsu Thanatos",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "a662ef7477e4a97c922954ad321fefcf",
-          "charter": "Eleventh",
-          "path": "H:\\Songs\\youyoumu no gotoku\\yoyo.txt",
-          "diffs": "56",
-          "notes": 1735,
-          "longnotes": 1017,
-          "length": 189221
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\youyoumu no gotoku\\youmu1.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\youyoumu no gotoku\\background.jpg",
-    "name": "漸う夢の如く",
-    "artist": "senya",
-    "tags": ":yuuhei satellite touhou zun iceon youyoumu no gotoku",
-    "localoffset": 1049.0,
-    "directory": "H:\\Songs\\youyoumu no gotoku",
+    "BGPath": "H:\\Songs\\星が瞬くこんな夜に\\background.jpg",
+    "name": "星が瞬くこんな夜に",
+    "artist": "supercell",
+    "tags": ":o2jam o2ma2431 hoshi ga matataku konna yoru ni",
+    "localoffset": 604.0,
+    "directory": "H:\\Songs\\星が瞬くこんな夜に",
     "isvirtual": false
   },
   {
@@ -3156,84 +4008,61 @@
       [],
       [
         {
-          "hash": "2f7dce10bcd72ece5a21fdc20ad50b92",
-          "charter": "SHK.o2SE",
-          "path": "H:\\Songs\\Identity part ii\\3.txt",
-          "diffs": "3",
-          "notes": 424,
-          "longnotes": 0,
-          "length": 159608
+          "hash": "4fd9926dd2b09f20152700543b7d35fd",
+          "charter": "Madoka2574",
+          "path": "H:\\Songs\\Vindication\\Laur - Vindication (Madoka2574) [Beginner].txt",
+          "diffs": "8",
+          "notes": 338,
+          "longnotes": 60,
+          "length": 143623
         },
         {
-          "hash": "25a1e78dfd802acd4333aed01ed6a940",
-          "charter": "SHK.o2SE",
-          "path": "H:\\Songs\\Identity part ii\\16.txt",
-          "diffs": "16",
-          "notes": 1097,
-          "longnotes": 107,
-          "length": 159608
+          "hash": "c63d9c31af63918837caf0c02b3835aa",
+          "charter": "Madoka2574",
+          "path": "H:\\Songs\\Vindication\\Laur - Vindication (Madoka2574) [Normal].txt",
+          "diffs": "15",
+          "notes": 620,
+          "longnotes": 143,
+          "length": 143623
         },
         {
-          "hash": "cc790d7bfde8815e8b6932b732c6dd84",
-          "charter": "SHK.o2SE",
-          "path": "H:\\Songs\\Identity part ii\\34.txt",
-          "diffs": "34",
-          "notes": 1848,
-          "longnotes": 226,
-          "length": 172208
+          "hash": "7a8f48f89a13ba9aabef6ed211be0f39",
+          "charter": "Madoka2574",
+          "path": "H:\\Songs\\Vindication\\Laur - Vindication (Madoka2574) [Hyper].txt",
+          "diffs": "25",
+          "notes": 1177,
+          "longnotes": 252,
+          "length": 143623
+        },
+        {
+          "hash": "57c5ed3b48812931c2d79a8d81159e98",
+          "charter": "Madoka2574",
+          "path": "H:\\Songs\\Vindication\\Laur - Vindication (Madoka2574) [Another].txt",
+          "diffs": "42",
+          "notes": 1704,
+          "longnotes": 238,
+          "length": 143623
+        },
+        {
+          "hash": "61d03f7173a5b3585ad2a0d64af79632",
+          "charter": "Madoka2574",
+          "path": "H:\\Songs\\Vindication\\Laur - Vindication (Madoka2574) [True Heart].txt",
+          "diffs": "58",
+          "notes": 1949,
+          "longnotes": 536,
+          "length": 143623
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\Identity part ii\\preview.mp3",
+    "AudioPath": "H:\\Songs\\Vindication\\audio.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\Identity part ii\\background.jpg",
-    "name": "Identity part II",
-    "artist": "SHK.o2SE",
-    "tags": ":o2jam o2ma506",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Identity part ii",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "0498603bb2073bf3c7c5b9e8eb0c8572",
-          "charter": "Genesis",
-          "path": "H:\\Songs\\Alteration\\33.txt",
-          "diffs": "33",
-          "notes": 1482,
-          "longnotes": 319,
-          "length": 161744
-        },
-        {
-          "hash": "55eee8921953dedba483b9b30ed38818",
-          "charter": "Genesis",
-          "path": "H:\\Songs\\Alteration\\73.txt",
-          "diffs": "73",
-          "notes": 2012,
-          "longnotes": 1216,
-          "length": 161744
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Alteration\\song.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Alteration\\BG.jpg",
-    "name": "Alteration",
-    "artist": "ZAQ",
-    "tags": ":sasami san ganbaranai",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Alteration",
+    "BGPath": "H:\\Songs\\Vindication\\BG.jpg",
+    "name": "Vindication",
+    "artist": "Laur",
+    "tags": ":Arcaea Adverse Prelude Dubstep Piano Artcore Orchestral",
+    "localoffset": 10.0,
+    "directory": "H:\\Songs\\Vindication",
     "isvirtual": false
   },
   {
@@ -3247,25 +4076,25 @@
       [],
       [
         {
-          "hash": "6ceae7bedcb9fbcc6445b58c1e7a4ca6",
-          "charter": "SubTitle_",
-          "path": "H:\\Songs\\星が瞬くこんな夜に\\supercell -  (SubTitle_) [7k - hard lvl 83].osu",
-          "diffs": "83",
-          "notes": 1648,
-          "longnotes": 1665,
-          "length": 219738
+          "hash": "21a6ac304f83c0989fa3960e30a754b6",
+          "charter": "Kanasando",
+          "path": "H:\\Songs\\メルヘンデビュ\\メルヘンデビュ.txt",
+          "diffs": "78",
+          "notes": 2981,
+          "longnotes": 2232,
+          "length": 266202
         }
       ],
       []
     ],
-    "AudioPath": "H:\\Songs\\星が瞬くこんな夜に\\normal-hitnormal1004.ogg",
+    "AudioPath": "H:\\Songs\\メルヘンデビュ\\1.ogg",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\星が瞬くこんな夜に\\background.jpg",
-    "name": "星が瞬くこんな夜に",
-    "artist": "supercell",
-    "tags": ":o2jam o2ma2431 hoshi ga matataku konna yoru ni",
-    "localoffset": 604.0,
-    "directory": "H:\\Songs\\星が瞬くこんな夜に",
+    "BGPath": "H:\\Songs\\メルヘンデビュ\\nana.jpg",
+    "name": "メルヘンデビュ?",
+    "artist": "安部菜々",
+    "tags": ":o2jam o2ma2533 abe nana meruhen debut",
+    "localoffset": 3545.0,
+    "directory": "H:\\Songs\\メルヘンデビュ",
     "isvirtual": false
   },
   {
@@ -3360,445 +4189,57 @@
       [],
       [],
       [],
-      [],
-      [],
-      [],
       [
         {
-          "hash": "e200e3d93ec070228a20b7a7c8ae11cc",
-          "charter": "Destiny19",
-          "path": "H:\\Songs\\carrymeaway\\carry.txt",
-          "diffs": "72",
-          "notes": 3653,
-          "longnotes": 2036,
-          "length": 237171
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\carrymeaway\\audio.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\carrymeaway\\bg.jpg",
-    "name": "Carry Me Away (Extended Mix)",
-    "artist": "lapix",
-    "tags": ": ",
-    "localoffset": 279.0,
-    "directory": "H:\\Songs\\carrymeaway",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "01644c1bbeb52755cf68b9c7a10a13b5",
-          "charter": "xxbidiao",
-          "path": "H:\\Songs\\Imperishable Night 2006\\4k (2).txt",
-          "diffs": "4K PROGUY's Normal",
-          "notes": 602,
-          "longnotes": 15,
-          "length": 128757
+          "hash": "d638bcd59f021a101b88983f67a7a909",
+          "charter": "Ciel",
+          "path": "H:\\Songs\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix)\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix) (Ciel) [fn(top=false,sv=false)].osu",
+          "diffs": "fn(top=false,sv=false)",
+          "notes": 2576,
+          "longnotes": 182,
+          "length": 261155
         },
         {
-          "hash": "dee392b51568675487f9967907aaa8b4",
-          "charter": "xxbidiao",
-          "path": "H:\\Songs\\Imperishable Night 2006\\4k (1).txt",
-          "diffs": "4K Insane",
-          "notes": 1876,
-          "longnotes": 26,
-          "length": 128850
-        }
-      ],
-      [],
-      [],
-      [
+          "hash": "0d174c8adb97527a2b74fe4c305c775e",
+          "charter": "Ciel",
+          "path": "H:\\Songs\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix)\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix) (Ciel) [fn(top=false,sv=true)].osu",
+          "diffs": "fn(top=false,sv=true)",
+          "notes": 2576,
+          "longnotes": 182,
+          "length": 261155
+        },
         {
-          "hash": "e96c64c12c6f04426493f2400b2fba18",
-          "charter": "for D+",
-          "path": "H:\\Songs\\Imperishable Night 2006\\lunatic.txt",
-          "diffs": "68",
-          "notes": 2671,
-          "longnotes": 26,
-          "length": 128850
+          "hash": "0d5224d17c3de2616455385a5c3bf20d",
+          "charter": "Ciel",
+          "path": "H:\\Songs\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix)\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix) (Ciel) [fn(top=true,sv=false)].osu",
+          "diffs": "fn(top=true,sv=false)",
+          "notes": 2707,
+          "longnotes": 217,
+          "length": 261155
+        },
+        {
+          "hash": "b728cbf1c034633672835dff2d45bd22",
+          "charter": "Ciel",
+          "path": "H:\\Songs\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix)\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix) (Ciel) [fn(top=true,sv=true)].osu",
+          "diffs": "fn(top=true,sv=true)",
+          "notes": 2707,
+          "longnotes": 217,
+          "length": 261155
         }
       ],
+      [],
+      [],
+      [],
       []
     ],
-    "AudioPath": "H:\\Songs\\Imperishable Night 2006\\preview.mp3",
+    "AudioPath": "H:\\Songs\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix)\\audio.mp3",
     "BGAPath": null,
-    "BGPath": "H:\\Songs\\Imperishable Night 2006\\imperi_title.jpg",
-    "name": "Imperishable Night 2006",
-    "artist": "篠螺悠那 feat. 鯛の小骨",
-    "tags": ":BMS",
+    "BGPath": "H:\\Songs\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix)\\7f6d8060-19ad-4374-8335-b0e80496c274.jpg",
+    "name": "true DJ MAG top ranker's song Zenpen (katagiri Remix)",
+    "artist": "sabi",
+    "tags": ":",
     "localoffset": 0.0,
-    "directory": "H:\\Songs\\Imperishable Night 2006",
-    "isvirtual": true
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "21a6ac304f83c0989fa3960e30a754b6",
-          "charter": "Kanasando",
-          "path": "H:\\Songs\\メルヘンデビュ\\メルヘンデビュ.txt",
-          "diffs": "78",
-          "notes": 2981,
-          "longnotes": 2232,
-          "length": 266202
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\メルヘンデビュ\\1.ogg",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\メルヘンデビュ\\nana.jpg",
-    "name": "メルヘンデビュ?",
-    "artist": "安部菜々",
-    "tags": ":o2jam o2ma2533 abe nana meruhen debut",
-    "localoffset": 3545.0,
-    "directory": "H:\\Songs\\メルヘンデビュ",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "fe7a178090de9890e899843f40bdb3f1",
-          "charter": "lZenxl",
-          "path": "H:\\Songs\\Danshi\\Reol - +Danshi (lZenxl) [7K SHD].osu",
-          "diffs": "7K SHD",
-          "notes": 1318,
-          "longnotes": 963,
-          "length": 214391
-        },
-        {
-          "hash": "73b3c66514b77c91d393cad2299cbc6d",
-          "charter": "lZenxl",
-          "path": "H:\\Songs\\Danshi\\Reol - +Danshi (lZenxl) [7K OVERLOAD].osu",
-          "diffs": "7K OVERLOAD",
-          "notes": 2001,
-          "longnotes": 1433,
-          "length": 214391
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Danshi\\Reol.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Danshi\\BG.png",
-    "name": "+Danshi",
-    "artist": "Reol",
-    "tags": ":GigaP neonat Tagre Plus Boy Hinsvar Fort Papcio [I]MMoRTal[S] mike91lau Player_X Soldsaga_KunG Okoratu",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Danshi",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "bb35154b83b1ded3a527d126c648c052",
-          "charter": "Destiny19",
-          "path": "H:\\Songs\\Omoi - Teo\\teo.osu",
-          "diffs": "85",
-          "notes": 2267,
-          "longnotes": 3115,
-          "length": 204866
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Omoi - Teo\\audio.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Omoi - Teo\\BG.jpg",
-    "name": "Teo",
-    "artist": "Omoi",
-    "tags": ":o2jam ln",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Omoi - Teo",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "2c5e1daa22ff7939b7948860d8578a8a",
-          "charter": "_Stan",
-          "path": "H:\\Songs\\Camellia - Luin of Celtchar\\Camellia - Luin of Celtchar (_Stan) [Massacred].osu",
-          "diffs": "62",
-          "notes": 5239,
-          "longnotes": 1182,
-          "length": 309794
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Camellia - Luin of Celtchar\\audio.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Camellia - Luin of Celtchar\\bg.jpg",
-    "name": "Lúin øf Celtchaя",
-    "artist": "かめりあ",
-    "tags": ":famoss cametek ctcd-19 blackmagik blazing featured artist fa mg mapper's guild tokyo bigsight 南ア28 instrumental electronic masaya oya comiket96 c96 blackmagik blazing かめるかめりあ kamelcamellia",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Camellia - Luin of Celtchar",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "80f5a0d40179b90083277ca364332383",
-          "charter": "Exit",
-          "path": "H:\\Songs\\Lachyryma ReQueem\\1.txt",
-          "diffs": "36",
-          "notes": 1502,
-          "longnotes": 226,
-          "length": 118476
-        },
-        {
-          "hash": "b4cee489977fbbc18b4d751a40b653b9",
-          "charter": "Exit",
-          "path": "H:\\Songs\\Lachyryma ReQueem\\2.txt",
-          "diffs": "72",
-          "notes": 1838,
-          "longnotes": 555,
-          "length": 118476
-        },
-        {
-          "hash": "61f9ca27b32647e342e0bef0d3fe97c5",
-          "charter": "Exit",
-          "path": "H:\\Songs\\Lachyryma ReQueem\\3.txt",
-          "diffs": "130",
-          "notes": 1747,
-          "longnotes": 1456,
-          "length": 118476
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Lachyryma ReQueem\\lachryma.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Lachyryma ReQueem\\EVCGfpwWkAMMmOX.png",
-    "name": "Lachryma《Re:Queen’M》",
-    "artist": "かねこちはる",
-    "tags": ":Sound Voltex Konami kaneko chiharu",
-    "localoffset": 439.0,
-    "directory": "H:\\Songs\\Lachyryma ReQueem",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "255c859a712d3c5bde006e30c89b08b8",
-          "charter": "LCH",
-          "path": "H:\\Songs\\Daisy x Daisy - Towa no Kizuna feat Another Infinity\\53.txt",
-          "diffs": "53",
-          "notes": 2310,
-          "longnotes": 961,
-          "length": 193561
-        },
-        {
-          "hash": "0c72fd859224973a2bae89b1ac9cf5cc",
-          "charter": "LCH",
-          "path": "H:\\Songs\\Daisy x Daisy - Towa no Kizuna feat Another Infinity\\91.txt",
-          "diffs": "91",
-          "notes": 2337,
-          "longnotes": 2009,
-          "length": 193561
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Daisy x Daisy - Towa no Kizuna feat Another Infinity\\autohit1000.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Daisy x Daisy - Towa no Kizuna feat Another Infinity\\background.jpg",
-    "name": "永久のキズナ feat. Another Infinity",
-    "artist": "Daisy x Daisy",
-    "tags": ":o2jam",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Daisy x Daisy - Towa no Kizuna feat Another Infinity",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "4fd9926dd2b09f20152700543b7d35fd",
-          "charter": "Madoka2574",
-          "path": "H:\\Songs\\Vindication\\Laur - Vindication (Madoka2574) [Beginner].txt",
-          "diffs": "8",
-          "notes": 338,
-          "longnotes": 60,
-          "length": 143623
-        },
-        {
-          "hash": "c63d9c31af63918837caf0c02b3835aa",
-          "charter": "Madoka2574",
-          "path": "H:\\Songs\\Vindication\\Laur - Vindication (Madoka2574) [Normal].txt",
-          "diffs": "15",
-          "notes": 620,
-          "longnotes": 143,
-          "length": 143623
-        },
-        {
-          "hash": "7a8f48f89a13ba9aabef6ed211be0f39",
-          "charter": "Madoka2574",
-          "path": "H:\\Songs\\Vindication\\Laur - Vindication (Madoka2574) [Hyper].txt",
-          "diffs": "25",
-          "notes": 1177,
-          "longnotes": 252,
-          "length": 143623
-        },
-        {
-          "hash": "57c5ed3b48812931c2d79a8d81159e98",
-          "charter": "Madoka2574",
-          "path": "H:\\Songs\\Vindication\\Laur - Vindication (Madoka2574) [Another].txt",
-          "diffs": "42",
-          "notes": 1704,
-          "longnotes": 238,
-          "length": 143623
-        },
-        {
-          "hash": "61d03f7173a5b3585ad2a0d64af79632",
-          "charter": "Madoka2574",
-          "path": "H:\\Songs\\Vindication\\Laur - Vindication (Madoka2574) [True Heart].txt",
-          "diffs": "58",
-          "notes": 1949,
-          "longnotes": 536,
-          "length": 143623
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Vindication\\audio.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Vindication\\BG.jpg",
-    "name": "Vindication",
-    "artist": "Laur",
-    "tags": ":Arcaea Adverse Prelude Dubstep Piano Artcore Orchestral",
-    "localoffset": 10.0,
-    "directory": "H:\\Songs\\Vindication",
-    "isvirtual": false
-  },
-  {
-    "charts": [
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [
-        {
-          "hash": "0717d1d38deaa2d7150a96bc0205030b",
-          "charter": "Jinjin",
-          "path": "H:\\Songs\\Doppelganger\\1.txt",
-          "diffs": "7",
-          "notes": 236,
-          "longnotes": 33,
-          "length": 141790
-        },
-        {
-          "hash": "3afe3a3d3a949f73c8d4ba618a417df4",
-          "charter": "Jinjin",
-          "path": "H:\\Songs\\Doppelganger\\2.txt",
-          "diffs": "19",
-          "notes": 901,
-          "longnotes": 140,
-          "length": 144790
-        },
-        {
-          "hash": "7ee2b0faee40ca2eaefce47afa2db29b",
-          "charter": "Jinjin",
-          "path": "H:\\Songs\\Doppelganger\\3.txt",
-          "diffs": "30",
-          "notes": 2048,
-          "longnotes": 396,
-          "length": 144790
-        },
-        {
-          "hash": "6af58c03c72173d0a0941d84590a388c",
-          "charter": "Jinjin",
-          "path": "H:\\Songs\\Doppelganger\\4.txt",
-          "diffs": "52",
-          "notes": 2489,
-          "longnotes": 306,
-          "length": 144790
-        },
-        {
-          "hash": "8ad9485f8b80a9bf8f48a44ef20b363f",
-          "charter": "Jinjin",
-          "path": "H:\\Songs\\Doppelganger\\5.txt",
-          "diffs": "75",
-          "notes": 2765,
-          "longnotes": 761,
-          "length": 144790
-        }
-      ],
-      []
-    ],
-    "AudioPath": "H:\\Songs\\Doppelganger\\Doppelganger.mp3",
-    "BGAPath": null,
-    "BGPath": "H:\\Songs\\Doppelganger\\doppelganger bg new.jpg",
-    "name": "Doppelganger",
-    "artist": "LeaF",
-    "tags": ":bms of fighters 2013",
-    "localoffset": 0.0,
-    "directory": "H:\\Songs\\Doppelganger",
+    "directory": "H:\\Songs\\sabi - true DJ MAG top ranker's song Zenpen (katagiri Remix)",
     "isvirtual": false
   },
   {

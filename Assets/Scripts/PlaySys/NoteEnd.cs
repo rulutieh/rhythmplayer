@@ -13,7 +13,7 @@ public class NoteEnd : MonoBehaviour
         var sys = GameObject.FindWithTag("NoteSys");
         rdr = sys.GetComponent<NotePlayer>();
         rend = GetComponent<SpriteRenderer>();
-        transform.localScale = new Vector2(transform.localScale.x * Manager.ColumnWidth, transform.localScale.y);
+        transform.localScale = new Vector2(transform.localScale.x * Manager.ColumnWidth * 0.98f, transform.localScale.y);
         if (Manager.isCutOff) rend.enabled = false;
     }
 

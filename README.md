@@ -1,13 +1,23 @@
-﻿# Rhythm Game Algorhythm using Bpm-dependent lane speed
- 
+﻿# Rhythm Game Algorhythm for C#/Unity using FMOD
+
+Screenshot:
+
+![SELECT](./image/1.png)
+![4K](./image/3.png)
+![7K](./image/2.png)
+
+
 Play Movie :
 
 Re:End of a dream (bms)
 (https://www.youtube.com/watch?v=pEQQA-aenLM)
+
 Say a Vengeance (bms)
 (https://youtu.be/Q5IbDTs_AnY)
+
 Identity part II (o2jam)
 (https://youtu.be/_KSjgk9VNLs)
+
 BPM Gimmick Test
 (https://youtu.be/664GYFiwsnQ)
 
