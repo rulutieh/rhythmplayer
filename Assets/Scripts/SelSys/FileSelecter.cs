@@ -327,16 +327,11 @@ public class FileSelecter : MonoBehaviour
         SongScroll();
 
         int d = Manager.decide;
-
+        _diffcount = Loader.list[d].diffCount(keycount);
         try
         {
-            _diffcount = Loader.list[d].diffCount(keycount);
-        }
-        catch
-        {
-            Loader.ReLoad();
-            Debug.LogWarning(d);
-        }
+            
+
     
         if (Manager.diffselection > _diffcount - 1)
         {
@@ -380,10 +375,12 @@ public class FileSelecter : MonoBehaviour
         lastselectdiff = Loader.list[d].getID(Manager.diffselection, keycount);
         //fmod 사운드 로딩
         StartCoroutine(CheckLoadedAndPlay());
-
-
-
-
+        }
+        catch
+        {
+            RoomChanger.roomchanger.goRoom("Title");
+            Loader.ReLoad();
+        }
         var obj = GameObject.Find("AlbumUI");
         if (obj)
             obj.GetComponent<AlbumArt>().LoadAlbumArt();

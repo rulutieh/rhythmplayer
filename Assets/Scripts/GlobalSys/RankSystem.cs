@@ -279,7 +279,6 @@ public class RankSystem : MonoBehaviour
         {
             json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "scoredb.json"));
             json = CryptoManager.AESDecrypt128(json);
-            Debug.Log(json);
             songs = JsonConvert.DeserializeObject<List<SongDB>>(json);
         }
     }

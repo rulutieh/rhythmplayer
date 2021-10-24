@@ -141,6 +141,7 @@ public class FileLoader : MonoBehaviour
     void Start()
     {
         StartCoroutine(FirstLoad());
+        //Run_Watcher();
     }
     IEnumerator FirstLoad()
     {
@@ -148,7 +149,16 @@ public class FileLoader : MonoBehaviour
         Manager.FolderPath = PlayerPrefs.GetString("PATH", Manager.FolderPath);
         if (!Directory.Exists(Manager.FolderPath))
             Manager.FolderPath = Application.dataPath;
-        ReLoad();
+
+        if (!File.Exists(Path.Combine(Application.dataPath, "songlist.db")))
+            ReLoad(); //첫 로딩 (DB파일 없을 때)
+        else
+        {
+            var json = File.ReadAllText(Path.Combine(Application.dataPath, "songlist.db"));
+            listorigin = JsonConvert.DeserializeObject<List<Song>>(json);
+            SceneManager.LoadScene("Title", LoadSceneMode.Single);
+            LoadCircle.SetActive(false);
+        }   //DB파일 있을 시 불러오기
     }
     void Update()
     {
@@ -190,7 +200,7 @@ public class FileLoader : MonoBehaviour
         
         await Task.WhenAll(tasks);
         string json = JsonConvert.SerializeObject(listorigin, Formatting.Indented);
-        File.WriteAllText(Path.Combine(Application.dataPath, "1.json"), json);
+        File.WriteAllText(Path.Combine(Application.dataPath, "songlist.db"), json);
         SceneManager.LoadScene("Title", LoadSceneMode.Single);
         t = "";
         threading = false;
@@ -494,6 +504,8 @@ public class FileLoader : MonoBehaviour
         //  Show that a file has been created, changed, or deleted.
         WatcherChangeTypes wct = e.ChangeType;
         Console.WriteLine("File {0} {1}", e.FullPath, wct.ToString());
+
+        ReLoad();
     }
 
     IEnumerator loadComplete()
