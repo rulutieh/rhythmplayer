@@ -16,9 +16,9 @@ public class playerBGA : MonoBehaviour
     {
         rect = GetComponent<RectTransform>();
         NotePlayer.isVideoLoaded = false;
-        if (!string.IsNullOrEmpty(NowPlaying.BGAFILE) && Manager.isPlayVideo)
+        if (!string.IsNullOrEmpty(NowPlaying.PLAY.BGAFILE) && Manager.isPlayVideo)
         {
-            mVideoPlayer.url = NowPlaying.BGAFILE;
+            mVideoPlayer.url = NowPlaying.PLAY.BGAFILE;
             StartCoroutine(PrepareVideo());
         }
         else

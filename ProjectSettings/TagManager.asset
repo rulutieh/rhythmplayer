@@ -19,6 +19,7 @@ TagManager:
   - UICanvas
   - setting
   - Mask
+  - Background
   layers:
   - Default
   - TransparentFX

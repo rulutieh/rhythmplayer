@@ -36,7 +36,7 @@ public class ScoreManager : MonoBehaviour
     //판정관련
     public void CacScore()
     {
-        float c = NowPlaying.NOTECOUNTS + (NowPlaying.LONGNOTECOUNTS * 2);
+        float c = NowPlaying.PLAY.NOTECOUNTS + (NowPlaying.PLAY.LONGNOTECOUNTS * 2);
         float s = (GOOD / (2 * c)) + (BAD / (6 * c));
         float sum = (KOOL / c) + (COOL * 19f / (c * 20f)) + s;
         float sumforacc = ((KOOL + COOL) / c) + s;
@@ -83,7 +83,7 @@ public class ScoreManager : MonoBehaviour
     {
         //COOL = KOOL = GOOD = MISS = BAD = TOTAL = 0;
         RankSys.SaveScore(
-            NowPlaying.HASH,
+            NowPlaying.PLAY.HASH,
             Manager.playername,
             KOOL,
             COOL,

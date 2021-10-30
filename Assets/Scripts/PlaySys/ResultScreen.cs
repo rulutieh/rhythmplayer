@@ -34,8 +34,8 @@ public class ResultScreen : MonoBehaviour
     void Update()
     {
 
-        tmptitle.text = $"{NowPlaying.ARTIST} - {NowPlaying.TITLE}";
-        tmplevel.text = NowPlaying.LEVEL;
+        tmptitle.text = $"{NowPlaying.PLAY.ARTIST} - {NowPlaying.PLAY.TITLE}";
+        tmplevel.text = NowPlaying.PLAY.LEVEL;
         
         tmpcombo.text = "Combo : " + ScoreManager.maxcombo.ToString();
     }

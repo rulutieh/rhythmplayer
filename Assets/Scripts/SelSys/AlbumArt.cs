@@ -11,7 +11,7 @@ public class AlbumArt : MonoBehaviour, IPointerClickHandler
     RectTransform rect;
     RankPanel p;
     Image rend;
-    public Image bg;
+    GameObject bg;
     Vector3 startpos, endpos;
     Color c;
     bool isloaded;
@@ -22,10 +22,7 @@ public class AlbumArt : MonoBehaviour, IPointerClickHandler
         c = new Color(1, 1, 1, 1);
         p = panel.GetComponent<RankPanel>();
         rect = GetComponent<RectTransform>();
-        //startpos = rect.transform.position;
-        //endpos = Vector3.Lerp(fade.GetComponent<RectTransform>().position, startpos, 0.66f);
-
-        AnimatePanel();
+        bg = GameObject.FindWithTag("Background");
     }
 
     // Update is called once per frame
@@ -43,24 +40,8 @@ public class AlbumArt : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         p.onoff();
-        AnimatePanel();
     }
 
-    public void AnimatePanel()
-    {
-        /*
-        if (p.isOn)
-        {
-            rend.CrossFadeAlpha(0.9f, 0.3f, false);
-            rect.DOMove(endpos, 0.3f, false);
-        }
-        else
-        {
-            rend.CrossFadeAlpha(1f, 0.3f, false);
-            rect.DOMove(startpos, 0.3f, false);
-        }
-        */
-    }
 
     public void LoadAlbumArt()
     {
@@ -70,14 +51,15 @@ public class AlbumArt : MonoBehaviour, IPointerClickHandler
     IEnumerator LoadImage()
     {
         
-        WWW www1 = new WWW(NowPlaying.BGFILE);
+        WWW www1 = new WWW(NowPlaying.PLAY.BGFILE);
         yield return www1;
         isloaded = true;
         c.a = 0;
         float width = www1.texture.width;
         float height = www1.texture.height;
         rend.sprite = Sprite.Create(www1.texture, new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f));
-        bg.sprite = rend.sprite;
+        bg.GetComponent<Image>().sprite = rend.sprite;
+        NowPlaying.PLAY.bg = rend.sprite;
         rend.color = new Color(1, 1, 1, 0);
     }
 }

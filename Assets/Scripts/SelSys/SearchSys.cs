@@ -28,7 +28,7 @@ public class SearchSys : MonoBehaviour
         if (string.Compare(inputext, oldtext) != 0)
         {
             Manager.decide = 0;
-            Loader.searchbyHash(NowPlaying.HASH); //가장 최근 선택한 값 찾기 없으면 변경없음
+            Loader.searchbyHash(NowPlaying.PLAY.HASH); //가장 최근 선택한 값 찾기 없으면 변경없음
             text = inputext.ToUpper();
             oldtext = tmp.text;
             Manager.sortsearch = text;

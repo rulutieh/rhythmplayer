@@ -13,7 +13,7 @@ public class NoteRenderer : MonoBehaviour
     Sprite tempspr;
     int COLUMN;
     int TIME;
-    float LNLENGTH, height = -1f, cf, NoteTiming;
+    float LNLENGTH, cf, NoteTiming;
     bool ISLN;
 
     void Awake()

@@ -13,7 +13,7 @@ public class FileSelecter : MonoBehaviour
     public Queue<GameObject> b_queue = new Queue<GameObject>();
     List<GameObject> buttons = new List<GameObject>();
     MusicHandler player;
-    public WWW www, picture;
+
     FileLoader Loader;
     SettingPanel setting;
     Manager Setting;
@@ -91,7 +91,7 @@ public class FileSelecter : MonoBehaviour
         int c = Loader.list.Count;
         if (Manager.decide < 0) Manager.decide = 0;
         if (Manager.decide > c - 1) Manager.decide = c - 1;
-        if (!Loader.searchbyHash(NowPlaying.HASH))
+        if (!Loader.searchbyHash(NowPlaying.PLAY.HASH))
         {
             Manager.decide = Mathf.RoundToInt(UnityEngine.Random.Range(0.0f, (float)Loader.list.Count));
         }
@@ -308,17 +308,17 @@ public class FileSelecter : MonoBehaviour
         int d = Manager.decide;
         int s = Manager.diffselection;
         _txtpath = Loader.list[d].getTxt(s, keycount);
-        NowPlaying.FILE = _txtpath;
-        NowPlaying.LEVEL = Loader.list[d].getDiff(s, keycount);
-        NowPlaying.HASH = Loader.list[d].getID(s, keycount);
+        NowPlaying.PLAY.FILE = _txtpath;
+        NowPlaying.PLAY.LEVEL = Loader.list[d].getDiff(s, keycount);
+        NowPlaying.PLAY.HASH = Loader.list[d].getID(s, keycount);
         Loader.list[d].NoteCounts(
             s,
             keycount,
-            out NowPlaying.NOTECOUNTS,
-            out NowPlaying.LONGNOTECOUNTS,
-            out NowPlaying.LengthMS
+            out NowPlaying.PLAY.NOTECOUNTS,
+            out NowPlaying.PLAY.LONGNOTECOUNTS,
+            out NowPlaying.PLAY.LengthMS
             );
-        rankpanel.GetComponent<RankPanel>().LoadRanks(NowPlaying.HASH);
+        rankpanel.GetComponent<RankPanel>().LoadRanks(NowPlaying.PLAY.HASH);
         countNotes(_txtpath);
     }
     void LoadFileInfo()
@@ -348,19 +348,19 @@ public class FileSelecter : MonoBehaviour
         _bgpath = Loader.list[d].BGPath;
         _bgapath = Loader.list[d].BGAPath;
         _charter = Loader.list[d].getCharter(Manager.diffselection, keycount);
-        NowPlaying.isBGA = string.IsNullOrEmpty(Loader.list[d].BGAPath);
-        NowPlaying.isVirtual = Loader.list[d].isvirtual;
+        NowPlaying.PLAY.isBGA = string.IsNullOrEmpty(Loader.list[d].BGAPath);
+        NowPlaying.PLAY.isVirtual = Loader.list[d].isvirtual;
 
 
         LoadNoteFiles();
         LoadIcons();
-        NowPlaying.MUSICFILE = Loader.list[d].AudioPath;
-        NowPlaying.OFFSET = _localoffset;
-        NowPlaying.BGFILE = _bgpath;
-        NowPlaying.BGAFILE = _bgapath;
-        NowPlaying.TITLE = _name;
-        NowPlaying.ARTIST = _artist;
-        NowPlaying.FOLDER = Loader.list[d].directory;
+        NowPlaying.PLAY.MUSICFILE = Loader.list[d].AudioPath;
+        NowPlaying.PLAY.OFFSET = _localoffset;
+        NowPlaying.PLAY.BGFILE = _bgpath;
+        NowPlaying.PLAY.BGAFILE = _bgapath;
+        NowPlaying.PLAY.TITLE = _name;
+        NowPlaying.PLAY.ARTIST = _artist;
+        NowPlaying.PLAY.FOLDER = Loader.list[d].directory;
         //fmod 사운드 릴리즈
         StopCoroutine(CheckLoadedAndPlay());
         if (player.isLoaded() == FMOD.OPENSTATE.PLAYING || player.isLoaded() == FMOD.OPENSTATE.READY)
@@ -368,7 +368,7 @@ public class FileSelecter : MonoBehaviour
 
 
 
-        player.LoadSound(NowPlaying.MUSICFILE);
+        player.LoadSound(NowPlaying.PLAY.MUSICFILE);
 
         //선택변경 감지를 위한 마지막 선택곡 저장
         lastselect = Loader.list[d].getID(0, keycount);
@@ -483,10 +483,16 @@ public class FileSelecter : MonoBehaviour
         Loader.list.Clear();
         for (int i = 0; i < Loader.listkeysort.Count; i++)
         {
+            string noter = "";
+            for (int j = 0; j < Loader.listkeysort[i].charts[keycount].Count; j++)
+            {
+                noter += Loader.listkeysort[i].charts[keycount][j].charter;
+            }
             if (
                 Loader.listkeysort[i].name.ToUpper().Contains(text) ||
                 Loader.listkeysort[i].artist.ToUpper().Contains(text) ||
-                Loader.listkeysort[i].tags.ToUpper().Contains(text)
+                Loader.listkeysort[i].tags.ToUpper().Contains(text)||
+                noter.ToUpper().Contains(text)
                 ) Loader.list.Add(Loader.listkeysort[i]);
         }
         SortMusic();
@@ -542,7 +548,7 @@ public class FileSelecter : MonoBehaviour
         double _bpm = 0;
         isThreading = true;
         minBPM = 65526f; maxBPM = 0;
-        NowPlaying.TIMINGCOUNTS = 0;
+        NowPlaying.PLAY.TIMINGCOUNTS = 0;
         FileInfo fileInfo = new FileInfo(filePath);
         if (fileInfo.Exists)
         {
@@ -568,7 +574,7 @@ public class FileSelecter : MonoBehaviour
                             else if (!line.Contains(":"))
                             {
 
-                                NowPlaying.TIMINGCOUNTS++;
+                                NowPlaying.PLAY.TIMINGCOUNTS++;
 
                                 string[] arr = line.Split(',');
 
@@ -599,7 +605,7 @@ public class FileSelecter : MonoBehaviour
             });
             rdr.Close();
         }
-        bpmlist.Add(new BPMS(NowPlaying.LengthMS, _bpm));
+        bpmlist.Add(new BPMS(NowPlaying.PLAY.LengthMS, _bpm));
         /////////////////////////////////가중치계산/////////////////////////////////////
         for (int i = 0; i < bpmlist.Count; i++)
         {
@@ -639,7 +645,7 @@ public class FileSelecter : MonoBehaviour
         );
         medianBPM = (float)medianlist[0].bpm;
 
-        NowPlaying.MEDIAN = 1 / (medianBPM / 60000f);
+        NowPlaying.PLAY.MEDIAN = 1 / (medianBPM / 60000f);
         /////////////////////////////////완    료/////////////////////////////////////
         isThreading = false;
     }

@@ -5,17 +5,35 @@ using UnityEngine;
 public class NowPlaying : MonoBehaviour
 {
 
-    public static string MUSICFILE, FILE, BGFILE, BGAFILE, TITLE, ARTIST, HASH, FOLDER;
-    public static string LEVEL, LENGTH;
-    public static float OFFSET;
-    public static double MEDIAN;
-    public static int TIMINGCOUNTS, NOTECOUNTS, LONGNOTECOUNTS;
-    public static AudioClip AUD;
-    public static bool isBGA, isVirtual;
+    public string MUSICFILE, FILE, BGFILE, BGAFILE, TITLE, ARTIST, HASH, FOLDER;
+    public string LEVEL, LENGTH;
+    public float OFFSET;
+    public  double MEDIAN;
+    public int TIMINGCOUNTS, NOTECOUNTS, LONGNOTECOUNTS;
+    public bool isBGA, isVirtual;
     public int nt, ln;
-    public static int LengthMS;
+    public int LengthMS;
     MusicHandler player;
+    public Sprite bg;
+    private static NowPlaying play = null;
+
+    private void Awake()
+    {
+        play = this;
+    }
+    public static NowPlaying PLAY
+    {
+        get
+        {
+            if (null == play)
+            {
+                return null;
+            }
+            return play;
+        }
+    }
     // Start is called before the first frame update
+
     void Start()
     {
         player = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
@@ -24,12 +42,15 @@ public class NowPlaying : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        nt = NOTECOUNTS;
-        ln = LONGNOTECOUNTS;
-        string s;
-        float f = LengthMS / 1000f;
-        s = $" {Mathf.FloorToInt(f / 60f)} : ";
-        s += (f % 60f).ToString("00");
-        LENGTH = s;
+        if (nt != NOTECOUNTS || ln != LONGNOTECOUNTS)
+        {
+            nt = NOTECOUNTS;
+            ln = LONGNOTECOUNTS;
+            string s;
+            float f = LengthMS / 1000f;
+            s = $" {Mathf.FloorToInt(f / 60f)} : ";
+            s += (f % 60f).ToString("00");
+            LENGTH = s;
+        }
     }
 }

@@ -250,7 +250,7 @@ public class FileLoader : MonoBehaviour
             BACKGROUND = DefaultBGPath;   //이미지 파일 없을시 default 로드
         else
             BACKGROUND = Path.Combine(path, dir, bgs[0].Name);
-        newSong.BGPath = BACKGROUND;
+        newSong.BGPath = NullStringCheck(BACKGROUND);
         FileInfo[] bga;
         bga = d.GetFiles("*.mpg"); // 동영상 불러오기
         if (bga.Length == 0) bga = d.GetFiles("*.mp4");
@@ -319,15 +319,15 @@ public class FileLoader : MonoBehaviour
                         t = s;
                     }
                     if (line.Contains("Artist:")) newSong.artist = line.Remove(0, 7);
-                    if (line.Contains("Tags:")) newSong.tags = line.Remove(0, 4);
+                    if (line.Contains("Tags:")) newSong.tags = NullStringCheck(line.Remove(0, 4));
                     if (line.Contains("Version:"))
                     {
-                        _diff = line.Remove(0, 8);
+                        _diff = NullStringCheck(line.Remove(0, 8));
                         if (_diff.Contains("easy lvl")) _diff =  _diff.Remove(0, 14);
                         else if (_diff.Contains("hard lvl")) _diff = _diff.Remove(0, 14);
                         else if (_diff.Contains("normal lvl")) _diff =_diff.Remove(0, 16);
                     }
-                    if (line.Contains("Creator:")) _noter = line.Remove(0, 8);
+                    if (line.Contains("Creator:")) _noter = NullStringCheck(line.Remove(0, 8));
                     if (line.Contains("CircleSize:"))
                         keycount = int.Parse(line.Split(':')[1]);
                     if (line == null) continue;
@@ -377,6 +377,11 @@ public class FileLoader : MonoBehaviour
                 rdr.Dispose();
             return;
         }
+    }
+    string NullStringCheck(string s)
+    {
+        if (s != null) return s;
+        else return "";
     }
     #region SORT
     public void SortByKeycounts()

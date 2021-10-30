@@ -14,7 +14,7 @@ public class ProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float c = 437f * NotePlayer.Playback / NowPlaying.LengthMS;
+        float c = 437f * NotePlayer.Playback / NowPlaying.PLAY.LengthMS;
         if (c > 437f) c = 437f;
         rect.anchoredPosition = new Vector2(-437f + c, rect.anchoredPosition.y);
     }

@@ -147,12 +147,12 @@ public class NotePlayer : MonoBehaviour
 
         //고른 음악정보 가져오기
 
-        string filePath = NowPlaying.FILE;
-        offset = NowPlaying.OFFSET;
+        string filePath = NowPlaying.PLAY.FILE;
+        offset = NowPlaying.PLAY.OFFSET;
         ReadFile(filePath); //파일 읽기 시작
 
-        NoteList = new Notes[NowPlaying.NOTECOUNTS + NowPlaying.LONGNOTECOUNTS];
-        TimeList = new Timings[NowPlaying.TIMINGCOUNTS];
+        NoteList = new Notes[NowPlaying.PLAY.NOTECOUNTS + NowPlaying.PLAY.LONGNOTECOUNTS];
+        TimeList = new Timings[NowPlaying.PLAY.TIMINGCOUNTS];
 
         for (int i = 0; i < 200; i++) // 미리 200개의 객체 미리 생성
         {
@@ -216,7 +216,7 @@ public class NotePlayer : MonoBehaviour
             //    multiply = 3f / 410f * GlobalSettings.scrollSpeed;
             //}
             //else
-            //    multiply = 3f / NowPlaying.MEDIAN * GlobalSettings.scrollSpeed;
+            //    multiply = 3f / NowPlaying.PLAY.MEDIAN * GlobalSettings.scrollSpeed;
             //p += Time.deltaTime * 1000f; //use deltatime
             //Playback = p;
             Playback = Time.timeSinceLevelLoad * 1000f - startTime + p; //use scenemanagement
@@ -259,7 +259,7 @@ public class NotePlayer : MonoBehaviour
     #region InitSettings
     void AudioStart() //오프셋 Invoke로 실행
     {
-        if (!NowPlaying.isVirtual)
+        if (!NowPlaying.PLAY.isVirtual)
             player.PlayMP3();
         isPlaying = true;
     }
@@ -352,7 +352,7 @@ public class NotePlayer : MonoBehaviour
             double _listbpm = TimeList[i].BPM;
             double _bpm;
             if (_time > TIME) break; //변속할 타이밍이 아니면 빠져나오기
-            _bpm = (NowPlaying.MEDIAN / _listbpm);
+            _bpm = (NowPlaying.PLAY.MEDIAN / _listbpm);
             newTIME += (_bpm - prevBPM) * (TIME - _time); //거리계산
             prevBPM = _bpm; //이전bpm값
         }
@@ -438,10 +438,9 @@ public class NotePlayer : MonoBehaviour
     IEnumerator InputSystem()
     {
         //노트 콜리젼 오브젝트 출력 (리얼타임)
-        //순간이동 노트의 경우에는 raycast가 무시되므로 고정 속도의 콜리더 사용
         _RTIME = NoteList[rnoteIDX].TIME;
         float _TIME2 = NoteList[rnoteIDX].TIME;
-        yield return new WaitUntil(() => _RTIME <= Playback + 1500f && !rnoteEnd);
+        yield return new WaitUntil(() => _RTIME <= Playback + 1000f && !rnoteEnd);
         int temp = rnoteIDX;
         for (int i = 0; i < Manager.keycount; i++)
         {
@@ -526,7 +525,7 @@ public class NotePlayer : MonoBehaviour
     {
         //키사운드 로딩
 
-        string path = NowPlaying.FOLDER;
+        string path = NowPlaying.PLAY.FOLDER;
         string searchPatterns = "*.ogg|*.wav";
         keysounds = searchPatterns
                               .Split('|')

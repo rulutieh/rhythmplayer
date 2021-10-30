@@ -32,7 +32,6 @@ public class SettingPanel : MonoBehaviour
     Manager st;
 
     VistaFolderBrowserDialog OpenDialog;
-    Stream openStream = null;
 
     public void Awake()
     {

@@ -46,10 +46,10 @@ public class SelectText : MonoBehaviour
         TMPSPD.text = "Scroll Speed : " + Mathf.Round(Manager.scrollSpeed * 10f - 8f);
 
         TMPCHART.text = "Noter : " + Select._charter;
-        TMPLENGTH.text = $"Length : {NowPlaying.LENGTH}";
+        TMPLENGTH.text = $"Length : {NowPlaying.PLAY.LENGTH}";
 
-        TMPNOTE.text = $"Note counts : {NowPlaying.NOTECOUNTS}";
-        TMPLN.text = $"Longnote counts : {NowPlaying.LONGNOTECOUNTS}";
+        TMPNOTE.text = $"Note counts : {NowPlaying.PLAY.NOTECOUNTS}";
+        TMPLN.text = $"Longnote counts : {NowPlaying.PLAY.LONGNOTECOUNTS}";
 
         TMPFIXED.text = "F3 / F4";
         float per = (float)Manager.decide / maxvalue;
