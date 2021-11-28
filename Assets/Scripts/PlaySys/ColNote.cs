@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// LEGACY INPUT SYSTEM USING RAYCAST (FOR MOBILE, TOUCH INPUT)
+/// </summary>
+
+
 public class ColNote : MonoBehaviour
 {
     public bool pressed, lnsetpressed;

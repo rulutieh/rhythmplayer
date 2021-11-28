@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Judges;
 
+/// <summary>
+/// LEGACY INPUT SYSTEM USING RAYCAST (FOR MOBILE, TOUCH INPUT)
+/// </summary>
+
 public class KeyInputManager : MonoBehaviour
 {
     bool isLNPRESSED, isAutoPressed;
@@ -37,7 +41,7 @@ public class KeyInputManager : MonoBehaviour
             transform.position = new Vector2((idx - 3) * Manager.ColumnWidth, transform.position.y);
         else
         {
-            
+
             DEF = DEF4K;
             PRESS = PRESS4K;
             rend.sprite = DEF;
@@ -76,10 +80,13 @@ public class KeyInputManager : MonoBehaviour
                 rend.sprite = PRESS;
             else
                 rend.sprite = DEF;
-            if (Input.GetKeyDown(KeySetting.keys[(KeyAction)idx]))
-                KeyInput(isLNPRESSED, true);
-            if (Input.GetKeyUp(KeySetting.keys[(KeyAction)idx]))
-                KeyRelease();
+
+
+                if (Input.GetKeyDown(KeySetting.keys[(KeyAction)idx]))
+                    KeyInput(isLNPRESSED, true);
+                if (Input.GetKeyUp(KeySetting.keys[(KeyAction)idx]))
+                    KeyRelease();
+            
         }
         else
         {
@@ -102,23 +109,30 @@ public class KeyInputManager : MonoBehaviour
             }
 
         }
-
-        if (isLNPRESSED) //롱놋 안 땠을 시 미스처리
+        if (!reader.NewInputSys || Manager.AutoPlay)
         {
-            float error = NotePlayer.Playback - LNENDTime;
-            if (error > 270f)
+
+            if (isLNPRESSED) //롱놋 안 땠을 시 미스처리
             {
-                ScoreManager.combo = 0;
-                getJudge(4);
-                isLNPRESSED = false;
+                float error = NotePlayer.Playback - LNENDTime;
+                if (error > 270f)
+                {
+                    manager.score[manager.currentPlayer].COMBO = 0;
+                    getJudge(4);
+                    isLNPRESSED = false;
+                }
+                lnhitef.gameObject.SetActive(true);
             }
-            lnhitef.gameObject.SetActive(true);
+            else lnhitef.gameObject.SetActive(false);
         }
-        else lnhitef.gameObject.SetActive(false);
 
 
 
 
+    }
+    public void ToggleLNEffect(bool b)
+    {
+        lnhitef.gameObject.SetActive(b);
     }
     void KeyInput(bool LN, bool effect)
     {
@@ -134,7 +148,7 @@ public class KeyInputManager : MonoBehaviour
                 ef.GetComponent<LineEffects>().setActive();
             }
         }
-
+        if (reader.NewInputSys && !Manager.AutoPlay) return;
         isLNPRESSED = false;
         float errorUp;
         float errorDown;
@@ -205,7 +219,7 @@ public class KeyInputManager : MonoBehaviour
                     player.PlaySample(i);
 
                 cacJudge(error, cn.isLN());
-                
+
             }
             else if (hitup)
             {
@@ -216,7 +230,7 @@ public class KeyInputManager : MonoBehaviour
             #endregion
         }
     }
-    void createhitef()
+    public void createhitef()
     {
         Instantiate(hitef, transform.position, Quaternion.identity);
     }
@@ -226,33 +240,36 @@ public class KeyInputManager : MonoBehaviour
         if (isLNPRESSED)
         {
             KeyInput(true, false);
-            if (hit.collider != null)
-                hit.collider.GetComponent<ColNote>().DestroyCollider();
+            if (reader.NewInputSys && !Manager.AutoPlay)
+                return;
+
+                if (hit.collider != null)
+                    hit.collider.GetComponent<ColNote>().DestroyCollider();
         }
     }
     void cacJudge(float error, bool ln)
     {
         if (error <= Timings.j300k)
         {
-            ScoreManager.combo++;
+            manager.score[manager.currentPlayer].COMBO++;
             getJudge(0);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
         else if (error <= Timings.j300)
         {
-            ScoreManager.combo++;
+            manager.score[manager.currentPlayer].COMBO++;
             getJudge(1);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
         else if (error <= Timings.j200)
         {
-            ScoreManager.combo++;
+            manager.score[manager.currentPlayer].COMBO++;
             getJudge(2);
             if (isLNPRESSED) hit.collider.GetComponent<ColNote>().setPressed();
         }
         else if (error <= Timings.j100)
         {
-            ScoreManager.combo++;
+            manager.score[manager.currentPlayer].COMBO++;
             if (ln)
                 getJudge(3);
             else
@@ -261,9 +278,9 @@ public class KeyInputManager : MonoBehaviour
         }
         else
         {
-            ScoreManager.combo = 0;
+            manager.score[manager.currentPlayer].COMBO = 0;
             if (ln)
-                getJudge(4);
+                getJudge(5);
             else
                 getJudge(7);
         }
@@ -272,27 +289,27 @@ public class KeyInputManager : MonoBehaviour
     {
         if (error <= LNTimings.j300k)
         {
-            ScoreManager.combo++;
+            manager.score[manager.currentPlayer].COMBO++;
             getJudge(0);
         }
         else if (error <= LNTimings.j300)
         {
-            ScoreManager.combo++;
+            manager.score[manager.currentPlayer].COMBO++;
             getJudge(1);
         }
         else if (error <= LNTimings.j200)
         {
-            ScoreManager.combo++;
+            manager.score[manager.currentPlayer].COMBO++;
             getJudge(2);
         }
         else if (error <= LNTimings.j100)
         {
-            ScoreManager.combo++;
+            manager.score[manager.currentPlayer].COMBO++;
             getJudge(3);
         }
         else
         {
-            ScoreManager.combo = 0;
+            manager.score[manager.currentPlayer].COMBO++;
             getJudge(4);
         }
     }

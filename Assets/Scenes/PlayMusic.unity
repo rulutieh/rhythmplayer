@@ -6768,6 +6768,11 @@ PrefabInstance:
       objectReference: {fileID: 1535403414}
     - target: {fileID: 2281776164902078672, guid: 4feeceb987d918e48815fd6b490d495c,
         type: 3}
+      propertyPath: NewInputSys
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281776164902078672, guid: 4feeceb987d918e48815fd6b490d495c,
+        type: 3}
       propertyPath: initsetting
       value: 
       objectReference: {fileID: 117492036}
@@ -6784,6 +6789,29 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2417163686679336757}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2417163686679336759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2417163686679336758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1556eb807a19ed545a6a3dd748d91df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLNPRESSED: 00000000000000
+  PressedColumn: 00000000000000000000000000000000000000000000000000000000
+  Keys:
+  - {fileID: 89623721}
+  - {fileID: 1670075075}
+  - {fileID: 238646898}
+  - {fileID: 1648978686}
+  - {fileID: 67461738}
+  - {fileID: 1894177975}
+  - {fileID: 1834965748}
+  judgeobj: {fileID: 874819459}
 --- !u!1001 &3578000316690520855
 PrefabInstance:
   m_ObjectHideFlags: 0

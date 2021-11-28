@@ -10,13 +10,13 @@ public class Judgement : MonoBehaviour
     SpriteRenderer rend;
     [SerializeField]
     GameObject score;
-    ScoreManager sc;
+    ScoreManager manager;
     public Sprite[] spr;
     // Start is called before the first frame update
     void Awake()
     {
         rend = GetComponent<SpriteRenderer>();
-        sc = score.GetComponent<ScoreManager>();
+        manager = score.GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -36,60 +36,61 @@ public class Judgement : MonoBehaviour
     {
         transform.position = new Vector2(0, -1f + Manager.stageYPOS);
         alph = 1;
-        ScoreManager.TOTAL++;
+        manager.score[manager.currentPlayer].TOTAL++;
         switch (j)
         {
             case 0:
                 //kool (롱놋)
                 rend.sprite = spr[5];
-                ScoreManager.KOOL++;
+                manager.score[manager.currentPlayer].KOOL++;
                 ScoreManager.HP += Recovery.max;
                 break;
             case 1:
                 //cool (롱놋)
                 rend.sprite = spr[0];
-                ScoreManager.COOL++;
+                manager.score[manager.currentPlayer].COOL++;
                 ScoreManager.HP += Recovery.max;
                 break;
             case 2:
                 rend.sprite = spr[1];
-                ScoreManager.GOOD++;
+                manager.score[manager.currentPlayer].GOOD++;
                 ScoreManager.HP += Recovery.good;
                 break;
             case 3:
                 rend.sprite = spr[3];
-                ScoreManager.BAD++;
+                manager.score[manager.currentPlayer].BAD++;
                 ScoreManager.HP -= Damage.bad;
                 break;
             case 4:
                 //miss
                 rend.sprite = spr[4];
-                ScoreManager.MISS++;
+                manager.score[manager.currentPlayer].MISS++;
                 ScoreManager.HP -= Damage.miss;
                 break;
             case 5:
                 //miss2
                 rend.sprite = spr[4];
-                ScoreManager.MISS += 2;
-                ScoreManager.TOTAL++;
+                manager.score[manager.currentPlayer].MISS += 2;
+                manager.score[manager.currentPlayer].TOTAL++;
                 ScoreManager.HP -= Damage.miss * 2;
                 break;
 
             case 6:
                 //bad  (단놋)
                 rend.sprite = spr[3];
-                ScoreManager.BAD++;
+                manager.score[manager.currentPlayer].BAD++;
                 ScoreManager.HP -= Damage.bad * 1.5f;
                 break;
             case 7:
                 //miss(단놋)
                 rend.sprite = spr[4];
-                ScoreManager.MISS++;
+                manager.score[manager.currentPlayer].MISS++;
                 ScoreManager.HP -= Damage.miss * 1.5f;
                 break;
         }
         if (ScoreManager.HP > 1f) ScoreManager.HP = 1f;
-        sc.CacScore();
+
+        manager.CacScore();
     }
     
 }

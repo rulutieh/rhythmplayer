@@ -10,6 +10,14 @@ public class JudgeText : MonoBehaviour
     bool active;
     float ap = 0;
     string txt = "";
+    ScoreManager manager;
+
+    private void Start()
+    {
+        var g = GameObject.FindWithTag("NoteSys");
+        manager = g.GetComponent<ScoreManager>();
+    }
+
     void Update()
     {
         float j = Mathf.RoundToInt(ScoreManager.judgeerror);
@@ -38,7 +46,7 @@ public class JudgeText : MonoBehaviour
             error.color = new Color(col.r, col.g, col.b, ap);
             acc.color = new Color(1, 1, 1, ap);
             auto.color = acc.color;
-            float a = ScoreManager.acc;
+            float a = manager.score[manager.currentPlayer]._acc;
             if (!Manager.AutoPlay)
             {
                 error.text = $"{txt}{j}";

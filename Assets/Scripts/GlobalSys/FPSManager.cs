@@ -27,7 +27,6 @@ public class FPSManager : MonoBehaviour
         if (scene.name == "PlayMusic")
         {
             set.SwitchFrameRate();
-            Debug.Log("frame");
         }
         else
         {
@@ -42,7 +41,7 @@ public class FPSManager : MonoBehaviour
         }
         else
         {
-            Application.targetFrameRate = 30;
+            Application.targetFrameRate = 60;
         }
     }
 }

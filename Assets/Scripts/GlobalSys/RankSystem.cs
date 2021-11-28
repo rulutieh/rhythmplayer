@@ -57,6 +57,7 @@ public class ScoreData
         this.date = date;
         KOOL = k; COOL = c; GOOD = g; BAD = b; MISS = m;
         getScores();
+
     }
     public ScoreData(ConvertOnlineScores o)
     {
@@ -72,11 +73,17 @@ public class ScoreData
     }
     void getScores()
     {
-        float c = KOOL + COOL + GOOD + MISS + BAD;
-        float s = (GOOD / (2 * c)) + (BAD / (6 * c));
-        float sum = (KOOL / c) + (COOL * 19f / (c * 20f)) + s;
-        acc = ((KOOL + COOL) / c) + s;
-        score = Mathf.RoundToInt(1000000f * sum);
+        ScoreManager.SCORES sc = new ScoreManager.SCORES();
+        sc.KOOL = KOOL;
+        sc.COOL = COOL;
+        sc.GOOD = GOOD;
+        sc.BAD = BAD;
+        sc.MISS = MISS;
+        sc.TOTAL = KOOL + COOL + GOOD + BAD + MISS;
+        sc.MAXNOTE = sc.TOTAL;        
+        sc.CacScore();
+        acc = sc._acc;
+        score = sc.SCORE;
         state = 0;
         if (BAD == 0 && MISS == 0) state = 1;
     }

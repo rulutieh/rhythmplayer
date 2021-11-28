@@ -27,6 +27,8 @@ public class NotePlayer : MonoBehaviour
     int TimingCount, NoteCount, LastNoteTiming;
     public static int NoteCountLongnote;
 
+    public bool NewInputSys;
+
     ScoreManager smanager;
     RankSystem RankSys;
     MusicHandler player;
@@ -52,14 +54,18 @@ public class NotePlayer : MonoBehaviour
         }
     }
     //노트
-    [Serializable]
-    struct Notes
+    
+    public struct Notes
     {
         public int COLUMN;
         public int TIME;
         public int KeySoundINDEX;
         public bool ISLN;
         public int LNLENGTH;
+
+        public bool isCreated;
+        public bool isDestroyed;
+        public bool isPressed;
         public Notes(int COLUMN, int TIME, bool ISLN, int LNLENGTH, int KEYSOUND)
         {
             this.COLUMN = COLUMN;
@@ -67,6 +73,9 @@ public class NotePlayer : MonoBehaviour
             this.ISLN = ISLN;
             this.LNLENGTH = LNLENGTH;
             KeySoundINDEX = KEYSOUND;
+            isCreated = false;
+            isDestroyed = false;
+            isPressed = false;
         }
 
     }
@@ -83,8 +92,11 @@ public class NotePlayer : MonoBehaviour
         }
     }
     //노트 리스트
-    [SerializeField]
-    Notes[] NoteList;
+    
+    public Notes[] NoteList;
+    //타이밍내의 노트인덱스
+    public List<int> HitableNotes = new List<int>();
+    int curIndex;
     //타이밍 리스트
     [SerializeField]
     Timings[] TimeList;
@@ -156,7 +168,8 @@ public class NotePlayer : MonoBehaviour
 
         for (int i = 0; i < 200; i++) // 미리 200개의 객체 미리 생성
         {
-            SetPooling(0);
+            if (!NewInputSys || Manager.AutoPlay)
+                SetPooling(0);
             SetPooling(1);
             SetPooling(2);
         }
@@ -194,10 +207,16 @@ public class NotePlayer : MonoBehaviour
         b.SetActive(false);
     }
     // Update is called once per frame
+    public List<int> GetHitableNotes()
+    {
+        return HitableNotes;
+    }
     void Update()
     {
-
         judgeoffset = -3.15f + Manager.stageYPOS;
+
+        //newinputsystem
+
 
         //노트, 타이밍 생성
         if (isLoaded)
@@ -211,14 +230,6 @@ public class NotePlayer : MonoBehaviour
                 }
             }
             multiply = 3f / 410f * Manager.scrollSpeed;
-            //if (!GlobalSettings.isFixedScroll)
-            //{
-            //    multiply = 3f / 410f * GlobalSettings.scrollSpeed;
-            //}
-            //else
-            //    multiply = 3f / NowPlaying.PLAY.MEDIAN * GlobalSettings.scrollSpeed;
-            //p += Time.deltaTime * 1000f; //use deltatime
-            //Playback = p;
             Playback = Time.timeSinceLevelLoad * 1000f - startTime + p; //use scenemanagement
             PlaybackChanged = GetNoteTime(Playback); // reamtime에 변속 계산 < 계산량 증가
 
@@ -252,6 +263,47 @@ public class NotePlayer : MonoBehaviour
 
             if (SampleList.Count != 0)
                 SampleSystem();
+
+            //배열로 노트구분
+            if (NewInputSys && !Manager.AutoPlay)
+            {
+                if (curIndex < NoteList.Length)
+                {
+                    if (NoteList[curIndex].TIME < Playback + 2500 && !NoteList[curIndex].isCreated)
+                    {
+                        HitableNotes.Add(curIndex);
+                        NoteList[curIndex].isCreated = true;
+                        curIndex++;
+                    }
+                }
+                for (int i = 0; i < HitableNotes.Count; i++)
+                {
+                    float t = NoteList[HitableNotes[i]].TIME;
+                    bool ln;
+                    if (NoteList[HitableNotes[i]].ISLN)
+                        ln = true;
+                    else
+                        ln = false;
+
+                    if (t < Playback - 180f)
+                    {
+                        NoteList[HitableNotes[i]].isDestroyed = true;
+                        
+                        if (ln)
+                        {
+                            if (!NoteList[HitableNotes[i]].isPressed)
+                            {
+                                smanager.SetJudge(1);
+                            }
+                        }
+                        else
+                        {
+                            smanager.SetJudge(2);
+                        }
+                        HitableNotes.RemoveAt(i);
+                    }
+                }
+            }
         }
     }
     #endregion
@@ -286,7 +338,8 @@ public class NotePlayer : MonoBehaviour
         //스트리밍 시작
         StartCoroutine(BpmChange());
         StartCoroutine(NoteSystem());
-        StartCoroutine(InputSystem());
+        if (!NewInputSys || Manager.AutoPlay)
+            StartCoroutine(InputSystem());
         StartCoroutine(mBarSystem());
 
         PlaybackChanged = Playback = -2000f;
@@ -440,7 +493,7 @@ public class NotePlayer : MonoBehaviour
         //노트 콜리젼 오브젝트 출력 (리얼타임)
         _RTIME = NoteList[rnoteIDX].TIME;
         float _TIME2 = NoteList[rnoteIDX].TIME;
-        yield return new WaitUntil(() => _RTIME <= Playback + 1000f && !rnoteEnd);
+        yield return new WaitUntil(() => _RTIME <= Playback + 500f && !rnoteEnd);
         int temp = rnoteIDX;
         for (int i = 0; i < Manager.keycount; i++)
         {

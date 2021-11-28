@@ -9,6 +9,8 @@ Screenshot:
 
 Play Movie :
 
+![7K](./image/4.png)
+
 (4K) Aleph-0 BPM Gimmick/Performance TEST
 https://youtu.be/8WU6fJInv2w
 
@@ -46,6 +48,13 @@ Supports Judgeline offset, column width, sync adjustment
 Supports Longnote readability improvement function
 Supports Autoplay
 
+## Two Input Systems (2021/11/19 add)
+
+Raycast Input systems -> for mobile
+Using Collections -> for PC, better performance.
+It can toggled on Playmusic scene > Notereader's NewInputSys boolean
+
+2021/11/19 : fix score bug
 
 
 This project is licensed under the terms of the MIT license.

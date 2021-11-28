@@ -10,18 +10,21 @@ public class showCombo : MonoBehaviour
     TextMeshPro tmpCombo;
     public TextMeshPro tmp;
     float scale = 1.1f, col;
+    ScoreManager manager;
     // Start is called before the first frame update
     void Start()
     {
         tmpCombo = gameObject.GetComponent<TextMeshPro>();
         col = Manager.ColWidth;
+        var g = GameObject.FindWithTag("NoteSys");
+        manager = g.GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (ScoreManager.combo > 2)
+        if (manager.score[manager.currentPlayer].COMBO > 2)
         {
             if (alpha < 1f) alpha += Time.deltaTime;
         }
@@ -29,10 +32,10 @@ public class showCombo : MonoBehaviour
         {
             if (alpha > 0) alpha -= Time.deltaTime * 30f;
         }
-        if (oldcombo != ScoreManager.combo)
+        if (oldcombo != manager.score[manager.currentPlayer].COMBO)
         {
-            tmpCombo.text = ScoreManager.combo.ToString();
-            oldcombo = ScoreManager.combo;
+            tmpCombo.text = manager.score[manager.currentPlayer].COMBO.ToString();
+            oldcombo = manager.score[manager.currentPlayer].COMBO;
             scale = 1.4f * col;           
         }
         tmpCombo.color = new Color(255, 255, 255, alpha);

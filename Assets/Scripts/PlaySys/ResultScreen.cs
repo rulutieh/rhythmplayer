@@ -16,6 +16,7 @@ public class ResultScreen : MonoBehaviour
     MusicHandler player;
     bool played;
     Image rend;
+    ScoreManager manager;
     public TextMeshProUGUI tmptitle, tmpscore, tmpkool, tmpcool, tmpgood, tmpmiss, tmpbad, tmpcombo, tmpresult, tmplevel, tmpacc;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,8 @@ public class ResultScreen : MonoBehaviour
         gutterEndSize = gutter.rectTransform.sizeDelta;
         gutter.rectTransform.sizeDelta = new Vector2(0, 0);
 
-
+        var g = GameObject.FindWithTag("NoteSys");
+        manager = g.GetComponent<ScoreManager>();
 
         Tween.Size(gutter.rectTransform, gutterStartSize, gutterEndSize, .5f, 0, Tween.EaseInOutStrong, Tween.LoopType.None, null, () => showChilds());
     }
@@ -37,7 +39,7 @@ public class ResultScreen : MonoBehaviour
         tmptitle.text = $"{NowPlaying.PLAY.ARTIST} - {NowPlaying.PLAY.TITLE}";
         tmplevel.text = NowPlaying.PLAY.LEVEL;
         
-        tmpcombo.text = "Combo : " + ScoreManager.maxcombo.ToString();
+        tmpcombo.text = "Combo : " + manager.score[manager.currentPlayer].MAXCOMBO.ToString();
     }
     void showChilds()
     {
@@ -47,19 +49,19 @@ public class ResultScreen : MonoBehaviour
     }
     IEnumerator LoadScores()
     {
-        tmpkool.text = ScoreManager.KOOL.ToString("0000");
+        tmpkool.text = manager.score[manager.currentPlayer].KOOL.ToString("0000");
         yield return new WaitForSeconds(0.1f);
-        tmpcool.text = ScoreManager.COOL.ToString("0000");
+        tmpcool.text = manager.score[manager.currentPlayer].COOL.ToString("0000");
         yield return new WaitForSeconds(0.1f);
-        tmpgood.text = ScoreManager.GOOD.ToString("0000");
+        tmpgood.text = manager.score[manager.currentPlayer].GOOD.ToString("0000");
         yield return new WaitForSeconds(0.1f);
-        tmpbad.text = ScoreManager.BAD.ToString("0000");
+        tmpbad.text = manager.score[manager.currentPlayer].BAD.ToString("0000");
         yield return new WaitForSeconds(0.1f);
-        tmpmiss.text = ScoreManager.MISS.ToString("0000");
+        tmpmiss.text = manager.score[manager.currentPlayer].MISS.ToString("0000");
         yield return new WaitForSeconds(0.2f);
-        tmpacc.text = string.Format("{0:p}", ScoreManager.acc);
+        tmpacc.text = string.Format("{0:p}", manager.score[manager.currentPlayer]._acc);
         yield return new WaitForSeconds(0.2f);
-        tmpscore.text = Mathf.Round(ScoreManager.Score).ToString("0000000");
+        tmpscore.text = Mathf.Round(manager.score[manager.currentPlayer].SCORE).ToString("0000000");
         yield return new WaitForSeconds(0.2f);
         if (!played)
         {
@@ -81,13 +83,13 @@ public class ResultScreen : MonoBehaviour
             played = true;
         }
         yield return new WaitForSeconds(0.2f);
-        if (ScoreManager.maxcombo == NotePlayer.NoteCountLongnote) tmpcombo.text = "FULL COMBO";
-        if (Mathf.Round(ScoreManager.Score) == 1000000) tmpcombo.text = "PERFECT";
+        if (manager.score[manager.currentPlayer].MAXCOMBO == NotePlayer.NoteCountLongnote) tmpcombo.text = "FULL COMBO";
+        if (Mathf.Round(manager.score[manager.currentPlayer].SCORE) == 1000000) tmpcombo.text = "PERFECT";
         yield return new WaitForSeconds(0.3f);
         Rank.SetActive(true);
-        if (ScoreManager.acc >= 0.95f)
+        if (manager.score[manager.currentPlayer]._acc >= 0.95f)
         {
-            if (ScoreManager.MISS == 0 && ScoreManager.BAD == 0)
+            if (manager.score[manager.currentPlayer].MISS == 0 && manager.score[manager.currentPlayer].BAD == 0)
             {
                 rend.sprite = rankspr[0];
             }
@@ -96,15 +98,15 @@ public class ResultScreen : MonoBehaviour
                 rend.sprite = rankspr[1];
             }
         }
-        else if (ScoreManager.acc >= 0.9f)
+        else if (manager.score[manager.currentPlayer]._acc >= 0.9f)
         {
             rend.sprite = rankspr[2];
         }
-        else if (ScoreManager.acc >= 0.8f)
+        else if (manager.score[manager.currentPlayer]._acc >= 0.8f)
         {
             rend.sprite = rankspr[3];
         }
-        else if (ScoreManager.acc >= 0.6f)
+        else if (manager.score[manager.currentPlayer]._acc >= 0.6f)
         {
             rend.sprite = rankspr[4];
         }
