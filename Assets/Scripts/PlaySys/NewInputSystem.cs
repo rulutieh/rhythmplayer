@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Judges;
+using System;
 
 /// <summary>
 /// NEW INPUTSYSTEM FOR PC
@@ -17,14 +18,22 @@ public class NewInputSystem : MonoBehaviour
 
     public GameObject[] Keys;
 
-    List<int> Notes;
+    List<int> Notes = new List<int>();
+
+
 
     ScoreManager manager;
+
+    int curIndex;
 
     MusicHandler musicPlayer;
 
     [SerializeField]
     GameObject judgeobj;
+
+
+    public static Action<int> _notehandle;
+
 
     void Awake()
     {
@@ -41,9 +50,13 @@ public class NewInputSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (player.NewInputSys)
         {
-            Notes = player.GetHitableNotes();
+            if (!Manager.AutoPlay && NotePlayer.isLoaded)
+                ManageHitables();
+
+            //Notes = player.GetHitableNotes();
             if (Manager.keycount == 7)
             {
                 for (int i = 0; i < 7; i++)
@@ -73,6 +86,50 @@ public class NewInputSystem : MonoBehaviour
             AutoKeyRelease();
         }
     }
+
+    void ManageHitables()
+    {
+        if (player.NewInputSys && !Manager.AutoPlay)
+        {
+            if (curIndex < player.NoteList.Length)
+            {
+                if (player.NoteList[curIndex].TIME < NotePlayer.Playback + 3500 && !player.NoteList[curIndex].isCreated)
+                {
+                    Notes.Add(curIndex);
+                    player.NoteList[curIndex].isCreated = true;
+                    curIndex++;
+                }
+            }
+            for (int i = 0; i < Notes.Count; i++)
+            {
+                float t = player.NoteList[Notes[i]].TIME;
+                bool ln;
+                if (player.NoteList[Notes[i]].ISLN)
+                    ln = true;
+                else
+                    ln = false;
+
+                if (t < NotePlayer.Playback - 180f)
+                {
+                    player.NoteList[Notes[i]].isDestroyed = true;
+
+                    if (ln)
+                    {
+                        if (!player.NoteList[Notes[i]].isPressed)
+                        {
+                            manager.SetJudge(1);
+                        }
+                    }
+                    else
+                    {
+                        manager.SetJudge(2);
+                    }
+                    Notes.RemoveAt(i);
+                }
+            }
+        }
+    }
+
     void KeyInput(int idx) //idx = 키보드 인덱스
     {
         int result = -1; //노트리스트 인덱스 결과
@@ -100,13 +157,15 @@ public class NewInputSystem : MonoBehaviour
 
         if (mTime < 174.4f)
         {
-            if (mTime < 100f)
-                manager.AddError(rawError);
+            if (mTime > Timings.j300k && mTime < Timings.j100)
+                manager.AddError(-rawError);
             cacJudge(idx, toRemove, result, mTime);
             if (!player.NoteList[result].ISLN)
             {
                 CreateHitEffect(idx);
             }
+            //delegate 입력전달 (노트제거)
+            _notehandle(result);
         }
     }
     void KeyRelease(int idx)
@@ -117,10 +176,12 @@ public class NewInputSystem : MonoBehaviour
             var pn = player.NoteList[PressedColumn[idx]];
             float rawError = pn.LNLENGTH - NotePlayer.Playback;
             float error = Mathf.Abs(rawError);
-            if (error < 100)
-                manager.AddError(rawError);
+            if (error > LNTimings.j300k && error <= LNTimings.j100)
+                manager.AddError(-rawError);
             cacLNJudge(error);
             CreateLNEffect(idx, false);
+            //롱노트 놓을시 그래픽 변경
+            _notehandle(PressedColumn[idx]);
         }
     }
     void AutoKeyRelease() //롱노트 계속 누르고 있을시 키 릴리즈 자동발생

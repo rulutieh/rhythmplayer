@@ -125,11 +125,8 @@ public class KeyInputManager : MonoBehaviour
             }
             else lnhitef.gameObject.SetActive(false);
         }
-
-
-
-
     }
+
     public void ToggleLNEffect(bool b)
     {
         lnhitef.gameObject.SetActive(b);

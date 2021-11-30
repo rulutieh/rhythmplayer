@@ -20,7 +20,6 @@ public class ScoreManager : MonoBehaviour
         public int MAXNOTE { get; set; }
         public void CacScore()
         {
-            Debug.Log(MISS + " " + TOTAL);
             if (MAXNOTE == 0) return;
 
             float s = (GOOD / (2f * MAXNOTE)) + (BAD / (6f * MAXNOTE));

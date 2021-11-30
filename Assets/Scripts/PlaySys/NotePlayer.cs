@@ -35,6 +35,8 @@ public class NotePlayer : MonoBehaviour
     GameObject w;
     NowPlaying select;
 
+    public NewInputSystem inputsys;
+
     #endregion
 
     #region Notes, Sound, Queue, BPM Collections
@@ -94,9 +96,6 @@ public class NotePlayer : MonoBehaviour
     //노트 리스트
     
     public Notes[] NoteList;
-    //타이밍내의 노트인덱스
-    public List<int> HitableNotes = new List<int>();
-    int curIndex;
     //타이밍 리스트
     [SerializeField]
     Timings[] TimeList;
@@ -123,6 +122,7 @@ public class NotePlayer : MonoBehaviour
         isLoaded = false;
         musicOn = false;
         smanager = GetComponent<ScoreManager>();
+        inputsys = GetComponent<NewInputSystem>();
         if (Manager.keycount == 7)
         {
             if (Manager.Random) //노트 랜덤배치
@@ -206,11 +206,7 @@ public class NotePlayer : MonoBehaviour
         b_queue.Enqueue(b);
         b.SetActive(false);
     }
-    // Update is called once per frame
-    public List<int> GetHitableNotes()
-    {
-        return HitableNotes;
-    }
+
     void Update()
     {
         judgeoffset = -3.15f + Manager.stageYPOS;
@@ -265,45 +261,6 @@ public class NotePlayer : MonoBehaviour
                 SampleSystem();
 
             //배열로 노트구분
-            if (NewInputSys && !Manager.AutoPlay)
-            {
-                if (curIndex < NoteList.Length)
-                {
-                    if (NoteList[curIndex].TIME < Playback + 2500 && !NoteList[curIndex].isCreated)
-                    {
-                        HitableNotes.Add(curIndex);
-                        NoteList[curIndex].isCreated = true;
-                        curIndex++;
-                    }
-                }
-                for (int i = 0; i < HitableNotes.Count; i++)
-                {
-                    float t = NoteList[HitableNotes[i]].TIME;
-                    bool ln;
-                    if (NoteList[HitableNotes[i]].ISLN)
-                        ln = true;
-                    else
-                        ln = false;
-
-                    if (t < Playback - 180f)
-                    {
-                        NoteList[HitableNotes[i]].isDestroyed = true;
-                        
-                        if (ln)
-                        {
-                            if (!NoteList[HitableNotes[i]].isPressed)
-                            {
-                                smanager.SetJudge(1);
-                            }
-                        }
-                        else
-                        {
-                            smanager.SetJudge(2);
-                        }
-                        HitableNotes.RemoveAt(i);
-                    }
-                }
-            }
         }
     }
     #endregion
@@ -466,6 +423,7 @@ public class NotePlayer : MonoBehaviour
             var note = start_queue.Dequeue();
             note.SetActive(true);
             note.gameObject.GetComponent<NoteRenderer>().SetInfo(
+                noteIDX,
                 cc,
                 NoteList[noteIDX].TIME,
                 NoteList[noteIDX].ISLN,
@@ -474,7 +432,7 @@ public class NotePlayer : MonoBehaviour
                 );
 
             if (NoteList[noteIDX].ISLN)
-                StartCoroutine(CreateLongnoteEnd(NoteList[noteIDX].LNLENGTH, cc, note)); //롱노트끝 생성 코루틴
+                StartCoroutine(CreateLongnoteEnd(noteIDX, NoteList[noteIDX].LNLENGTH, cc, note)); //롱노트끝 생성 코루틴
 
 
             if (noteIDX < NoteList.Length - 1)
@@ -549,7 +507,7 @@ public class NotePlayer : MonoBehaviour
         if (barIDX != barlist.Count)
             StartCoroutine(mBarSystem());
     }
-    IEnumerator CreateLongnoteEnd(int LNTIME, int cc, GameObject note)
+    IEnumerator CreateLongnoteEnd(int idx, int LNTIME, int cc, GameObject note)
     {
         float __TIME = GetNoteTime(LNTIME);
         yield return new WaitUntil(() => __TIME <= PlaybackChanged + preLoad);
@@ -560,7 +518,7 @@ public class NotePlayer : MonoBehaviour
         }
         var lnend = end_queue.Dequeue();
         lnend.SetActive(true);
-        lnend.GetComponent<NoteEnd>().setInfo(cc, LNTIME, note, __TIME);
+        lnend.GetComponent<NoteEnd>().setInfo(idx, cc, LNTIME, note, __TIME);
         note.gameObject.GetComponent<NoteRenderer>().setLnEnd(lnend);
 
     } //롱노트끝을 생성

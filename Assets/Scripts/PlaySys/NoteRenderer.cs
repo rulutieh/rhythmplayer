@@ -2,33 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoteRenderer : MonoBehaviour
+public class NoteRenderer : Note
 {
     public GameObject lnend, lntemp;
     GameObject inst;
-    NotePlayer rdr;
+    
     public Sprite dk, sp, dkln, spln, def, defspr;
     public bool lncreated;
     SpriteRenderer rend, rend2;
     Sprite tempspr;
     int COLUMN;
     int TIME;
-    float LNLENGTH, cf, NoteTiming;
-    bool ISLN;
+    float LNLENGTH, cf;
+
 
     void Awake()
     {
-        var sys = GameObject.FindWithTag("NoteSys");
-        rdr = sys.GetComponent<NotePlayer>();
+        NoteInit();
         rend = GetComponent<SpriteRenderer>();
         transform.localScale = new Vector2(transform.localScale.x * Manager.ColumnWidth * 0.98f, transform.localScale.y);
         if (Manager.isCutOff) cf = 0.2f; else cf = 0;
+
 
     }
     void OnEnable()
     {
         lncreated = false;
         lnend = null;
+        NoteAppear();
     }
 
 
@@ -59,25 +60,42 @@ public class NoteRenderer : MonoBehaviour
                     float gap = lnend.transform.position.y - transform.position.y - cf;
                     if (gap < 0) gap = 0;
                     inst.transform.localScale = new Vector2(1f, gap / height);
+
+
+
                 }
                 if (LNLENGTH + 200 < NotePlayer.Playback)
                 {
                     Destroy(lnend);
-                    Destroy(gameObject);
+                    InsertQueue();
                 }
+
+                
+            }
+            if (TIME + 178.4f < NotePlayer.Playback && !isPressed) LnReleased = true;
+            if (LnReleased)
+            {
+                ChangeReleasedColor();
             }
         }
-        else if (TIME + 178.4f < NotePlayer.Playback)
+        else if ((TIME + 178.4f < NotePlayer.Playback) || isPressed)
         {
             InsertQueue();
         }
     }
-    private void LateUpdate()
+    void ChangeReleasedColor()
     {
-        transform.position = new Vector2(transform.position.x, (float)(NotePlayer.judgeoffset + (NoteTiming - NotePlayer.PlaybackChanged) * NotePlayer.multiply));
+        //롱노트 놓쳤을 시 색 변경
+        if (inst)
+        {
+            Color c = rend2.color;
+            c.a = 0.6f;
+            rend2.color = c;
+        }
     }
-    public void SetInfo(int c, int t, bool ln, float length, float nt)
+    public void SetInfo(int idx, int c, int t, bool ln, float length, float nt)
     {
+        Index = idx;
         COLUMN = c;
         TIME = t; ISLN = ln; LNLENGTH = length; NoteTiming = nt;
         if (Manager.keycount == 7)

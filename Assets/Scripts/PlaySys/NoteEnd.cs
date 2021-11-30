@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoteEnd : MonoBehaviour
+public class NoteEnd : Note
 {
-    float TIME, NoteTiming;
+    float TIME;
     public Sprite dk, sp, def;
     SpriteRenderer rend;
-    NotePlayer rdr;
+    NewInputSystem observ;
     private void Awake()
     {
-        var sys = GameObject.FindWithTag("NoteSys");
-        rdr = sys.GetComponent<NotePlayer>();
+        NoteInit();
         rend = GetComponent<SpriteRenderer>();
         transform.localScale = new Vector2(transform.localScale.x * Manager.ColumnWidth * 0.98f, transform.localScale.y);
         if (Manager.isCutOff) rend.enabled = false;
+        
+    }
+    private void OnEnable()
+    {
+        NoteAppear();
     }
 
-    public void setInfo(int c, float t, GameObject obj, float nt) //콜룸, 타임, 시작노트
+    public void setInfo(int idx, int c, float t, GameObject obj, float nt) //콜룸, 타임, 시작노트
     {
+        Index = idx;
         if (!Manager.isCutOff)
             if (Manager.keycount == 7)
             {
@@ -37,10 +42,7 @@ public class NoteEnd : MonoBehaviour
         }
         NoteTiming = nt;
     }
-    private void LateUpdate()
-    {
-        transform.position = new Vector2(transform.position.x, (float)(NotePlayer.judgeoffset + (NoteTiming - NotePlayer.PlaybackChanged) * NotePlayer.multiply));
-    }
+
     public void InsertQueue()
     {
         transform.position = new Vector2(0, 1000f);
