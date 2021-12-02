@@ -49,6 +49,7 @@ public class ScoreData
     public int KOOL, COOL, GOOD, BAD, MISS;
     public int score, state;
     public float acc;
+    public ScoreManager.SCORES sc;
     [JsonConstructor]
     public ScoreData(string playername, int k, int c, int g, int b, int m, int maxcombo, string date)
     {
@@ -73,7 +74,7 @@ public class ScoreData
     }
     void getScores()
     {
-        ScoreManager.SCORES sc = new ScoreManager.SCORES();
+        sc = new ScoreManager.SCORES();
         sc.KOOL = KOOL;
         sc.COOL = COOL;
         sc.GOOD = GOOD;
@@ -232,6 +233,20 @@ public class RankSystem : MonoBehaviour
             maxcombo = s.maxcombo;
             date = s.date;
         ranking = receivedScores.ranking;
+    }
+    public bool GetFirstScore(out ScoreManager.SCORES s)
+    {
+        
+        if (id == -1)
+        {
+            s = null;
+            return false;
+        }
+        else
+        {
+            s = songs[id].scores[0].sc;
+            return true;
+        }
     }
     public void SaveScore(string key, string playername, int k, int c, int g, int b, int m, int maxcombo, string date)
     {

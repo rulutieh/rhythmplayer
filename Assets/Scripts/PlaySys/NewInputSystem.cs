@@ -12,9 +12,9 @@ public class NewInputSystem : MonoBehaviour
 {
     NotePlayer player;
 
-    public bool[] isLNPRESSED = new bool[7];
+    public bool[] isLNPRESSED = new bool[7]; //press 상태 column
 
-    public int[] PressedColumn = new int[7];
+    public int[] PressedColumn = new int[7]; //press 상태 column의 noteidx
 
     public GameObject[] Keys;
 
@@ -40,11 +40,6 @@ public class NewInputSystem : MonoBehaviour
         player = GetComponent<NotePlayer>();
         musicPlayer = GameObject.FindWithTag("world").GetComponent<MusicHandler>();
         manager = GetComponent<ScoreManager>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -157,8 +152,8 @@ public class NewInputSystem : MonoBehaviour
 
         if (mTime < 174.4f)
         {
-            if (mTime > Timings.j300k && mTime < Timings.j100)
-                manager.AddError(-rawError);
+            if (mTime < Timings.j300k) rawError = 0;
+            manager.AddError(-rawError);
             cacJudge(idx, toRemove, result, mTime);
             if (!player.NoteList[result].ISLN)
             {
@@ -176,8 +171,11 @@ public class NewInputSystem : MonoBehaviour
             var pn = player.NoteList[PressedColumn[idx]];
             float rawError = pn.LNLENGTH - NotePlayer.Playback;
             float error = Mathf.Abs(rawError);
-            if (error > LNTimings.j300k && error <= LNTimings.j100)
+            if (error <= LNTimings.j100)
+            {
+                if (error > LNTimings.j300k) rawError = 0;
                 manager.AddError(-rawError);
+            }
             cacLNJudge(error);
             CreateLNEffect(idx, false);
             //롱노트 놓을시 그래픽 변경
