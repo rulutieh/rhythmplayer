@@ -12,17 +12,14 @@ public class NoteEnd : Note
     {
         NoteInit();
         rend = GetComponent<SpriteRenderer>();
-        transform.localScale = new Vector2(transform.localScale.x * Manager.ColumnWidth * 0.98f, transform.localScale.y);
+        transform.localScale = new Vector2(transform.localScale.x * Manager.ColumnWidth, transform.localScale.y);
         if (Manager.isCutOff) rend.enabled = false;
         
-    }
-    private void OnEnable()
-    {
-        NoteAppear();
     }
 
     public void setInfo(int idx, int c, float t, GameObject obj, float nt) //콜룸, 타임, 시작노트
     {
+        NoteAppear();
         Index = idx;
         if (!Manager.isCutOff)
             if (Manager.keycount == 7)
@@ -45,6 +42,7 @@ public class NoteEnd : Note
 
     public void InsertQueue()
     {
+        NoteDisappear();
         transform.position = new Vector2(0, 1000f);
         rdr.end_queue.Enqueue(this.gameObject);
         this.gameObject.SetActive(false);

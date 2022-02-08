@@ -24,7 +24,7 @@ public class Note : MonoBehaviour
         isPressed = false;
         LnReleased = false;
     }
-    void OnDisable()
+    public void NoteDisappear()
     {
         NewInputSystem._notehandle -= Pressed;
     }
@@ -43,6 +43,7 @@ public class Note : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = new Vector2(transform.position.x, (float)(NotePlayer.judgeoffset + (NoteTiming - NotePlayer.PlaybackChanged) * NotePlayer.multiply));
+        float pos = (float)(NotePlayer.judgeoffset + (NoteTiming - NotePlayer.PlaybackChanged) * NotePlayer.multiply);
+        transform.position = new Vector2(transform.position.x, pos);
     }
 }

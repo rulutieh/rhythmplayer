@@ -20,7 +20,7 @@ public class NoteRenderer : Note
     {
         NoteInit();
         rend = GetComponent<SpriteRenderer>();
-        transform.localScale = new Vector2(transform.localScale.x * Manager.ColumnWidth * 0.98f, transform.localScale.y);
+        transform.localScale = new Vector2(transform.localScale.x * Manager.ColumnWidth, transform.localScale.y);
         if (Manager.isCutOff) cf = 0.2f; else cf = 0;
 
 
@@ -29,7 +29,7 @@ public class NoteRenderer : Note
     {
         lncreated = false;
         lnend = null;
-        NoteAppear();
+        
     }
 
 
@@ -70,17 +70,38 @@ public class NoteRenderer : Note
                     InsertQueue();
                 }
 
-                
+
             }
             if (TIME + 178.4f < NotePlayer.Playback && !isPressed) LnReleased = true;
-            if (LnReleased)
+            if (!Manager.AutoPlay)
             {
-                ChangeReleasedColor();
+                
+                if (LnReleased)
+                {
+                    ChangeReleasedColor();
+                }
+                else if (isPressed)
+                {
+                    ChangePressedColor();
+                }
             }
         }
         else if ((TIME + 178.4f < NotePlayer.Playback) || isPressed)
         {
             InsertQueue();
+        }
+    }
+    void ChangePressedColor()
+    {
+        //롱노트 누를 시 색 변경
+        if (inst)
+        {
+            var singraph = NotePlayer.PlaybackChanged / 20f;
+            var alp = 0.95f + Mathf.Sin(singraph) * 0.05f;
+
+            Color c = rend2.color;
+            c.a = alp;
+            rend2.color = c;
         }
     }
     void ChangeReleasedColor()
@@ -89,12 +110,13 @@ public class NoteRenderer : Note
         if (inst)
         {
             Color c = rend2.color;
-            c.a = 0.6f;
+            c.a = 0.5f;
             rend2.color = c;
         }
     }
     public void SetInfo(int idx, int c, int t, bool ln, float length, float nt)
     {
+        NoteAppear(); 
         Index = idx;
         COLUMN = c;
         TIME = t; ISLN = ln; LNLENGTH = length; NoteTiming = nt;
@@ -152,6 +174,7 @@ public class NoteRenderer : Note
         if (inst) Destroy(inst);
         transform.position = new Vector2(0, 1000f);
         rdr.start_queue.Enqueue(this.gameObject);
+        NoteDisappear();
         this.gameObject.SetActive(false);
     }
 }

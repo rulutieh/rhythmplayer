@@ -152,6 +152,8 @@ public class NewInputSystem : MonoBehaviour
 
         if (mTime < 174.4f)
         {
+
+            //판정
             if (mTime < Timings.j300k) rawError = 0;
             manager.AddError(-rawError);
             cacJudge(idx, toRemove, result, mTime);
@@ -161,6 +163,7 @@ public class NewInputSystem : MonoBehaviour
             }
             //delegate 입력전달 (노트제거)
             _notehandle(result);
+
         }
     }
     void KeyRelease(int idx)
