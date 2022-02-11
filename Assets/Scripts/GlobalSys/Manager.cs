@@ -81,6 +81,7 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update 
     void Awake()
     {
+        QualitySettings.vSyncCount = -1;
         decide = 0;
         //저장값 불러오기
         if (PlayerPrefs.HasKey("K0"))

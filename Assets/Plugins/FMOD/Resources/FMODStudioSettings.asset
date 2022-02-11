@@ -330,7 +330,7 @@ MonoBehaviour:
   identifier: 52eb9df5db46521439908db3a29a1bbb
   parentIdentifier: default
   displaySortOrder: 0
-  active: 0
+  active: 1
   Properties:
     LiveUpdate:
       Value: 0
@@ -361,10 +361,10 @@ MonoBehaviour:
       HasValue: 0
     DSPBufferLength:
       Value: 0
-      HasValue: 0
+      HasValue: 1
     DSPBufferCount:
       Value: 0
-      HasValue: 0
+      HasValue: 1
     Plugins:
       Value: []
       HasValue: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
     CallbackHandler:
       Value: {fileID: 0}
       HasValue: 0
-  outputType: 
+  outputType: AUTODETECT
   threadAffinities:
     Value: []
     HasValue: 0
@@ -520,7 +520,7 @@ MonoBehaviour:
   HasSourceProject: 1
   HasPlatforms: 1
   sourceProjectPath: FSPRO/123/123.fspro
-  sourceBankPath: FSPRO\123\Build
+  sourceBankPath: FSPRO/123/Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 0
   BankLoadType: 2

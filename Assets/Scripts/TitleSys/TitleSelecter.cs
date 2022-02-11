@@ -49,14 +49,14 @@ public class TitleSelecter : MonoBehaviour, IPointerClickHandler
         else
         {
 
-            fl.SortByKeycounts();
+            // fl.SortByKeycounts();
 
-            if (fl.listkeysort.Count == 0)
-            {
-                errScreen.SetActive(true);
-                StartCoroutine(HideError());
-            }
-            else
+            // if (fl.listkeysort.Count == 0)
+            // {
+            //     errScreen.SetActive(true);
+            //     StartCoroutine(HideError());
+            // }
+            // else
             {
                 menuActive = true;
                 StartCoroutine(ShowMenu());
