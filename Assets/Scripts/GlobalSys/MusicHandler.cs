@@ -7,7 +7,7 @@ using System.IO;
 public class MusicHandler : MonoBehaviour
 {
     FMOD.ChannelGroup channelGroup = new FMOD.ChannelGroup();
-    FMOD.Channel[] channel = new FMOD.Channel[1000];
+    FMOD.Channel[] channel = new FMOD.Channel[2300];
     FMOD.Sound snd;
     FMOD.Sound[] sfx = new FMOD.Sound[20];
     FMOD.RESULT isLoadDone = FMOD.RESULT.ERR_FILE_NOTFOUND;
@@ -15,7 +15,6 @@ public class MusicHandler : MonoBehaviour
     uint length;
     FMOD.Studio.EVENT_CALLBACK dialogueCallback;
 
-    int samplechannelidx = 26;
     List<FMOD.Sound> KeySoundList = new List<FMOD.Sound>();
 
     void Start()
@@ -25,7 +24,7 @@ public class MusicHandler : MonoBehaviour
 
         var e = FMODUnity.RuntimeManager.CoreSystem.getMasterChannelGroup(out channelGroup);
         Debug.Log(e);
-        for (int i = 0; i < 1000; i++) //할당
+        for (int i = 0; i < 2300; i++) //할당
         {
             channel[i] = new FMOD.Channel();
             channel[i].setChannelGroup(channelGroup);
@@ -52,13 +51,14 @@ public class MusicHandler : MonoBehaviour
     public void LoadSound(string fpath)
     {
         snd = new FMOD.Sound();
-        isLoadDone = FMODUnity.RuntimeManager.CoreSystem.createSound(fpath, FMOD.MODE.CREATESAMPLE, out snd);
+        isLoadDone = FMODUnity.RuntimeManager.CoreSystem.createSound(fpath, FMOD.MODE.CREATESAMPLE | FMOD.MODE.ACCURATETIME, out snd);
     }
     public void LoadKeySound(string fpath)
     {
         var ks = new FMOD.Sound();
         FMODUnity.RuntimeManager.CoreSystem.createSound(fpath, FMOD.MODE.CREATESAMPLE, out ks);
         KeySoundList.Add(ks);
+
 
     }
     public void SetVolume()
@@ -79,20 +79,8 @@ public class MusicHandler : MonoBehaviour
     }
     public void PlaySample(int idx)
     {
-        bool isplaying = true;
-        samplechannelidx = 2;
-        while (!isplaying)
-        {
-            channel[samplechannelidx].isPlaying(out isplaying);
-            samplechannelidx++;
-            if (samplechannelidx == 1000)
-            {
-                samplechannelidx = (int)Random.Range(2f, 1000f);
-                channel[samplechannelidx].stop();
-                isplaying = false;
-            }
-        }
-        FMODUnity.RuntimeManager.CoreSystem.playSound(KeySoundList[idx], channelGroup, false, out channel[samplechannelidx]); //재생
+
+        FMODUnity.RuntimeManager.CoreSystem.playSound(KeySoundList[idx], channelGroup, false, out channel[idx+2]); //재생
     }
     public void StopMP3()
     {
@@ -139,9 +127,5 @@ public class MusicHandler : MonoBehaviour
         {
             sfx[i].release();
         }
-#if !UNITY_EDITOR
-        FMODUnity.RuntimeManager.CoreSystem.release();
-#endif
-        //시스템 메모리 해제
     }
 }
