@@ -147,8 +147,15 @@ public class FileLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         Manager.FolderPath = PlayerPrefs.GetString("PATH", Manager.FolderPath);
+
+
         if (!Directory.Exists(Manager.FolderPath))
             Manager.FolderPath = Application.dataPath;
+
+
+#if (UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX)
+    Manager.FolderPath = Path.Combine(Application.streamingAssetsPath, "Songs");
+#endif
 
         if (!File.Exists(Path.Combine(Application.dataPath, "songlist.db")))
             ReLoad(); //첫 로딩 (DB파일 없을 때)
@@ -383,7 +390,7 @@ public class FileLoader : MonoBehaviour
         if (s != null) return s;
         else return "";
     }
-    #region SORT
+#region SORT
     public void SortByKeycounts()
     {
         try
@@ -464,7 +471,7 @@ public class FileLoader : MonoBehaviour
             return comparer.Compare(A.name, B.name);
         });
     }
-    #endregion
+#endregion
     public bool searchbyHash(string hash)
     {
         // 해쉬값으로 곡 검색

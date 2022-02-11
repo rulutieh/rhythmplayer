@@ -30,7 +30,7 @@ public class TitleSelecter : MonoBehaviour, IPointerClickHandler
     }
     void Update()
     {
-        
+
         Vector2 v = new Vector2(-90.5f, rect.anchoredPosition.y);
         if (menuActive)
             rect.anchoredPosition = Vector2.Lerp(rect.anchoredPosition, v, 6f * Time.deltaTime);
@@ -48,33 +48,27 @@ public class TitleSelecter : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            if (fl.listorigin.Count == 0 || fl.threading)
+
+            fl.SortByKeycounts();
+
+            if (fl.listkeysort.Count == 0)
             {
                 errScreen.SetActive(true);
                 StartCoroutine(HideError());
             }
             else
             {
-                fl.SortByKeycounts();
-
-                if (fl.listkeysort.Count == 0)
-                {
-                    errScreen.SetActive(true);
-                    StartCoroutine(HideError());
-                }
-                else
-                {
-                    menuActive = true;
-                    StartCoroutine(ShowMenu());
-                }
+                menuActive = true;
+                StartCoroutine(ShowMenu());
             }
+
 
         }
     }
 
     IEnumerator ShowMenu()
     {
-        
+
         yield return new WaitForSeconds(0.5f);
         Key4.SetActive(true);
         Key7.SetActive(true);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
@@ -50,14 +51,18 @@ public class AlbumArt : MonoBehaviour, IPointerClickHandler
     }
     IEnumerator LoadImage()
     {
-        
-        WWW www1 = new WWW(NowPlaying.PLAY.BGFILE);
-        yield return www1;
+        string url = NowPlaying.PLAY.BGFILE;
+#if (UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX)
+    url = "file://" + url;
+#endif
+        var www1 = UnityWebRequestTexture.GetTexture(url);
+        yield return www1.SendWebRequest();
         isloaded = true;
         c.a = 0;
-        float width = www1.texture.width;
-        float height = www1.texture.height;
-        rend.sprite = Sprite.Create(www1.texture, new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f));
+        var texture = DownloadHandlerTexture.GetContent(www1);
+        float width = texture.width;
+        float height = texture.height;
+        rend.sprite = Sprite.Create(texture, new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f));
         bg.GetComponent<Image>().sprite = rend.sprite;
         NowPlaying.PLAY.bg = rend.sprite;
         rend.color = new Color(1, 1, 1, 0);
